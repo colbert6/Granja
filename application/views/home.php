@@ -343,7 +343,7 @@
                 <!-- Main content -->
                 <section class="content">
                  
-                 <h1>HELLO</h1>
+                 <h1>HELLO aca escriban</h1>
 
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
