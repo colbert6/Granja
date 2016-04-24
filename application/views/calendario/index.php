@@ -9,6 +9,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
+                            <th class='text-center' rowspan="2">ID</th>
                             <th class='text-center' rowspan="2">RP</th>
                             <th class='text-center' rowspan="2">Nombre</th>
                             <th class='text-center' colspan="12">
@@ -42,6 +43,7 @@
                     </thead>
                     <tbody>
                         <tr>
+                                                <td>1</td>
                                                 <td>00001</td>
                                                 <td>Internet Explorer 4.0</td>
                                                 <td></td>
@@ -58,6 +60,7 @@
                                                 <td></td>
                                             </tr>
                                             <tr>
+                                                <td>2</td>
                                                 <td>00002</td>
                                                 <td>Internet Explorer 4.0</td>
                                                 <td></td>
@@ -74,6 +77,7 @@
                                                 <td></td>
                                             </tr>
                                             <tr>
+                                                <td>3</td>
                                                 <td>00003</td>
                                                 <td>Internet Explorer 4.0</td>
                                                 <td></td>
@@ -90,6 +94,7 @@
                                                 <td></td>
                                             </tr>
                                             <tr>
+                                                <td>4</td>
                                                 <td>00004</td>
                                                 <td>Internet Explorer 4.0</td>
                                                 <td></td>
@@ -106,6 +111,7 @@
                                                 <td></td>
                                             </tr>
                                             <tr>
+                                                <td>5</td>
                                                 <td>00005</td>
                                                 <td>Internet Explorer 4.0</td>
                                                 <td></td>
@@ -122,6 +128,7 @@
                                                 <td></td>
                                             </tr>
                                             <tr>
+                                                <td>6</td>
                                                 <td>00006</td>
                                                 <td>Internet Explorer 4.0</td>
                                                 <td></td>
@@ -138,6 +145,7 @@
                                                 <td></td>
                                             </tr>
                                             <tr>
+                                                <td>7</td>
                                                 <td>00007</td>
                                                 <td>Internet Explorer 4.0</td>
                                                 <td></td>
@@ -154,6 +162,7 @@
                                                 <td></td>
                                             </tr>
                                             <tr>
+                                            <td>8</td>
                                                 <td>00008</td>
                                                 <td>Internet Explorer 4.0</td>
                                                 <td></td>
@@ -170,6 +179,7 @@
                                                 <td></td>
                                             </tr>
                                             <tr>
+                                            <td>9</td>
                                                 <td>00009</td>
                                                 <td>Internet Explorer 4.0</td>
                                                 <td></td>
@@ -186,6 +196,7 @@
                                                 <td></td>
                                             </tr>
                                             <tr>
+                                            <td>10</td>
                                                 <td>00010</td>
                                                 <td>Internet Explorer 4.0</td>
                                                 <td></td>
