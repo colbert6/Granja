@@ -1,5 +1,4 @@
-
-                </section><!-- /.content -->
+</section><!-- /.content -->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
 
@@ -11,25 +10,15 @@
         <!-- AdminLTE App -->
         <script src="<?= base_url(); ?>js/AdminLTE/app.js" type="text/javascript"></script>
 
-
-        <link href="<?= base_url(); ?>css/jQueryUI/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css" />
-        <script src="<?= base_url(); ?>js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
-
-
         <link href="<?= base_url(); ?>css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
         <script src="<?= base_url(); ?>js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
 
         <script type="text/javascript">
             $(document).ready(function() {
-                
-                var fecha = new Date();
-                var ano = fecha.getFullYear();
-                $("#anio").val(ano);
-                $("#avanzar").hide();
-                
-                $("#example1").dataTable({
-                    
+
+                $("#tab").dataTable({
+                 
                     "bPaginate": true,
                     "bLengthChange": true,
                     "bFilter": true,
@@ -65,28 +54,7 @@
                     'aLengthMenu': [[5, 10, 20], [5, 10, 20]]
 
                 });
-                $("#avanzar").click(function(){
-                    avanz = parseInt($("#anio").val())+1;
-                    //alert(avanz);
-                    $("#anio").val(avanz);
-                    if($("#anio").val() == ano){
-                        $("#avanzar").hide();
-                    }else{
-                        $("#avanzar").show();
-                    }
-                });
-                $("#retroceder").click(function(){
-                    avanz = parseInt($("#anio").val())-1;
-                    //alert(avanz);
-                    $("#anio").val(avanz);
-                    if($("#anio").val() == ano){
-                        $("#avanzar").hide();
-                    }else{
-                        $("#avanzar").show();
-                    }
-                });
 
-                
             });
         </script>
 
