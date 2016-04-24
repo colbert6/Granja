@@ -10,5 +10,6 @@
         {
             $this->load->view("home");
         }
+
     }
  ?>
