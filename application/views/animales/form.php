@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" mane="nombre" placeholder="Ingrese nombre">
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre">
                 </div>
                 <div class="form-group">
                     <label for="proveedor">Proveedor</label>
@@ -35,11 +35,11 @@
                 </div>
                 <div class="form-group">
                     <label for="npadre">Nombre padre</label>
-                    <input type="text" class="form-control" id="padre" name="npadre" placeholder="Ingrese nombre del padre">
+                    <input type="text" class="form-control" id="padre" name="padre" placeholder="Ingrese nombre del padre">
                 </div>
                 <div class="form-group">
                     <label for="nmadre">Nombre madre</label>
-                    <input type="text" class="form-control" id="madre" name="nmadre" placeholder="Ingrese nombre de la madre">
+                    <input type="text" class="form-control" id="madre" name="madre" placeholder="Ingrese nombre de la madre">
                 </div>
                 <div class="form-group">
                     <label for="sexo">Sexo</label>

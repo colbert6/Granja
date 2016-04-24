@@ -5,9 +5,14 @@
     */
     class Animales extends CI_Controller
     {
+        function __construct(){
+            parent::__construct();
+            $this->load->model('animales_model');
+        }
         
         public function index()
         {
+            $data['animal'] = $this->animales_model->select();
             $this->load->view("/layout/header.php");
             $this->load->view("/animales/index.php");
             $this->load->view("/animales/foother.php");
@@ -32,9 +37,8 @@
                            'proveedor'=> $this->input->post('proveedor'),
                            'tiporeg'=> $this->input->post('tiporeg'),
                            'descripcion'=> $this->input->post('descripcion')
-                           
-            );
-            print_r($data);
+                        );
+           // print_r($data);
 
             $this->animales_model->crear($data);
     
