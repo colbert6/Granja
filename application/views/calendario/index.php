@@ -42,176 +42,24 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <?php for ($i=1; $i <= 9; $i++) { ?>
                         <tr>
-                                                <td>1</td>
-                                                <td>00001</td>
-                                                <td>Internet Explorer 4.0</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>00002</td>
-                                                <td>Internet Explorer 4.0</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>00003</td>
-                                                <td>Internet Explorer 4.0</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>00004</td>
-                                                <td>Internet Explorer 4.0</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>00005</td>
-                                                <td>Internet Explorer 4.0</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>00006</td>
-                                                <td>Internet Explorer 4.0</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>7</td>
-                                                <td>00007</td>
-                                                <td>Internet Explorer 4.0</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                            <td>8</td>
-                                                <td>00008</td>
-                                                <td>Internet Explorer 4.0</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                            <td>9</td>
-                                                <td>00009</td>
-                                                <td>Internet Explorer 4.0</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                            <td>10</td>
-                                                <td>00010</td>
-                                                <td>Internet Explorer 4.0</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
+                            <td><?php echo $i; ?></td>
+                            <td>
+                                <?php echo "00".$i; ?>
+                                <input type="hidden" id='id_animal' value="<?php echo $i; ?>"/>
+                            </td>
+                            <td>Internet Explorer 4.0</td>
+                            <?php for ($j=1; $j <=12 ; $j++) { ?>
+                                <td class='text-center' onclick="mostrarModal(<?php echo $i; ?>,<?php echo $j;?>,'<?php echo base_url(); ?>');" id='<?php echo $i.",".$j;?>'>
+
+                                </td>
+                            <?php } 
+                                
+                            ?>
+                            
+                        </tr>
+                    <?php }?>                        
                         
                         
                         
@@ -223,3 +71,78 @@
         </div><!-- /.box -->
     </div>
 </div>
+
+<style>
+    #mdialTamanio{
+      width: 25% !important;
+    }
+</style>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog" id="mdialTamanio">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Agregar Evento</h4>
+      </div>
+        <input type="hidden" id='fila' />
+        <input type="hidden" id='mes' />
+        <input type="hidden" id='url' />
+      <div class="modal-body">
+
+        
+                <label>Evento:</label>
+                <select class="form-control" id="sel1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                  </select>
+              
+              
+                <label>Fecha:</label>
+
+                <div class='input-group date' id='datetimepicker8'>
+                    <input type='text' style='background-color:white;' readonly class="form-control" />
+                    <span class="input-group-addon" >
+                        <span  class="fa fa-calendar"></span>
+                    </span>
+                </div>
+
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick='crearEvento();' class="btn btn-success" data-dismiss="modal">Guardar</button>
+        <button type="button" onclick='crearEvento();' class="btn btn-warning" data-dismiss="modal">Ver Todo</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+      </div>
+    </div>
+
+  </div>
+</div>
+<input type='text' id='datepicker' />
+<script type="text/javascript">
+    $(function(){
+        $("#datepicker").datepicker();
+    });
+    function mostrarModal(fila,mes,url){
+        $("#fila").val(fila);
+        $("#mes").val(mes);
+        $("#url").val(url);
+
+
+
+        $("#myModal").modal("show");
+        
+    }
+    function crearEvento() {
+        document.getElementById($("#fila").val()+","+$("#mes").val()).innerHTML = "<img src='"+$("#url").val()+"img/calendar.png'>";
+    }
+    function mostrarCalendario(){
+        
+
+    }
+</script>
