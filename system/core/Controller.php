@@ -57,6 +57,20 @@ class CI_Controller {
 	{
 		return self::$instance;
 	}
+
+	protected function redireccionar($ruta = false)// validacion de entero
+    {
+        if($ruta){
+            die("<script> window.location='".base_url()."index.php/$ruta'; </script>");
+           // header('location:' . BASE_URL . $ruta);
+            exit;
+        }
+        else{
+            die("<script> window.location='".base_url()."/index.php'; </script>");
+           // header('location:' . BASE_URL);
+            exit;
+        }
+    }
 }
 // END Controller class
 
