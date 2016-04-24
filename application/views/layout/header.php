@@ -5,13 +5,13 @@
         <title>FISI-UNSM</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?= base_url(); ?>css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?= base_url(); ?>css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->
-        <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?= base_url(); ?>css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
-        <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <link href="<?= base_url(); ?>css/AdminLTE.css" rel="stylesheet" type="text/css" />
         
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -308,16 +308,16 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="../forms/general.html"><i class="fa fa-angle-double-right"></i> Registros</a></li>
-                                <li><a href="../forms/advanced.html"><i class="fa fa-angle-double-right"></i> Razas</a></li>
-                                <li><a href="../forms/editors.html"><i class="fa fa-angle-double-right"></i> Tipos de Registros</a></li>   
-                                <li><a href="../forms/editors.html"><i class="fa fa-angle-double-right"></i> Tipos de Eventos</a></li>
-                                <li><a href="../forms/editors.html"><i class="fa fa-angle-double-right"></i> Eventos</a></li>                                 
+                                <li><a href="<?= base_url(); ?>index.php/animales/form"><i class="fa fa-angle-double-right"></i> Registros</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/razas/form"><i class="fa fa-angle-double-right"></i> Razas</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/tipo_registro/form"><i class="fa fa-angle-double-right"></i> Tipos de Registros</a></li>   
+                                <li><a href="<?= base_url(); ?>index.php/tipo_evento/form"><i class="fa fa-angle-double-right"></i> Tipos de Eventos</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/eventos/form"><i class="fa fa-angle-double-right"></i> Eventos</a></li>                                 
                             </ul>
                         </li>
                         <li>
-                            <a href="../calendar.html">
-                                <i class="fa fa-calendar"></i> <span>Calendar</span>
+                            <a href="<?= base_url(); ?>index.php/calendario">
+                                <i class="fa fa-calendar"></i> <span>Calendario</span>
                                 <small class="badge pull-right bg-red"><!--3--></small>
                             </a>
                         </li>
