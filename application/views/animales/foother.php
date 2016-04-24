@@ -1,5 +1,4 @@
-
-                </section><!-- /.content -->
+</section><!-- /.content -->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
 
@@ -17,13 +16,9 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
-                var fecha = new Date();
-                var ano = fecha.getFullYear();
-                $("#anio").val(ano);
-                $("#avanzar").hide();
-                
-                $("#example1").dataTable({
-                    
+
+                $("#tab").dataTable({
+                 
                     "bPaginate": true,
                     "bLengthChange": true,
                     "bFilter": true,
@@ -59,26 +54,7 @@
                     'aLengthMenu': [[5, 10, 20], [5, 10, 20]]
 
                 });
-                $("#avanzar").click(function(){
-                    avanz = parseInt($("#anio").val())+1;
-                    //alert(avanz);
-                    $("#anio").val(avanz);
-                    if($("#anio").val() == ano){
-                        $("#avanzar").hide();
-                    }else{
-                        $("#avanzar").show();
-                    }
-                });
-                $("#retroceder").click(function(){
-                    avanz = parseInt($("#anio").val())-1;
-                    //alert(avanz);
-                    $("#anio").val(avanz);
-                    if($("#anio").val() == ano){
-                        $("#avanzar").hide();
-                    }else{
-                        $("#avanzar").show();
-                    }
-                });
+
             });
         </script>
 
