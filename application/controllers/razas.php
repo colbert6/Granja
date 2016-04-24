@@ -28,12 +28,12 @@
         {
             $data= array ( 'descripcion'=> $this->input->post('descripcion'),
                            'abreviacion'=> $this->input->post('abreviacion')
-                );
+            );
 
             $this->razas_model->crearAnimal($data);
 
             $this->load->view("/layout/header.php");
-            $this->load->view("home");
+            $this->load->view("/razas/index.php");
             $this->load->view("/layout/foother.php");
         }
 
