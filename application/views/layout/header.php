@@ -308,11 +308,11 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="<?= base_url(); ?>index.php/animales/form"><i class="fa fa-angle-double-right"></i> Registros</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/razas/form"><i class="fa fa-angle-double-right"></i> Razas</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/tipo_registro/form"><i class="fa fa-angle-double-right"></i> Tipos de Registros</a></li>   
-                                <li><a href="<?= base_url(); ?>index.php/tipo_evento/form"><i class="fa fa-angle-double-right"></i> Tipos de Eventos</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/eventos/form"><i class="fa fa-angle-double-right"></i> Eventos</a></li>                                 
+                                <li><a href="<?= base_url(); ?>index.php/animales/"><i class="fa fa-angle-double-right"></i> Registros</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/razas/"><i class="fa fa-angle-double-right"></i> Razas</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/tipo_registro/"><i class="fa fa-angle-double-right"></i> Tipos de Registros</a></li>   
+                                <li><a href="<?= base_url(); ?>index.php/tipo_evento/"><i class="fa fa-angle-double-right"></i> Tipos de Eventos</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/eventos/"><i class="fa fa-angle-double-right"></i> Eventos</a></li>                                 
                             </ul>
                         </li>
                         <li>
@@ -332,8 +332,8 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Bienvenido
-                        <small>Software Granja </small>
+                        <?=@ $titulo ?>
+                        <small> </small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

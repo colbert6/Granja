@@ -3,7 +3,8 @@
         <div class="box-header">
             <h3 class="box-title">Razas</h3>
         </div>
-        <form role="form" action="<?= base_url();?>index.php/razas/nuevo" method="post">
+        <form role="form" action="<?= $action?>" method="post">
+            <input name="guardar" id="guardar" type="hidden" value="1">
             <div class="box-body">
                 <div class="form-group">
                     <label for="descripcion">Descripcion</label>

@@ -13,29 +13,34 @@
         public function index()
         {
             $data['razas'] = $this->razas_model->select();
-            
-            $this->load->view("/layout/header.php");
-            $this->load->view("/razas/index.php",$data);
-            $this->load->view("/layout/foother.php");
-        }
 
-        public function form()
-        {
-            $this->load->view("/layout/header.php");
-            $this->load->view("/razas/form.php");
+            $dato= array ( 'titulo'=> 'Lista de Razas');
+            
+            $this->load->view("/layout/header.php",$dato);
+            $this->load->view("/razas/index.php",$data);
             $this->load->view("/layout/foother.php");
         }
 
         public function nuevo()
         {
-            $data= array ( 'descripcion'=> $this->input->post('descripcion'),
-                           'abreviacion'=> $this->input->post('abreviacion')
-            );
+            if (@$_POST['guardar'] == 1) {
+               $data= array ( 'descripcion'=> $this->input->post('descripcion'),
+                              'abreviacion'=> $this->input->post('abreviacion')  );
 
-            $this->razas_model->crear($data);
+                $this->razas_model->crear($data);
 
-            $this->load->view("/layout/header.php");
-            $this->load->view("/razas/index.php");
+
+                $this->load->view("/layout/header.php",$dato);
+                $this->load->view("/razas/index.php",$data);
+                $this->load->view("/layout/foother.php");
+                exit;
+            }
+
+            $dato= array ( 'titulo'=> 'Registrar Raza',
+                           'action'=>  'razas/nuevo' );
+            
+            $this->load->view("/layout/header.php",$dato);
+            $this->load->view("/razas/form.php",$dato);
             $this->load->view("/layout/foother.php");
         }
 

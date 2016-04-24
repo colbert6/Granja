@@ -9,10 +9,11 @@
 
 	    function select(){
 	        $query=$this->db->get('raza');
-	        if($query->num_rows()>0)
+	        return $query;
+	        /*if($query->num_rows()>0)
 	        	return $query;
 	        else 
-	        	return false;
+	        	return false;*/
 	    }
 
 	    function crear($data){
