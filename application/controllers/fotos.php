@@ -9,7 +9,7 @@
         public function index()
         {
             $this->load->view("/layout/header.php");
-            $this->load->view("/fotos/form.php");
+            $this->load->view("/fotos/index.php");
             $this->load->view("/layout/foother.php");
         }
 

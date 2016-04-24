@@ -10,7 +10,7 @@
         {
             $this->load->view("/layout/header.php");
             $this->load->view("/calendario/index.php");
-            $this->load->view("/layout/foother.php");
+            $this->load->view("/calendario/foother.php");
             
         }
 

@@ -23,7 +23,7 @@
     <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="index.html" class="logo">
+            <a href="<?= base_url(); ?>index.html" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 FISI
             </a>
@@ -297,7 +297,7 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li>
-                            <a href="">
+                            <a href="<?= base_url(); ?>index.php">
                                 <i class="fa fa-dashboard"></i> <span>Inicio</span>
                             </a>
                         </li>
