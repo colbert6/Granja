@@ -5,7 +5,7 @@
 
 
         <!-- jQuery 2.0.2 -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="<?= base_url(); ?>js/jquery-1.12.3.min.js" type="text/javascript"></script>
         <!-- Bootstrap -->
         <script src="<?= base_url(); ?>js/bootstrap.min.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
@@ -17,6 +17,10 @@
 
         <script type="text/javascript">
             $(function() {
+                var fecha = new Date();
+                var ano = fecha.getFullYear();
+                $("#anio").val(ano);
+                $("#avanzar").hide();
                 $("#example1").dataTable({
                     
                     "bPaginate": true,
@@ -27,7 +31,26 @@
                     "bAutoWidth": false,
 
                 });
-
+                $("#avanzar").click(function(){
+                    avanz = parseInt($("#anio").val())+1;
+                    //alert(avanz);
+                    $("#anio").val(avanz);
+                    if($("#anio").val() == ano){
+                        $("#avanzar").hide();
+                    }else{
+                        $("#avanzar").show();
+                    }
+                });
+                $("#retroceder").click(function(){
+                    avanz = parseInt($("#anio").val())-1;
+                    //alert(avanz);
+                    $("#anio").val(avanz);
+                    if($("#anio").val() == ano){
+                        $("#avanzar").hide();
+                    }else{
+                        $("#avanzar").show();
+                    }
+                });
             });
         </script>
 
