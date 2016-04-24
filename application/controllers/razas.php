@@ -31,7 +31,7 @@
             $data= array ( 'descripcion'=> $this->input->post('descripcion'),
                            'abreviacion'=> $this->input->post('abreviacion')
             );
-
+            //print_r($data);
             $this->razas_model->crear($data);
 
             $this->load->view("/layout/header.php");

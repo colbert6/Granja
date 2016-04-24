@@ -16,19 +16,21 @@
 	    }
 
 	    function crear($data){
+	    	print_r($data);
 	        $this->db->insert('animal',array('ani_rp' => $data['codigo'],
 	        							   'ani_nombre' => $data['nombre'],
 	        							   'ani_padre' => $data['padre'],
-	                                       'ani_madre' => $data['madre'],										
+	                                       'ani_madre' => $data['madre'],			
 	                                       'ani_fechanac' => $data['fechanac'],
 	                                       'ani_fechareg' => $data['fechareg'],
 	                                       'ani_sexo' => $data['sexo'],
 	                                       'ani_proveedor' => $data['proveedor'],
 	                                       'ani_tiporeg' => $data['tiporeg'], 
+	                                       'ani_descripcion' => $data['descripcion'],
 	                                       'ani_raza' => 'jose' ,
-	                                       'ani_descripcion' => $data['descripcion'], 	
 	                                       'ani_estado' => 1 ));
-
+	      
 	    }
 
-	    
+	  	}
+?>
