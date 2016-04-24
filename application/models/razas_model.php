@@ -7,7 +7,15 @@
 	        $this->load->database();
 	    }
 
-	    function crearAnimal($data){
+	    function select(){
+	        $query=$this->db->get('raza');
+	        if($query->num_rows()>0)
+	        	return $query;
+	        else 
+	        	return false;
+	    }
+
+	    function crear($data){
 	        $this->db->insert('raza',array('raz_descripcion' => $data['descripcion'],
 	        								'raz_abreviacion' => $data['abreviacion'],
 	        								'raz_estado' => 1 ));

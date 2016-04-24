@@ -12,8 +12,10 @@
         
         public function index()
         {
+            $data['razas'] = $this->razas_model->select();
+            
             $this->load->view("/layout/header.php");
-            $this->load->view("/razas/index.php");
+            $this->load->view("/razas/index.php",$data);
             $this->load->view("/layout/foother.php");
         }
 
@@ -30,7 +32,7 @@
                            'abreviacion'=> $this->input->post('abreviacion')
             );
 
-            $this->razas_model->crearAnimal($data);
+            $this->razas_model->crear($data);
 
             $this->load->view("/layout/header.php");
             $this->load->view("/razas/index.php");
