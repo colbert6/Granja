@@ -12,6 +12,8 @@
         <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <!-- DATA TABLES -->
+        <link href="../../css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
         
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -316,7 +318,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="http://localhost/granja/index.php/calendario">
+                            <a href="../calendar.html">
                                 <i class="fa fa-calendar"></i> <span>Calendar</span>
                                 <small class="badge pull-right bg-red"><!--3--></small>
                             </a>
@@ -342,7 +344,67 @@
 
                 <!-- Main content -->
                 <section class="content">
-                    <h1>Hello nuevo</h1>
+                 
+                 <div class="row">
+                        <div class="col-xs-12">
+                                                        
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Data Table With Full Features</h3>                                    
+                                </div><!-- /.box-header -->
+                                <div class="box-body table-responsive">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class='text-center' rowspan="2">RP</th>
+                                                <th class='text-center' rowspan="2">Nombre</th>
+                                                <th class='text-center' colspan="12">2015</th>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <th class='text-center'>Ene</th>
+                                                <th class='text-center'>Feb</th>
+                                                <th class='text-center' >Mar</th>
+                                                <th class='text-center' >Abr</th>
+                                                <th class='text-center' >May</th>
+                                                <th class='text-center' >Jun</th>
+                                                <th class='text-center' >Jul</th>
+                                                <th class='text-center' >Ago</th>
+                                                <th class='text-center' >Sep</th>
+                                                <th class='text-center' >Oct</th>
+                                                <th class='text-center' >Nov</th>
+                                                <th class='text-center' >Dic</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Trident</td>
+                                                <td>Internet Explorer 4.0</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            
+                                            
+                                            
+                                           
+                                        </tbody>
+                                        
+                                    </table>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
+
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
@@ -354,6 +416,25 @@
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
         <script src="js/AdminLTE/app.js" type="text/javascript"></script>
+        <!-- DATA TABES SCRIPT -->
+        <script src="../../js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="../../js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            $(function() {
+                $("#example1").dataTable({
+                    
+                    "bPaginate": true,
+                    "bLengthChange": true,
+                    "bFilter": true,
+                    "bSort": true,
+                    "bInfo": false,
+                    "bAutoWidth": false,
+
+                });
+
+            });
+        </script>
 
     </body>
 </html>
