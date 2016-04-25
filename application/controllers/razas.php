@@ -23,19 +23,14 @@
 
         public function nuevo()
         {
-<<<<<<< HEAD
+
             $dato= array ( 'titulo'=> 'Registrar Raza','action'=>  'razas/nuevo' );
 
             if (@$_POST['guardar'] == 1) {
                $data= array ( 'descripcion'=> $this->input->post('descripcion'),
                               'abreviacion'=> $this->input->post('abreviacion')  );
-=======
-            $data= array ( 'descripcion'=> $this->input->post('descripcion'),
-                           'abreviacion'=> $this->input->post('abreviacion')
-            );
             //print_r($data);
             $this->razas_model->crear($data);
->>>>>>> b82e0f01e4cb7f422b41a7ca8963558e01aa9510
 
                 $this->razas_model->crear($data);
                 $this->redireccionar("razas");

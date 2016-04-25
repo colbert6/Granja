@@ -8,26 +8,35 @@
         function __construct(){
             parent::__construct();
             $this->load->model('animales_model');
+            $this->load->model('razas_model');
         }
         
         public function index()
         {
-            $data['animal'] = $this->animales_model->select();
-            $this->load->view("/layout/header.php");
-            $this->load->view("/animales/index.php");
+            $data['animales'] = $this->animales_model->select();
+
+            $dato= array ( 'titulo'=> 'Lista de Animales');
+
+            $this->load->view("/layout/header.php",$dato);
+            $this->load->view("/animales/index.php",$data);
             $this->load->view("/animales/foother.php");
         }
-
         public function form()
         {
+            $resul['razas'] = $this->razas_model->select();
+            $data = array('consulta'=> $resul);
             $this->load->view("/layout/header.php");
-            $this->load->view("/animales/form.php");
-            $this->load->view("/layout/foother.php");
+            $this->load->view("/animales/form.php",$resul);
+            $this->load->view("/animales/foother.php");
         }
 
         public function nuevo()
         {
-            $data= array ( 'codigo'=> $this->input->post('codigo'),
+            $dato= array ( 'titulo'=> 'Registrar Animales','action'=>  'animales/nuevo' );
+
+            
+            if (@$_POST['guardar'] == 1) {
+               $data= array ( 'codigo'=> $this->input->post('codigo'),
                            'nombre'=> $this->input->post('nombre'),
                            'padre'=> $this->input->post('padre'),
                            'madre'=> $this->input->post('madre'),
@@ -38,13 +47,18 @@
                            'tiporeg'=> $this->input->post('tiporeg'),
                            'descripcion'=> $this->input->post('descripcion')
                         );
-           // print_r($data);
+               print_r($data);
+             $this->animales_model->crear($data);
 
-            $this->animales_model->crear($data);
-    
-            $this->load->view("/layout/header.php");
-            $this->load->view("/animales/index.php");
-            $this->load->view("/layout/foother.php");
+             $this->redireccionar("animales");
+                
+            }else{
+
+                $this->load->view("/layout/header.php",$dato);
+                $this->load->view("/animales/form.php");
+                $this->load->view("/layout/foother.php");
+
+            }
         }
 
 

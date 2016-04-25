@@ -8,15 +8,12 @@
 	    }
 
 	    function select(){
-	        $query=$this->db->get('animal');
-	        if($query->num_rows()>0)
-	        	return $query;
-	        else 
-	        	return false;
+	    	$query=$this->db->get('animal');
+	        return $query;
 	    }
 
 	    function crear($data){
-	    	print_r($data);
+	    	
 	        $this->db->insert('animal',array('ani_rp' => $data['codigo'],
 	        							   'ani_nombre' => $data['nombre'],
 	        							   'ani_padre' => $data['padre'],

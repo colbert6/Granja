@@ -3,8 +3,8 @@
         <div class="box-header">
             <h3 class="box-title">Animales</h3>
         </div>
-        <form role="form" action="<?= base_url();?>index.php/animales/nuevo" method="post">
-            
+        <form role="form" action="<?= base_url()."index.php/".$action ?>" method="post">
+            <input name="guardar" id="guardar" type="hidden" value="1">
                 <div class="form-group">
                     <label for="codigo">Codigo</label>
                     <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Ingrese codigo">
@@ -12,6 +12,7 @@
                 <div class="form-group">
                     <label>Raza</label>
                     <select class="form-control">
+                    echo "<option  value='".$lista["curso"]."'>"."</option>";
                     </select>
                 </div>
 
@@ -28,10 +29,6 @@
                 <div class="form-group">
                     <label for="proveedor">Proveedor</label>
                     <input type="text" class="form-control" id="proveedor" name="proveedor" placeholder="Ingrese proveedor">
-                </div>
-                <div class="form-group">
-                    <label for="tiporeg">Tipo Registro</label>
-                    <input type="text" class="form-control" id="tiporeg" name="tiporeg" placeholder="Ingrese proveedor">
                 </div>
                 <div class="form-group">
                     <label for="npadre">Nombre padre</label>
