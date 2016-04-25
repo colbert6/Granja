@@ -8,6 +8,7 @@
 	    }
 
 	    function select(){
+	    	$this->db->where('raz_estado',1);
 	        $query=$this->db->get('raza');
 	        return $query;
 	        /*if($query->num_rows()>0)
@@ -34,6 +35,13 @@
 	        			'raz_abreviacion' => $data['abreviacion']
 	        			);
 	    	$this->db->where('raz_id',$data['id']);
+	        $query=$this->db->update('raza',$datos);
+	        return $query;
+	    }
+
+	    function eliminar($id){
+	    	$datos=array('raz_estado' => 0   );
+	    	$this->db->where('raz_id',$id);
 	        $query=$this->db->update('raza',$datos);
 	        return $query;
 	    }

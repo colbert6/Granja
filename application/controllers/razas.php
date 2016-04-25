@@ -67,6 +67,16 @@
             
         }
 
+        public function eliminar()
+        {
+            $idRaza=$this->uri-> segment(3);
+            
+            $this->razas_model->eliminar($idRaza);
+            $this->redireccionar("razas");
+            
+            
+        }
+
     }
  ?>
 
