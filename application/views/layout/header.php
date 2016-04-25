@@ -23,7 +23,7 @@
     <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="<?= base_url(); ?>index.html" class="logo">
+            <a href="<?= base_url(); ?>index.php" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 FISI
             </a>
