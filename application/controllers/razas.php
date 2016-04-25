@@ -23,8 +23,7 @@
 
         public function nuevo()
         {
-            $dato= array ( 'titulo'=> 'Registrar Raza','action'=>  'razas/nuevo' );
-
+            
             if (@$_POST['guardar'] == 1) {
                 $data= array ( 'descripcion'=> $this->input->post('descripcion'),
                               'abreviacion'=> $this->input->post('abreviacion')  );
@@ -33,9 +32,35 @@
                 $this->redireccionar("razas");
                 
             }else{
+                $dato= array ( 'titulo'=> 'Registrar Raza','action'=>  'razas/nuevo' );
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/razas/form.php");
+                $this->load->view("/layout/foother.php");
+
+            }
+            
+        }
+
+        public function editar()
+        {
+            
+            if (@$_POST['guardar'] == 1) {
+                $data= array ( 'id'=> $this->input->post('id'),
+                                'descripcion'=> $this->input->post('descripcion'),
+                                'abreviacion'=> $this->input->post('abreviacion')  );
+
+                $this->razas_model->editar($data);
+                $this->redireccionar("razas");
+                
+            }else{
+                $dato= array ( 'titulo'=> 'Editar Raza','action'=>  'razas/editar' );
+                $idRaza=$this->uri-> segment(3);
+
+                $data['razas']=$this->razas_model->selectId( $idRaza);
+
+                $this->load->view("/layout/header.php",$dato);
+                $this->load->view("/razas/form.php",$data);
                 $this->load->view("/layout/foother.php");
 
             }

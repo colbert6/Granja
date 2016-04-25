@@ -16,10 +16,26 @@
 	        	return false;*/
 	    }
 
+	    function selectId($id){
+	        $this->db->where('raz_id',$id);
+	        $query=$this->db->get('raza');
+	        return $query;
+	   
+	    }
+
 	    function crear($data){
 	        $this->db->insert('raza',array('raz_descripcion' => $data['descripcion'],
 	        								'raz_abreviacion' => $data['abreviacion'],
 	        								'raz_estado' => 1 ));
+	    }
+
+	    function editar($data){
+	    	$datos=array('raz_descripcion' => $data['descripcion'],
+	        			'raz_abreviacion' => $data['abreviacion']
+	        			);
+	    	$this->db->where('raz_id',$data['id']);
+	        $query=$this->db->update('raza',$datos);
+	        return $query;
 	    }
 
 	}
