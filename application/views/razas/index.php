@@ -17,7 +17,7 @@
 			                <td><?= $datos->raz_descripcion; ?></td> 
 			                <td><?= $datos->raz_abreviacion; ?></td> 
 			                <td>
-			                    <a href="#" class="btn  btn-minier"><i class="fa fa-pencil"></i></a>
+			                    <a href=<?php echo base_url()."index.php/razas/editar/".$datos->raz_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>
 		                		<a href="#" class="btn  btn-minier"><i class="fa fa-trash-o"></i></a>
 			                </td>
 			            </tr>

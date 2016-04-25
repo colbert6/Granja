@@ -42,18 +42,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php $i=0;
-
-                     foreach (@$animales->result() as $datos) {  
-                        $i++;
-                        ?>
+                    <?php for ($i=1; $i <= 9; $i++) { ?>
                         <tr>
-                            <td><?= $datos->ani_id; ?></td>
+                            <td><?php echo $i; ?></td>
                             <td>
-                                <?= $datos->ani_rp; ?>
-                                <input type="hidden" id='id_animal' value="<?= $datos->ani_nombre; ?>"/>
+                                <?php echo "00".$i; ?>
+                                <input type="hidden" id='id_animal' value="<?php echo $i; ?>"/>
                             </td>
-                            <td><?= $datos->ani_nombre; ?></td>
+                            <td>Internet Explorer 4.0</td>
                             <?php for ($j=1; $j <=12 ; $j++) { ?>
                                 <td class='text-center' onclick="mostrarModal(<?php echo $i; ?>,<?php echo $j;?>,'<?php echo base_url(); ?>');" id='<?php echo $i.",".$j;?>'>
 

@@ -6,10 +6,18 @@
     class Calendario extends CI_Controller
     {
         
+        function __construct(){
+            parent::__construct();
+            $this->load->model('animales_model');
+        }
+
         public function index()
         {
-            $this->load->view("/layout/header.php");
-            $this->load->view("/calendario/index.php");
+            $data['animales'] = $this->animales_model->select();
+            $dato= array ( 'titulo'=> 'Registrar Evento');
+
+            $this->load->view("/layout/header.php",$dato);
+            $this->load->view("/calendario/index.php",$data);
             $this->load->view("/calendario/foother.php");
             
         }
