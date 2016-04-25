@@ -9,6 +9,7 @@
             parent::__construct();
             $this->load->model('animales_model');
             $this->load->model('razas_model');
+            $this->load->model('tipo_registro_model');
         }
         
         public function index()
@@ -47,15 +48,17 @@
                            'tiporeg'=> $this->input->post('tiporeg'),
                            'descripcion'=> $this->input->post('descripcion')
                         );
-               print_r($data);
-             $this->animales_model->crear($data);
 
+             $this->animales_model->crear($data);
              $this->redireccionar("animales");
                 
             }else{
 
+                $data['razas'] = $this->razas_model->select();
+                 $data['tipo_registro'] = $this->tipo_registro_model->select();
+
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/animales/form.php");
+                $this->load->view("/animales/form.php",$data);
                 $this->load->view("/layout/foother.php");
 
             }

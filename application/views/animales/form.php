@@ -1,3 +1,4 @@
+
 <div class="col-md-6">
     <div class="box box-primary">
         <div class="box-header">
@@ -12,14 +13,24 @@
                 <div class="form-group">
                     <label>Raza</label>
                     <select class="form-control">
-                    echo "<option  value='".$lista["curso"]."'>"."</option>";
+                        <?php foreach ($razas->result() as $datos) {
+                                echo "<option  value='".$datos->raz_id."'>".$datos->raz_descripcion."</option>";
+
+                            }
+                         
+                         ?>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label>Tipo Registro</label>
                     <select class="form-control">
+                        <?php foreach ($tipo_registro->result() as $datos) {
+                                echo "<option  value='".$datos->tipreg_id."'>".$datos->tipreg_descripcion."</option>";
 
+                            }
+                         
+                         ?>
                     </select>
                 </div>
                 <div class="form-group">
