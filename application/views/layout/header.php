@@ -304,15 +304,55 @@
                        
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-edit"></i> <span>Mantenimiento</span>
+                                <i class="fa fa-wrench"></i> <span>Mantenimiento</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="<?= base_url(); ?>index.php/animales/"><i class="fa fa-angle-double-right"></i> Registros</a></li>
                                 <li><a href="<?= base_url(); ?>index.php/razas/"><i class="fa fa-angle-double-right"></i> Razas</a></li>
                                 <li><a href="<?= base_url(); ?>index.php/tipo_registro/"><i class="fa fa-angle-double-right"></i> Tipos de Registros</a></li>   
-                                <li><a href="<?= base_url(); ?>index.php/tipo_evento/"><i class="fa fa-angle-double-right"></i> Tipos de Eventos</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/eventos/"><i class="fa fa-angle-double-right"></i> Eventos</a></li>                                 
+                                <li><a href="<?= base_url(); ?>index.php/tipo_evento/"><i class="fa fa-angle-double-right"></i> Medicacion</a></li>
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Medicamentos</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Medicina Genital</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Medicina Cuarto Mamarios</a></li>
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Personal</a></li>  
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Reproductor</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Tipo Analisis</a></li>
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Tipo Enfermedad</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Tipo Parto</a></li>  
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Tipo Servicio</a></li> 
+                                                               
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-building-o"></i> <span>Evento</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Aborto</a></li>
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Analisis</a></li>
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Causa Aborto</a></li>   
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Causa no Inseminal</a></li>
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Causa Rechazo</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Celo</a></li>  
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Diagnostico Utero</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Enfermedad</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Enfermedad Ovario</a></li>
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Enfermedad Utero</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Especificacion Muerte</a></li>   
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Especificacion Venta</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Estado Cria</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Indicaciones Especiales</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Medicacion</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Muerte</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Parto</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Resultado  Analisis</a></li>
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> servicio</a></li>  
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Tacto Rectal</a></li>
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Venta</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Via Aplicacion</a></li>  
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Secado</a></li> 
                             </ul>
                         </li>
                         <li>

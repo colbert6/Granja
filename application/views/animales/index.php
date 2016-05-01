@@ -23,8 +23,8 @@
                             <td><?= $datos->ani_proveedor; ?></td>
                             <td><?= $datos->ani_raza; ?></td>
                             <td>
-                                <a href="#" class="btn  btn-minier"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="btn  btn-minier"><i class="fa fa-trash-o"></i></a>
+                                <a href=<?php echo base_url()."index.php/animales/editar/".$datos->ani_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>
+                                <a href=<?php echo base_url()."index.php/animales/eliminar/".$datos->ani_id; ?> class="btn  btn-minier"><i class="fa fa-trash-o"></i></a>
                             </td>
                         </tr>
                     <?php } ?>

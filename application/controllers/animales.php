@@ -39,13 +39,14 @@
             if (@$_POST['guardar'] == 1) {
                $data= array ( 'codigo'=> $this->input->post('codigo'),
                            'nombre'=> $this->input->post('nombre'),
+                           'raza'=> $this->input->post('raza'),
                            'padre'=> $this->input->post('padre'),
                            'madre'=> $this->input->post('madre'),
                            'fechanac'=> $this->input->post('fechanac'),
                            'fechareg'=> $this->input->post('fechareg'),
                            'sexo'=> $this->input->post('sexo'),
                            'proveedor'=> $this->input->post('proveedor'),
-                           'tiporeg'=> $this->input->post('tiporeg'),
+                      //     'tiporeg'=> $this->input->post('tiporeg'),
                            'descripcion'=> $this->input->post('descripcion')
                         );
 
@@ -55,13 +56,61 @@
             }else{
 
                 $data['razas'] = $this->razas_model->select();
-                 $data['tipo_registro'] = $this->tipo_registro_model->select();
+                $data['tipo_registro'] = $this->tipo_registro_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/animales/form.php",$data);
                 $this->load->view("/layout/foother.php");
 
             }
+        }
+
+        public function editar()
+        {
+            
+            if (@$_POST['guardar'] == 1) {
+                $data= array ( 
+                           'id'=> $this->input->post('id'),
+                           'codigo'=> $this->input->post('codigo'),
+                           'nombre'=> $this->input->post('nombre'),
+                           'raza'=> $this->input->post('raza'),
+                           'padre'=> $this->input->post('padre'),
+                           'madre'=> $this->input->post('madre'),
+                           'fechanac'=> $this->input->post('fechanac'),
+                           'fechareg'=> $this->input->post('fechareg'),
+                           'sexo'=> $this->input->post('sexo'),
+                           'proveedor'=> $this->input->post('proveedor'),
+                           'tiporeg'=> $this->input->post('tiporeg'),
+                           'descripcion'=> $this->input->post('descripcion')
+                           );
+                //print_r($data);
+                $this->animales_model->editar($data);
+                $this->redireccionar("animales");
+                
+            }else{
+                $dato= array ( 'titulo'=> 'Editar Animales','action'=>  'animales/editar' );
+                $idani=$this->uri-> segment(3);
+
+                $data['tipo_registro']=$this->tipo_registro_model->select();
+                $data['animales']=$this->animales_model->selectId( $idani);
+                $data['razas']=$this->razas_model->select();
+
+                $this->load->view("/layout/header.php",$dato);
+                $this->load->view("/animales/form.php",$data);
+                $this->load->view("/layout/foother.php");
+
+            }
+            
+        }
+
+        public function eliminar()
+        {
+            $idani=$this->uri-> segment(3);
+            
+            $this->animales_model->eliminar($idani);
+            $this->redireccionar("animales");
+            
+            
         }
 
 

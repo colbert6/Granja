@@ -40,6 +40,42 @@
             
         }
 
+        public function editar()
+        {
+            
+            if (@$_POST['guardar'] == 1) {
+                $data= array ( 'id'=> $this->input->post('id'),
+                                'descripcion'=> $this->input->post('descripcion'),
+                                 );
+
+                $this->tipo_registro_model->editar($data);
+                $this->redireccionar("tipo_registro");
+                
+            }else{
+                $dato= array ( 'titulo'=> 'Editar Tipo Registro','action'=>  'tipo_registro/editar' );
+                $idTR=$this->uri-> segment(3);
+
+                $data['tipo_registro']=$this->tipo_registro_model->selectId( $idTR);
+
+                $this->load->view("/layout/header.php",$dato);
+                $this->load->view("/tipo_registro/form.php",$data);
+                $this->load->view("/layout/foother.php");
+
+            }
+            
+        }
+
+        public function eliminar()
+        {
+            $idTR=$this->uri-> segment(3);
+            
+            $this->tipo_registro_model->eliminar($idTR);
+            $this->redireccionar("tipo_registro");
+            
+            
+        }
+
+
 
     }
  ?>

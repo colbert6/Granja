@@ -11,10 +11,7 @@
 	    	$this->db->where('raz_estado',1);
 	        $query=$this->db->get('raza');
 	        return $query;
-	        /*if($query->num_rows()>0)
-	        	return $query;
-	        else 
-	        	return false;*/
+	        
 	    }
 
 	    function selectId($id){
