@@ -308,9 +308,9 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="<?= base_url(); ?>index.php/animales/"><i class="fa fa-angle-double-right"></i> Registros</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/razas/"><i class="fa fa-angle-double-right"></i> Razas</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/tipo_registro/"><i class="fa fa-angle-double-right"></i> Tipos de Registros</a></li>   
+                                <li><a href="<?= base_url(); ?>animales/"><i class="fa fa-angle-double-right"></i> Registros</a></li>
+                                <li><a href="<?= base_url(); ?>razas/"><i class="fa fa-angle-double-right"></i> Razas</a></li>
+                                <li><a href="<?= base_url(); ?>tipo_registro/"><i class="fa fa-angle-double-right"></i> Tipos de Registros</a></li>   
                                 <li><a href="<?= base_url(); ?>index.php/"><i class="fa fa-angle-double-right"></i> Medicacion</a></li>
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Medicamentos</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Medicina Genital</a></li> 
@@ -341,7 +341,7 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="<?= base_url(); ?>index.php/aborto/"><i class="fa fa-angle-double-right"></i> Aborto</a></li>
+                                <li><a href="<?= base_url(); ?>aborto/"><i class="fa fa-angle-double-right"></i> Aborto</a></li>
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Analisis</a></li>
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Celo</a></li>  
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Enfermedad</a></li> 
