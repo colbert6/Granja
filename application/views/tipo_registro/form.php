@@ -14,14 +14,14 @@ if(isset ($tipo_registro))  {  $datos=$tipo_registro->row(); }
                     <div class="form-group">
                         <label for="descripcion">Identificador</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder="Ingrese descripcion" readonly="readonly"
-                           value=<?= $datos->tipreg_id; ?>>
+                           value=<?= $datos->tipre_id; ?>>
                     </div>
 
                 <?php } ?> 
                 <div class="form-group">
                     <label for="descripcion">Descripcion</label>
                     <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion"
-                    value=<?php if(isset ($tipo_registro)) echo $datos->tipreg_descripcion; ?>>
+                    value=<?php if(isset ($tipo_registro)) echo $datos->tipre_descripcion; ?>>
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>

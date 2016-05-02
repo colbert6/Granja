@@ -12,11 +12,11 @@
 			    <tbody>
 			        <?php foreach (@$tipo_registro->result() as $datos) {	?>
 			            <tr>
-			                <td><?= $datos->tipreg_id; ?></td>
-			                <td><?= $datos->tipreg_descripcion; ?></td> 
+			                <td><?= $datos->tipre_id; ?></td>
+			                <td><?= $datos->tipre_descripcion; ?></td> 
 			                <td>
-			                    <a href=<?php echo base_url()."index.php/tipo_registro/editar/".$datos->tipreg_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>
-		                		<a href=<?php echo base_url()."index.php/tipo_registro/eliminar/".$datos->tipreg_id; ?> class="btn  btn-minier"><i class="fa fa-trash-o"></i></a>
+			                    <a href=<?php echo base_url()."index.php/tipo_registro/editar/".$datos->tipre_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>
+		                		<a href=<?php echo base_url()."index.php/tipo_registro/eliminar/".$datos->tipre_id; ?> class="btn  btn-minier"><i class="fa fa-trash-o"></i></a>
 			                </td>
 			            </tr>
 			        <?php } ?>
