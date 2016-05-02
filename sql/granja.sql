@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-05-2016 a las 18:22:36
+-- Tiempo de generación: 02-05-2016 a las 20:01:31
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -252,6 +252,20 @@ CREATE TABLE IF NOT EXISTS `indicaciones_especiales` (
   `indesp_descripcion` varchar(100) DEFAULT NULL,
   `indesp_abreviatura` varchar(50) DEFAULT NULL,
   `indesp_estado` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `log_transacciones`
+--
+
+CREATE TABLE IF NOT EXISTS `log_transacciones` (
+  `logtr_id` int(11) NOT NULL,
+  `logtr_usuario` int(11) NOT NULL,
+  `logtr_accion` varchar(150) NOT NULL,
+  `logtr_tabla` varchar(500) NOT NULL,
+  `logtr_fecha` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -541,7 +555,7 @@ CREATE TABLE IF NOT EXISTS `tipo_registro` (
 `tipre_id` int(11) NOT NULL,
   `tipre_descripcion` varchar(50) NOT NULL,
   `tipre_estado` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tipo_registro`
@@ -564,6 +578,21 @@ CREATE TABLE IF NOT EXISTS `tipo_servicio` (
   `tipse_descripcion` varchar(150) NOT NULL,
   `tipse_abreviatura` varchar(50) NOT NULL,
   `tipse_estado` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `usu_id` int(11) NOT NULL,
+  `usu_nombre` varchar(150) NOT NULL,
+  `usu_password` varchar(500) NOT NULL,
+  `usu_estado` int(11) NOT NULL,
+  `usu_personal` int(11) NOT NULL,
+  `usu_tipo_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -688,6 +717,12 @@ ALTER TABLE `indicaciones_especiales`
  ADD PRIMARY KEY (`indesp_id`);
 
 --
+-- Indices de la tabla `log_transacciones`
+--
+ALTER TABLE `log_transacciones`
+ ADD PRIMARY KEY (`logtr_id`);
+
+--
 -- Indices de la tabla `medicacion`
 --
 ALTER TABLE `medicacion`
@@ -808,6 +843,12 @@ ALTER TABLE `tipo_servicio`
  ADD PRIMARY KEY (`tipse_id`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+ ADD PRIMARY KEY (`usu_id`);
+
+--
 -- Indices de la tabla `venta`
 --
 ALTER TABLE `venta`
@@ -842,7 +883,7 @@ MODIFY `raz_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT de la tabla `tipo_registro`
 --
 ALTER TABLE `tipo_registro`
-MODIFY `tipre_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `tipre_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
