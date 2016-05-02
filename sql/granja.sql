@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-05-2016 a las 18:15:41
+-- Tiempo de generación: 02-05-2016 a las 18:22:36
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -460,6 +460,18 @@ CREATE TABLE IF NOT EXISTS `sexo_cria` (
   `sexcr_estado` int(11) NOT NULL,
   `sexcr_codigo` int(11) NOT NULL,
   `sexcr_abreviatura` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `simbolo`
+--
+
+CREATE TABLE IF NOT EXISTS `simbolo` (
+  `sim_id` varchar(50) NOT NULL,
+  `sim_descripcion` varchar(100) NOT NULL,
+  `sim_icono` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
