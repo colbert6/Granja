@@ -321,6 +321,17 @@
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Tipo Enfermedad</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Tipo Parto</a></li>  
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Tipo Servicio</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Causa Aborto</a></li>   
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Causa no Inseminal</a></li>
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Causa Rechazo</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Diagnostico Utero</a></li>
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Enfermedad Ovario</a></li>
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Enfermedad Utero</a></li>
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Especificacion Muerte</a></li>   
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Especificacion Venta</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Estado Cria</a></li>
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Resultado  Analisis</a></li>
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Via Aplicacion</a></li> 
                                                                
                             </ul>
                         </li>
@@ -332,27 +343,17 @@
                             <ul class="treeview-menu">
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Aborto</a></li>
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Analisis</a></li>
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Causa Aborto</a></li>   
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Causa no Inseminal</a></li>
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Causa Rechazo</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Celo</a></li>  
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Diagnostico Utero</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Enfermedad</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Enfermedad Ovario</a></li>
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Enfermedad Utero</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Especificacion Muerte</a></li>   
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Especificacion Venta</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Estado Cria</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Indicaciones Especiales</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Medicacion</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Muerte</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Parto</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Resultado  Analisis</a></li>
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> servicio</a></li>  
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Tacto Rectal</a></li>
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Venta</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Via Aplicacion</a></li>  
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Secado</a></li> 
+                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Rechazo</a></li> 
                             </ul>
                         </li>
                         <li>
