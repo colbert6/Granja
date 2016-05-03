@@ -37,9 +37,9 @@
             
             if (@$_POST['guardar'] == 1) {
                $data= array ( 'rp'=> $this->input->post('rp'),
-                           'causa_no_enseminal'=> $this->input->post('causa_no_enseminal'),
+                           'tipo_enfermedad'=> $this->input->post('tipo_enfermedad'),
                            'fecha'=> $this->input->post('fecha'),
-                           'medicina_genital'=> $this->input->post('medicina_genital'),
+                           'medicamento'=> $this->input->post('medicamento'),
                            'via_aplicacion'=> $this->input->post('via_aplicacion')
                         );
           //   print_r($data);
@@ -65,13 +65,13 @@
                 $data= array ( 
                            'id'=> $this->input->post('id'),
                            'rp'=> $this->input->post('rp'),
-                           'causa_no_enseminal'=> $this->input->post('causa_no_enseminal'),
+                           'tipo_enfermedad'=> $this->input->post('tipo_enfermedad'),
                            'fecha'=> $this->input->post('fecha'),
-                           'medicina_genital'=> $this->input->post('medicina_genital'),
-                           'via_aplicacion'=> $this->input->post('via_aplicacion')
+                           'medicamento'=> $this->input->post('medicamento'),
+                           'via_aplicacion'=> $this->input->post('via_aplicacion'),
                         );
                 //print_r($data);
-                $this->celo_model->editar($data);
+                $this->enfermedad_model->editar($data);
                 $this->redireccionar("enfermedad");
                 
             }else{
@@ -80,7 +80,7 @@
 
                // $data['tipo_registro']=$this->tipo_registro_model->select();
                // $data['animales']=$this->animales_model->select();
-                $data['enfermedad']=$this->celo_model->selectId( $idabo);
+                $data['enfermedad']=$this->enfermedad_model->selectId( $idabo);
                 //print_r($data);
                // $data['razas']=$this->razas_model->select();
 

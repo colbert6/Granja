@@ -343,8 +343,8 @@
                             <ul class="treeview-menu">
                                 <li><a href="<?= base_url(); ?>index.php/aborto/"><i class="fa fa-angle-double-right"></i> Aborto</a></li>
                                 <li><a href="<?= base_url(); ?>index.php/analisis/"><i class="fa fa-angle-double-right"></i> Analisis</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/celo"><i class="fa fa-angle-double-right"></i> Celo</a></li>  
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Enfermedad</a></li> 
+                                <li><a href="<?= base_url(); ?>index.php/celo/"><i class="fa fa-angle-double-right"></i> Celo</a></li>  
+                                <li><a href="<?= base_url(); ?>index.php/enfermedad/"><i class="fa fa-angle-double-right"></i> Enfermedad</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Indicaciones Especiales</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Medicacion</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Muerte</a></li> 
