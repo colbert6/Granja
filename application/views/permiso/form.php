@@ -39,7 +39,7 @@
                 <div class="col-lg-4">
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <input type="checkbox">
+                            <input type="checkbox" name="<?= $modulos->mod_id; ?>" value="1" checked>
                         </span>
                         <input type="text" class="form-control" readonly value="<?= $modulos->mod_descripcion; ?>">
                     </div><!-- /input-group -->

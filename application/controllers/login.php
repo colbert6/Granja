@@ -30,7 +30,6 @@
                         'tipo_usu'=>$login->tipusu_descripcion
                     );
                     $this->session->set_userdata($data);
-
                     redirect('', 'refresh');
 
                 }else{
