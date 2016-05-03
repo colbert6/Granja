@@ -7,10 +7,21 @@
     {
         
         public function index()
-        {
-            $this->load->view("/layout/header.php");
-            $this->load->view("home");
-            $this->load->view("/layout/foother.php");
+        {   
+            //$this->session->sess_destroy();
+            if($this->session->userdata('login')){
+               
+                $this->load->view("/layout/header.php");
+                $this->load->view("home");
+                $this->load->view("/layout/foother.php");
+
+            }else{
+
+                $this->load->view("/login/index.php");
+            
+            }
+            
+            
         }
 
     }
