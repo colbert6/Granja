@@ -107,19 +107,15 @@
               
               
                 <label>Fecha:</label>
+                <div id='fecha'>
 
-                <div class='input-group date' id='datetimepicker8'>
-                    <input type='text' style='background-color:white;' readonly class="form-control" />
-                    <span class="input-group-addon" >
-                        <span  class="fa fa-calendar"></span>
-                    </span>
-                </div>
+                </div>    
+
 
         
       </div>
       <div class="modal-footer">
         <button type="button" onclick='crearEvento();' class="btn btn-success" data-dismiss="modal">Guardar</button>
-        <button type="button" onclick='crearEvento();' class="btn btn-warning" data-dismiss="modal">Ver Todo</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
          
       </div>
@@ -127,20 +123,24 @@
 
   </div>
 </div>
-<input type='hidden' id='datepicker' />
 <script type="text/javascript">
-    $(function(){
-        $("#datepicker").datepicker();
-    });
+    function daysInMonth(humanMonth, year) {
+      return new Date(year || new Date().getFullYear(), humanMonth, 0).getDate();
+    }
     function mostrarModal(fila,mes,url){
         $("#fila").val(fila);
         $("#mes").val(mes);
         $("#url").val(url);
-
-
-
+        var anio = $("#anio").val();
+        var dias = daysInMonth(mes,anio);
+        if(mes<10){
+            mex = "0"+mes;
+        }else{
+            mex = mes;
+        }
+        $("#fecha").html("<input type='date'class='form-control' name='fecha_evento' step='1' min='"+anio+"-"+mex+"-01' max='"+anio+"-"+mex+"-"+dias+"' />");
         $("#myModal").modal("show");
-        
+           
     }
     function crearEvento() {
         document.getElementById($("#fila").val()+","+$("#mes").val()).innerHTML = "<img src='"+$("#url").val()+"img/calendar.png'>";
