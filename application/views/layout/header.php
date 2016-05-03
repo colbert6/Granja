@@ -353,10 +353,10 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="<?= base_url(); ?>index.php/usuario/"><i class="fa fa-angle-double-right"></i> Usuarios</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/modulos/"><i class="fa fa-angle-double-right"></i> Modulos</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/modulo/"><i class="fa fa-angle-double-right"></i> Modulos</a></li>
                                 <li><a href="<?= base_url(); ?>index.php/tipo_usuario/"><i class="fa fa-angle-double-right"></i> Tipo Usuarios</a></li>  
                                 <li><a href="<?= base_url(); ?>index.php/simbolo/"><i class="fa fa-angle-double-right"></i> Simbolos </a></li> 
-                                
+                                <li><a href="<?= base_url(); ?>index.php/permiso/"><i class="fa fa-angle-double-right"></i> Permisos </a></li> 
                             </ul>
                         </li>
                         <li>

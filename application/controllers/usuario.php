@@ -74,7 +74,7 @@
         {
             $id=$this->uri-> segment(3);
             
-            $this->razas_model->eliminar($id);
+            $this->usuario_model->eliminar($id);
             $this->redireccionar("usuario");
             
             
