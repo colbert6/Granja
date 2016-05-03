@@ -3,24 +3,22 @@
     /**
     * 
     */
-    class Aborto extends CI_Controller
+    class Enfermedad extends CI_Controller
     {
         function __construct(){
             parent::__construct();
-            $this->load->model('aborto_model');
+            $this->load->model('enfermedad_model');
             $this->load->model('animales_model');
-          //  $this->load->model('razas_model');
-          //  $this->load->model('tipo_registro_model');
         }
         
         public function index()
         {
-            $data['aborto'] = $this->aborto_model->select();
+            $data['enfermedad'] = $this->enfermedad_model->select();
 
-            $dato= array ( 'titulo'=> 'Lista de Abortos');
+            $dato= array ( 'titulo'=> 'Lista de Enfermedad');
 
             $this->load->view("/layout/header.php",$dato);
-            $this->load->view("/aborto/index.php",$data);
+            $this->load->view("/enfermedad/index.php",$data);
             $this->load->view("/layout/foother_table.php");
         }
    //     public function form()
@@ -34,17 +32,19 @@
 
         public function nuevo()
         {
-            $dato= array ( 'titulo'=> 'Registrar Abortos','action'=>  'aborto/nuevo' );
+            $dato= array ( 'titulo'=> 'Registrar Enfermedad','action'=>  'enfermedad/nuevo' );
 
             
             if (@$_POST['guardar'] == 1) {
-               $data= array ( 'animal'=> $this->input->post('animal'),
-                           'cauabor'=> $this->input->post('cauabor'),
-                           'fecha'=> $this->input->post('fecha')
+               $data= array ( 'rp'=> $this->input->post('rp'),
+                           'tipo_enfermedad'=> $this->input->post('tipo_enfermedad'),
+                           'fecha'=> $this->input->post('fecha'),
+                           'medicamento'=> $this->input->post('medicamento'),
+                           'via_aplicacion'=> $this->input->post('via_aplicacion')
                         );
           //   print_r($data);
-             $this->aborto_model->crear($data);
-             $this->redireccionar("aborto");
+             $this->enfermedad_model->crear($data);
+             $this->redireccionar("enfermedad");
                 
             }else{
 
@@ -52,7 +52,7 @@
              //   $data['aborto'] = $this->tipo_registro_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/aborto/form.php",$data);
+                $this->load->view("/enfermedad/form.php",$data  );
                 $this->load->view("/layout/foother.php");
 
             }
@@ -64,25 +64,28 @@
             if (@$_POST['guardar'] == 1) {
                 $data= array ( 
                            'id'=> $this->input->post('id'),
-                           'animal'=> $this->input->post('animal'),
-                           'cauabor'=> $this->input->post('cauabor'),
-                           'fecha'=> $this->input->post('fecha')
-                           );
+                           'rp'=> $this->input->post('rp'),
+                           'tipo_enfermedad'=> $this->input->post('tipo_enfermedad'),
+                           'fecha'=> $this->input->post('fecha'),
+                           'medicamento'=> $this->input->post('medicamento'),
+                           'via_aplicacion'=> $this->input->post('via_aplicacion'),
+                        );
                 //print_r($data);
-                $this->aborto_model->editar($data);
-                $this->redireccionar("aborto");
+                $this->enfermedad_model->editar($data);
+                $this->redireccionar("enfermedad");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar Aborto','action'=>  'aborto/editar' );
+                $dato= array ( 'titulo'=> 'Editar Enfermedad','action'=>  'Enfermedad/editar' );
                 $idabo=$this->uri-> segment(3);
 
                // $data['tipo_registro']=$this->tipo_registro_model->select();
-                $data['animales']=$this->animales_model->select();
-                $data['aborto']=$this->aborto_model->selectId( $idabo);
+               // $data['animales']=$this->animales_model->select();
+                $data['enfermedad']=$this->enfermedad_model->selectId( $idabo);
+                //print_r($data);
                // $data['razas']=$this->razas_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/aborto/form.php",$data);
+                $this->load->view("/enfermedad/form.php",$data);
                 $this->load->view("/layout/foother.php");
 
             }
@@ -93,8 +96,8 @@
         {
             $idabo=$this->uri-> segment(3);
             
-            $this->aborto_model->eliminar($idabo);
-            $this->redireccionar("aborto");
+            $this->enfermedad_model->eliminar($idabo);
+            $this->redireccionar("enfermedad");
             
             
         }

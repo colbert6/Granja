@@ -3,24 +3,22 @@
     /**
     * 
     */
-    class Aborto extends CI_Controller
+    class Analisis extends CI_Controller
     {
         function __construct(){
             parent::__construct();
-            $this->load->model('aborto_model');
+            $this->load->model('analisis_model');
             $this->load->model('animales_model');
-          //  $this->load->model('razas_model');
-          //  $this->load->model('tipo_registro_model');
         }
         
         public function index()
         {
-            $data['aborto'] = $this->aborto_model->select();
+            $data['analisis'] = $this->analisis_model->select();
 
-            $dato= array ( 'titulo'=> 'Lista de Abortos');
+            $dato= array ( 'titulo'=> 'Lista de Analisis');
 
             $this->load->view("/layout/header.php",$dato);
-            $this->load->view("/aborto/index.php",$data);
+            $this->load->view("/analisis/index.php",$data);
             $this->load->view("/layout/foother_table.php");
         }
    //     public function form()
@@ -34,17 +32,18 @@
 
         public function nuevo()
         {
-            $dato= array ( 'titulo'=> 'Registrar Abortos','action'=>  'aborto/nuevo' );
+            $dato= array ( 'titulo'=> 'Registrar Analisis','action'=>  'analisis/nuevo' );
 
             
             if (@$_POST['guardar'] == 1) {
                $data= array ( 'animal'=> $this->input->post('animal'),
-                           'cauabor'=> $this->input->post('cauabor'),
-                           'fecha'=> $this->input->post('fecha')
+                           'tipana'=> $this->input->post('tipana'),
+                           'fecha'=> $this->input->post('fecha'),
+                           'resultado_ana'=> $this->input->post('resultado_ana')
                         );
           //   print_r($data);
-             $this->aborto_model->crear($data);
-             $this->redireccionar("aborto");
+             $this->analisis_model->crear($data);
+             $this->redireccionar("analisis");
                 
             }else{
 
@@ -52,7 +51,7 @@
              //   $data['aborto'] = $this->tipo_registro_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/aborto/form.php",$data);
+                $this->load->view("/analisis/form.php",$data);
                 $this->load->view("/layout/foother.php");
 
             }
@@ -65,24 +64,26 @@
                 $data= array ( 
                            'id'=> $this->input->post('id'),
                            'animal'=> $this->input->post('animal'),
-                           'cauabor'=> $this->input->post('cauabor'),
-                           'fecha'=> $this->input->post('fecha')
+                           'tipana'=> $this->input->post('tipana'),
+                           'fecha'=> $this->input->post('fecha'),
+                           'resultado_ana'=> $this->input->post('resultado_ana')
                            );
                 //print_r($data);
-                $this->aborto_model->editar($data);
-                $this->redireccionar("aborto");
+                $this->analisis_model->editar($data);
+                $this->redireccionar("analisis");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar Aborto','action'=>  'aborto/editar' );
+                $dato= array ( 'titulo'=> 'Editar Analisis','action'=>  'analisis/editar' );
                 $idabo=$this->uri-> segment(3);
 
                // $data['tipo_registro']=$this->tipo_registro_model->select();
                 $data['animales']=$this->animales_model->select();
-                $data['aborto']=$this->aborto_model->selectId( $idabo);
+                $data['analisis']=$this->analisis_model->selectId( $idabo);
+                //print_r($data);
                // $data['razas']=$this->razas_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/aborto/form.php",$data);
+                $this->load->view("/analisis/form.php",$data);
                 $this->load->view("/layout/foother.php");
 
             }
@@ -93,8 +94,8 @@
         {
             $idabo=$this->uri-> segment(3);
             
-            $this->aborto_model->eliminar($idabo);
-            $this->redireccionar("aborto");
+            $this->analisis_model->eliminar($idabo);
+            $this->redireccionar("analisis");
             
             
         }

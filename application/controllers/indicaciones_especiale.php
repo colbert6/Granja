@@ -3,24 +3,22 @@
     /**
     * 
     */
-    class Aborto extends CI_Controller
+    class Indicaciones_especiale extends CI_Controller
     {
         function __construct(){
             parent::__construct();
-            $this->load->model('aborto_model');
+            $this->load->model('indicaciones_especiale_model');
             $this->load->model('animales_model');
-          //  $this->load->model('razas_model');
-          //  $this->load->model('tipo_registro_model');
         }
         
         public function index()
         {
-            $data['aborto'] = $this->aborto_model->select();
+            $data['indicaciones_especiale'] = $this->indicaciones_especiale_model->select();
 
-            $dato= array ( 'titulo'=> 'Lista de Abortos');
+            $dato= array ( 'titulo'=> 'Lista de Indicaciones_especiale');
 
             $this->load->view("/layout/header.php",$dato);
-            $this->load->view("/aborto/index.php",$data);
+            $this->load->view("/indicaciones_especiale/index.php",$data);
             $this->load->view("/layout/foother_table.php");
         }
    //     public function form()
@@ -34,17 +32,17 @@
 
         public function nuevo()
         {
-            $dato= array ( 'titulo'=> 'Registrar Abortos','action'=>  'aborto/nuevo' );
+            $dato= array ( 'titulo'=> 'Registrar Indicaciones Especiale','action'=>  'indicaciones_especiale/nuevo' );
 
             
             if (@$_POST['guardar'] == 1) {
-               $data= array ( 'animal'=> $this->input->post('animal'),
-                           'cauabor'=> $this->input->post('cauabor'),
+               $data= array ( 'rp'=> $this->input->post('rp'),
+                           'indicaciones_esp'=> $this->input->post('indicaciones_esp'),
                            'fecha'=> $this->input->post('fecha')
                         );
           //   print_r($data);
-             $this->aborto_model->crear($data);
-             $this->redireccionar("aborto");
+             $this->indicaciones_especiale_model->crear($data);
+             $this->redireccionar("indicaciones_especiale");
                 
             }else{
 
@@ -52,7 +50,7 @@
              //   $data['aborto'] = $this->tipo_registro_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/aborto/form.php",$data);
+                $this->load->view("/indicaciones_especiale/form.php",$data  );
                 $this->load->view("/layout/foother.php");
 
             }
@@ -64,25 +62,26 @@
             if (@$_POST['guardar'] == 1) {
                 $data= array ( 
                            'id'=> $this->input->post('id'),
-                           'animal'=> $this->input->post('animal'),
-                           'cauabor'=> $this->input->post('cauabor'),
+                           'rp'=> $this->input->post('rp'),
+                           'indicaciones_esp'=> $this->input->post('indicaciones_esp'),
                            'fecha'=> $this->input->post('fecha')
-                           );
+                        );
                 //print_r($data);
-                $this->aborto_model->editar($data);
-                $this->redireccionar("aborto");
+                $this->indicaciones_especiale_model->editar($data);
+                $this->redireccionar("indicaciones_especiale");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar Aborto','action'=>  'aborto/editar' );
+                $dato= array ( 'titulo'=> 'Editar Indicaciones Especiale','action'=>  'indicaciones_especiale/editar' );
                 $idabo=$this->uri-> segment(3);
 
                // $data['tipo_registro']=$this->tipo_registro_model->select();
-                $data['animales']=$this->animales_model->select();
-                $data['aborto']=$this->aborto_model->selectId( $idabo);
+               // $data['animales']=$this->animales_model->select();
+                $data['indicaciones_especiale']=$this->indicaciones_especiale_model->selectId( $idabo);
+                //print_r($data['indicaciones_especiale']);
                // $data['razas']=$this->razas_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/aborto/form.php",$data);
+                $this->load->view("/indicaciones_especiale/form.php",$data);
                 $this->load->view("/layout/foother.php");
 
             }
@@ -93,8 +92,8 @@
         {
             $idabo=$this->uri-> segment(3);
             
-            $this->aborto_model->eliminar($idabo);
-            $this->redireccionar("aborto");
+            $this->indicaciones_especiale_model->eliminar($idabo);
+            $this->redireccionar("indicaciones_especiale");
             
             
         }
