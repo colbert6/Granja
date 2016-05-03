@@ -77,7 +77,7 @@
                // $data['tipo_registro']=$this->tipo_registro_model->select();
                // $data['animales']=$this->animales_model->select();
                 $data['indicaciones_especiale']=$this->indicaciones_especiale_model->selectId( $idabo);
-                //print_r($data);
+                //print_r($data['indicaciones_especiale']);
                // $data['razas']=$this->razas_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
@@ -92,7 +92,7 @@
         {
             $idabo=$this->uri-> segment(3);
             
-            $this->enfermedad_model->eliminar($idabo);
+            $this->indicaciones_especiale_model->eliminar($idabo);
             $this->redireccionar("indicaciones_especiale");
             
             

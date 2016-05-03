@@ -345,7 +345,7 @@
                                 <li><a href="<?= base_url(); ?>index.php/analisis/"><i class="fa fa-angle-double-right"></i> Analisis</a></li>
                                 <li><a href="<?= base_url(); ?>index.php/celo/"><i class="fa fa-angle-double-right"></i> Celo</a></li>  
                                 <li><a href="<?= base_url(); ?>index.php/enfermedad/"><i class="fa fa-angle-double-right"></i> Enfermedad</a></li> 
-                                <li><a href="<?= base_url(); ?>index.php/indicaciones_esp/"><i class="fa fa-angle-double-right"></i> Indicaciones Especiales</a></li> 
+                                <li><a href="<?= base_url(); ?>index.php/indicaciones_especiale/"><i class="fa fa-angle-double-right"></i> Indicaciones Especiales</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Medicacion</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Muerte</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Parto</a></li> 

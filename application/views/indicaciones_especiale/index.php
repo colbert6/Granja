@@ -6,7 +6,7 @@
                     <tr>
                         <th>ID</th>
                         <th>RP</th>
-                        <th>INDICACIONES E.indicaciones_especiale</th>
+                        <th>INDICACIONES ESPECIALES</th>
                         <th>FECHA</th>
                         <th>ACIONES</th>
                     </tr>
