@@ -23,7 +23,11 @@
                     $data= array(
                         'user' => $user, 
                         'id' => $login->usu_id, 
-                        'login'=>true
+                        'login'=>true,
+                        'nombre'=>$login->per_nombre,
+                        'apell_p'=>$login->per_ape_paterno,
+                        'apell_m'=>$login->per_ape_materno,
+                        'tipo_usu'=>$login->tipusu_descripcion
                     );
                     $this->session->set_userdata($data);
 
@@ -40,6 +44,13 @@
             }
 
         }
+
+        public function cerrar()
+        {
+            $this->session->sess_destroy();
+            redirect('', 'refresh');
+        
+        } 
 
 
     }

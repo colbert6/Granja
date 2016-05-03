@@ -230,36 +230,26 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="glyphicon glyphicon-user"></i>
-                                <span>Jane Doe <i class="caret"></i></span>
+                                <span><?= $this->session->userdata('nombre'); ?> <i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
                                     <img src="<?= base_url();?>img/avatar04.png" class="img-circle" alt="User Image" />
                                     <p>
-                                        Jane Doe - Web Developer
-                                        <small>Member since Nov. 2012</small>
+                                        <?= $this->session->userdata('nombre')." - ".$this->session->userdata('tipo_usu') ?>
+                                        <small>Usuario Activo</small>
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
-                                <li class="user-body">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
-                                </li>
+                                
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="#" class="btn btn-default btn-flat">Perfil</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="<?= base_url();?>index.php/login/cerrar" class="btn btn-default btn-flat">Cerrar Sesion</a>
                                     </div>
                                 </li>
                             </ul>
@@ -279,7 +269,7 @@
                             <img src="<?= base_url();?>img/avatar04.png" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
-                            <p>Hello, Jane</p>
+                            <p>Hola, <?= $this->session->userdata('nombre') ?></p>
 
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
@@ -308,11 +298,11 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="<?= base_url(); ?>animales/"><i class="fa fa-angle-double-right"></i> Registros</a></li>
-                                <li><a href="<?= base_url(); ?>razas/"><i class="fa fa-angle-double-right"></i> Razas</a></li>
-                                <li><a href="<?= base_url(); ?>tipo_registro/"><i class="fa fa-angle-double-right"></i> Tipos de Registros</a></li>   
-                                <li><a href="<?= base_url(); ?>index.php/"><i class="fa fa-angle-double-right"></i> Medicacion</a></li>
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Medicamentos</a></li> 
+                                <li><a href="<?= base_url(); ?>index.php/animales/"><i class="fa fa-angle-double-right"></i> Registros</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/razas/"><i class="fa fa-angle-double-right"></i> Razas</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/tipo_registro/"><i class="fa fa-angle-double-right"></i> Tipos de Registros</a></li>   
+                                <li><a href="<?= base_url(); ?>index.php/index.php/"><i class="fa fa-angle-double-right"></i> Medicacion</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/index/"><i class="fa fa-angle-double-right"></i> Medicamentos</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Medicina Genital</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Medicina Cuarto Mamarios</a></li>
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Personal</a></li>  
@@ -337,7 +327,7 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-building-o"></i> <span>Evento</span>
+                                <i class="fa fa-bell-o"></i> <span>Evento</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
@@ -354,6 +344,19 @@
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Venta</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Secado</a></li> 
                                 <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Rechazo</a></li> 
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-cog"></i> <span>Sistema</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="<?= base_url(); ?>index.php/usuario/"><i class="fa fa-angle-double-right"></i> Usuarios</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/modulos/"><i class="fa fa-angle-double-right"></i> Modulos</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/tipo_usuario/"><i class="fa fa-angle-double-right"></i> Tipo Usuarios</a></li>  
+                                <li><a href="<?= base_url(); ?>index.php/simbolo/"><i class="fa fa-angle-double-right"></i> Simbolos </a></li> 
+                                
                             </ul>
                         </li>
                         <li>
