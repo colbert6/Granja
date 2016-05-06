@@ -8,6 +8,9 @@
         function __construct(){
             parent::__construct();
             $this->load->model('usuario_model');
+            $this->load->model('tipo_usuario_model');
+            //$this->load->model('personal_model');
+
         }
 
         public function index()
@@ -36,8 +39,11 @@
             }else{
                 $dato= array ( 'titulo'=> 'Registrar Usuario','action'=>  'usuario/nuevo' );
 
+                $data['tipo_usuario']=$this->tipo_usuario_model->select();
+                //$data['personal']=$this->personal_model->select();
+
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/usuario/form.php");
+                $this->load->view("/usuario/form.php",$data);
                 $this->load->view("/layout/foother.php");
 
             }
@@ -51,7 +57,7 @@
                 $data= array ( 'id'=> $this->input->post('id'),
                                'nombre'=> $this->input->post('nombre'),
                               'password'=> $this->input->post('password'),
-                              'tipo_usuario'=> $this->input->post('tipo_usuario'),
+                              'tipo_usuario'=> $_POST['tipo_usuario'],
                               'personal'=> $this->input->post('personal') );
 
                 $this->usuario_model->editar($data);
@@ -62,6 +68,7 @@
                 $idusuario=$this->uri-> segment(3);
 
                 $data['usuario']=$this->usuario_model->selectId( $idusuario);
+                $data['tipo_usuario']=$this->tipo_usuario_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/usuario/form.php",$data);

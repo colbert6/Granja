@@ -1,5 +1,7 @@
 <?php 
 if(isset ($modulo))  {  $datos=$modulo->row(); }    
+
+$mod_padre=$mod_padre->result();
 ?>
  
 <div class="col-md-6">
@@ -28,12 +30,18 @@ if(isset ($modulo))  {  $datos=$modulo->row(); }
                 <div class="form-group">
                     <label>Padre</label>
                         <select class="form-control"  id="padre" name="padre">
-                            <option value='mantenimiento'>Mantenimiento</option>
-                            <option value='evento'>Evento</option>
-                            <option value='sistema'>Sistema</option>
-                            <option value='calendario'>Calendario</option>
+                            <option value='' >Selecciona...</option>
+                           
+                           <?php //echo "<script>alert('".count($this->cat_empleado)."');</script>"; 
+                            foreach ($mod_padre as $padre ) {
+                                  if($padre->mod_id==$datos->mod_padre ){?>
+                                    <option selected value="<?= $padre->mod_id;?>"><?=$padre->mod_descripcion; ?></option>
+                            <?php }else{  ?>
+                                    <option value="<?= $padre->mod_id;?>"><?=$padre->mod_descripcion; ?></option>
+                            <?php } 
+                            } ?>
                         </select>
-                    </div>
+                </div>
                 <div class="form-group">
                     <label for="descripcion">Url</label>
                     <input type="text" class="form-control" id="url" name="url" placeholder="Ingrese Descripcion"

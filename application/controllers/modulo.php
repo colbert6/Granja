@@ -34,9 +34,10 @@
                 
             }else{
                 $dato= array ( 'titulo'=> 'Registrar modulo','action'=>  'modulo/nuevo' );
+                $data['mod_padre']=$this->modulo_model->selectPadre();
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/modulo/form.php");
+                $this->load->view("/modulo/form.php",$data);
                 $this->load->view("/layout/foother.php");
 
             }
@@ -60,6 +61,7 @@
                 $idmodulo=$this->uri-> segment(3);
 
                 $data['modulo']=$this->modulo_model->selectId( $idmodulo);
+                $data['mod_padre']=$this->modulo_model->selectPadre();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/modulo/form.php",$data);

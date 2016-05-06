@@ -1,3 +1,10 @@
+<?php 
+        /*$menus=$menu->result_array() ;
+        $i=0;*/
+
+       // print_r($menus);exit();
+ ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -359,12 +366,33 @@
                                 <li><a href="<?= base_url(); ?>index.php/permiso/"><i class="fa fa-angle-double-right"></i> Permisos </a></li> 
                             </ul>
                         </li>
+                        <!--?php /* while ($menus[$i]['mod_padre']==0) {
+                                $id_padre=$menus[$i]['mod_id'];
+                                $j=0;
+                                while ($id_padre!=$menus[$j]['mod_padre']) {
+                                    $j++;
+                                }
+                                while ($menus[$j]['mod_padre']==$id_padre) {
+                                }
+                       
+                            <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-cog"></i> <span>prueba</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            </li>
+
+                              
+                           // } */
+                        ?-->
                         <li>
                             <a href="<?= base_url(); ?>index.php/calendario">
                                 <i class="fa fa-calendar"></i> <span>Calendario</span>
                                 <small class="badge pull-right bg-red"><!--3--></small>
                             </a>
                         </li>
+
+
                         
                     </ul>
                 </section>

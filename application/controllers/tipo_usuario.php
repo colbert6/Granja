@@ -8,6 +8,8 @@
         function __construct(){
             parent::__construct();
             $this->load->model('tipo_usuario_model');
+            $this->load->model('modulo_model');
+            $this->load->model('permiso_model');
         }
 
         public function index()
@@ -29,6 +31,9 @@
 
                 $this->tipo_usuario_model->crear($data);
                 $this->redireccionar("tipo_usuario");
+                
+
+                
                 
             }else{
                 $dato= array ( 'titulo'=> 'Registrar Tipo usuario','action'=>  'tipo_usuario/nuevo' );

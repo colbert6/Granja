@@ -21,11 +21,9 @@
 	    }
 
 	    function crear($data){
-	        $this->db->insert('permiso',array('usu_nombre' => $data['nombre'],
-	        								'usu_password' => $data['password'],
-	        								'usu_estado' => 1 ,
-	        								'usu_personal' => $data['personal'],
-	        								'usu_tipo_permiso' => $data['tipo_permiso']));
+	        $this->db->insert('permiso',array('per_user' => $data['tipo_usuario'],
+	        								'per_modulo' => $data['modulo'],
+	        								'usu_estado' => 0 ));
 	    }
 
 	    function editar($data){
