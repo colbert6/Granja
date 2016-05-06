@@ -9,7 +9,7 @@
 
 	    function select(){
 	    	$this->db->where('indes_estado',1);
-	        $query=$this->db->get('Indicaciones_especiale');
+	        $query=$this->db->get('indicaciones_especiale');
 	        return $query;
 	    }
 

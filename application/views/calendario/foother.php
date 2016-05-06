@@ -85,7 +85,11 @@
                         $("#avanzar").show();
                     }
                 });
-
+                $("#id_evento").change(function(){
+                    var op = $("#id_evento").val();
+                    mostrarFormulario(op);
+                    
+                });
                 
             });
         </script>
