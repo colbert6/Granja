@@ -103,7 +103,10 @@
     <div class="modal-content">
       <div class="modal-header text-center">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">EVENTO</h4>
+        <div id='cabezera'>
+        	
+        </div>
+        
       </div>
         <input type="hidden" id='fila' />
         <input type="hidden" id='animal'/>
@@ -185,7 +188,7 @@
       return new Date(year || new Date().getFullYear(), humanMonth, 0).getDate();
     }
     function mostrarModal(id_animal,fila,mes,url){
-
+    	var meses = ["Enero", "Febrero", "Marzo","Abril","Mayo","Junio","Julio","Agosto","Setiembre","Octubre","Noviembre","Diciembre"];
         $("#animal").val(id_animal);
         $("#fila").val(fila);
         $("#mes").val(mes);
@@ -193,7 +196,9 @@
 
         var anio = $("#anio").val();
         var dias = daysInMonth(mes,anio);
-
+        var cabezera = "<h4 class='modal-title'><strong><u>AGREGAR EVENTO</u></strong></h4>";
+        	cabezera += "<span class='text-center'>Mes: <strong>"+meses[mes-1]+"</strong></span>";
+        $("#cabezera").html(cabezera);
         if(mes<10){
             mex = "0"+mes;
         }else{
@@ -205,6 +210,7 @@
         mostrarFormulario('1');           
     }
     function mostrarFormulario(evento){
+
     	var formulario = "";
     	switch(evento){
     		case '1':
@@ -336,6 +342,8 @@
 				$("#myModal").modal("show"); 
     			break;
     		case '8':
+    			formulario 	  += "<label>RP:</label>";
+    			formulario 	  += "<input type='text' class='form-control'/>";
     			formulario 	  += "<label>Tipo Parto:</label>";
 		        formulario    += "<select class='form-control' id='id_tipa'>";
 		        //Extraer las Causas de Aborto
@@ -367,14 +375,117 @@
 				$("#myModal").modal("show"); 
     			break;
     		case '9':
+    			formulario 	  += "<label>Tipo Servicio:</label>";
+		        formulario    += "<select class='form-control' id='id_tiser'>";
+		        //Extraer las Causas de Aborto
+		        //$.post("",{suggest: txt},function(data){});
+		        formulario    += "<option value='1'>1</option>";
+		        formulario    += "</select>";
+		        formulario 	  += "<label>Reproductor:</label>";
+		        formulario    += "<select class='form-control' id='id_rep'>";
+		        //Extraer las Causas de Aborto
+		        //$.post("",{suggest: txt},function(data){});
+		        formulario    += "<option value='1'>1</option>";
+		        formulario    += "</select>";
+		        formulario 	  += "<label>Personal:</label>";
+		        formulario    += "<select class='form-control' id='id_pers'>";
+		        //Extraer las Causas de Aborto
+		        //$.post("",{suggest: txt},function(data){});
+		        formulario    += "<option value='1'>1</option>";
+		        formulario    += "</select>";
+		        formulario    += "<label>Fecha:</label>";
+		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+		        
+				$("#content-form").html(formulario); 
+				$("#myModal").modal("show"); 
     			break;
     		case '10':
+    			formulario 	  += "<label>RP:</label>";
+    			formulario 	  += "<input type='text' class='form-control'/>";
+    			formulario 	  += "<label>Diagnostico de Utero:</label>";
+		        formulario    += "<select class='form-control' id='id_diaguter'>";
+		        //Extraer las Causas de Aborto
+		        //$.post("",{suggest: txt},function(data){});
+		        formulario    += "<option value='1'>1</option>";
+		        formulario    += "</select>";
+		        formulario 	  += "<label>Enfermedad de Ovario:</label>";
+		        formulario    += "<select class='form-control' id='id_enfova'>";
+		        //Extraer las Causas de Aborto
+		        //$.post("",{suggest: txt},function(data){});
+		        formulario    += "<option value='1'>1</option>";
+		        formulario    += "</select>";
+		        formulario 	  += "<label>Via Aplicacion:</label>";
+		        formulario    += "<select class='form-control' id='id_viaap'>";
+		        //Extraer las Causas de Aborto
+		        //$.post("",{suggest: txt},function(data){});
+		        formulario    += "<option value='1'>1</option>";
+		        formulario    += "</select>";
+		        formulario 	  += "<label>Enfermedad de Utero:</label>";
+		        formulario    += "<select class='form-control' id='id_enfuter'>";
+		        //Extraer las Causas de Aborto
+		        //$.post("",{suggest: txt},function(data){});
+		        formulario    += "<option value='1'>1</option>";
+		        formulario    += "</select>";
+		        formulario 	  += "<label>Medicina Genital:</label>";
+		        formulario    += "<select class='form-control' id='id_enfuter'>";
+		        //Extraer las Causas de Aborto
+		        //$.post("",{suggest: txt},function(data){});
+		        formulario    += "<option value='1'>1</option>";
+		        formulario    += "</select>";
+		        formulario    += "<label>Fecha:</label>";
+		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+		        
+				$("#content-form").html(formulario); 
+				$("#myModal").modal("show"); 
     			break;
     		case '11':
+    			formulario 	  += "<label>RP:</label>";
+    			formulario 	  += "<input type='text' class='form-control'/>";
+    			formulario 	  += "<label>Especificacion Venta:</label>";
+		        formulario    += "<select class='form-control' id='id_espvent'>";
+		        //Extraer las Causas de Aborto
+		        //$.post("",{suggest: txt},function(data){});
+		        formulario    += "<option value='1'>1</option>";
+		        formulario    += "</select>";
+
+		       
+		        formulario    += "<label>Fecha:</label>";
+		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+		        
+				$("#content-form").html(formulario); 
+				$("#myModal").modal("show"); 
     			break;
     		case '12':
+    			formulario 	  += "<label>RP:</label>";
+    			formulario 	  += "<input type='text' class='form-control'/>";
+    			formulario 	  += "<label>Cuartos Mamarios:</label>";
+		        formulario    += "<select class='form-control' id='id_espvent'>";
+		        //Extraer las Causas de Aborto
+		        //$.post("",{suggest: txt},function(data){});
+		        formulario    += "<option value='1'>1</option>";
+		        formulario    += "</select>";
+		       
+		        formulario    += "<label>Fecha:</label>";
+		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+		        
+				$("#content-form").html(formulario); 
+				$("#myModal").modal("show"); 
     			break;
     		case '13':
+    			formulario 	  += "<label>RP:</label>";
+    			formulario 	  += "<input type='text' class='form-control'/>";
+    			formulario 	  += "<label>Causa Rechazo:</label>";
+		        formulario    += "<select class='form-control' id='id_espvent'>";
+		        //Extraer las Causas de Aborto
+		        //$.post("",{suggest: txt},function(data){});
+		        formulario    += "<option value='1'>1</option>";
+		        formulario    += "</select>";
+		       
+		        formulario    += "<label>Fecha:</label>";
+		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+		        
+				$("#content-form").html(formulario); 
+				$("#myModal").modal("show"); 
     			break;
     	}
     	

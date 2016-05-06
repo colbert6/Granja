@@ -28,12 +28,17 @@
             
             if (@$_POST['guardar'] == 1) {
                 $data= array ( 'descripcion'=> $this->input->post('descripcion')  );
-
-                $this->tipo_usuario_model->crear($data);
+                $new_tipo=$this->tipo_usuario_model->crear($data);               
+               
+                $modulos= $this->modulo_model->select();
+                $i=0;
+                foreach ($modulos->result() as $modulo) {
+                    $data= array (  'tipo_usuario'=>$new_tipo->tipusu_id ,
+                                     'modulo'=>$modulo->mod_id );
+                    $this->permiso_model->crear($data);
+                   
+                }
                 $this->redireccionar("tipo_usuario");
-                
-
-                
                 
             }else{
                 $dato= array ( 'titulo'=> 'Registrar Tipo usuario','action'=>  'tipo_usuario/nuevo' );

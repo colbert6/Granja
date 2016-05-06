@@ -16,20 +16,21 @@
  	
 	    function selectId($id){
 	        $this->db->where('tipusu_id',$id);
+	        $this->db->where('tipusu_estado',1);
 	        $query=$this->db->get('tipo_usuario');
 	        return $query;
 	   
 	    }
 
 	    function crear($data){
-	        $query= $this->db->insert('tipo_usuario',array('tipusu_descripcion' => $data['descripcion'],
+	       $query= $this->db->insert('tipo_usuario',array('tipusu_descripcion' => $data['descripcion'],
 	        									'tipusu_estado' => 1));
 	        
 	        $this->db->select_max('tipusu_id');
 	        $this->db->where('tipusu_estado',1);	        
 			$query = $this->db->get('tipo_usuario');
 
-	        return $query;
+	        return $query->row();
 	    }
 
 	    function editar($data){

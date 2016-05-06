@@ -30,8 +30,8 @@
             if (@$_POST['guardar'] == 1) {
                 $data= array ( 'id'=> $this->input->post('id'),
                                'descripcion'=> $this->input->post('descripcion'),
-                              'padre'=> $this->input->post('padre'),
-                              'url'=> $this->input->post('url'));
+                               'padre'=> $this->input->post('padre'),
+                               'url'=> $this->input->post('url'));
 
                 $this->permiso_model->editar($data);
                 $this->redireccionar("permiso");
@@ -40,10 +40,12 @@
                 $dato= array ( 'titulo'=> 'Editar permiso','action'=>  'permiso/editar' );
                 $idpermiso=$this->uri-> segment(3);
                 
-                $data['modulo']=$this->modulo_model->selectOrderPadre();
                 $data['permiso']=$this->permiso_model->selectId( $idpermiso);
+                $data['modulo'] = $this->modulo_model->selectPadre();
 
 
+                //echo "<pre>";print_r($data['modulo']->result());
+                //echo "<pre>";print_r($data['permiso']->result());exit();
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/permiso/form.php",$data);
                 $this->load->view("/layout/foother.php");
