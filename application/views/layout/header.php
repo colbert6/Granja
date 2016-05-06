@@ -336,14 +336,14 @@
                                 <li><a href="<?= base_url(); ?>index.php/celo/"><i class="fa fa-angle-double-right"></i> Celo</a></li>  
                                 <li><a href="<?= base_url(); ?>index.php/enfermedad/"><i class="fa fa-angle-double-right"></i> Enfermedad</a></li> 
                                 <li><a href="<?= base_url(); ?>index.php/indicaciones_especiale/"><i class="fa fa-angle-double-right"></i> Indicaciones Especiales</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Medicacion</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Muerte</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Parto</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> servicio</a></li>  
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Tacto Rectal</a></li>
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Venta</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Secado</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Rechazo</a></li> 
+                                <li><a href="<?= base_url(); ?>index.php/medicacion/"><i class="fa fa-angle-double-right"></i> Medicacion</a></li> 
+                                <li><a href="<?= base_url(); ?>index.php/muerte/"><i class="fa fa-angle-double-right"></i> Muerte</a></li> 
+                                <li><a href="<?= base_url(); ?>index.php/parto/"><i class="fa fa-angle-double-right"></i> Parto</a></li> 
+                                <li><a href="<?= base_url(); ?>index.php/servicio/"><i class="fa fa-angle-double-right"></i> servicio</a></li>  
+                                <li><a href="<?= base_url(); ?>index.php/tacto_rectal/"><i class="fa fa-angle-double-right"></i> Tacto Rectal</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/venta/"><i class="fa fa-angle-double-right"></i> Venta</a></li> 
+                                <li><a href="<?= base_url(); ?>index.php/secado/"><i class="fa fa-angle-double-right"></i> Secado</a></li> 
+                                <li><a href="<?= base_url(); ?>index.php/rechazo/"><i class="fa fa-angle-double-right"></i> Rechazo</a></li> 
                             </ul>
                         </li>
                         <li class="treeview">

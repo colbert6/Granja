@@ -3,24 +3,22 @@
     /**
     * 
     */
-    class Aborto extends CI_Controller
+    class Servicio extends CI_Controller
     {
         function __construct(){
             parent::__construct();
-            $this->load->model('aborto_model');
+            $this->load->model('servicio_model');
             $this->load->model('animales_model');
-          //  $this->load->model('razas_model');
-          //  $this->load->model('tipo_registro_model');
         }
         
         public function index()
         {
-            $data['aborto'] = $this->aborto_model->select();
+            $data['servicio'] = $this->servicio_model->select();
 
-            $dato= array ( 'titulo'=> 'Lista de Abortos');
+            $dato= array ( 'titulo'=> 'Lista de Servicio');
 
             $this->load->view("/layout/header.php",$dato);
-            $this->load->view("/aborto/index.php",$data);
+            $this->load->view("/servicio/index.php",$data);
             $this->load->view("/layout/foother_table.php");
         }
    //     public function form()
@@ -34,17 +32,19 @@
 
         public function nuevo()
         {
-            $dato= array ( 'titulo'=> 'Registrar Abortos','action'=>  'aborto/nuevo' );
+            $dato= array ( 'titulo'=> 'Registrar Servicio','action'=>  'servicio/nuevo' );
 
             
             if (@$_POST['guardar'] == 1) {
                $data= array ( 'animal'=> $this->input->post('animal'),
-                           'cauabor'=> $this->input->post('cauabor'),
-                           'fecha'=> $this->input->post('fecha')
+                           'fecha_evento'=> $this->input->post('fecha_evento'),
+                           'reproductor'=> $this->input->post('reproductor'),
+                           'personal'=> $this->input->post('personal'),
+                           'tipo_servicio'=> $this->input->post('tipo_servicio')
                         );
           //   print_r($data);
-             $this->aborto_model->crear($data);
-             $this->redireccionar("aborto");
+             $this->servicio_model->crear($data);
+             $this->redireccionar("servicio");
                 
             }else{
 
@@ -52,7 +52,7 @@
              //   $data['aborto'] = $this->tipo_registro_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/aborto/form.php",$data);
+                $this->load->view("/servicio/form.php",$data  );
                 $this->load->view("/layout/foother.php");
 
             }
@@ -65,24 +65,26 @@
                 $data= array ( 
                            'id'=> $this->input->post('id'),
                            'animal'=> $this->input->post('animal'),
-                           'cauabor'=> $this->input->post('cauabor'),
-                           'fecha'=> $this->input->post('fecha')
-                           );
+                           'fecha_evento'=> $this->input->post('fecha_evento'),
+                           'reproductor'=> $this->input->post('reproductor'),
+                           'personal'=> $this->input->post('personal'),
+                           'tipo_servicio'=> $this->input->post('tipo_servicio'));
                 //print_r($data);
-                $this->aborto_model->editar($data);
-                $this->redireccionar("aborto");
+                $this->servicio_model->editar($data);
+                $this->redireccionar("servicio");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar Aborto','action'=>  'aborto/editar' );
+                $dato= array ( 'titulo'=> 'Editar Servicio','action'=>  'servicio/editar' );
                 $idabo=$this->uri-> segment(3);
 
                // $data['tipo_registro']=$this->tipo_registro_model->select();
-                $data['animales']=$this->animales_model->select();
-                $data['aborto']=$this->aborto_model->selectId( $idabo);
+               // $data['animales']=$this->animales_model->select();
+                $data['servicio']=$this->servicio_model->selectId( $idabo);
+                //print_r($data['indicaciones_especiale']);
                // $data['razas']=$this->razas_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/aborto/form.php",$data);
+                $this->load->view("/servicio/form.php",$data);
                 $this->load->view("/layout/foother.php");
 
             }
@@ -93,15 +95,10 @@
         {
             $idabo=$this->uri-> segment(3);
             
-            $this->aborto_model->eliminar($idabo);
-            $this->redireccionar("aborto");
+            $this->servicio_model->eliminar($idabo);
+            $this->redireccionar("servicio");
             
             
-        }
-
-        public function json_causa_aborto(){
-            //JSON para Extraer Causa de Aborto
-          
         }
 
 
