@@ -6,12 +6,12 @@
    
     class Razas extends CI_Controller
     {   
-        var $menu;
+        var $menu;//este copiar
 
         function __construct(){
             parent::__construct();
             $this->load->model('razas_model');
-            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
+            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));//este copiar
         }
         
         public function index()

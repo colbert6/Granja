@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-05-2016 a las 20:34:24
+-- Tiempo de generación: 08-05-2016 a las 23:38:03
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -331,56 +331,62 @@ CREATE TABLE IF NOT EXISTS `medi_cuartos_mamarios` (
 CREATE TABLE IF NOT EXISTS `modulo` (
 `mod_id` int(11) NOT NULL,
   `mod_descripcion` varchar(100) NOT NULL,
-  `mod_padre` varchar(50) NOT NULL,
+  `mod_padre` int(11) NOT NULL,
   `mod_url` varchar(50) NOT NULL,
   `mod_estado` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `modulo`
 --
 
 INSERT INTO `modulo` (`mod_id`, `mod_descripcion`, `mod_padre`, `mod_url`, `mod_estado`) VALUES
-(1, 'Registro', 'mantenimiento', 'animal', 1),
-(2, 'Razas', 'mantenimiento', 'razas', 1),
-(3, 'Tipo Registro', 'mantenimiento', 'tipo_registro', 1),
-(4, 'Aborto', 'evento', 'aborto', 1),
-(5, 'Celo', 'evento', 'celo', 1),
-(6, 'Usuario', 'sistema', 'usuario', 1),
-(7, 'Modulos', 'sistema', 'modulo', 1),
-(8, 'Tipo', 'sistema', 'tipo_usuario', 1),
-(9, 'Permisos', 'sistema', 'Permiso', 1),
-(10, 'Medicacion', 'mantenimiento', 'medicacion', 1),
-(11, 'Medicina Genital', 'mantenimiento', 'medicina genital', 1),
-(12, 'Medicina Cuartos Mamarios', 'mantenimiento', 'medicina cuarto mamarios', 1),
-(13, 'Personal', 'mantenimiento', 'personal', 1),
-(14, 'Reproductor', 'mantenimiento', 'reproductor', 1),
-(15, 'Tipo Analisis', 'mantenimiento', 'tipo analisis', 1),
-(16, 'Tipo Enfermedad', 'mantenimiento', 'tipo endermedad', 1),
-(17, 'Tipo Parto', 'mantenimiento', 'tipo parto', 1),
-(18, 'Tipo Servicio', 'mantenimiento', 'tipo servicio', 1),
-(19, 'Causa Aborto', 'mantenimiento', 'causa aborto', 1),
-(20, 'Causa No Inseminal', 'mantenimiento', 'causa no inseminal', 1),
-(21, 'Causa Rechazo', 'mantenimiento', 'causa rechazo', 1),
-(22, 'Diagnostico Utero', 'mantenimiento', 'diagnostico utero', 1),
-(23, 'Enfermedad Ovario', 'mantenimiento', 'enfermedad ovario', 1),
-(24, 'Enfermedad Utero', 'mantenimiento', 'enfermedad utero', 1),
-(25, 'Especificacion Muerte', 'mantenimiento', 'especificacion muerte', 1),
-(26, 'Especificacion Venta', 'mantenimiento', 'especificacion venta', 1),
-(27, 'Estado Cria', 'mantenimiento', 'estado cria', 1),
-(28, 'Resultado De Analisis', 'mantenimiento', 'resultado de analisis', 1),
-(29, 'Via Aplicacion', 'mantenimiento', 'via aplicacion', 1),
-(30, 'Analisis', 'evento', 'analisis', 1),
-(31, 'Enfermedad', 'evento', 'enfermedad', 1),
-(32, 'Indicaciones Especiales', 'evento', 'indicaciones especiales', 1),
-(33, 'Medicacion', 'evento', 'medicacion', 1),
-(34, 'Muerte', 'evento', 'muerte', 1),
-(35, 'Parto', 'evento', 'parto', 1),
-(36, 'Servicio', 'evento', 'servicio', 1),
-(37, 'Tacto Rectal', 'evento', 'tacto rectal', 1),
-(38, 'Venta', 'evento', 'venta', 1),
-(39, 'Secado', 'evento', 'secado', 1),
-(40, 'Rechazo', 'evento', 'rechazo', 1);
+(1, 'Registro', 41, 'animal', 1),
+(2, 'Razas', 41, 'razas', 1),
+(3, 'Tipo Registro', 41, 'tipo_registro', 1),
+(4, 'Aborto', 42, 'aborto', 1),
+(5, 'Celo', 42, 'celo', 1),
+(6, 'Usuario', 43, 'usuario', 1),
+(7, 'Modulos', 43, 'modulo', 1),
+(8, 'Tipo Usuario', 43, 'tipo_usuario', 1),
+(9, 'Permisos', 43, 'permiso', 1),
+(10, 'Medicacion', 41, 'medicacion', 1),
+(11, 'Medicina Genital', 41, 'medicina genital', 1),
+(12, 'Medicina Cuartos Mamarios', 41, 'medicina cuarto mamarios', 1),
+(13, 'Personal', 41, 'personal', 1),
+(14, 'Reproductor', 41, 'reproductor', 1),
+(15, 'Tipo Analisis', 41, 'tipo analisis', 1),
+(16, 'Tipo Enfermedad', 41, 'tipo endermedad', 1),
+(17, 'Tipo Parto', 41, 'tipo parto', 1),
+(18, 'Tipo Servicio', 41, 'tipo servicio', 1),
+(19, 'Causa Aborto', 41, 'causa aborto', 1),
+(20, 'Causa No Inseminal', 41, 'causa no inseminal', 1),
+(21, 'Causa Rechazo', 41, 'causa rechazo', 1),
+(22, 'Diagnostico Utero', 41, 'diagnostico utero', 1),
+(23, 'Enfermedad Ovario', 41, 'enfermedad ovario', 1),
+(24, 'Enfermedad Utero', 41, 'enfermedad utero', 1),
+(25, 'Especificacion Muerte', 41, 'especificacion muerte', 1),
+(26, 'Especificacion Venta', 41, 'especificacion venta', 1),
+(27, 'Estado Cria', 41, 'estado cria', 1),
+(28, 'Resultado De Analisis', 41, 'resultado de analisis', 1),
+(29, 'Via Aplicacion', 41, 'via aplicacion', 1),
+(30, 'Analisis', 42, 'analisis', 1),
+(31, 'Enfermedad', 42, 'enfermedad', 1),
+(32, 'Indicaciones Especiales', 42, 'indicaciones especiales', 1),
+(33, 'Medicacion', 42, 'medicacion', 1),
+(34, 'Muerte', 42, 'muerte', 1),
+(35, 'Parto', 42, 'parto', 1),
+(36, 'Servicio', 42, 'servicio', 1),
+(37, 'Tacto Rectal', 42, 'tacto rectal', 1),
+(38, 'Venta', 42, 'venta', 1),
+(39, 'Secado', 42, 'secado', 1),
+(40, 'Rechazo', 42, 'rechazo', 1),
+(41, 'Mantenimiento', 0, '#', 1),
+(42, 'Evento', 0, '#', 1),
+(43, 'Sistema', 0, '#', 1),
+(44, 'Calendario', 0, '#', 1),
+(45, 'Calendario', 44, 'calendario', 1),
+(46, 'Calendario', 44, 'calendario', 1);
 
 -- --------------------------------------------------------
 
@@ -420,7 +426,7 @@ CREATE TABLE IF NOT EXISTS `parto` (
 --
 
 CREATE TABLE IF NOT EXISTS `permiso` (
-  `per_user` int(11) NOT NULL,
+  `per_tipo_usuario` int(11) NOT NULL,
   `per_modulo` int(11) NOT NULL,
   `per_estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -429,9 +435,87 @@ CREATE TABLE IF NOT EXISTS `permiso` (
 -- Volcado de datos para la tabla `permiso`
 --
 
-INSERT INTO `permiso` (`per_user`, `per_modulo`, `per_estado`) VALUES
+INSERT INTO `permiso` (`per_tipo_usuario`, `per_modulo`, `per_estado`) VALUES
 (1, 1, 1),
-(1, 2, 1);
+(1, 2, 1),
+(1, 3, 1),
+(1, 4, 1),
+(1, 5, 1),
+(1, 6, 1),
+(1, 7, 1),
+(1, 8, 1),
+(1, 9, 1),
+(1, 10, 1),
+(1, 11, 1),
+(1, 12, 1),
+(1, 13, 1),
+(1, 14, 1),
+(1, 15, 1),
+(1, 16, 1),
+(1, 17, 1),
+(1, 18, 1),
+(1, 19, 1),
+(1, 20, 1),
+(1, 21, 1),
+(1, 22, 1),
+(1, 23, 1),
+(1, 24, 1),
+(1, 25, 1),
+(1, 26, 1),
+(1, 27, 1),
+(1, 28, 1),
+(1, 29, 1),
+(1, 30, 1),
+(1, 31, 1),
+(1, 32, 1),
+(1, 33, 1),
+(1, 34, 1),
+(1, 35, 1),
+(1, 36, 1),
+(1, 37, 1),
+(1, 38, 1),
+(1, 39, 1),
+(1, 40, 1),
+(3, 1, 0),
+(3, 2, 0),
+(3, 3, 0),
+(3, 4, 0),
+(3, 5, 0),
+(3, 6, 1),
+(3, 7, 1),
+(3, 8, 1),
+(3, 9, 1),
+(3, 10, 0),
+(3, 11, 0),
+(3, 12, 0),
+(3, 13, 0),
+(3, 14, 0),
+(3, 15, 0),
+(3, 16, 0),
+(3, 17, 0),
+(3, 18, 0),
+(3, 19, 0),
+(3, 20, 0),
+(3, 21, 0),
+(3, 22, 0),
+(3, 23, 0),
+(3, 24, 0),
+(3, 25, 0),
+(3, 26, 0),
+(3, 27, 1),
+(3, 28, 0),
+(3, 29, 0),
+(3, 30, 0),
+(3, 31, 0),
+(3, 32, 0),
+(3, 33, 0),
+(3, 34, 0),
+(3, 35, 0),
+(3, 36, 0),
+(3, 37, 0),
+(3, 38, 0),
+(3, 39, 1),
+(3, 40, 1);
 
 -- --------------------------------------------------------
 
@@ -678,7 +762,7 @@ CREATE TABLE IF NOT EXISTS `tipo_usuario` (
 `tipusu_id` int(11) NOT NULL,
   `tipusu_descripcion` varchar(50) NOT NULL,
   `tipusu_estado` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tipo_usuario`
@@ -686,7 +770,7 @@ CREATE TABLE IF NOT EXISTS `tipo_usuario` (
 
 INSERT INTO `tipo_usuario` (`tipusu_id`, `tipusu_descripcion`, `tipusu_estado`) VALUES
 (1, 'Administrador', 1),
-(2, 'DBA', 1);
+(3, 'DBA', 1);
 
 -- --------------------------------------------------------
 
@@ -701,7 +785,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `usu_estado` int(11) NOT NULL,
   `usu_personal` int(11) NOT NULL,
   `usu_tipo_usuario` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -709,8 +793,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`usu_id`, `usu_nombre`, `usu_password`, `usu_estado`, `usu_personal`, `usu_tipo_usuario`) VALUES
 (1, 'admin', '1234', 1, 1, 1),
-(2, 'colbertss', '1234', 1, 1, 1),
-(3, 'willy', '4321', 1, 1, 1);
+(2, 'colbert', '1234', 1, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -888,6 +971,12 @@ ALTER TABLE `parto`
  ADD PRIMARY KEY (`par_id`);
 
 --
+-- Indices de la tabla `permiso`
+--
+ALTER TABLE `permiso`
+ ADD PRIMARY KEY (`per_tipo_usuario`,`per_modulo`), ADD KEY `per_tipo_user` (`per_tipo_usuario`), ADD KEY `per_modulo` (`per_modulo`);
+
+--
 -- Indices de la tabla `personal`
 --
 ALTER TABLE `personal`
@@ -981,7 +1070,7 @@ ALTER TABLE `tipo_usuario`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
- ADD PRIMARY KEY (`usu_id`);
+ ADD PRIMARY KEY (`usu_id`), ADD UNIQUE KEY `usu_nombre` (`usu_nombre`), ADD KEY `usu_personal` (`usu_personal`), ADD KEY `usu_tipo_usuario` (`usu_tipo_usuario`);
 
 --
 -- Indices de la tabla `venta`
@@ -1108,7 +1197,7 @@ MODIFY `mecu_id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `modulo`
 --
 ALTER TABLE `modulo`
-MODIFY `mod_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
+MODIFY `mod_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT de la tabla `muerte`
 --
@@ -1193,12 +1282,12 @@ MODIFY `tipse_id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
-MODIFY `tipusu_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `tipusu_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `usu_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `usu_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `venta`
 --
@@ -1209,6 +1298,24 @@ MODIFY `venta_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 ALTER TABLE `via_aplicacion`
 MODIFY `viaap_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `permiso`
+--
+ALTER TABLE `permiso`
+ADD CONSTRAINT `permiso_ibfk_1` FOREIGN KEY (`per_tipo_usuario`) REFERENCES `tipo_usuario` (`tipusu_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `permiso_ibfk_2` FOREIGN KEY (`per_modulo`) REFERENCES `modulo` (`mod_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`usu_personal`) REFERENCES `personal` (`per_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`usu_tipo_usuario`) REFERENCES `tipo_usuario` (`tipusu_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
