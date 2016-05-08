@@ -3,19 +3,23 @@
     /**
     * 
     */
+   
     class Razas extends CI_Controller
-    {
+    {   
+        var $menu;
+
         function __construct(){
             parent::__construct();
             $this->load->model('razas_model');
+            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
         }
         
         public function index()
-        {
+        {   
             $data['razas'] = $this->razas_model->select();
 
-            $dato= array ( 'titulo'=> 'Lista de Razas');
-            
+            $dato= array ( 'titulo'=> 'Lista de Razas','menu'=>$this->menu);
+           
             $this->load->view("/layout/header.php",$dato);
             $this->load->view("/razas/index.php",$data);
             $this->load->view("/layout/foother_table.php");
@@ -34,7 +38,7 @@
             }else{
                 $dato= array ( 'titulo'=> 'Registrar Raza','action'=>  'razas/nuevo' );
 
-                $this->load->view("/layout/header.php",$dato);
+                $this->load->view("/layout/header.php",$this->$menu);
                 $this->load->view("/razas/form.php");
                 $this->load->view("/layout/foother.php");
 
@@ -54,7 +58,7 @@
                 $this->redireccionar("razas");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar Raza','action'=>  'razas/editar' );
+                $dato= array ( 'titulo'=> 'Editar Raza','action'=>  'razas/editar' ,$this->$menu);
                 $idRaza=$this->uri-> segment(3);
 
                 $data['razas']=$this->razas_model->selectId( $idRaza);

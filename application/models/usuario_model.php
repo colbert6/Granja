@@ -8,10 +8,15 @@
 	    }
 
 	    function select(){
-	    	$this->db->where('usu_estado',1);
-	        $query=$this->db->get('usuario');
+	    	
+			$sql="  SELECT u.*,p.*,tu.* 
+					FROM usuario as u , personal as p , tipo_usuario as tu 
+					WHERE u.usu_personal =p.per_id and tu.tipusu_id=u.usu_tipo_usuario and
+						  u.usu_estado=1 ";
+
+	        $query=$this->db->query($sql);
 	        return $query;
-	        
+	   
 	    }
 
 	    function selectId($id){

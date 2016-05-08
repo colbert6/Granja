@@ -8,13 +8,19 @@
 	    }
 
 	    function select(){
-	    	$this->db->where('mod_estado',1);
-	        $query=$this->db->get('modulo');
+	    	$sql=" SELECT mh.*,mp.mod_descripcion as 'padre_desc' 
+					FROM modulo as mh ,modulo as mp 
+					WHERE mh.mod_padre=mp.mod_id and mh.mod_estado=1 
+					ORDER by mh.mod_padre ASC ";
+
+	        $query=$this->db->query($sql);
+
 	        return $query;
 	        
 	    }
  	
 	    function selectId($id){
+	    	$this->db->where('mod_estado',1);	
 	        $this->db->where('mod_id',$id);
 	        $query=$this->db->get('modulo');
 	        return $query;
@@ -24,6 +30,29 @@
 	    function selectOrderPadre(){
 	    	$this->db->where('mod_estado',1);	    	
 	        $this->db->order_by('mod_padre');
+	        $query=$this->db->get('modulo');
+	        return $query;
+	        
+	    }
+
+	    function selectMenu($user= ''){	    	
+
+			$sql=" SELECT mh.*,mp.mod_descripcion ,p.per_estado
+					FROM modulo as mh ,modulo as mp , permiso as p 
+					WHERE mh.mod_padre=mp.mod_id and mh.mod_id=p.per_modulo and mh.mod_estado=1 
+						 and p.per_tipo_usuario=".$user.
+				"   ORDER by mp.mod_id ASC ";
+
+	        $query=$this->db->query($sql);
+
+	        return $query;
+	        
+	        
+	    }
+
+	    function selectPadre(){
+	    	$this->db->where('mod_estado',1);
+	    	$this->db->where('mod_padre',0);	
 	        $query=$this->db->get('modulo');
 	        return $query;
 	        

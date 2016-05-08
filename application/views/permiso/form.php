@@ -1,60 +1,46 @@
+<?php
+    $padres=$modulo->result_array(); 
+    $modulos=$permiso->result_array();;
 
+   /* echo "<pre>";print_r($padres);
+    echo "<pre>";print_r($modulos);exit(); */?>
 
-<?php $mod_padre='evento'; ?>
     <form role="form" action="<?= base_url()."index.php/".$action ?>" method="post">
-     <div class="col-md-12">
 
-                    <div class="box box-warning">
-                        <div class="box-header">
-                            <h3 class="box-title">Evento</h3>
-                        </div>
-                        <div class="box-body">
-                             <h5 class="box-title">Chequea para otorgar permisos</h5>
-                            <div class="row">
+    <?php    for( $i=0;$i<count($padres);$i++)  {  ?>
 
-       <?php foreach (@$modulo->result() as $modulos) { 
-                
-                if($mod_padre!=$modulos->mod_padre)      {  
-                    $mod_padre=$modulos->mod_padre; 
-                                                                     ?>
 
-                    </div><!-- /.row -->
-                
-                    
-                </div>
-            </div>
-    </div> 
+
                 <div class="col-md-12">
-
                     <div class="box box-warning">
                         <div class="box-header">
-                            <h3 class="box-title"><?= $modulos->mod_padre; ?></h3>
+                            <h3 class="box-title"><?= $padres[$i]['mod_descripcion']; ?></h3>
                         </div>
                         <div class="box-body">
                              <h5 class="box-title">Chequea para otorgar permisos</h5>
-                            <div class="row">
+                        <div class="row">
 
-                <?php } ?>
+    <?php       for( $j=0;$j<count($modulos);$j++)  {  ?>
+    <?php           if($modulos[$j]['id_padre']==$padres[$i]['mod_id']){   ?>
+                            <div class="col-lg-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" name="<?= $modulos[$j]['mod_id']; ?>" value="1" checked>
+                                    </span>
+                                    <input type="text" class="form-control" readonly value="<?= $modulos[$j]['mod_descripcion'] ?>">
+                                </div><!-- /input-group -->
+                            </div>
 
-                <div class="col-lg-4">
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <input type="checkbox" name="<?= $modulos->mod_id; ?>" value="1" checked>
-                        </span>
-                        <input type="text" class="form-control" readonly value="<?= $modulos->mod_descripcion; ?>">
-                    </div><!-- /input-group -->
-                </div>
-                
-                
-        <?php } ?>
+    <?php           } 
+                }
 
-
-                </div><!-- /.row -->
-            
-                
-            </div>
-        </div>
-</div> 
-
+    ?>
+                             </div><!-- /.row -->
+                            
+                                
+                        </div>
+                    </div>
+                </div> 
+<?php          }     ?>
 
     </form>

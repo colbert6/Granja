@@ -87,6 +87,7 @@
                 });
                 $("#id_evento").change(function(){
                     var op = $("#id_evento").val();
+                    console.log(op);   
                     mostrarFormulario(op);
                     
                 });
