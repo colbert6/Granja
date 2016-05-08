@@ -171,7 +171,7 @@ function calendario(date){
       else
         return true;
 }
-function seleccionaFecha(dd, mm, aa)	{
+function fecha(dd, mm, aa)	{
 	var fecha = new Date();
 	fecha.setDate(dd);
 	fecha.setMonth(mm - 1);
