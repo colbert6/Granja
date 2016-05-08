@@ -20,23 +20,23 @@ if(isset ($medicacion))  {  $datos=$medicacion->row(); }
                 
                 <div class="form-group">
                     <label for="nombre">RP</label>
-                    <input type="text" class="form-control" id="rp" name="rp" placeholder="Ingrese rp"
+                    <input type="text" required class="form-control" id="rp" name="rp" placeholder="Ingrese rp"
                      value=<?php if(isset ($medicacion)) echo $datos->med_rp;?> >
                 </div>
               
                 <div class="form-group">
                     <label for="nombre">Medicamentos</label>
-                    <input type="text" class="form-control" id="medicamentos" name="medicamentos" placeholder="Ingrese Tipo Enfermedad"
+                    <input type="text" required class="form-control" id="medicamentos" name="medicamentos" placeholder="Ingrese Tipo Enfermedad"
                      value=<?php if(isset ($medicacion)) echo $datos->med_medicamentos;?> >
                 </div>
                 <div class="form-group">
                     <label for="nombre">Via Aplicaion</label>
-                    <input type="text" class="form-control" id="via_aplicacion" name="via_aplicacion" placeholder="Ingrese Tipo Enfermedad"
+                    <input type="text" required class="form-control" id="via_aplicacion" name="via_aplicacion" placeholder="Ingrese Tipo Enfermedad"
                      value=<?php if(isset ($medicacion)) echo $datos->med_via_aplicacion;?> >
                 </div>
                 <div class="form-group">
                                 <label for="fechareg">Fecha de Evento</label>
-                                <input type="date" class="form-control" id="fecha" name="fecha"
+                                <input type="date" required class="form-control" id="fecha" name="fecha"
                                 value=<?php if(isset ($medicacion)) echo $datos->med_fecha_evento;?>>
                 </div>
 
