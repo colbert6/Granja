@@ -95,17 +95,17 @@ if(isset ($animales))  {  $datos=$animales->row(); }
                             <div class="form-group">
                                 <label for="sexo">Sexo</label>
                                 <input type="text" required class="form-control" id="sexo" name="sexo" placeholder="Ingrese nombre de la madre"
-                                autofocus onkeypress="return soloLetras(event)" value=<?php if(isset ($animales)) echo $datos->ani_sexo;?>>
+                                value=<?php if(isset ($animales)) echo $datos->ani_sexo;?>>
                             </div>
                             <div class="form-group">
                                 <label for="fechanac">Fecha de nacimiento</label>
-                                <input type="date" required class="form-control" id="fechanac" name="fechanac"
-                                value=<?php if(isset ($animales)) echo $datos->ani_fechanac;?>>
+                                <input type="date" required class="form-control" id="fecha" name="fechanac"
+                                onclick="validar();" value=<?php if(isset ($animales)) echo $datos->ani_fechanac;?>>
                             </div>
                             <div class="form-group">
                                 <label for="fechareg">Fecha de registro</label>
-                                <input type="date" required class="form-control" id="fechareg" name="fechareg"
-                                value=<?php if(isset ($animales)) echo $datos->ani_fechareg;?>>
+                                <input type="date" required class="form-control" id="fecha" name="fechareg"
+                               onclick="validar();" value=<?php if(isset ($animales)) echo $datos->ani_fechareg;?>>
                             </div>
                             <div class="form-group">
                                 <label for="descripcion">Descripcion</label>

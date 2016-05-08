@@ -4,11 +4,13 @@
     * 
     */
     class Muerte extends CI_Controller
-    {
+    { var $menu;
         function __construct(){
             parent::__construct();
             $this->load->model('muerte_model');
             $this->load->model('animales_model');
+            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
+
         }
         
         public function index()

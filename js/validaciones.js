@@ -160,6 +160,40 @@ function diasMes(humanMonth, year) {
     return new Date(year || new Date().getFullYear(), humanMonth, 0).getDate();
 }
 //-----------------------------------------------------------
+function isValidDate(day,month,year)
+{
+    var dteDate;
+     month=month-1;
+     dteDate=new Date(year,month,day);
+     return ((day==dteDate.getDate()) && (month==dteDate.getMonth()) && (year==dteDate.getFullYear()));
+}
+ 
+function validate_fecha(fecha)
+{
+    var patron=new RegExp("^(19|20)+([0-9]{2})([-])([0-9]{1,2})([-])([0-9]{1,2})$");
+ 
+    if(fecha.search(patron)==0)
+    {
+        var values=fecha.split("-");
+        if(isValidDate(values[2],values[1],values[0]))
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+function validar()
+{ //alert("hola");
+    var fecha=document.getElementById("user_date").value;
+    console.log(fecha);
+    
+    if(validate_fecha(fecha)==true)
+        document.getElementById("result").innerHTML="La fecha "+fecha+" es correcta";
+    else
+        document.getElementById("result").innerHTML="La fecha "+fecha+" es incorrecta";
+}
+//...............
 function calendario(date){
       var x=new Date();
       var fecha = date.split("/");
