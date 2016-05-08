@@ -20,18 +20,18 @@ if(isset ($rechazo))  {  $datos=$rechazo->row(); }
                 
                 <div class="form-group">
                     <label for="nombre">RP</label>
-                    <input type="text" class="form-control" id="rp" name="rp" placeholder="Ingrese Rp"
+                    <input type="text" required class="form-control" id="rp" name="rp" placeholder="Ingrese Rp"
                      value=<?php if(isset ($rechazo)) echo $datos->recha_rp;?> >
                 </div>
               
                 <div class="form-group">
                     <label for="nombre">Fecha de Evento</label>
-                    <input type="date" class="form-control" id="fecha_evento" name="fecha_evento" placeholder="Ingrese Fecha de Evento"
+                    <input type="date" required class="form-control" id="fecha_evento" name="fecha_evento" placeholder="Ingrese Fecha de Evento"
                      value=<?php if(isset ($rechazo)) echo $datos->recha_fecha_evento;?> >
                 </div>
                 <div class="form-group">
                     <label for="nombre">Cuarto Mamario</label>
-                    <input type="text" class="form-control" id="causa_rechazo" name="causa_rechazo" placeholder="Ingrese la Causa Rechazo"
+                    <input type="text" required class="form-control" id="causa_rechazo" name="causa_rechazo" placeholder="Ingrese la Causa Rechazo"
                      value=<?php if(isset ($rechazo)) echo $datos->recha_causa_rechazo;?> >
                 </div>
                              

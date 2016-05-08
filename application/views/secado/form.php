@@ -20,18 +20,18 @@ if(isset ($secado))  {  $datos=$secado->row(); }
                 
                 <div class="form-group">
                     <label for="nombre">RP</label>
-                    <input type="text" class="form-control" id="rp" name="rp" placeholder="Ingrese Rp"
+                    <input type="text" required class="form-control" id="rp" name="rp" placeholder="Ingrese Rp"
                      value=<?php if(isset ($secado)) echo $datos->sec_rp;?> >
                 </div>
               
                 <div class="form-group">
                     <label for="nombre">Fecha de Evento</label>
-                    <input type="date" class="form-control" id="fecha_evento" name="fecha_evento" placeholder="Ingrese Fecha de Evento"
+                    <input type="date" required class="form-control" id="fecha_evento" name="fecha_evento" placeholder="Ingrese Fecha de Evento"
                      value=<?php if(isset ($secado)) echo $datos->sec_fecha_evento;?> >
                 </div>
                 <div class="form-group">
                     <label for="nombre">Cuarto Mamario</label>
-                    <input type="text" class="form-control" id="cuarto_mamarios" name="cuarto_mamarios" placeholder="Ingrese los Cuarto Mamario"
+                    <input type="text" required class="form-control" id="cuarto_mamarios" name="cuarto_mamarios" placeholder="Ingrese los Cuarto Mamario"
                      value=<?php if(isset ($secado)) echo $datos->sec_cuarto_mamarios;?> >
                 </div>
                              

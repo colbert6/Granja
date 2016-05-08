@@ -14,19 +14,19 @@ if(isset ($razas))  {  $datos=$razas->row(); }
                    
                     <div class="form-group">
                         <label for="descripcion">Identificador</label>
-                        <input type="text" class="form-control" id="id" name="id" placeholder="Ingrese descripcion" readonly="readonly"
+                        <input type="text" required class="form-control" id="id" name="id" placeholder="Ingrese descripcion" readonly="readonly"
                            value=<?= $datos->raz_id; ?>>
                     </div>
 
                 <?php } ?>  
                 <div class="form-group">
                     <label for="descripcion">Descripcion</label>
-                    <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion"
+                    <input type="text" required class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion"
                         value=<?php if(isset ($razas)) echo $datos->raz_descripcion; ?> >
                 </div>
                 <div class="form-group">
                     <label for="abreviacion">Abreviacion</label>
-                    <input type="text" class="form-control" id="abreviacion" name="abreviacion" placeholder="Ingrese abreviacion"
+                    <input type="text" required class="form-control" id="abreviacion" name="abreviacion" placeholder="Ingrese abreviacion"
                         value=<?php if(isset ($razas)) echo $datos->raz_abreviacion; ?> >
                 </div>
                 <div class="box-footer">
