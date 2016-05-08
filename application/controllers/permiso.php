@@ -5,8 +5,11 @@
     */
     class Permiso extends CI_Controller
     {
+        var $menu;
+        
         function __construct(){
             parent::__construct();
+            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
             $this->load->model('permiso_model');
             $this->load->model('tipo_usuario_model');
             $this->load->model('modulo_model');
@@ -25,27 +28,30 @@
 
 
         public function editar()
-        {
+        {   
             
             if (@$_POST['guardar'] == 1) {
-                $data= array ( 'id'=> $this->input->post('id'),
-                               'descripcion'=> $this->input->post('descripcion'),
-                               'padre'=> $this->input->post('padre'),
-                               'url'=> $this->input->post('url'));
 
-                $this->permiso_model->editar($data);
+                //echo "<pre>";print_r($_POST);exit();
+
+                $this->permiso_model->QuitarPermiso($this->input->post('id_tipo'));
+                foreach ($_POST['mod_permiso'] as $permiso) {
+                    
+                    $data= array ( 'id_tipo'=> $this->input->post('id_tipo'),
+                                   'modulo'=> $permiso,
+                                   'estado'=> 1);
+                    $this->permiso_model->DarPermiso($data);
+                }
+                              
                 $this->redireccionar("permiso");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar permiso','action'=>  'permiso/editar' );
+                $dato= array ( 'titulo'=> 'Editar permisos','action'=>  'permiso/editar' );
                 $idpermiso=$this->uri-> segment(3);
                 
                 $data['permiso']=$this->permiso_model->selectId( $idpermiso);
                 $data['modulo'] = $this->modulo_model->selectPadre();
-
-
-                //echo "<pre>";print_r($data['modulo']->result());
-                //echo "<pre>";print_r($data['permiso']->result());exit();
+                $data['id_tipo'] =  $idpermiso;
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/permiso/form.php",$data);
                 $this->load->view("/layout/foother.php");

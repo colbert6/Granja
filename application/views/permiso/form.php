@@ -6,7 +6,8 @@
     echo "<pre>";print_r($modulos);exit(); */?>
 
     <form role="form" action="<?= base_url()."index.php/".$action ?>" method="post">
-
+        <input name="guardar" id="guardar" type="hidden" value="1">
+         <input name="id_tipo" id="id_tipo" type="hidden" value="<?= $id_tipo ?>">
     <?php    for( $i=0;$i<count($padres);$i++)  {  ?>
 
 
@@ -25,7 +26,12 @@
                             <div class="col-lg-4">
                                 <div class="input-group">
                                     <span class="input-group-addon">
-                                        <input type="checkbox" name="<?= $modulos[$j]['mod_id']; ?>" value="1" checked>
+    <?php                               if($modulos[$j]['per_estado']==1){                               ?>
+                                            <input type="checkbox" name="mod_permiso[]" value="<?= $modulos[$j]['mod_id']; ?>" checked='true'>
+    <?php                               } else {                                                             ?>
+                                            <input type="checkbox" name="mod_permiso[]" value="<?= $modulos[$j]['mod_id']; ?>" >
+    <?php                               }                                                                ?>
+
                                     </span>
                                     <input type="text" class="form-control" readonly value="<?= $modulos[$j]['mod_descripcion'] ?>">
                                 </div><!-- /input-group -->
@@ -42,5 +48,9 @@
                     </div>
                 </div> 
 <?php          }     ?>
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
 
     </form>

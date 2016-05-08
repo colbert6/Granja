@@ -18,7 +18,7 @@
         {   
             $data['razas'] = $this->razas_model->select();
 
-            $dato= array ( 'titulo'=> 'Lista de Razas','menu'=>$this->menu);
+            $dato= array ( 'titulo'=> 'Lista de Razas');
            
             $this->load->view("/layout/header.php",$dato);
             $this->load->view("/razas/index.php",$data);
@@ -58,7 +58,7 @@
                 $this->redireccionar("razas");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar Raza','action'=>  'razas/editar' ,$this->$menu);
+                $dato= array ( 'titulo'=> 'Editar Raza','action'=>  'razas/editar');
                 $idRaza=$this->uri-> segment(3);
 
                 $data['razas']=$this->razas_model->selectId( $idRaza);

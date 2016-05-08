@@ -5,8 +5,10 @@
     */
     class Usuario extends CI_Controller
     {
+        var $menu;
         function __construct(){
             parent::__construct();
+            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
             $this->load->model('usuario_model');
             $this->load->model('tipo_usuario_model');
             //$this->load->model('personal_model');
@@ -33,7 +35,8 @@
                               'tipo_usuario'=> $this->input->post('tipo_usuario'),
                               'personal'=> $this->input->post('personal')  );
 
-                $this->usuario_model->crear($data);
+                $this->usuario_model->crear($data);                  
+
                 $this->redireccionar("usuario");
                 
             }else{

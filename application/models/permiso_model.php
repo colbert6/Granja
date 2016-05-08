@@ -31,13 +31,20 @@
 	    function crear($data){
 	        $this->db->insert('permiso',array('per_tipo_usuario' => $data['tipo_usuario'],
 	        								'per_modulo' => $data['modulo'],
-	        								'per_estado' => 0));
+	        								'per_estado' => $data['estado']));
 	    }
 
-	    function editar($data){
+	    function DarPermiso($data){
 	    	$datos=array('per_estado' =>$data['estado']);
-	    	$this->db->where('per_tipo_usuario',$data['id']);
+	    	$this->db->where('per_tipo_usuario',$data['id_tipo']);
 	    	$this->db->where('per_modulo',$data['modulo']);
+	        $query=$this->db->update('permiso',$datos);
+	        return $query;
+	    }
+
+	    function QuitarPermiso($id){
+	    	$datos=array('per_estado' =>0);
+	    	$this->db->where('per_tipo_usuario',$id);
 	        $query=$this->db->update('permiso',$datos);
 	        return $query;
 	    }

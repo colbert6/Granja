@@ -5,9 +5,14 @@
     */
     class Modulo extends CI_Controller
     {
+         var $menu;
+
         function __construct(){
             parent::__construct();
+            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
             $this->load->model('modulo_model');
+            $this->load->model('tipo_usuario_model');
+            $this->load->model('permiso_model');
         }
 
         public function index()
@@ -29,9 +34,19 @@
                               'padre'=> $this->input->post('padre'),
                               'url'=> $this->input->post('url') );
 
-                $this->modulo_model->crear($data);
-                $this->redireccionar("modulo");
+                $new_tipo=$this->modulo_model->crear($data);
                 
+                $tipo_usuario= $this->tipo_usuario_model->select();
+                foreach ($tipo_usuario->result() as $tipo_usuarios) {
+                    $data= array (  'tipo_usuario'=>$tipo_usuarios->tipusu_id ,
+                                     'modulo'=>$new_tipo->mod_id ,
+                                     'estado'=>0);
+                    $this->permiso_model->crear($data);
+                   
+                }  
+
+                $this->redireccionar("modulo");
+
             }else{
                 $dato= array ( 'titulo'=> 'Registrar modulo','action'=>  'modulo/nuevo' );
                 $data['mod_padre']=$this->modulo_model->selectPadre();

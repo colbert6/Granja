@@ -53,6 +53,7 @@ class CI_Controller {
 		log_message('debug', "Controller Class Initialized");
 		$this->load->model('modulo_model');
 		
+		
 	}
 
 	public static function &get_instance()

@@ -5,8 +5,11 @@
     */
     class Tipo_usuario extends CI_Controller
     {
+        var $menu;
+
         function __construct(){
             parent::__construct();
+            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
             $this->load->model('tipo_usuario_model');
             $this->load->model('modulo_model');
             $this->load->model('permiso_model');
@@ -31,7 +34,6 @@
                 $new_tipo=$this->tipo_usuario_model->crear($data);               
                
                 $modulos= $this->modulo_model->select();
-                $i=0;
                 foreach ($modulos->result() as $modulo) {
                     $data= array (  'tipo_usuario'=>$new_tipo->tipusu_id ,
                                      'modulo'=>$modulo->mod_id );
