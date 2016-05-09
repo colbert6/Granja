@@ -65,6 +65,7 @@
 
                 $data['razas']=$this->razas_model->selectId( $idRaza);
 
+                //echo "<pre>";print_r($data['razas']->result());exit();
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/razas/form.php",$data);
                 $this->load->view("/layout/foother.php");
