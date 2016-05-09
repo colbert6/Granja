@@ -81,6 +81,12 @@
             
             
         }
+
+        public function json_ExtraerTodo()
+        {
+            $data['causa_aborto'] = $this->causa_aborto_model->select();
+            echo json_encode($data['causa_aborto']->result());            
+        }
     }
  ?>
 

@@ -81,6 +81,12 @@
             
             
         }
+        
+        public function json_ExtraerTodo()
+        {
+            $data['tipo_analisis'] = $this->tipo_analisis_model->select();
+            echo json_encode($data['tipo_analisis']->result());            
+        }
     }
  ?>
 
