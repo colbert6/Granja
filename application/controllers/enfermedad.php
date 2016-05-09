@@ -11,6 +11,9 @@
             parent::__construct();
             $this->load->model('enfermedad_model');
             $this->load->model('animales_model');
+            $this->load->model('tipo_enfermedad_model');
+            $this->load->model('via_aplicacion_model');
+            $this->load->model('medicamentos_model');
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
         }
         
@@ -53,7 +56,9 @@
             }else{
 
                 $data['animales'] = $this->animales_model->select();
-             //   $data['aborto'] = $this->tipo_registro_model->select();
+                $data['tipo_enfermedad'] = $this->tipo_enfermedad_model->select();
+                $data['via_aplicacion'] = $this->via_aplicacion_model->select();
+                $data['medicamentos'] = $this->medicamentos_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/enfermedad/form.php",$data  );
@@ -83,11 +88,11 @@
                 $dato= array ( 'titulo'=> 'Editar Enfermedad','action'=>  'Enfermedad/editar' );
                 $idabo=$this->uri-> segment(3);
 
-               // $data['tipo_registro']=$this->tipo_registro_model->select();
-               // $data['animales']=$this->animales_model->select();
                 $data['enfermedad']=$this->enfermedad_model->selectId( $idabo);
-                //print_r($data);
-               // $data['razas']=$this->razas_model->select();
+                $data['animales'] = $this->animales_model->select();
+                $data['tipo_enfermedad'] = $this->tipo_enfermedad_model->select();
+                $data['via_aplicacion'] = $this->via_aplicacion_model->select();
+                $data['medicamentos'] = $this->medicamentos_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/enfermedad/form.php",$data);

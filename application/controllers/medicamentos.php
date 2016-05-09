@@ -81,6 +81,12 @@
             
             
         }
+
+        public function json_ExtraerTodo()
+        {
+            $data['medicamentos'] = $this->medicamentos_model->select();
+            echo json_encode($data['medicamentos']->result());            
+        }
     }
  ?>
 

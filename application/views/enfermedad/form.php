@@ -1,5 +1,5 @@
 <?php 
-if(isset ($enfermedad))  {  $datos=$enfermedad->row(); }  
+if(isset ($enfermedad))  {  $datos=$enfermedad->row(); } 
 ?>
 <div class="col-md-6">
     <div class="box box-primary">
@@ -17,32 +17,77 @@ if(isset ($enfermedad))  {  $datos=$enfermedad->row(); }
                     </div>
 
                 <?php } ?>
-                
                 <div class="form-group">
-                    <label for="nombre">RP</label>
-                    <input type="text" required class="form-control" id="rp" name="rp" placeholder="Ingrese rp"
-                     value="<?php if(isset ($enfermedad)) echo $datos->enf_rp;?>" >
+                    <label>Animal</label>
+                    <select class="form-control" name="rp" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($animales->result() as $datos_a) {
+
+                            if ($datos_a->ani_id==$datos->enf_rp) {
+                                echo "<option selected value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
+                            } else {
+                               echo "<option  value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
                 </div>
-              
+
                 <div class="form-group">
-                    <label for="nombre">Tipo Enfermedad</label>
-                    <input type="text" required class="form-control" id="tipo_enfermedad" name="tipo_enfermedad" placeholder="Ingrese Tipo Enfermedad"
-                     value="<?php if(isset ($enfermedad)) echo $datos->enf_tipo_enfermedad;?>" >
+                    <label>Tipo Enfermedad</label>
+                    <select class="form-control" name="tipo_enfermedad" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($tipo_enfermedad->result() as $datos_te) {
+
+                            if ($datos_te->tipen_id==$datos->enf_tipo_enfermedad) {
+                                echo "<option selected value='".$datos_te->tipen_id."'>".$datos_te->tipen_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_te->tipen_id."'>".$datos_te->tipen_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
                 </div>
                 <div class="form-group">
-                                <label for="fechareg">Via Aplicacion</label>
-                                <input type="text" required class="form-control" id="via_aplicacion" name="via_aplicacion"placeholder="Ingrese Via"
-                                value="<?php if(isset ($enfermedad)) echo $datos->enf_via_aplicacion;?>">
+                    <label>Via Aplicacion</label>
+                    <select class="form-control" name="via_aplicacion" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($via_aplicacion->result() as $datos_va) {
+                            if ($datos_va->viaap_id==$datos->enf_via_aplicacion) {
+                                echo "<option selected value='".$datos_va->viaap_id."'>".$datos_va->viaap_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_va->viaap_id."'>".$datos_va->viaap_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
                 </div>
                 <div class="form-group">
-                                <label for="fechareg">Medicamento</label>
-                                <input type="text" required class="form-control" id="medicamento" name="medicamento"
-                                value="<?php if(isset ($enfermedad)) echo $datos->enf_medicamento;?>">
+                    <label>Medicamentos</label>
+                    <select class="form-control" name="medicamento" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($medicamentos->result() as $datos_m) {
+                            if ($datos_m->medi_id==$datos->enf_medicamento) {
+                                echo "<option selected value='".$datos_m->medi_id."'>".$datos_m->medi_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_m->medi_id."'>".$datos_m->medi_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
                 </div>
-                                <div class="form-group">
+                <div class="form-group">
                                 <label for="fechareg">Fecha de Evento</label>
                                 <input type="date" required class="form-control" id="fecha" name="fecha"
-                                value="<?php if(isset ($enfermedad)) echo $datos->enf_fecha_evento;?>">
+                                value=<?php if(isset ($enfermedad)) echo $datos->enf_fecha_evento;?>>
                 </div>
 
                 

@@ -1,4 +1,4 @@
-"<?php 
+<?php 
 if(isset ($celo))  {  $datos=$celo->row(); }  
 ?>
 <div class="col-md-6">
@@ -17,31 +17,80 @@ if(isset ($celo))  {  $datos=$celo->row(); }
                     </div>
 
                 <?php } ?>
+                <div class="form-group">
+                    <label>Animal</label>
+                    <select class="form-control" name="rp" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($animales->result() as $datos_a) {
+
+                            if ($datos_a->ani_id==$datos->celo_rp) {
+                                echo "<option selected value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
+                            } else {
+                               echo "<option  value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
+                </div>
+
+                 <div class="form-group">
+                    <label>Causa no Inseminal</label>
+                    <select class="form-control" name="causa_no_enseminal" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($causa_no_inseminal->result() as $datos_cne) {
+                           //print_r($datos_cne);
+                            if ($datos_cne->cni_id==$datos->celo_causa_no_inseminal) {
+                                echo "<option selected value='".$datos_cne->cni_id."'>".$datos_cne->cni_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_cne->cni_id."'>".$datos_cne->cni_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
+                </div>
 
                 <div class="form-group">
-                    <label for="nombre"> RP</label>
-                    <input type="text" required class="form-control" id="rp" name="rp" placeholder="Ingrese rp"
-                     value="<?php if(isset ($celo)) echo $datos->celo_rp;?>" >
+                    <label>Medicina Genital</label>
+                    <select class="form-control" name="medicina_genital" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($medicina_genital->result() as $datos_mg) {
+                            if ($datos_mg->medge_id==$datos->celo_medicina_genital) {
+                                echo "<option selected value='".$datos_mg->medge_id."'>".$datos_mg->medge_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_mg->medge_id."'>".$datos_mg->medge_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
                 </div>
+                
                 <div class="form-group">
-                    <label for="nombre">Causa no Inseminal</label>
-                    <input type="text" required class="form-control" id="causa_no_enseminal" name="causa_no_enseminal" placeholder="Ingrese causa no inseminal"
-                     value="<?php if(isset ($celo)) echo $datos->celo_causa_no_inseminal;?>" >
+                    <label>Via Aplicacion</label>
+                    <select class="form-control" name="via_aplicacion" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($via_aplicacion->result() as $datos_va) {
+                            if ($datos_va->viaap_id==$datos->celo_via_aplicacion) {
+                                echo "<option selected value='".$datos_va->viaap_id."'>".$datos_va->viaap_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_va->viaap_id."'>".$datos_va->viaap_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
                 </div>
-                <div class="form-group">
-                    <label for="nombre">Medicina Genital</label>
-                    <input type="text" required class="form-control" id="medicina_genital" name="medicina_genital" placeholder="Ingrese medicina genital"
-                     value="<?php if(isset ($celo)) echo $datos->celo_medicina_genital;?>" >
-                </div>
-                <div class="form-group">
-                    <label for="nombre">Via Aplicacion</label>
-                    <input type="text" required class="form-control" id="via_aplicacion" name="via_aplicacion" placeholder="Ingrese medicina genital"
-                     value="<?php if(isset ($celo)) echo $datos->celo_via_aplicacion;?>" >
-                </div>
+                
                 <div class="form-group">
                                 <label for="fechareg">Fecha Evento</label>
                                 <input type="date" required class="form-control" id="fecha" name="fecha"
-                                value="<?php if(isset ($celo)) echo $datos->celo_fecha_evento;?>">
+                                value=<?php if(isset ($celo)) echo $datos->celo_fecha_evento;?>>
                             </div>
                 
             </div>
