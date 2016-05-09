@@ -4,10 +4,12 @@
     * 
     */
     class Tipo_registro extends CI_Controller
-    {
+    { var $menu;
+         var $tabla='tipo_registro';
         function __construct(){
             parent::__construct();
             $this->load->model('tipo_registro_model');
+            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
         }
 
         public function index()
@@ -28,6 +30,7 @@
                 $data= array ( 'descripcion'=> $this->input->post('descripcion') );
 
                 $this->tipo_registro_model->crear($data);
+                $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
                 $this->redireccionar("tipo_registro");
                 
             }else{
@@ -49,6 +52,7 @@
                                  );
 
                 $this->tipo_registro_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);
                 $this->redireccionar("tipo_registro");
                 
             }else{
@@ -70,6 +74,7 @@
             $idTR=$this->uri-> segment(3);
             
             $this->tipo_registro_model->eliminar($idTR);
+            $this->auditoria('eliminar',$this->tabla,'', $id);
             $this->redireccionar("tipo_registro");
             
             

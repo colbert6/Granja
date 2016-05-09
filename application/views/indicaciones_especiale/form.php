@@ -20,7 +20,7 @@ if(isset ($indicaciones_especiale))  {  $datos=$indicaciones_especiale->row(); }
                 
                 <div class="form-group">
                     <label for="nombre">RP</label>
-                    <input type="text" class="form-control" id="rp" name="rp" placeholder="Ingrese rp"
+                    <input type="text" required class="form-control" id="rp" name="rp" placeholder="Ingrese rp"
                      value=<?php if(isset ($indicaciones_especiale)) echo $datos->indes_rp;?> >
                 </div>
               
@@ -31,7 +31,7 @@ if(isset ($indicaciones_especiale))  {  $datos=$indicaciones_especiale->row(); }
                 </div>
                 <div class="form-group">
                                 <label for="fechareg">Fecha de Evento</label>
-                                <input type="date" class="form-control" id="fecha" name="fecha"
+                                <input type="date" required class="form-control" id="fecha" name="fecha"
                                 value=<?php if(isset ($indicaciones_especiale)) echo $datos->indes_fecha_evento;?>>
                 </div>
 

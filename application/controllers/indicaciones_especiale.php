@@ -4,11 +4,14 @@
     * 
     */
     class Indicaciones_especiale extends CI_Controller
-    {
+    { 
+        var $menu;
+        var $tabla='indicaciones_especiale';
         function __construct(){
             parent::__construct();
             $this->load->model('indicaciones_especiale_model');
             $this->load->model('animales_model');
+            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
         }
         
         public function index()
@@ -42,6 +45,7 @@
                         );
           //   print_r($data);
              $this->indicaciones_especiale_model->crear($data);
+             $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
              $this->redireccionar("indicaciones_especiale");
                 
             }else{
@@ -68,6 +72,7 @@
                         );
                 //print_r($data);
                 $this->indicaciones_especiale_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);
                 $this->redireccionar("indicaciones_especiale");
                 
             }else{
@@ -93,6 +98,7 @@
             $idabo=$this->uri-> segment(3);
             
             $this->indicaciones_especiale_model->eliminar($idabo);
+            $this->auditoria('eliminar',$this->tabla,'', $id);
             $this->redireccionar("indicaciones_especiale");
             
             

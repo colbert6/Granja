@@ -5,11 +5,14 @@
     */
     class Animales extends CI_Controller
     {
+      var $menu;
+      var $tabla='animal';
         function __construct(){
             parent::__construct();
             $this->load->model('animales_model');
             $this->load->model('razas_model');
             $this->load->model('tipo_registro_model');
+            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
         }
         
         public function index()
@@ -51,6 +54,7 @@
                         );
 
              $this->animales_model->crear($data);
+             $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
              $this->redireccionar("animales");
                 
             }else{
@@ -85,6 +89,7 @@
                            );
                 //print_r($data);
                 $this->animales_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);
                 $this->redireccionar("animales");
                 
             }else{
@@ -108,6 +113,7 @@
             $idani=$this->uri-> segment(3);
             
             $this->animales_model->eliminar($idani);
+            $this->auditoria('eliminar',$this->tabla,'', $id);
             $this->redireccionar("animales");
             
             

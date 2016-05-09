@@ -5,6 +5,8 @@
     */
     class Login extends CI_Controller
     {   
+        var $tabla='login';//auditoria
+
         function __construct(){
             parent::__construct();
             $this->load->model('login_model');
@@ -27,9 +29,10 @@
                         'nombre'=>$login->per_nombre,
                         'apell_p'=>$login->per_ape_paterno,
                         'apell_m'=>$login->per_ape_materno,
-                        'tipo_usu'=>$login->tipusu_descripcion
+                        'tipo_usu'=>$login->tipusu_id
                     );
                     $this->session->set_userdata($data);
+                    $this->auditoria('inciar sesion',$this->tabla,'',$login->usu_id);//auditoria
                     redirect('', 'refresh');
 
                 }else{
@@ -46,6 +49,7 @@
 
         public function cerrar()
         {
+            $this->auditoria('cerrar sesion',$this->tabla,'',$this->session->userdata('tipo_usu'));//auditoria
             $this->session->sess_destroy();
             redirect('', 'refresh');
         

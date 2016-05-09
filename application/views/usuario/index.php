@@ -16,8 +16,8 @@
 			            <tr>
 			                <td><?= $datos->usu_id; ?></td>
 			                <td><?= $datos->usu_nombre; ?></td> 
-			                <td><?= $datos->usu_tipo_usuario; ?></td> 
-			                <td><?= $datos->usu_personal ?></td> 
+			                <td><?= $datos->tipusu_descripcion; ?></td> 
+			                <td><?= $datos->per_nombre." ".$datos->per_ape_paterno ?></td> 
 			                <td>
 			                    <a href=<?php echo base_url()."index.php/usuario/editar/".$datos->usu_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>
 		                		<a href=<?php echo base_url()."index.php/usuario/eliminar/".$datos->usu_id; ?> class="btn  btn-minier"><i class="fa fa-trash-o"></i></a>

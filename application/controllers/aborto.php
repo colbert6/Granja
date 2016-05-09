@@ -5,10 +5,13 @@
     */
     class Aborto extends CI_Controller
     {
+        var $menu;
+        var $tabla='aborto';
         function __construct(){
             parent::__construct();
             $this->load->model('aborto_model');
             $this->load->model('animales_model');
+            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
           //  $this->load->model('razas_model');
           //  $this->load->model('tipo_registro_model');
         }
@@ -44,6 +47,7 @@
                         );
           //   print_r($data);
              $this->aborto_model->crear($data);
+             $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
              $this->redireccionar("aborto");
                 
             }else{
@@ -70,6 +74,7 @@
                            );
                 //print_r($data);
                 $this->aborto_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);
                 $this->redireccionar("aborto");
                 
             }else{
@@ -94,9 +99,15 @@
             $idabo=$this->uri-> segment(3);
             
             $this->aborto_model->eliminar($idabo);
+            $this->auditoria('eliminar',$this->tabla,'', $id);
             $this->redireccionar("aborto");
             
             
+        }
+
+        public function json_causa_aborto(){
+            //JSON para Extraer Causa de Aborto
+          
         }
 
 

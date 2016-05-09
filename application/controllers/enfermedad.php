@@ -5,10 +5,13 @@
     */
     class Enfermedad extends CI_Controller
     {
+      var $menu;
+      var $tabla='enfermedad';
         function __construct(){
             parent::__construct();
             $this->load->model('enfermedad_model');
             $this->load->model('animales_model');
+            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
         }
         
         public function index()
@@ -44,6 +47,7 @@
                         );
           //   print_r($data);
              $this->enfermedad_model->crear($data);
+             $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
              $this->redireccionar("enfermedad");
                 
             }else{
@@ -72,6 +76,7 @@
                         );
                 //print_r($data);
                 $this->enfermedad_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);
                 $this->redireccionar("enfermedad");
                 
             }else{
@@ -97,6 +102,7 @@
             $idabo=$this->uri-> segment(3);
             
             $this->enfermedad_model->eliminar($idabo);
+            $this->auditoria('eliminar',$this->tabla,'', $id);
             $this->redireccionar("enfermedad");
             
             

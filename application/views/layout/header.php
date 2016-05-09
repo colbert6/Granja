@@ -1,3 +1,10 @@
+<?php 
+       $menus=$this->menu->result_array() ;
+        $id_padre=0;
+
+      //  print_r($this->menu->result_array());exit();
+ ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -290,7 +297,14 @@
                             <a href="<?= base_url(); ?>index.php">
                                 <i class="fa fa-dashboard"></i> <span>Inicio</span>
                             </a>
+                            <ul >
+
+                        <?php for ($i=0; $i < count($menus) ; $i++) { 
+                                if($id_padre!=$menus[$i]['mod_padre']){       
+                                    $id_padre=$menus[$i]['mod_padre'];          ?>
+                                </ul>
                         </li>
+<<<<<<< HEAD
                        
                         <li class="treeview">
                             <a href="#">
@@ -364,6 +378,24 @@
                                 <i class="fa fa-calendar"></i> <span>Calendario</span>
                                 <small class="badge pull-right bg-red"><!--3--></small>
                             </a>
+=======
+                                    <li class="treeview">
+                                        <a href="#">
+                                            <i class="fa fa-cog"></i> <span><?= $menus[$i]['padre']?></span>
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </a>
+                                        <ul class="treeview-menu">
+                        <?php   } 
+                                if($id_padre==$menus[$i]['mod_padre']){         ?>
+                                        <li><a href="<?= base_url(); ?>index.php/<?= $menus[$i]['mod_url']; ?>/"><i class="fa fa-angle-double-right"></i><?= $menus[$i]['mod_descripcion']; ?></a></li>
+                        <?php   }                                                ?>
+
+
+                        <?php      
+                            } 
+                        ?>
+                        </ul>
+>>>>>>> c776e3e40a4e60bd37880981c51e9d126800d5aa
                         </li>
                         
                     </ul>

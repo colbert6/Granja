@@ -37,17 +37,17 @@ if(isset ($analisis))  {  $datos=$analisis->row(); }
                 
                 <div class="form-group">
                     <label for="nombre">Tipo Analisis</label>
-                    <input type="text" class="form-control" id="tipana" name="tipana" placeholder="Ingrese tipo analisis"
+                    <input type="text" required class="form-control" id="tipana" name="tipana" placeholder="Ingrese tipo analisis"
                      value=<?php if(isset ($analisis)) echo $datos->ana_tipo_analisis;?> >
                 </div>
                 <div class="form-group">
                     <label for="nombre">Resultado Analisis</label>
-                    <input type="text" class="form-control" id="resultado_ana" name="resultado_ana" placeholder="Ingrese resultado"
+                    <input type="text" required class="form-control" id="resultado_ana" name="resultado_ana" placeholder="Ingrese resultado"
                      value=<?php if(isset ($analisis)) echo $datos->ana_resul_analisis;?> >
                 </div>
                 <div class="form-group">
                                 <label for="fechareg">Fecha Evento</label>
-                                <input type="date" class="form-control" id="fecha" name="fecha"
+                                <input type="date" required class="form-control" id="fecha" name="fecha"
                                 value=<?php if(isset ($analisis)) echo $datos->ana_fecha_evento;?>>
                             </div>
                 

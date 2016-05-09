@@ -16,7 +16,7 @@
 			            <tr>
 			                <td><?= $datos->mod_id; ?></td>
 			                <td><?= $datos->mod_descripcion; ?></td>
-			                <td><?= $datos->mod_padre; ?></td> 
+			                <td><?= $datos->padre_desc; ?></td> 
 			                <td><?= $datos->mod_url; ?></td>  
 			                <td>
 			                    <a href=<?php echo base_url()."index.php/modulo/editar/".$datos->mod_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>
