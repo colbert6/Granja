@@ -302,83 +302,9 @@
                         <?php for ($i=0; $i < count($menus) ; $i++) { 
                                 if($id_padre!=$menus[$i]['mod_padre']){       
                                     $id_padre=$menus[$i]['mod_padre'];          ?>
-                                </ul>
-                        </li>
-<<<<<<< HEAD
-                       
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-wrench"></i> <span>Mantenimiento</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="<?= base_url(); ?>index.php/animales/"><i class="fa fa-angle-double-right"></i> Registros</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/razas/"><i class="fa fa-angle-double-right"></i> Razas</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/tipo_registro/"><i class="fa fa-angle-double-right"></i> Tipos de Registros</a></li>   
-                                <li><a href="<?= base_url(); ?>index.php/medicacion/"><i class="fa fa-angle-double-right"></i> Medicacion</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/medicamentos/"><i class="fa fa-angle-double-right"></i> Medicamentos</a></li> 
-                                <li><a href="<?= base_url(); ?>index.php/medicina_genital/"><i class="fa fa-angle-double-right"></i> Medicina Genital</a></li> 
-                                <li><a href="<?= base_url(); ?>index.php/med_cuarto_mamarios/"><i class="fa fa-angle-double-right"></i> Medicina Cuarto Mamarios</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/personal/"><i class="fa fa-angle-double-right"></i> Personal</a></li>  
-                                <li><a href="<?= base_url(); ?>index.php/reproductor/"><i class="fa fa-angle-double-right"></i> Reproductor</a></li> 
-                                <li><a href="<?= base_url(); ?>index.php/tipo_analisis/"><i class="fa fa-angle-double-right"></i> Tipo Analisis</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/tipo_enfermedad/"><i class="fa fa-angle-double-right"></i> Tipo Enfermedad</a></li> 
-                                <li><a href="<?= base_url(); ?>index.php/tipo_parto/"><i class="fa fa-angle-double-right"></i> Tipo Parto</a></li>  
-                                <li><a href="<?= base_url(); ?>index.php/tipo_servicio/"><i class="fa fa-angle-double-right"></i> Tipo Servicio</a></li> 
-                                <li><a href="<?= base_url(); ?>index.php/causa_aborto/"><i class="fa fa-angle-double-right"></i> Causa Aborto</a></li>   
-                                <li><a href="<?= base_url(); ?>index.php/causa_no_inseminal/"><i class="fa fa-angle-double-right"></i> Causa no Inseminal</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/causa_rechazo/"><i class="fa fa-angle-double-right"></i> Causa Rechazo</a></li> 
-                                <li><a href="<?= base_url(); ?>index.php/diagnostico_utero/"><i class="fa fa-angle-double-right"></i> Diagnostico Utero</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/enfermedad_ovario/"><i class="fa fa-angle-double-right"></i> Enfermedad Ovario</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/enfermedad_utero/"><i class="fa fa-angle-double-right"></i> Enfermedad Utero</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/especificacion_muerte/"><i class="fa fa-angle-double-right"></i> Especificacion Muerte</a></li>   
-                                <li><a href="<?= base_url(); ?>index.php/especificacion_venta/"><i class="fa fa-angle-double-right"></i> Especificacion Venta</a></li> 
-                                <li><a href="<?= base_url(); ?>index.php/estado_cria/"><i class="fa fa-angle-double-right"></i> Estado Cria</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/resultado_analisis/"><i class="fa fa-angle-double-right"></i> Resultado  Analisis</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/via_aplicacion/"><i class="fa fa-angle-double-right"></i> Via Aplicacion</a></li> 
-                                                               
                             </ul>
                         </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-bell-o"></i> <span>Evento</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="<?= base_url(); ?>index.php/aborto/"><i class="fa fa-angle-double-right"></i> Aborto</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/analisis/"><i class="fa fa-angle-double-right"></i> Analisis</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/celo/"><i class="fa fa-angle-double-right"></i> Celo</a></li>  
-                                <li><a href="<?= base_url(); ?>index.php/enfermedad/"><i class="fa fa-angle-double-right"></i> Enfermedad</a></li> 
-                                <li><a href="<?= base_url(); ?>index.php/indicaciones_especiale/"><i class="fa fa-angle-double-right"></i> Indicaciones Especiales</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Medicacion</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Muerte</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Parto</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> servicio</a></li>  
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Tacto Rectal</a></li>
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Venta</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Secado</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Rechazo</a></li> 
-                            </ul>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-cog"></i> <span>Sistema</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="<?= base_url(); ?>index.php/usuario/"><i class="fa fa-angle-double-right"></i> Usuarios</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/modulo/"><i class="fa fa-angle-double-right"></i> Modulos</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/tipo_usuario/"><i class="fa fa-angle-double-right"></i> Tipo Usuarios</a></li>  
-                                <li><a href="<?= base_url(); ?>index.php/simbolo/"><i class="fa fa-angle-double-right"></i> Simbolos </a></li> 
-                                <li><a href="<?= base_url(); ?>index.php/permiso/"><i class="fa fa-angle-double-right"></i> Permisos </a></li> 
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="<?= base_url(); ?>index.php/calendario">
-                                <i class="fa fa-calendar"></i> <span>Calendario</span>
-                                <small class="badge pull-right bg-red"><!--3--></small>
-                            </a>
-=======
+
                                     <li class="treeview">
                                         <a href="#">
                                             <i class="fa fa-cog"></i> <span><?= $menus[$i]['padre']?></span>
@@ -395,7 +321,6 @@
                             } 
                         ?>
                         </ul>
->>>>>>> c776e3e40a4e60bd37880981c51e9d126800d5aa
                         </li>
                         
                     </ul>
