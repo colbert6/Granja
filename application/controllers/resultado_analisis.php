@@ -81,5 +81,11 @@
             
             
         }
+
+        public function json_ExtraerTodo()
+        {
+            $data['resultado_analisis'] = $this->resultado_analisis_model->select();
+            echo json_encode($data['resultado_analisis']->result());            
+        }
     }
  ?>
