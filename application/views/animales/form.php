@@ -1,4 +1,4 @@
-<?php 
+""<?php 
 if(isset ($animales))  {  $datos=$animales->row(); }  
 ?>
 <div class="col-md-6">
@@ -14,7 +14,7 @@ if(isset ($animales))  {  $datos=$animales->row(); }
                     <div class="form-group">
                         <label for="descripcion">Identificador</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder="Ingrese descripcion" readonly="readonly"
-                           value=<?= $datos->ani_id; ?>>
+                           value=""<?= $datos->ani_id; ?>"">
                     </div>
 
                 <?php } ?>
@@ -22,7 +22,7 @@ if(isset ($animales))  {  $datos=$animales->row(); }
                     <label for="codigo">Codigo</label>
                     <input type="text" required class="form-control" id="codigo" name="codigo" placeholder="Ingrese codigo"
                     autofocus onkeypress="return soloNumeros(event)"
-                    value=<?php if(isset ($animales)) echo $datos->ani_rp; ?> >
+                    value=""<?php if(isset ($animales)) echo $datos->ani_rp; ?>"" >
 
                 </div>
                 <div>
@@ -66,12 +66,12 @@ if(isset ($animales))  {  $datos=$animales->row(); }
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
                     <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre"
-                     autofocus onkeypress="return soloLetras(event)" value=<?php if(isset ($animales)) echo $datos->ani_nombre;?> >
+                     autofocus onkeypress="return soloLetras(event)" value=""<?php if(isset ($animales)) echo $datos->ani_nombre;?>"" >
                 </div>
                 <div class="form-group">
                     <label for="proveedor">Proveedor</label>
                     <input type="text" required class="form-control" id="proveedor" name="proveedor" placeholder="Ingrese proveedor"
-                    autofocus onkeypress="return soloLetras(event)" value=<?php if(isset ($animales)) echo $datos->ani_proveedor;?>>
+                    autofocus onkeypress="return soloLetras(event)" value=""<?php if(isset ($animales)) echo $datos->ani_proveedor;?>"">
                 </div>
             </div>
             <style type="text/css">
@@ -85,34 +85,34 @@ if(isset ($animales))  {  $datos=$animales->row(); }
                             <div class="form-group">
                                 <label for="npadre">Nombre padre</label>
                                 <input type="text" required class="form-control" id="padre" name="padre" placeholder="Ingrese nombre del padre"
-                                autofocus onkeypress="return soloLetras(event)" value=<?php if(isset ($animales)) echo $datos->ani_padre;?>>
+                                autofocus onkeypress="return soloLetras(event)" value="<?php if(isset ($animales)) echo $datos->ani_padre;?>">
                             </div>
                             <div class="form-group">
                                 <label for="nmadre">Nombre madre</label>
                                 <input type="text" required class="form-control" id="madre" name="madre" placeholder="Ingrese nombre de la madre"
-                                autofocus onkeypress="return soloLetras(event)" value=<?php if(isset ($animales)) echo $datos->ani_madre;?>>
+                                autofocus onkeypress="return soloLetras(event)" value="<?php if(isset ($animales)) echo $datos->ani_madre;?>">
                             </div>
                             <div class="form-group">
                                 <label for="sexo">Sexo</label>
                                 <input type="text" required class="form-control" id="sexo" name="sexo" placeholder="Ingrese nombre de la madre"
-                                value=<?php if(isset ($animales)) echo $datos->ani_sexo;?>>
+                                value="<?php if(isset ($animales)) echo $datos->ani_sexo;?>">
                             </div>
                             <div class="form-group">
                                 <label for="fechanac">Fecha de nacimiento</label>
                                 <input type="date" required class="form-control" id="fechar" name="fechanac"
-                                onclick="validar();" value=<?php if(isset ($animales)) echo $datos->ani_fechanac;?>>
+                                onclick="validar();" value="<?php if(isset ($animales)) echo $datos->ani_fechanac;?>">
                             </div>
                             <div id="result"></div>
                             <div class="form-group">
                                 <label for="fechareg">Fecha de registro</label>
                                 <input type="date" required class="form-control" id="fechar" name="fechareg"
-                               onclick="validar();" value=<?php if(isset ($animales)) echo $datos->ani_fechareg;?>>
+                               onclick="validar();" value="<?php if(isset ($animales)) echo $datos->ani_fechareg;?>">
                             </div>
                             <div id="result"></div>
                             <div class="form-group">
                                 <label for="descripcion">Descripcion</label>
                                 <input type="text" required class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion"
-                                autofocus onkeypress="return soloLetras(event)" value=<?php if(isset ($animales)) echo $datos->ani_descripcion;?>>
+                                autofocus onkeypress="return soloLetras(event)" value="<?php if(isset ($animales)) echo $datos->ani_descripcion;?>">
                             </div>
                     </div>
                 </div>

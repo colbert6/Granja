@@ -13,7 +13,7 @@ if(isset ($parto))  {  $datos=$parto->row(); }
                     <div class="form-group">
                         <label for="descripcion">Identificador</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder="Ingrese descripcion" readonly="readonly"
-                           value=<?= $datos->par_id; ?>>
+                           value="<?= $datos->par_id; ?>">
                     </div>
 
                 <?php } ?>
@@ -21,34 +21,34 @@ if(isset ($parto))  {  $datos=$parto->row(); }
                 <div class="form-group">
                     <label for="nombre">RP</label>
                     <input type="text" required class="form-control" id="rp" name="rp" placeholder="Ingrese rp"
-                     value=<?php if(isset ($parto)) echo $datos->par_rp;?> >
+                     value="<?php if(isset ($parto)) echo $datos->par_rp;?>" >
                 </div>
               
                 <div class="form-group">
                     <label for="nombre">Fecha de Nacimieto</label>
                     <input type="date" required class="form-control" id="fechanac" name="fechanac" placeholder="Ingrese Fecha de nacimiento"
-                     value=<?php if(isset ($parto)) echo $datos->par_fechanac;?> >
+                     value="<?php if(isset ($parto)) echo $datos->par_fechanac;?>" >
                 </div>
                 
                 <div class="form-group">
                                 <label for="fechareg">Estado de Cria</label>
                                 <input type="text" required class="form-control" id="estado_cria" name="estado_cria" placeholder="Ingrese Estado de Cria"
-                                value=<?php if(isset ($parto)) echo $datos->par_estado_cria;?>>
+                                value="<?php if(isset ($parto)) echo $datos->par_estado_cria;?>">
                 </div>
                 <div class="form-group">
                                 <label for="fechareg">Tipo de Parto</label>
                                 <input type="text" required class="form-control" id="tipo_parto" name="tipo_parto" placeholder="Ingrese Tipo de Parto"
-                                value=<?php if(isset ($parto)) echo $datos->par_tipo_parto;?>>
+                                value="<?php if(isset ($parto)) echo $datos->par_tipo_parto;?>">
                 </div>
                 <div class="form-group">
                                 <label for="fechareg">Sexo</label>
                                 <input type="text" required class="form-control" id="sexo_cria" name="sexo_cria" placeholder="Ingrese el Sexo"
-                                value=<?php if(isset ($parto)) echo $datos->par_estado_cria;?>>
+                                value="<?php if(isset ($parto)) echo $datos->par_estado_cria;?>">
                 </div>
                 <div class="form-group">
                                 <label for="fechareg">Servicio</label>
                                 <input type="text" required class="form-control" id="servicio" name="servicio" placeholder="Ingrese Servicio"
-                                value=<?php if(isset ($parto)) echo $datos->par_servicio;?>>
+                                value="<?php if(isset ($parto)) echo $datos->par_servicio;?>">
                 </div>
                 
             </div>
