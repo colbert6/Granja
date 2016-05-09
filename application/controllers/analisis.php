@@ -26,14 +26,6 @@
             $this->load->view("/analisis/index.php",$data);
             $this->load->view("/layout/foother_table.php");
         }
-   //     public function form()
-   //     {
-   //         $resul['animales'] = $this->animales_model->select();
-   //         $data = array('consulta'=> $resul);
-   //         $this->load->view("/layout/header.php");
-   //         $this->load->view("/aborto/form.php",$resul);
-   //         $this->load->view("/layout/foother_table.php");
-   //     }
 
         public function nuevo()
         {
@@ -54,7 +46,8 @@
             }else{
 
                 $data['animales'] = $this->animales_model->select();
-             //   $data['aborto'] = $this->tipo_registro_model->select();
+                $data['tipo_analisis'] = $this->tipo_analisis_model->select();
+                $data['resultado_analisis'] = $this->resultado_analisis_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/analisis/form.php",$data);
@@ -85,6 +78,8 @@
 
                // $data['tipo_registro']=$this->tipo_registro_model->select();
                 $data['animales']=$this->animales_model->select();
+                $data['tipo_analisis'] = $this->tipo_analisis_model->select();
+                $data['resultado_analisis'] = $this->resultado_analisis_model->select();
                 $data['analisis']=$this->analisis_model->selectId( $idabo);
                 //print_r($data);
                // $data['razas']=$this->razas_model->select();

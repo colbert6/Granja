@@ -20,10 +20,11 @@ if(isset ($analisis))  {  $datos=$analisis->row(); }
                 
                 <div class="form-group">
                     <label>Animal</label>
-                    <select class="form-control" name="animal">
+                    <select class="form-control" name="animal" required>
+                        <option value=""> selecione...</option>;
                         <?php foreach ($animales->result() as $datos_a) {
                             if ($datos_a->ani_id==$datos->ana_animal) {
-                                echo "<option select value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
+                                echo "<option selected value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
                             } else {
                                echo "<option  value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
                             }
@@ -33,13 +34,24 @@ if(isset ($analisis))  {  $datos=$analisis->row(); }
                          ?>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label>Tipo Analisis</label>
+                    <select class="form-control" name="tipana" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($tipo_analisis->result() as $datos_ta) {
+                            if ($datos_ta->tipan_id==$datos->ana_animal) {
+                                echo "<option selected value='".$datos_ta->tipan_id."'>".$datos_ta->tipan_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_ta->tipan_id."'>".$datos_ta->tipan_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
+                </div>
 
                 
-                <div class="form-group">
-                    <label for="nombre">Tipo Analisis</label>
-                    <input type="text" required class="form-control" id="tipana" name="tipana" placeholder="Ingrese tipo analisis"
-                     value=<?php if(isset ($analisis)) echo $datos->ana_tipo_analisis;?> >
-                </div>
                 <div class="form-group">
                     <label for="nombre">Resultado Analisis</label>
                     <input type="text" required class="form-control" id="resultado_ana" name="resultado_ana" placeholder="Ingrese resultado"
