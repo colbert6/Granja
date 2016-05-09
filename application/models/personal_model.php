@@ -32,6 +32,7 @@
         
 
         function editar($data){
+
             $datos=array(                   'per_nombre' => $data['nombre'],
                                             'per_ape_paterno' => $data['paterno'],
                                             'per_ape_materno' => $data['materno'],
@@ -43,8 +44,9 @@
             $this->db->where('per_id',$data['id']);
             $query=$this->db->update('personal',$datos);
             return $query;
+
         }
-        
+
         function eliminar($id){
             $datos=array('per_estado' => 0   );
             $this->db->where('per_id',$id);

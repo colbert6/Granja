@@ -21,12 +21,12 @@ if(isset ($causa_no_inseminal))  {  $datos=$causa_no_inseminal->row(); }
                 <div class="form-group">
                     <label for="descripcion">Descripción</label>
                     <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion"
-                        value=<?php if(isset ($causa_no_inseminal)) echo $datos->cni_descripcion; ?> >
+                        value="<?php if(isset ($causa_no_inseminal)) echo $datos->cni_descripcion; ?>" >
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Abreviatura</label>
                     <input type="text" class="form-control" id="abreviacion" name="abreviacion" placeholder="Ingrese abreviacion"
-                        value=<?php if(isset ($causa_no_inseminal)) echo $datos->cni_abreviatura; ?> >
+                        value="<?php if(isset ($causa_no_inseminal)) echo $datos->cni_abreviatura; ?>" >
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>

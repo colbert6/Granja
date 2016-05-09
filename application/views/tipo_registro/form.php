@@ -21,7 +21,7 @@ if(isset ($tipo_registro))  {  $datos=$tipo_registro->row(); }
                 <div class="form-group">
                     <label for="descripcion">Descripcion</label>
                     <input type="text" required class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion"
-                    value=<?php if(isset ($tipo_registro)) echo $datos->tipre_descripcion; ?>>
+                    value="<?php if(isset ($tipo_registro)) echo $datos->tipre_descripcion; ?>">
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>

@@ -21,12 +21,12 @@ if(isset ($medicina_cuarto_mamarios))  {  $datos=$medicina_cuarto_mamarios->row(
                 <div class="form-group">
                     <label for="descripcion">Descripción</label>
                     <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion"
-                        value=<?php if(isset ($medicina_cuarto_mamarios)) echo $datos->mecu_descripcion; ?> >
+                        value="<?php if(isset ($medicina_cuarto_mamarios)) echo $datos->mecu_descripcion; ?>" >
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Abreviatura</label>
                     <input type="text" class="form-control" id="abreviacion" name="abreviacion" placeholder="Ingrese abreviacion"
-                        value=<?php if(isset ($medicina_cuarto_mamarios)) echo $datos->mecu_abreviatura; ?> >
+                        value="<?php if(isset ($medicina_cuarto_mamarios)) echo $datos->mecu_abreviatura; ?>" >
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>

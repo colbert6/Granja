@@ -14,7 +14,7 @@
 	    }
 
 	    function selectId($id){
-	        $this->db->where('tipreg_id',$id);
+	        $this->db->where('tipre_id',$id);
 	        $query=$this->db->get('tipo_registro');
 	        return $query;
 	   

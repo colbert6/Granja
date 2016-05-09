@@ -21,12 +21,12 @@ if(isset ($tipo_parto))  {  $datos=$tipo_parto->row(); }
                 <div class="form-group">
                     <label for="descripcion">Descripcion</label>
                     <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion"
-                        value=<?php if(isset ($tipo_parto)) echo $datos->tippar_descripcion; ?> >
+                        value="<?php if(isset ($tipo_parto)) echo $datos->tippar_descripcion; ?>" >
                 </div>
                 <div class="form-group">
                     <label for="abreviacion">Abreviacion</label>
                     <input type="text" class="form-control" id="abreviacion" name="abreviacion" placeholder="Ingrese abreviacion"
-                        value=<?php if(isset ($tipo_parto)) echo $datos->tippar_abreviatura; ?> >
+                        value="<?php if(isset ($tipo_parto)) echo $datos->tippar_abreviatura; ?>" >
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>

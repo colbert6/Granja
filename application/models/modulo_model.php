@@ -41,7 +41,7 @@
 					FROM modulo as mh ,modulo as mp , permiso as p 
 					WHERE mh.mod_padre=mp.mod_id and mh.mod_id=p.per_modulo and mh.mod_estado=1 
 						 and p.per_estado=1 and p.per_tipo_usuario=".$user.
-				"   ORDER by mp.mod_id ASC,mh.mod_id ASC  ";
+				"   ORDER by mp.mod_id ASC,mh.mod_descripcion ASC  ";
 
 	        $query=$this->db->query($sql);
 

@@ -32,7 +32,7 @@
                                 'direccion'=>$this->input->post('direccion'),
                                 'telefono'=>$this->input->post('telefono'),
                                 'distrito'=>$this->input->post('distrito'));
-                print_r($data);exit();
+                
                 $this->personal_model->crear($data);
                 $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());//auditoria
                 $this->redireccionar("personal");
