@@ -24,14 +24,7 @@
             $this->load->view("/indicaciones_especiale/index.php",$data);
             $this->load->view("/layout/foother_table.php");
         }
-   //     public function form()
-   //     {
-   //         $resul['animales'] = $this->animales_model->select();
-   //         $data = array('consulta'=> $resul);
-   //         $this->load->view("/layout/header.php");
-   //         $this->load->view("/aborto/form.php",$resul);
-   //         $this->load->view("/layout/foother_table.php");
-   //     }
+        
 
         public function nuevo()
         {
