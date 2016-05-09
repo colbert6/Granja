@@ -240,25 +240,32 @@
 
 		        //Extraer los Tipos de Analisis
                 $.post(base+"index.php/tipo_analisis/json_ExtraerTodo",function(tipo_analisis){
-                    var tipan = JSON.parse(tipo_analisis);
-                    formulario    += "<label>Tipo Analisis:</label>";
-                    formulario    += "<select class='form-control' id='id_tipan'>";
+                    //Extraer los Resultado  de Analisis
+                    $.post(base+"index.php/resultado_analisis/json_ExtraerTodo",function(resultado_analisis){
+                        var tipan = JSON.parse(tipo_analisis);
+                        var resana = JSON.parse(resultado_analisis);
+                        formulario    += "<label>Tipo Analisis:</label>";
+                        formulario    += "<select class='form-control' id='id_tipan'>";
+                        
+                        for (var i = 0; i < tipan.length; i++) {
+                            formulario    += "<option value='"+tipan[i].tipan_id+"'>"+tipan[i].tipan_descripcion+"</option>";
+                        }
+                        
+                        formulario    += "</select>";
+                        formulario    += "<label>Resultado Analisis:</label>";
+                        formulario    += "<select class='form-control' id='id_resan'>";
+                        for (var i = 0; i < resana.length; i++) {
+                            formulario    += "<option value='"+resana[i].resan_id+"'>"+resana[i].resan_descripcion+"</option>";
+                        }
+                        
+                        formulario    += "</select>";
+                        formulario    += "<label>Fecha:</label>";
+                        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                        $("#content-form").html(formulario); 
+                        $("#myModal").modal("show");  
+
+                    });
                     
-                    for (var i = 0; i < tipan.length; i++) {
-                        formulario    += "<option value='"+tipan[i].tipan_id+"'>"+tipan[i].tipan_descripcion+"</option>";
-                    }
-                    
-                    formulario    += "</select>";
-                    formulario    += "<label>Resultado Analisis:</label>";
-                    formulario    += "<select class='form-control' id='id_resan'>";
-                    //Extraer los Tipos de Analisis
-                    //$.post("",{suggest: txt},function(data){});
-                    formulario    += "<option value='1'>1</option>";
-                    formulario    += "</select>";
-                    formulario    += "<label>Fecha:</label>";
-                    formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
-                    $("#content-form").html(formulario); 
-                    $("#myModal").modal("show");  
                 });
 		        
     			break;
