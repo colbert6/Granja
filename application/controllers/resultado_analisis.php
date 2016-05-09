@@ -36,7 +36,7 @@
                 $this->redireccionar("resultado_analisis");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Registrar resltado de analisis','action'=>  'resultado_analisis/nuevo' );
+                $dato= array ( 'titulo'=> 'Registrar resultado de analisis','action'=>  'resultado_analisis/nuevo' );
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/resultado_analisis/form.php");
