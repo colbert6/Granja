@@ -321,14 +321,6 @@
                         ?>
                         </ul>
                         </li>
-                        <li>
-                            <a href="<?= base_url(); ?>index.php/calendario">
-                                <i class="fa fa-calendar"></i> <span>Calendario</span>
-                                <small class="badge pull-right bg-red"><!--3--></small>
-                            </a>
-                        </li>
-
-
                         
                     </ul>
                 </section>
