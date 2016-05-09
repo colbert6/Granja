@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-05-2016 a las 18:37:44
+-- Tiempo de generación: 09-05-2016 a las 19:28:07
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `analisis` (
   `ana_animal` int(11) DEFAULT NULL,
   `ana_fecha_evento` datetime DEFAULT NULL,
   `ana_resul_analisis` int(11) DEFAULT NULL,
-  `estado` int(11) DEFAULT NULL
+  `ana_estado` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `auditoria` (
   `aud_descripcion` varchar(200) NOT NULL,
   `aud_host` varchar(100) NOT NULL,
   `aud_registro` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `auditoria`
@@ -181,7 +181,36 @@ INSERT INTO `auditoria` (`aud_id`, `aud_tipo`, `aud_tabla`, `aud_fecha`, `aud_us
 (79, 'insertar', 'tipo_analisis', '2016-05-09 11:30:49', 1, '', 'Colbert', 1),
 (80, 'insertar', 'tipo_analisis', '2016-05-09 11:31:02', 1, '', 'Colbert', 2),
 (81, 'modificar', 'tipo_analisis', '2016-05-09 11:31:07', 1, '', 'Colbert', 2),
-(82, 'modificar', 'tipo_analisis', '2016-05-09 11:31:16', 1, '', 'Colbert', 2);
+(82, 'modificar', 'tipo_analisis', '2016-05-09 11:31:16', 1, '', 'Colbert', 2),
+(83, 'insertar', 'personal', '2016-05-09 11:42:57', 1, '', 'Colbert', 6),
+(84, 'insertar', 'tipo_enfermedad', '2016-05-09 11:43:23', 1, '', 'Colbert', 1),
+(85, 'insertar', 'tipo_enfermedad', '2016-05-09 11:43:35', 1, '', 'Colbert', 2),
+(86, 'insertar', 'tipo_parto', '2016-05-09 11:45:43', 1, '', 'Colbert', 1),
+(87, 'insertar', 'tipo_parto', '2016-05-09 11:45:57', 1, '', 'Colbert', 2),
+(88, 'insertar', 'tipo_servicio', '2016-05-09 11:46:19', 1, '', 'Colbert', 1),
+(89, 'insertar', 'tipo_servicio', '2016-05-09 11:46:29', 1, '', 'Colbert', 2),
+(90, 'modificar', 'modulo', '2016-05-09 11:46:52', 1, '', 'Colbert', 19),
+(91, 'insertar', 'causa_aborto', '2016-05-09 11:47:11', 1, '', 'Colbert', 1),
+(92, 'insertar', 'causa_aborto', '2016-05-09 11:47:20', 1, '', 'Colbert', 2),
+(93, 'modificar', 'modulo', '2016-05-09 11:47:58', 1, '', 'Colbert', 20),
+(94, 'insertar', 'modulo', '2016-05-09 11:51:10', 1, '', 'Colbert', 60),
+(95, 'insertar', 'causa_no_inseminal', '2016-05-09 12:04:15', 1, '', 'Colbert', 1),
+(96, 'insertar', 'causa_no_inseminal', '2016-05-09 12:04:21', 1, '', 'Colbert', 2),
+(97, 'insertar', 'causa_rechazo', '2016-05-09 12:04:46', 1, '', 'Colbert', 1),
+(98, 'insertar', 'causa_rechazo', '2016-05-09 12:04:51', 1, '', 'Colbert', 2),
+(99, 'insertar', 'diagnostico_utero', '2016-05-09 12:05:21', 1, '', 'Colbert', 1),
+(100, 'insertar', 'diagnostico_utero', '2016-05-09 12:05:26', 1, '', 'Colbert', 2),
+(101, 'insertar', 'raza', '2016-05-09 12:06:36', 1, '', 'Colbert', 1),
+(102, 'insertar', 'raza', '2016-05-09 12:06:41', 1, '', 'Colbert', 2),
+(103, 'insertar', 'enfermedad_utero', '2016-05-09 12:07:10', 1, '', 'Colbert', 1),
+(104, 'modificar', 'enfermedad_utero', '2016-05-09 12:07:24', 1, '', 'Colbert', 1),
+(105, 'insertar', 'enfermedad_utero', '2016-05-09 12:07:39', 1, '', 'Colbert', 2),
+(106, 'insertar', 'especificacion_muerte', '2016-05-09 12:08:28', 1, '', 'Colbert', 1),
+(107, 'insertar', 'especificacion_muerte', '2016-05-09 12:09:35', 1, '', 'Colbert', 2),
+(108, 'insertar', 'especificacion_venta', '2016-05-09 12:09:59', 1, '', 'Colbert', 1),
+(109, 'insertar', 'especificacion_venta', '2016-05-09 12:10:16', 1, '', 'Colbert', 2),
+(110, 'insertar', 'estado_cria', '2016-05-09 12:10:37', 1, '', 'Colbert', 1),
+(111, 'insertar', 'estado_cria', '2016-05-09 12:10:48', 1, '', 'Colbert', 2);
 
 -- --------------------------------------------------------
 
@@ -194,7 +223,15 @@ CREATE TABLE IF NOT EXISTS `causa_aborto` (
   `ca_descripcion` varchar(70) NOT NULL,
   `ca_abreviatura` varchar(30) NOT NULL,
   `ca_estado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `causa_aborto`
+--
+
+INSERT INTO `causa_aborto` (`ca_id`, `ca_descripcion`, `ca_abreviatura`, `ca_estado`) VALUES
+(1, 'causa aborto 1', 'cauabo1', 1),
+(2, 'causa aborto 2', 'cauabo2', 1);
 
 -- --------------------------------------------------------
 
@@ -207,7 +244,15 @@ CREATE TABLE IF NOT EXISTS `causa_no_inseminal` (
   `cni_descripcion` varchar(150) NOT NULL,
   `cni_abreviatura` varchar(50) NOT NULL,
   `cni_estado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `causa_no_inseminal`
+--
+
+INSERT INTO `causa_no_inseminal` (`cni_id`, `cni_descripcion`, `cni_abreviatura`, `cni_estado`) VALUES
+(1, 'causa no inseminal 1', 'caunoins1', 1),
+(2, 'causa no inseminal 2', 'caunoins2', 1);
 
 -- --------------------------------------------------------
 
@@ -220,7 +265,15 @@ CREATE TABLE IF NOT EXISTS `causa_rechazo` (
   `cr_descripcion` varchar(150) NOT NULL,
   `cr_abreviatura` varchar(50) NOT NULL,
   `cr_esta` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `causa_rechazo`
+--
+
+INSERT INTO `causa_rechazo` (`cr_id`, `cr_descripcion`, `cr_abreviatura`, `cr_esta`) VALUES
+(1, 'causa rechazo 1', 'caurec1', 1),
+(2, 'causa rechazo 2', 'caurec2', 1);
 
 -- --------------------------------------------------------
 
@@ -249,7 +302,15 @@ CREATE TABLE IF NOT EXISTS `diagnostico_utero` (
   `diaut_descripcion` varchar(150) NOT NULL,
   `diaut_abreviatura` varchar(50) NOT NULL,
   `diaut_estado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `diagnostico_utero`
+--
+
+INSERT INTO `diagnostico_utero` (`diaut_id`, `diaut_descripcion`, `diaut_abreviatura`, `diaut_estado`) VALUES
+(1, 'diagnostico utero 1', 'diaute1', 1),
+(2, 'diagnostico utero 2', 'diaute2', 1);
 
 -- --------------------------------------------------------
 
@@ -278,7 +339,15 @@ CREATE TABLE IF NOT EXISTS `enfermedad_ovario` (
   `enfov_descripcion` varchar(150) NOT NULL,
   `enfov_abreviatura` varchar(50) NOT NULL,
   `enfov_estado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `enfermedad_ovario`
+--
+
+INSERT INTO `enfermedad_ovario` (`enfov_id`, `enfov_descripcion`, `enfov_abreviatura`, `enfov_estado`) VALUES
+(1, 'enfermedad ovario 1', 'enfova1', 1),
+(2, 'enfermedad ovario 2', 'enfova2', 1);
 
 -- --------------------------------------------------------
 
@@ -291,7 +360,15 @@ CREATE TABLE IF NOT EXISTS `enfermedad_utero` (
   `enfut_descripcion` varchar(150) NOT NULL,
   `enfut_abreviatura` varchar(50) NOT NULL,
   `enfut_estado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `enfermedad_utero`
+--
+
+INSERT INTO `enfermedad_utero` (`enfut_id`, `enfut_descripcion`, `enfut_abreviatura`, `enfut_estado`) VALUES
+(1, 'enfermedad utero 1', 'enfute1', 1),
+(2, 'enfermedad utero 2', 'enfute2', 1);
 
 -- --------------------------------------------------------
 
@@ -304,7 +381,15 @@ CREATE TABLE IF NOT EXISTS `especificacion_muerte` (
   `espmu_descripcion` varchar(150) NOT NULL,
   `espmu_abreviatura` varchar(50) NOT NULL,
   `espmu_estado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `especificacion_muerte`
+--
+
+INSERT INTO `especificacion_muerte` (`espmu_id`, `espmu_descripcion`, `espmu_abreviatura`, `espmu_estado`) VALUES
+(1, 'especificacion muerte 1', 'espmue1', 1),
+(2, 'especificacion muerte 2', 'espmue2', 1);
 
 -- --------------------------------------------------------
 
@@ -317,7 +402,15 @@ CREATE TABLE IF NOT EXISTS `especificacion_venta` (
   `espve_descripcion` varchar(100) DEFAULT NULL,
   `espve_abreviatura` varchar(50) DEFAULT NULL,
   `espve_estado` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `especificacion_venta`
+--
+
+INSERT INTO `especificacion_venta` (`espve_id`, `espve_descripcion`, `espve_abreviatura`, `espve_estado`) VALUES
+(1, 'especificacion venta 1', 'espven1', 1),
+(2, 'especificacion venta 2', 'espven2', 1);
 
 -- --------------------------------------------------------
 
@@ -330,7 +423,15 @@ CREATE TABLE IF NOT EXISTS `estado_cria` (
   `estcr_descripcion` varchar(100) DEFAULT NULL,
   `estcr_abreviatura` varchar(50) DEFAULT NULL,
   `estcr_estado` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `estado_cria`
+--
+
+INSERT INTO `estado_cria` (`estcr_id`, `estcr_descripcion`, `estcr_abreviatura`, `estcr_estado`) VALUES
+(1, ' estado cria 1', 'estcri1', 1),
+(2, ' estado cria 2', 'estcri2', 1);
 
 -- --------------------------------------------------------
 
@@ -455,7 +556,7 @@ CREATE TABLE IF NOT EXISTS `modulo` (
   `mod_padre` int(11) NOT NULL,
   `mod_url` varchar(50) NOT NULL,
   `mod_estado` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `modulo`
@@ -480,8 +581,8 @@ INSERT INTO `modulo` (`mod_id`, `mod_descripcion`, `mod_padre`, `mod_url`, `mod_
 (16, 'Tipo Enfermedad', 41, 'tipo_enfermedad', 1),
 (17, 'Tipo Parto', 41, 'tipo_parto', 1),
 (18, 'Tipo Servicio', 41, 'tipo_servicio', 1),
-(19, 'Causa Aborto', 41, 'causa aborto', 1),
-(20, 'Causa No Inseminal', 41, 'causa no inseminal', 1),
+(19, 'Causa Aborto', 41, 'causa_aborto', 1),
+(20, 'Causa No Inseminal', 41, 'causa_no_inseminal', 1),
 (21, 'Causa Rechazo', 41, 'causa_rechazo', 1),
 (22, 'Diagnostico Utero', 41, 'diagnostico_utero', 1),
 (23, 'Enfermedad Ovario', 41, 'enfermedad_ovario', 1),
@@ -506,7 +607,8 @@ INSERT INTO `modulo` (`mod_id`, `mod_descripcion`, `mod_padre`, `mod_url`, `mod_
 (42, 'Evento', 0, '#', 1),
 (43, 'Sistema', 0, '#', 1),
 (44, 'Calendario', 0, '#', 1),
-(59, 'Calendario', 44, 'calendario', 1);
+(59, 'Calendario', 44, 'calendario', 1),
+(60, 'Medicamentos', 41, 'medicamentos', 1);
 
 -- --------------------------------------------------------
 
@@ -597,6 +699,7 @@ INSERT INTO `permiso` (`per_tipo_usuario`, `per_modulo`, `per_estado`) VALUES
 (1, 39, 1),
 (1, 40, 1),
 (1, 59, 1),
+(1, 60, 0),
 (3, 1, 0),
 (3, 2, 0),
 (3, 3, 0),
@@ -638,6 +741,7 @@ INSERT INTO `permiso` (`per_tipo_usuario`, `per_modulo`, `per_estado`) VALUES
 (3, 39, 1),
 (3, 40, 1),
 (3, 59, 0),
+(3, 60, 0),
 (8, 1, 0),
 (8, 2, 0),
 (8, 3, 0),
@@ -678,7 +782,8 @@ INSERT INTO `permiso` (`per_tipo_usuario`, `per_modulo`, `per_estado`) VALUES
 (8, 38, 0),
 (8, 39, 0),
 (8, 40, 0),
-(8, 59, 0);
+(8, 59, 0),
+(8, 60, 0);
 
 -- --------------------------------------------------------
 
@@ -697,7 +802,7 @@ CREATE TABLE IF NOT EXISTS `personal` (
   `per_estado` int(11) NOT NULL,
   `per_tipo_personal` int(11) NOT NULL,
   `per_distrito` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `personal`
@@ -708,7 +813,8 @@ INSERT INTO `personal` (`per_id`, `per_dni`, `per_nombre`, `per_ape_paterno`, `p
 (2, '', 'colbert', 'calampa', 'Tantachuco', 'Jr. Mariscal Sucre', '973949944', 1, 1, 0),
 (3, '', 'Jose', 'Villanueva', 'Davila', '', '', 1, 1, 0),
 (4, '', 'Willy', 'Lopez', 'Leonardo', '', '', 1, 1, 0),
-(5, '', 'Sergio', 'Santos', 'Martinez', '', '', 1, 1, 0);
+(5, '', 'Sergio', 'Santos', 'Martinez', '', '', 1, 1, 0),
+(6, '', 'Diego', 'Contreras', 'Ishuiza', '', '', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -886,7 +992,15 @@ CREATE TABLE IF NOT EXISTS `tipo_enfermedad` (
   `tipen_descripcion` varchar(100) DEFAULT NULL,
   `tipen_abreviatura` varchar(50) DEFAULT NULL,
   `tipen_estado` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipo_enfermedad`
+--
+
+INSERT INTO `tipo_enfermedad` (`tipen_id`, `tipen_descripcion`, `tipen_abreviatura`, `tipen_estado`) VALUES
+(1, 'tipo enfermedad', 'tipenf1', 1),
+(2, 'tipo enfermedad 2', 'tipenf2', 1);
 
 -- --------------------------------------------------------
 
@@ -899,7 +1013,15 @@ CREATE TABLE IF NOT EXISTS `tipo_parto` (
   `tippar_descripcion` varchar(100) DEFAULT NULL,
   `tippar_abreviatura` varchar(50) DEFAULT NULL,
   `tippar_estado` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipo_parto`
+--
+
+INSERT INTO `tipo_parto` (`tippar_id`, `tippar_descripcion`, `tippar_abreviatura`, `tippar_estado`) VALUES
+(1, 'tipo parto 1', 'tippar1', 1),
+(2, 'tipo parto 2', 'tippar2', 1);
 
 -- --------------------------------------------------------
 
@@ -935,7 +1057,15 @@ CREATE TABLE IF NOT EXISTS `tipo_servicio` (
   `tipse_descripcion` varchar(150) NOT NULL,
   `tipse_abreviatura` varchar(50) NOT NULL,
   `tipse_estado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipo_servicio`
+--
+
+INSERT INTO `tipo_servicio` (`tipse_id`, `tipse_descripcion`, `tipse_abreviatura`, `tipse_estado`) VALUES
+(1, 'Tipo Servicio 1', 'tipser1', 1),
+(2, 'Tipo Servicio 2', 'tipser2', 1);
 
 -- --------------------------------------------------------
 
@@ -1304,22 +1434,22 @@ MODIFY `ani_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT de la tabla `auditoria`
 --
 ALTER TABLE `auditoria`
-MODIFY `aud_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=83;
+MODIFY `aud_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=112;
 --
 -- AUTO_INCREMENT de la tabla `causa_aborto`
 --
 ALTER TABLE `causa_aborto`
-MODIFY `ca_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `ca_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `causa_no_inseminal`
 --
 ALTER TABLE `causa_no_inseminal`
-MODIFY `cni_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `cni_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `causa_rechazo`
 --
 ALTER TABLE `causa_rechazo`
-MODIFY `cr_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `cr_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `celo`
 --
@@ -1329,7 +1459,7 @@ MODIFY `celo_id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `diagnostico_utero`
 --
 ALTER TABLE `diagnostico_utero`
-MODIFY `diaut_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `diaut_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `enfermedad`
 --
@@ -1339,27 +1469,27 @@ MODIFY `enf_id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `enfermedad_ovario`
 --
 ALTER TABLE `enfermedad_ovario`
-MODIFY `enfov_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `enfov_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `enfermedad_utero`
 --
 ALTER TABLE `enfermedad_utero`
-MODIFY `enfut_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `enfut_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `especificacion_muerte`
 --
 ALTER TABLE `especificacion_muerte`
-MODIFY `espmu_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `espmu_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `especificacion_venta`
 --
 ALTER TABLE `especificacion_venta`
-MODIFY `espve_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `espve_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `estado_cria`
 --
 ALTER TABLE `estado_cria`
-MODIFY `estcr_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `estcr_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `indicaciones_especiale`
 --
@@ -1399,7 +1529,7 @@ MODIFY `mecu_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT de la tabla `modulo`
 --
 ALTER TABLE `modulo`
-MODIFY `mod_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=60;
+MODIFY `mod_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT de la tabla `muerte`
 --
@@ -1414,7 +1544,7 @@ MODIFY `par_id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `personal`
 --
 ALTER TABLE `personal`
-MODIFY `per_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `per_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `raza`
 --
@@ -1464,12 +1594,12 @@ MODIFY `tipan_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT de la tabla `tipo_enfermedad`
 --
 ALTER TABLE `tipo_enfermedad`
-MODIFY `tipen_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `tipen_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tipo_parto`
 --
 ALTER TABLE `tipo_parto`
-MODIFY `tippar_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `tippar_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tipo_registro`
 --
@@ -1479,7 +1609,7 @@ MODIFY `tipre_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT de la tabla `tipo_servicio`
 --
 ALTER TABLE `tipo_servicio`
-MODIFY `tipse_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `tipse_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
