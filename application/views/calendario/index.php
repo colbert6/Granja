@@ -270,6 +270,14 @@
 		        
     			break;
     		case '3':
+                
+                /*$.post(base+"index.php/tipo_analisis/json_ExtraerTodo",function(causa_no_inseminal){
+                    $.post(base+"index.php/tipo_analisis/json_ExtraerTodo",function(medicina_genital){
+                        $.post(base+"index.php/tipo_analisis/json_ExtraerTodo",function(via_aplicacion){
+
+                        });
+                    });
+                });*/
     			formulario 	  += "<label>Causa no Inseminal:</label>";
     			formulario    += "<select class='form-control' id='id_cni'>";
 		        //Extraer los Tipos de Analisis

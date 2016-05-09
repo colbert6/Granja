@@ -3,24 +3,24 @@
     /**
     * 
     */
-    class Medicina_genital extends CI_Controller
+    class Causa_rechazo extends CI_Controller
     {   
         var $menu;//este copiar
-        var $tabla='medicina_genital';//auditoria
+        var $tabla='causa_rechazo';//auditoria
         function __construct(){
             parent::__construct();
-            $this->load->model('medicina_genital_model');
+            $this->load->model('causa_rechazo_model');
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));//este copiar
         }
         
         public function index()
         {
-            $data['medicina_genital'] = $this->medicina_genital_model->select();
+            $data['causa_rechazo'] = $this->causa_rechazo_model->select();
 
-            $dato= array ( 'titulo'=> 'Lista de tipo servicio');
+            $dato= array ( 'titulo'=> 'Lista de causa rechazo');
             
             $this->load->view("/layout/header.php",$dato);
-            $this->load->view("/medicina_genital/index.php",$data);
+            $this->load->view("/causa_rechazo/index.php",$data);
             $this->load->view("/layout/foother_table.php");
         }
         
@@ -31,15 +31,15 @@
                 $data= array ( 'descripcion'=> $this->input->post('descripcion'),
                               'abreviacion'=> $this->input->post('abreviacion')  );
 
-                $this->medicina_genital_model->crear($data);
+                $this->causa_rechazo_model->crear($data);
                 $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());//auditoria
-                $this->redireccionar("medicina_genital");
+                $this->redireccionar("causa_rechazo");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Registrar tipo de servicio','action'=>  'medicina_genital/nuevo' );
+                $dato= array ( 'titulo'=> 'Registrar tipo de servicio','action'=>  'causa_rechazo/nuevo' );
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/medicina_genital/form.php");
+                $this->load->view("/causa_rechazo/form.php");
                 $this->load->view("/layout/foother.php");
 
             }
@@ -53,18 +53,18 @@
                                 'descripcion'=> $this->input->post('descripcion'),
                                 'abreviacion'=> $this->input->post('abreviacion')  );
 
-                $this->medicina_genital_model->editar($data);
+                $this->causa_rechazo_model->editar($data);
                 $this->auditoria('modificar',$this->tabla,'', $data['id']);//auditoria
-                $this->redireccionar("medicina_genital");
+                $this->redireccionar("causa_rechazo");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar tipo de enfermedad','action'=>  'medicina_genital/editar' );
+                $dato= array ( 'titulo'=> 'Editar tipo de enfermedad','action'=>  'causa_rechazo/editar' );
                 $idRaza=$this->uri-> segment(3);
 
-                $data['medicina_genital']=$this->medicina_genital_model->selectId( $idRaza);
+                $data['causa_rechazo']=$this->causa_rechazo_model->selectId( $idRaza);
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/medicina_genital/form.php",$data);
+                $this->load->view("/causa_rechazo/form.php",$data);
                 $this->load->view("/layout/foother.php");
 
             }
@@ -75,9 +75,9 @@
         {
             $id=$this->uri-> segment(3);
             
-            $this->medicina_genital_model->eliminar($id);
+            $this->causa_rechazo_model->eliminar($id);
             $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
-            $this->redireccionar("medicina_genital");
+            $this->redireccionar("causa_rechazo");
             
             
         }

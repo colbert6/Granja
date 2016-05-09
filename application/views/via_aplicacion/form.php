@@ -15,18 +15,18 @@ if(isset ($via_aplicacion))  {  $datos=$via_aplicacion->row(); }
                     <div class="form-group">
                         <label for="descripcion">Identificador</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder="Ingrese descripcion" readonly="readonly"
-                           value=<?= $datos->viaap_id; ?>>
+                           value=<?= $datos->viaap _id; ?>>
                     </div>
                 <?php } ?>  
                 <div class="form-group">
                     <label for="descripcion">Descripción</label>
                     <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion"
-                        value=<?php if(isset ($via_aplicacion)) echo $datos->viaap_descripcion; ?> >
+                        value=<?php if(isset ($via_aplicacion)) echo $datos->viaap _descripcion; ?> >
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Abreviatura</label>
                     <input type="text" class="form-control" id="abreviacion" name="abreviacion" placeholder="Ingrese abreviacion"
-                        value=<?php if(isset ($via_aplicacion)) echo $datos->viaap_abreviatura; ?> >
+                        value=<?php if(isset ($via_aplicacion)) echo $datos->viaap _abreviatura; ?> >
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>
