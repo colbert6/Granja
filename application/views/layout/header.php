@@ -244,7 +244,7 @@
                                 <li class="user-header bg-light-blue">
                                     <img src="<?= base_url();?>img/avatar04.png" class="img-circle" alt="User Image" />
                                     <p>
-                                        <?= $this->session->userdata('nombre')." - ".$this->session->userdata('tipo_usu') ?>
+                                        <?= $this->session->userdata('nombre')." - ".$this->session->userdata('tipo_usuario') ?>
                                         <small>Usuario Activo</small>
                                     </p>
                                 </li>
