@@ -114,9 +114,9 @@
         <input type="hidden" id='url' />
       <div class="modal-body">
 
-        
+            <form method='post' id='form' name='form'>
                 <label>Evento:</label>
-                <select class="form-control" id="id_evento">
+                <select class="form-control" id="evento">
                     <option value="1">Aborto</option>
                     <option value="2">Analisis</option>
                     <option value="3">Celo</option>
@@ -140,12 +140,10 @@
                 <div id='content-form'>
                 	
                 </div>
-
-
-        
+            </form>
       </div>
       <div class="modal-footer">
-        <button type="button" onclick='crearEvento();' class="btn btn-success" data-dismiss="modal">Guardar</button>
+        <button type="button" onclick='crearEvento();' class="btn btn-success">Guardar</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
          
       </div>
@@ -314,11 +312,11 @@
     		case '4':
                 $.post(base+"index.php/tipo_enfermedad/json_ExtraerTodo",function(tipo_enfermedad){
                     $.post(base+"index.php/via_aplicacion/json_ExtraerTodo",function(via_aplicacion){
-                        //$.post(base+"index.php/medicamentos/json_ExtraerTodo",function(medicamentos){
+                        $.post(base+"index.php/medicamentos/json_ExtraerTodo",function(medicamentos){
 
                             var tipen = JSON.parse(tipo_enfermedad);
                             var viaap = JSON.parse(via_aplicacion);
-                            //var medi = JSON.parse(medicamentos);
+                            var medi = JSON.parse(medicamentos);
                             formulario    += "<label>Tipo de Enfermedad:</label>";
                             formulario    += "<select class='form-control' id='id_tipen'>";
                             for (var i = 0; i < tipen.length; i++) {
@@ -327,9 +325,9 @@
                             formulario    += "</select>";
                             formulario    += "<label>Medicamento:</label>";
                             formulario    += "<select class='form-control' id='id_medi'>";
-                            /*for (var i = 0; i < medi.length; i++) {
+                            for (var i = 0; i < medi.length; i++) {
                                 formulario    += "<option value='"+medi[i].medi_id+"'>"+medi[i].medi_descripcion+"</option>";
-                            }*/
+                            }
                             formulario    += "</select>";
                             formulario    += "<label>Via Aplicacion:</label>";
                             formulario    += "<select class='form-control' id='id_viaap'>";
@@ -342,7 +340,7 @@
 
                             $("#content-form").html(formulario); 
                             $("#myModal").modal("show");
-                        //});
+                        });
                     });
                     
                 });
@@ -543,6 +541,63 @@
     	
     }
     function crearEvento() {
-        document.getElementById($("#fila").val()+","+$("#mes").val()).innerHTML = "<img src='"+$("#url").val()+"img/calendar.png'>";
+        var guardar = validar_formulario();
+        //console.log(guardar);
+        num_evento = $("#evento").val();
+        
+        if(guardar){
+            switch(num_evento){
+                case 1:
+                    $.post(base+"index.php/aborto/json_Nuevo", {"animal":$("#animal").val(), "cauabor": $("#id_causa_aborto").val(),"fecha":$("#fecha_evento").val() } );
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                case 10:
+                    break;
+                case 11:
+                    break;
+                case 12:
+                    break;
+                case 13:
+                    break;
+            }    
+            $("#myModal").modal("hide");
+        }
+        //document.getElementById($("#fila").val()+","+$("#mes").val()).innerHTML = "<img src='"+$("#url").val()+"img/calendar.png'>";
+    }
+    function validar_formulario(){
+        /*frm=document.forms.form;
+        cant_elementos = frm.elements.length;
+        for (var i = 0; i < cant_elementos; i++) {
+            var elemento = frm.elements[i];
+            if(elemento.type=="text"){
+                valor = elemento.value;
+                if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ) {
+                    elemento.style.border = ""
+                }
+            }else if(elemento.type=="select-one"){
+                indice = elemento.selectedIndex;
+                if( indice == null || indice == 0 ) {
+                    alert(indice);
+                }
+            }else if(elemento.type=="date"){
+                //alert(elemento.value);
+            } 
+        }*/
+        return true;
     }
 </script>

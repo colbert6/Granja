@@ -11,6 +11,9 @@
             parent::__construct();
             $this->load->model('celo_model');
             $this->load->model('animales_model');
+            $this->load->model('medicina_genital_model');
+            $this->load->model('via_aplicacion_model');
+            $this->load->model('causa_no_inseminal_model');
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
         }
         
@@ -53,7 +56,9 @@
             }else{
 
                 $data['animales'] = $this->animales_model->select();
-             //   $data['aborto'] = $this->tipo_registro_model->select();
+                $data['medicina_genital'] = $this->medicina_genital_model->select();
+                $data['via_aplicacion'] = $this->via_aplicacion_model->select();
+                $data['causa_no_inseminal'] = $this->causa_no_inseminal_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/celo/form.php",$data  );
@@ -83,11 +88,11 @@
                 $dato= array ( 'titulo'=> 'Editar Celo','action'=>  'celo/editar' );
                 $idabo=$this->uri-> segment(3);
 
-               // $data['tipo_registro']=$this->tipo_registro_model->select();
-               // $data['animales']=$this->animales_model->select();
+                $data['animales']=$this->animales_model->select();
                 $data['celo']=$this->celo_model->selectId( $idabo);
-                //print_r($data);
-               // $data['razas']=$this->razas_model->select();
+                $data['medicina_genital'] = $this->medicina_genital_model->select();
+                $data['via_aplicacion'] = $this->via_aplicacion_model->select();
+                $data['causa_no_inseminal'] = $this->causa_no_inseminal_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/celo/form.php",$data);

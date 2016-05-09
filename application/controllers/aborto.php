@@ -107,6 +107,17 @@
             
         }
 
+        public function json_Nuevo(){
+            $data= array ( 'animal'=> $_POST["animal"],
+                           'cauabor'=> $_POST["cauabor"],
+                           'fecha'=> $_POST["fecha"]
+                        );
+            $this->aborto_model->crear($data);
+        }
+
+
+
+
 
     }
  ?>
