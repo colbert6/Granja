@@ -1,4 +1,4 @@
-<?php 
+"<?php 
 if(isset ($aborto))  {  $datos=$aborto->row(); }  
 ?>
 <div class="col-md-6">
@@ -13,7 +13,7 @@ if(isset ($aborto))  {  $datos=$aborto->row(); }
                     <div class="form-group">
                         <label for="descripcion">Identificador</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder="Ingrese descripcion" readonly="readonly"
-                           value=<?= $datos->ab_id; ?>>
+                           value="<?= $datos->ab_id; ?>">
                     </div>
 
                 <?php } ?>
@@ -40,12 +40,12 @@ if(isset ($aborto))  {  $datos=$aborto->row(); }
                 <div class="form-group">
                     <label for="nombre">Causa Aborto</label>
                     <input type="text" class="form-control" id="cauabor" name="cauabor" required placeholder="Ingrese causa de aborto"
-                     value=<?php if(isset ($aborto)) echo $datos->ab_causa_aborto;?> >
+                     value="<?php if(isset ($aborto)) echo $datos->ab_causa_aborto;?>" >
                 </div>
                 <div class="form-group">
                                 <label for="fechareg">Fecha Evento</label>
                                 <input type="date" class="form-control" id="fecha" name="fecha" required
-                                value=<?php if(isset ($aborto)) echo $datos->ab_fecha_evento;?>>
+                                value="<?php if(isset ($aborto)) echo $datos->ab_fecha_evento;?>">
                             </div>
                 
             </div>
