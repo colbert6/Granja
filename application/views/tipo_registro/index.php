@@ -6,7 +6,7 @@
 			        <tr>
 			            <th>ID</th>
 			            <th>DESCRIPCION</th>
-			            <th>ACIONES</th>
+			            <th>ACCIONES</th>
 			        </tr>
 			    </thead>
 			    <tbody>
