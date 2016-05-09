@@ -293,9 +293,9 @@
                             formulario    += "</select>";
                             formulario    += "<label>Via Aplicacion:</label>";
                             formulario    += "<select class='form-control' id='id_viaap'>";
-                            //Extraer los Tipos de Analisis
-                            //$.post("",{suggest: txt},function(data){});
-                            formulario    += "<option value='1'>1</option>";
+                            for (var i = 0; i < viaap.length; i++) {
+                                    formulario    += "<option value='"+viaap[i].viaap_id+"'>"+viaap[i].viaap_descripcion+"</option>";
+                            }
                             formulario    += "</select>";
                             formulario    += "<label>Fecha:</label>";
                             formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
@@ -312,29 +312,41 @@
     			
     			break;
     		case '4':
-    			formulario 	  += "<label>Tipo de Enfermedad:</label>";
-    			formulario    += "<select class='form-control' id='id_tipen'>";
-		        //Extraer los Tipos de Analisis
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario 	  += "<label>Medicamento:</label>";
-		        formulario    += "<select class='form-control' id='id_medi'>";
-		        //Extraer los Tipos de Analisis
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario 	  += "<label>Via Aplicacion:</label>";
-		        formulario    += "<select class='form-control' id='id_viaap'>";
-		        //Extraer los Tipos de Analisis
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario    += "<label>Fecha:</label>";
-		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                $.post(base+"index.php/tipo_enfermedad/json_ExtraerTodo",function(tipo_enfermedad){
+                    $.post(base+"index.php/via_aplicacion/json_ExtraerTodo",function(via_aplicacion){
+                        //$.post(base+"index.php/medicamentos/json_ExtraerTodo",function(medicamentos){
 
-    			$("#content-form").html(formulario); 
-				$("#myModal").modal("show");
+                            var tipen = JSON.parse(tipo_enfermedad);
+                            var viaap = JSON.parse(via_aplicacion);
+                            //var medi = JSON.parse(medicamentos);
+                            formulario    += "<label>Tipo de Enfermedad:</label>";
+                            formulario    += "<select class='form-control' id='id_tipen'>";
+                            for (var i = 0; i < tipen.length; i++) {
+                                formulario    += "<option value='"+tipen[i].tipen_id+"'>"+tipen[i].tipen_descripcion+"</option>";
+                            }
+                            formulario    += "</select>";
+                            formulario    += "<label>Medicamento:</label>";
+                            formulario    += "<select class='form-control' id='id_medi'>";
+                            /*for (var i = 0; i < medi.length; i++) {
+                                formulario    += "<option value='"+medi[i].medi_id+"'>"+medi[i].medi_descripcion+"</option>";
+                            }*/
+                            formulario    += "</select>";
+                            formulario    += "<label>Via Aplicacion:</label>";
+                            formulario    += "<select class='form-control' id='id_viaap'>";
+                            for (var i = 0; i < viaap.length; i++) {
+                                formulario    += "<option value='"+viaap[i].viaap_id+"'>"+viaap[i].viaap_descripcion+"</option>";
+                            }
+                            formulario    += "</select>";
+                            formulario    += "<label>Fecha:</label>";
+                            formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+
+                            $("#content-form").html(formulario); 
+                            $("#myModal").modal("show");
+                        //});
+                    });
+                    
+                });
+    			
     			break;
     		case '5':
     			formulario 	  += "<label>Indicaciones Especiales:</label>";

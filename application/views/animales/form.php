@@ -34,7 +34,7 @@ if(isset ($animales))  {  $datos=$animales->row(); }
                         <?php foreach ($razas->result() as $datos_r) {
 
                             if ($datos_r->raz_id==$datos->ani_raza) {
-                                echo "<option select value='".$datos_r->raz_id."'>".$datos_r->raz_descripcion."</option>";
+                                echo "<option selected value='".$datos_r->raz_id."'>".$datos_r->raz_descripcion."</option>";
                             } else {
                                echo "<option  value='".$datos_r->raz_id."'>".$datos_r->raz_descripcion."</option>";
                             }

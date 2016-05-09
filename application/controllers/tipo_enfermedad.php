@@ -81,6 +81,12 @@
             
             
         }
+
+        public function json_ExtraerTodo()
+        {
+            $data['tipo_enfermedad'] = $this->tipo_enfermedad_model->select();
+            echo json_encode($data['tipo_enfermedad']->result());            
+        }
     }
  ?>
 
