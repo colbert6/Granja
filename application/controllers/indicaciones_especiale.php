@@ -11,6 +11,7 @@
             parent::__construct();
             $this->load->model('indicaciones_especiale_model');
             $this->load->model('animales_model');
+            $this->load->model('indicacion_especial_model');
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
         }
         
@@ -44,7 +45,7 @@
             }else{
 
                 $data['animales'] = $this->animales_model->select();
-             //   $data['aborto'] = $this->tipo_registro_model->select();
+                $data['indicacion_especial'] = $this->indicacion_especial_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/indicaciones_especiale/form.php",$data  );
@@ -72,11 +73,10 @@
                 $dato= array ( 'titulo'=> 'Editar Indicaciones Especiale','action'=>  'indicaciones_especiale/editar' );
                 $idabo=$this->uri-> segment(3);
 
-               // $data['tipo_registro']=$this->tipo_registro_model->select();
-               // $data['animales']=$this->animales_model->select();
+                $data['indicacion_especial']=$this->indicacion_especial_model->select();
+                $data['animales']=$this->animales_model->select();
                 $data['indicaciones_especiale']=$this->indicaciones_especiale_model->selectId( $idabo);
-                //print_r($data['indicaciones_especiale']);
-               // $data['razas']=$this->razas_model->select();
+                
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/indicaciones_especiale/form.php",$data);

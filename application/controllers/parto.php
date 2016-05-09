@@ -10,6 +10,9 @@
             parent::__construct();
             $this->load->model('parto_model');
             $this->load->model('animales_model');
+            $this->load->model('estado_cria_model');
+            $this->load->model('tipo_parto_model');
+            $this->load->model('servicio_model');
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
         }
         
@@ -23,14 +26,6 @@
             $this->load->view("/parto/index.php",$data);
             $this->load->view("/layout/foother_table.php");
         }
-   //     public function form()
-   //     {
-   //         $resul['animales'] = $this->animales_model->select();
-   //         $data = array('consulta'=> $resul);
-   //         $this->load->view("/layout/header.php");
-   //         $this->load->view("/aborto/form.php",$resul);
-   //         $this->load->view("/layout/foother_table.php");
-   //     }
 
         public function nuevo()
         {
@@ -53,7 +48,9 @@
             }else{
 
                 $data['animales'] = $this->animales_model->select();
-             //   $data['aborto'] = $this->tipo_registro_model->select();
+                $data['estado_cria'] = $this->estado_cria_model->select();
+                $data['tipo_parto'] = $this->tipo_parto_model->select();
+                $data['servicio'] = $this->servicio_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/parto/form.php",$data  );
@@ -83,11 +80,12 @@
                 $dato= array ( 'titulo'=> 'Editar Parto','action'=>  'parto/editar' );
                 $idabo=$this->uri-> segment(3);
 
-               // $data['tipo_registro']=$this->tipo_registro_model->select();
-               // $data['animales']=$this->animales_model->select();
+                $data['animales'] = $this->animales_model->select();
+                $data['estado_cria'] = $this->estado_cria_model->select();
+                $data['tipo_parto'] = $this->tipo_parto_model->select();
+                $data['servicio'] = $this->servicio_model->select();
                 $data['parto']=$this->parto_model->selectId( $idabo);
-                //print_r($data['indicaciones_especiale']);
-               // $data['razas']=$this->razas_model->select();
+                
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/parto/form.php",$data);

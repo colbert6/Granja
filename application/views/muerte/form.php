@@ -19,21 +19,45 @@ if(isset ($muerte))  {  $datos=$muerte->row(); }
                 <?php } ?>
                 
                 <div class="form-group">
-                    <label for="nombre">RP</label>
-                    <input type="text" required class="form-control" id="rp" name="rp" placeholder="Ingrese rp"
-                     value="<?php if(isset ($muerte)) echo $datos->mue_rp;?> ">
+                    <label>Animal</label>
+                    <select class="form-control" name="rp" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($animales->result() as $datos_a) {
+
+                            if ($datos_a->ani_id==$datos->mue_rp) {
+                                echo "<option selected value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
+                            } else {
+                               echo "<option  value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
                 </div>
-              
+                
                 <div class="form-group">
-                    <label for="nombre">Medicamentos</label>
-                    <input type="text" required class="form-control" id="espec_muerte" name="espec_muerte" placeholder="Ingrese Tipo Enfermedad"
-                     value="<?php if(isset ($muerte)) echo $datos->mue_espec_muerte;?>" >
+                    <label>Especificacion Muerte</label>
+                    <select class="form-control" name="espec_muerte" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($especificacion_muerte->result() as $datos_em) {
+
+                            if ($datos_em->espmu_id==$datos->mue_espec_muerte) {
+                                echo "<option selected value='".$datos_em->espmu_id."'>".$datos_em->espmu_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_em->espmu_id."'>".$datos_em->espmu_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
                 </div>
                 
                 <div class="form-group">
                                 <label for="fechareg">Fecha de Evento</label>
                                 <input type="date" required class="form-control" id="fecha" name="fecha"
-                                value="<?php if(isset ($muerte)) echo $datos->mue_fecha_evento;?>">
+                                value=<?php if(isset ($muerte)) echo $datos->mue_fecha_evento;?>>
                 </div>
 
                 
