@@ -17,7 +17,7 @@
         {
             $data['especificacion_muerte'] = $this->especificacion_muerte_model->select();
 
-            $dato= array ( 'titulo'=> 'Lista de tipo servicio');
+            $dato= array ( 'titulo'=> 'Lista de especificacion muerte');
             
             $this->load->view("/layout/header.php",$dato);
             $this->load->view("/especificacion_muerte/index.php",$data);
@@ -36,7 +36,7 @@
                 $this->redireccionar("especificacion_muerte");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Registrar tipo de servicio','action'=>  'especificacion_muerte/nuevo' );
+                $dato= array ( 'titulo'=> 'Registrar especificacion muerte','action'=>  'especificacion_muerte/nuevo' );
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/especificacion_muerte/form.php");
@@ -58,7 +58,7 @@
                 $this->redireccionar("especificacion_muerte");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar tipo de enfermedad','action'=>  'especificacion_muerte/editar' );
+                $dato= array ( 'titulo'=> 'Editar especificacion muerte','action'=>  'especificacion_muerte/editar' );
                 $idRaza=$this->uri-> segment(3);
 
                 $data['especificacion_muerte']=$this->especificacion_muerte_model->selectId( $idRaza);

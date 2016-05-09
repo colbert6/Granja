@@ -17,7 +17,7 @@
         {
             $data['medicamentos'] = $this->medicamentos_model->select();
 
-            $dato= array ( 'titulo'=> 'Lista de tipo servicio');
+            $dato= array ( 'titulo'=> 'Lista de medicamentos');
             
             $this->load->view("/layout/header.php",$dato);
             $this->load->view("/medicamentos/index.php",$data);
@@ -36,7 +36,7 @@
                 $this->redireccionar("medicamentos");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Registrar tipo de servicio','action'=>  'medicamentos/nuevo' );
+                $dato= array ( 'titulo'=> 'Registrar medicamentos','action'=>  'medicamentos/nuevo' );
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/medicamentos/form.php");
@@ -58,7 +58,7 @@
                 $this->redireccionar("medicamentos");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar tipo de enfermedad','action'=>  'medicamentos/editar' );
+                $dato= array ( 'titulo'=> 'Editar medicamentos','action'=>  'medicamentos/editar' );
                 $idRaza=$this->uri-> segment(3);
 
                 $data['medicamentos']=$this->medicamentos_model->selectId( $idRaza);
