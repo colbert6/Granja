@@ -43,15 +43,13 @@ if(isset ($animales))  {  $datos=$animales->row(); }
 
                 <div class="form-group">
                     <label>Tipo Registro</label>
-                    <select class="form-control">
-                        <?php foreach ($tipo_registro->result() as $datos_tr) {
-                            if ($datos_tr->tipreg_id==$datos->ani_tiporeg) {
-                                echo "<option  select value='".$datos_tr->tipreg_id."'>".$datos_tr->tipreg_descripcion."</option>";
+                    <select class="form-control" name="tipo_reg">
+                        <?php foreach ($tipo_reg->result() as $datos_r) {
+                            if ($datos_r->raz_id==$datos->ani_raza) {
+                                echo "<option select value='".$datos_r->raz_id."'>".$datos_r->raz_descripcion."</option>";
                             } else {
-                                echo "<option  value='".$datos_tr->tipreg_id."'>".$datos_tr->tipreg_descripcion."</option>";
+                               echo "<option  value='".$datos_r->raz_id."'>".$datos_r->raz_descripcion."</option>";
                             }
-                            
-                                
 
                             }
                          
