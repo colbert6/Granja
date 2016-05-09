@@ -5,9 +5,12 @@
     */
     class Tipo_parto extends CI_Controller
     {
+        var $menu;//este copiar
+        var $tabla='tipo_parto';//auditoria
         function __construct(){
             parent::__construct();
             $this->load->model('tipo_parto_model');
+            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));//este copiar
         }
 
         public function index()
@@ -26,6 +29,7 @@
                               'abreviacion'=> $this->input->post('abreviacion')  );
 
                 $this->tipo_parto_model->crear($data);
+                $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());//auditoria
                 $this->redireccionar("tipo_parto");
                 
             }else{
@@ -48,6 +52,7 @@
                                  );
 
                 $resul=$this->tipo_parto_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);//auditoria
                 $this->redireccionar("tipo_parto");
                 
             }else{
@@ -64,9 +69,10 @@
         }
         public function eliminar()
         {
-            $idTR=$this->uri-> segment(3);
+            $id=$this->uri-> segment(3);
             
-            $this->tipo_parto_model->eliminar($idTR);
+            $this->tipo_parto_model->eliminar($id);
+            $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("tipo_parto"); 
         }
     }

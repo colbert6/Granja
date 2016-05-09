@@ -71,9 +71,9 @@
 
         public function eliminar()
         {
-            $idTR=$this->uri-> segment(3);
+            $id=$this->uri-> segment(3);
             
-            $this->tipo_registro_model->eliminar($idTR);
+            $this->tipo_registro_model->eliminar($id);
             $this->auditoria('eliminar',$this->tabla,'', $id);
             $this->redireccionar("tipo_registro");
             

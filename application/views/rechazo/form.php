@@ -13,7 +13,7 @@ if(isset ($rechazo))  {  $datos=$rechazo->row(); }
                     <div class="form-group">
                         <label for="descripcion">Identificador</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder="Ingrese descripcion" readonly="readonly"
-                           value=<?= $datos->recha_id; ?>>
+                           value="<?= $datos->recha_id; ?>">
                     </div>
 
                 <?php } ?>
@@ -21,18 +21,18 @@ if(isset ($rechazo))  {  $datos=$rechazo->row(); }
                 <div class="form-group">
                     <label for="nombre">RP</label>
                     <input type="text" required class="form-control" id="rp" name="rp" placeholder="Ingrese Rp"
-                     value=<?php if(isset ($rechazo)) echo $datos->recha_rp;?> >
+                     value="<?php if(isset ($rechazo)) echo $datos->recha_rp;?>" >
                 </div>
               
                 <div class="form-group">
                     <label for="nombre">Fecha de Evento</label>
                     <input type="date" required class="form-control" id="fecha_evento" name="fecha_evento" placeholder="Ingrese Fecha de Evento"
-                     value=<?php if(isset ($rechazo)) echo $datos->recha_fecha_evento;?> >
+                     value="<?php if(isset ($rechazo)) echo $datos->recha_fecha_evento;?>" >
                 </div>
                 <div class="form-group">
                     <label for="nombre">Cuarto Mamario</label>
                     <input type="text" required class="form-control" id="causa_rechazo" name="causa_rechazo" placeholder="Ingrese la Causa Rechazo"
-                     value=<?php if(isset ($rechazo)) echo $datos->recha_causa_rechazo;?> >
+                     value="<?php if(isset ($rechazo)) echo $datos->recha_causa_rechazo;?>" >
                 </div>
                              
             <div class="box-footer">

@@ -5,9 +5,12 @@
     */
     class Tipo_analisis extends CI_Controller
     {   
+        var $menu;//este copiar
+        var $tabla='tipo_analisis';//auditoria
         function __construct(){
             parent::__construct();
             $this->load->model('tipo_analisis_model');
+            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));//este copiar
         }
         
         public function index()
@@ -29,6 +32,7 @@
                               'abreviacion'=> $this->input->post('abreviacion')  );
 
                 $this->tipo_analisis_model->crear($data);
+                $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());//auditoria
                 $this->redireccionar("tipo_analisis");
                 
             }else{
@@ -50,6 +54,7 @@
                                 'abreviacion'=> $this->input->post('abreviacion')  );
 
                 $this->tipo_analisis_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);//auditoria
                 $this->redireccionar("tipo_analisis");
                 
             }else{
@@ -68,12 +73,19 @@
 
         public function eliminar()
         {
-            $idRaza=$this->uri-> segment(3);
+            $id=$this->uri-> segment(3);
             
-            $this->tipo_analisis_model->eliminar($idRaza);
+            $this->tipo_analisis_model->eliminar($id);
+            $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("tipo_analisis");
             
             
+        }
+        
+        public function json_ExtraerTodo()
+        {
+            $data['tipo_analisis'] = $this->tipo_analisis_model->select();
+            echo json_encode($data['tipo_analisis']->result());            
         }
     }
  ?>

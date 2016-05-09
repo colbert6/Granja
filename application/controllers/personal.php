@@ -4,10 +4,13 @@
     * 
     */
     class Personal extends CI_Controller
-    {
+    {   
+        var $menu;//este copiar
+        var $tabla='personal';//auditoria
         function __construct(){
             parent::__construct();
             $this->load->model('personal_model');
+            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));//este copiar
         }
 
         public function index()
@@ -31,6 +34,7 @@
                                 'distrito'=>$this->input->post('distrito'));
                 print_r($data);exit();
                 $this->personal_model->crear($data);
+                $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());//auditoria
                 $this->redireccionar("personal");
                 
             }else{
@@ -53,6 +57,7 @@
                                  );
 
                 $resul=$this->personal_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);//auditoria
                 $this->redireccionar("personal");
                 
             }else{
@@ -69,8 +74,9 @@
         }
         public function eliminar()
         {
-            $idTR=$this->uri-> segment(3);
-            $this->personal_model->eliminar($idTR);
+            $id=$this->uri-> segment(3);
+            $this->personal_model->eliminar($id);
+            $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("personal"); 
         }
     }

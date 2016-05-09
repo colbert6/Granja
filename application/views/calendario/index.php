@@ -183,6 +183,7 @@
 <script type="text/javascript">
 	var fecha_min = "";
 	var fecha_max = "";
+    var base = "";
 
     function daysInMonth(humanMonth, year) {
       return new Date(year || new Date().getFullYear(), humanMonth, 0).getDate();
@@ -206,45 +207,60 @@
         }
         fecha_min = anio+"-"+mex+"-01";
         fecha_max = anio+"-"+mex+"-"+dias;
-
+        base = url; 
         mostrarFormulario('1');           
     }
     function mostrarFormulario(evento){
-
     	var formulario = "";
     	switch(evento){
     		case '1':
-    			formulario 	  += "<label>Causa Aborto:</label>";
-		        formulario    += "<select class='form-control' id='id_causa_aborto'>";
+    			
 		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario    += "<label>Fecha:</label>";
-		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
-		        
-				$("#content-form").html(formulario); 
-				$("#id_evento").val('1');
-				$("#myModal").modal("show");       
+		        $.post(base+"index.php/causa_aborto/json_ExtraerTodo/",function(causa_a){
+                    
+                    var obj = JSON.parse(causa_a);
+                    
+                    
+                    formulario    += "<label>Causa Aborto:</label>";
+                    formulario    += "<select class='form-control' id='id_causa_aborto'>";
+                    for (var i = 0; i < obj.length; i++) {
+                        formulario    += "<option value='"+obj[i].ca_id+"'>"+obj[i].ca_descripcion+"</option>";
+                    }
+                    
+                    formulario    += "</select>";
+                    formulario    += "<label>Fecha:</label>";
+                    formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                    $("#content-form").html(formulario); 
+                    $("#id_evento").val('1');
+                    $("#myModal").modal("show");
+                });
+		              
     			break;
     		case '2':
-    			formulario 	  += "<label>Tipo Analisis:</label>";
-    			formulario    += "<select class='form-control' id='id_tipan'>";
-		        //Extraer los Tipos de Analisis
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario 	  += "<label>Resultado Analisis:</label>";
-		        formulario    += "<select class='form-control' id='id_resan'>";
-		        //Extraer los Tipos de Analisis
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario    += "<label>Fecha:</label>";
-		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
 
-    			$("#content-form").html(formulario); 
-				$("#myModal").modal("show");  
+		        //Extraer los Tipos de Analisis
+                $.post(base+"index.php/tipo_analisis/json_ExtraerTodo",function(tipo_analisis){
+                    var tipan = JSON.parse(tipo_analisis);
+                    formulario    += "<label>Tipo Analisis:</label>";
+                    formulario    += "<select class='form-control' id='id_tipan'>";
+                    
+                    for (var i = 0; i < tipan.length; i++) {
+                        formulario    += "<option value='"+tipan[i].tipan_id+"'>"+tipan[i].tipan_descripcion+"</option>";
+                    }
+                    
+                    formulario    += "</select>";
+                    formulario    += "<label>Resultado Analisis:</label>";
+                    formulario    += "<select class='form-control' id='id_resan'>";
+                    //Extraer los Tipos de Analisis
+                    //$.post("",{suggest: txt},function(data){});
+                    formulario    += "<option value='1'>1</option>";
+                    formulario    += "</select>";
+                    formulario    += "<label>Fecha:</label>";
+                    formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                    $("#content-form").html(formulario); 
+                    $("#myModal").modal("show");  
+                });
+		        
     			break;
     		case '3':
     			formulario 	  += "<label>Causa no Inseminal:</label>";

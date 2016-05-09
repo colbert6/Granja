@@ -99,9 +99,9 @@
 
         public function eliminar()
         {
-            $idabo=$this->uri-> segment(3);
+            $id=$this->uri-> segment(3);
             
-            $this->enfermedad_model->eliminar($idabo);
+            $this->enfermedad_model->eliminar($id);
             $this->auditoria('eliminar',$this->tabla,'', $id);
             $this->redireccionar("enfermedad");
             

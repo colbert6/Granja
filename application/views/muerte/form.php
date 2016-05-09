@@ -13,7 +13,7 @@ if(isset ($muerte))  {  $datos=$muerte->row(); }
                     <div class="form-group">
                         <label for="descripcion">Identificador</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder="Ingrese descripcion" readonly="readonly"
-                           value=<?= $datos->mue_id; ?>>
+                           value="<?= $datos->mue_id; ?>">
                     </div>
 
                 <?php } ?>
@@ -21,19 +21,19 @@ if(isset ($muerte))  {  $datos=$muerte->row(); }
                 <div class="form-group">
                     <label for="nombre">RP</label>
                     <input type="text" required class="form-control" id="rp" name="rp" placeholder="Ingrese rp"
-                     value=<?php if(isset ($muerte)) echo $datos->mue_rp;?> >
+                     value="<?php if(isset ($muerte)) echo $datos->mue_rp;?> ">
                 </div>
               
                 <div class="form-group">
                     <label for="nombre">Medicamentos</label>
                     <input type="text" required class="form-control" id="espec_muerte" name="espec_muerte" placeholder="Ingrese Tipo Enfermedad"
-                     value=<?php if(isset ($muerte)) echo $datos->mue_espec_muerte;?> >
+                     value="<?php if(isset ($muerte)) echo $datos->mue_espec_muerte;?>" >
                 </div>
                 
                 <div class="form-group">
                                 <label for="fechareg">Fecha de Evento</label>
                                 <input type="date" required class="form-control" id="fecha" name="fecha"
-                                value=<?php if(isset ($muerte)) echo $datos->mue_fecha_evento;?>>
+                                value="<?php if(isset ($muerte)) echo $datos->mue_fecha_evento;?>">
                 </div>
 
                 

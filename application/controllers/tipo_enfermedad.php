@@ -5,9 +5,12 @@
     */
     class Tipo_enfermedad extends CI_Controller
     {   
+        var $menu;//este copiar
+        var $tabla='tipo_enfermedad';//auditoria
         function __construct(){
             parent::__construct();
             $this->load->model('tipo_enfermedad_model');
+            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));//este copiar
         }
         
         public function index()
@@ -29,6 +32,7 @@
                               'abreviacion'=> $this->input->post('abreviacion')  );
 
                 $this->tipo_enfermedad_model->crear($data);
+                $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());//auditoria
                 $this->redireccionar("tipo_enfermedad");
                 
             }else{
@@ -50,6 +54,7 @@
                                 'abreviacion'=> $this->input->post('abreviacion')  );
 
                 $this->tipo_enfermedad_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);//auditoria
                 $this->redireccionar("tipo_enfermedad");
                 
             }else{
@@ -68,9 +73,10 @@
 
         public function eliminar()
         {
-            $idRaza=$this->uri-> segment(3);
+            $id=$this->uri-> segment(3);
             
-            $this->tipo_enfermedad_model->eliminar($idRaza);
+            $this->tipo_enfermedad_model->eliminar($id);
+            $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("tipo_enfermedad");
             
             
