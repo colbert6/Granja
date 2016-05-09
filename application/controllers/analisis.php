@@ -11,6 +11,8 @@
             parent::__construct();
             $this->load->model('analisis_model');
             $this->load->model('animales_model');
+            $this->load->model('resultado_analisis_model');
+            $this->load->model('tipo_analisis_model');
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
         }
         
