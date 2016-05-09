@@ -29,7 +29,8 @@
                         'nombre'=>$login->per_nombre,
                         'apell_p'=>$login->per_ape_paterno,
                         'apell_m'=>$login->per_ape_materno,
-                        'tipo_usu'=>$login->tipusu_id
+                        'tipo_usu'=>$login->tipusu_id,
+                        'tipo_usuario'=>$login->tipusu_descripcion
                     );
                     $this->session->set_userdata($data);
                     $this->auditoria('inciar sesion',$this->tabla,'',$login->usu_id);//auditoria
