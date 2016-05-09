@@ -6,7 +6,7 @@
     class Tipo_analisis extends CI_Controller
     {   
         var $menu;//este copiar
-        var $tabla='raza';//auditoria
+        var $tabla='tipo_analisis';//auditoria
         function __construct(){
             parent::__construct();
             $this->load->model('tipo_analisis_model');
@@ -73,9 +73,9 @@
 
         public function eliminar()
         {
-            $idRaza=$this->uri-> segment(3);
+            $id=$this->uri-> segment(3);
             
-            $this->tipo_analisis_model->eliminar($idRaza);
+            $this->tipo_analisis_model->eliminar($id);
             $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("tipo_analisis");
             

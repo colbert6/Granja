@@ -6,7 +6,7 @@
     class Tipo_enfermedad extends CI_Controller
     {   
         var $menu;//este copiar
-        var $tabla='raza';//auditoria
+        var $tabla='tipo_enfermedad';//auditoria
         function __construct(){
             parent::__construct();
             $this->load->model('tipo_enfermedad_model');
@@ -73,9 +73,9 @@
 
         public function eliminar()
         {
-            $idRaza=$this->uri-> segment(3);
+            $id=$this->uri-> segment(3);
             
-            $this->tipo_enfermedad_model->eliminar($idRaza);
+            $this->tipo_enfermedad_model->eliminar($id);
             $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("tipo_enfermedad");
             

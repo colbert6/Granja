@@ -6,7 +6,7 @@
     class Personal extends CI_Controller
     {   
         var $menu;//este copiar
-        var $tabla='raza';//auditoria
+        var $tabla='personal';//auditoria
         function __construct(){
             parent::__construct();
             $this->load->model('personal_model');
@@ -74,8 +74,8 @@
         }
         public function eliminar()
         {
-            $idTR=$this->uri-> segment(3);
-            $this->personal_model->eliminar($idTR);
+            $id=$this->uri-> segment(3);
+            $this->personal_model->eliminar($id);
             $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("personal"); 
         }

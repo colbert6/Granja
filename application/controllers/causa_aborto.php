@@ -73,9 +73,9 @@
 
         public function eliminar()
         {
-            $idRaza=$this->uri-> segment(3);
+            $id=$this->uri-> segment(3);
             
-            $this->causa_aborto_model->eliminar($idRaza);
+            $this->causa_aborto_model->eliminar($id);
             $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("causa_aborto");
             

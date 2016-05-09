@@ -73,13 +73,11 @@
 
         public function eliminar()
         {
-            $idRaza=$this->uri-> segment(3);
+            $id=$this->uri-> segment(3);
             
-            $this->estado_cria_model->eliminar($idRaza);
+            $this->estado_cria_model->eliminar($id);
             $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("estado_cria");
-            
-            
         }
     }
  ?>
