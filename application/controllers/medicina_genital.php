@@ -17,7 +17,7 @@
         {
             $data['medicina_genital'] = $this->medicina_genital_model->select();
 
-            $dato= array ( 'titulo'=> 'Lista de tipo servicio');
+            $dato= array ( 'titulo'=> 'Lista de medicina genital');
             
             $this->load->view("/layout/header.php",$dato);
             $this->load->view("/medicina_genital/index.php",$data);
@@ -36,7 +36,7 @@
                 $this->redireccionar("medicina_genital");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Registrar tipo de servicio','action'=>  'medicina_genital/nuevo' );
+                $dato= array ( 'titulo'=> 'Registrar medicina genital','action'=>  'medicina_genital/nuevo' );
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/medicina_genital/form.php");
@@ -58,7 +58,7 @@
                 $this->redireccionar("medicina_genital");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar tipo de enfermedad','action'=>  'medicina_genital/editar' );
+                $dato= array ( 'titulo'=> 'Editar medicina genital','action'=>  'medicina_genital/editar' );
                 $idRaza=$this->uri-> segment(3);
 
                 $data['medicina_genital']=$this->medicina_genital_model->selectId( $idRaza);

@@ -36,7 +36,7 @@
                 $this->redireccionar("enfermedad_ovario");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Registrar enfermedad de ovarios','action'=>  'enfermedad_ovario/nuevo' );
+                $dato= array ( 'titulo'=> 'Registrar enfermedad de ovario','action'=>  'enfermedad_ovario/nuevo' );
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/enfermedad_ovario/form.php");

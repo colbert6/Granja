@@ -17,7 +17,7 @@
         {
             $data['via_aplicacion'] = $this->via_aplicacion_model->select();
 
-            $dato= array ( 'titulo'=> 'Lista de tipo servicio');
+            $dato= array ( 'titulo'=> 'Lista via de aplicacion');
             
             $this->load->view("/layout/header.php",$dato);
             $this->load->view("/via_aplicacion/index.php",$data);
@@ -36,7 +36,7 @@
                 $this->redireccionar("via_aplicacion");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Registrar tipo de servicio','action'=>  'via_aplicacion/nuevo' );
+                $dato= array ( 'titulo'=> 'Registrar via de aplicacion','action'=>  'via_aplicacion/nuevo' );
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/via_aplicacion/form.php");
@@ -58,7 +58,7 @@
                 $this->redireccionar("via_aplicacion");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar tipo de enfermedad','action'=>  'via_aplicacion/editar' );
+                $dato= array ( 'titulo'=> 'Editar via de aplicacion','action'=>  'via_aplicacion/editar' );
                 $idRaza=$this->uri-> segment(3);
 
                 $data['via_aplicacion']=$this->via_aplicacion_model->selectId( $idRaza);
