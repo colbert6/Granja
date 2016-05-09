@@ -170,7 +170,12 @@ function isValidDate(day,month,year)
  
 function validate_fecha(fecha)
 {
-    var patron=new RegExp("^(19|20)+([0-9]{2})([-])([0-9]{1,2})([-])([0-9]{1,2})$");
+	var values=fecha.split("-");
+        if(isValidDate(values[2],values[1],values[0]))
+        {
+            return true;
+        }
+ /*   var patron=new RegExp("^(19|20)+([0-9]{2})([-])([0-9]{1,2})([-])([0-9]{1,2})$");
  
     if(fecha.search(patron)==0)
     {
@@ -180,24 +185,29 @@ function validate_fecha(fecha)
             return true;
         }
     }
-    return false;
+    return false;*/
 }
 
 function validar()
-{ //alert("hola");
-    var fecha=document.getElementById("user_date").value;
-    console.log(fecha);
-    
-    if(validate_fecha(fecha)==true)
-        document.getElementById("result").innerHTML="La fecha "+fecha+" es correcta";
-    else
-        document.getElementById("result").innerHTML="La fecha "+fecha+" es incorrecta";
+{ 
+    var fecha=document.getElementById("fechar").value;
+    var x=new Date();
+    if(validate_fecha(fecha)==true){
+     var j =   document.getElementById("result").innerHTML="La fecha "+fecha+" es correcta";
+     console.log(j);
+    }else{
+      var j =  document.getElementById("result").innerHTML="La fecha "+fecha+" es incorrecta";
+      console.log(j);
+  }
 }
 //...............
-function calendario(date){
+function calendario(){
+
       var x=new Date();
-      var fecha = date.split("/");
-      x.setFullYear(fecha[2],fecha[1]-1,fecha[0]);
+      var dater=document.getElementById("fechar").value;
+      var fecha = dater.split("/");
+      var j = x.setFullYear(fecha[2],fecha[1]-1,fecha[0]);
+      console.log(date(DATE_RFC822));
       var today = new Date();
  
       if (x >= today)
@@ -219,14 +229,15 @@ function fecha(dd, mm, aa)	{
 	else
 		document.forms.salida.comentario.value = cadena;
 }
-function existeFecha(fecha){
-	alert(fecha);
+function existeFecha(){
+	var fecha=document.getElementById("fechar").value;
       var fechaf = fecha.split("/");
-      alert(fechaf);
+      
       var day = fechaf[0];
       var month = fechaf[1];
       var year = fechaf[2];
       var date = new Date(year,month,'0');
+      alert(date);
       if((day-0)>(date.getDate()-0)){
             return false;
       }
