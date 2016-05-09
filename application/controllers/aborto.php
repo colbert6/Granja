@@ -11,6 +11,7 @@
             parent::__construct();
             $this->load->model('aborto_model');
             $this->load->model('animales_model');
+            $this->load->model('causa_aborto_model');
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
           //  $this->load->model('razas_model');
           //  $this->load->model('tipo_registro_model');
@@ -53,7 +54,7 @@
             }else{
 
                 $data['animales'] = $this->animales_model->select();
-             //   $data['aborto'] = $this->tipo_registro_model->select();
+                $data['causa_aborto'] = $this->causa_aborto_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/aborto/form.php",$data);
@@ -83,6 +84,7 @@
 
                // $data['tipo_registro']=$this->tipo_registro_model->select();
                 $data['animales']=$this->animales_model->select();
+                $data['causa_aborto'] = $this->causa_aborto_model->select();
                 $data['aborto']=$this->aborto_model->selectId( $idabo);
                // $data['razas']=$this->razas_model->select();
 

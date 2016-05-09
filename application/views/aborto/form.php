@@ -1,4 +1,4 @@
-"<?php 
+<?php 
 if(isset ($aborto))  {  $datos=$aborto->row(); }  
 ?>
 <div class="col-md-6">
@@ -25,7 +25,7 @@ if(isset ($aborto))  {  $datos=$aborto->row(); }
                         <?php foreach ($animales->result() as $datos_a) {
                             
                             if ($datos_a->ani_id==$datos->ab_animal) {
-                                echo "<option select value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
+                                echo "<option selected value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
                             } else {
                                echo "<option  value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
                             }
@@ -35,17 +35,28 @@ if(isset ($aborto))  {  $datos=$aborto->row(); }
                          ?>
                     </select>
                 </div>
-
-                
                 <div class="form-group">
-                    <label for="nombre">Causa Aborto</label>
-                    <input type="text" class="form-control" id="cauabor" name="cauabor" required placeholder="Ingrese causa de aborto"
-                     value="<?php if(isset ($aborto)) echo $datos->ab_causa_aborto;?>" >
+                    <label>Causa Aborto</label>
+                    <select required class="form-control" name="cauabor" >
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($causa_aborto->result() as $datos_ca) {
+                            
+                            if ($datos_ca->ca_id==$datos->ab_causa_aborto) {
+                                echo "<option selected value='".$datos_ca->ca_id."'>".$datos_ca->ca_descripcion."</option>";
+                            } else {
+                                echo "<option value='".$datos_ca->ca_id."'>".$datos_ca->ca_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
                 </div>
+
                 <div class="form-group">
                                 <label for="fechareg">Fecha Evento</label>
                                 <input type="date" class="form-control" id="fecha" name="fecha" required
-                                value="<?php if(isset ($aborto)) echo $datos->ab_fecha_evento;?>">
+                                value=<?php if(isset ($aborto)) echo $datos->ab_fecha_evento;?>>
                             </div>
                 
             </div>
