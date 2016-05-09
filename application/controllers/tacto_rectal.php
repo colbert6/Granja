@@ -4,11 +4,12 @@
     * 
     */
     class Tacto_rectal extends CI_Controller
-    {
+    { var $menu;
         function __construct(){
             parent::__construct();
             $this->load->model('tacto_rectal_model');
             $this->load->model('animales_model');
+            $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
         }
         
         public function index()

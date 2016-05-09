@@ -11,7 +11,7 @@
             parent::__construct();
             $this->load->model('animales_model');
              $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
-        }
+
 
         public function index()
         {
