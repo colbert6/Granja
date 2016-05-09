@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-05-2016 a las 22:06:05
+-- Tiempo de generación: 09-05-2016 a las 22:29:38
 -- Versión del servidor: 5.6.16
 -- Versión de PHP: 5.5.11
 
@@ -345,7 +345,7 @@ CREATE TABLE IF NOT EXISTS `enfermedad` (
   `enf_rp` int(11) DEFAULT NULL,
   `enf_fecha_evento` datetime DEFAULT NULL,
   `enf_tipo_enfermedad` int(11) DEFAULT NULL,
-  `enf_mediciamento` int(11) DEFAULT NULL,
+  `enf_medicamento` int(11) DEFAULT NULL,
   `enf_via_aplicacion` int(11) DEFAULT NULL,
   `enf_estado` int(11) DEFAULT NULL,
   PRIMARY KEY (`enf_id`)
