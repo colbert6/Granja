@@ -19,6 +19,11 @@ if(isset ($personal))  {  $datos=$personal->row(); }
                     </div>
                 <?php } ?>  
                 <div class="form-group">
+                    <label for="descripcion">DNI</label>
+                    <input type="text" class="form-control" id="dni" name="dni" placeholder="Ingrese dni" required maxlength="8"
+                        value="<?php if(isset ($personal)) echo $datos->per_dni; ?>" >
+                </div>
+                <div class="form-group">
                     <label for="descripcion">Nombres</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese name"
                         value="<?php if(isset ($personal)) echo $datos->per_nombre; ?>" >

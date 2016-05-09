@@ -26,7 +26,8 @@
         {
             
             if (@$_POST['guardar'] == 1) {
-                $data= array ( 'nombre'=> $this->input->post('nombre'),
+                $data= array ( 'dni'=>$this->input->post('dni'),
+                                'nombre'=> $this->input->post('nombre'),
                                 'paterno'=>$this->input->post('appaterno'),
                                 'materno'=>$this->input->post('apmaterno'),
                                 'direccion'=>$this->input->post('direccion'),
@@ -52,6 +53,7 @@
             
             if (@$_POST['guardar'] == 1) {
                 $data= array ( 'id'=> $this->input->post('id'),
+                                'dni'=>$this->input->post('dni'),
                                 'nombre'=> $this->input->post('nombre'),
                                 'paterno'=>$this->input->post('appaterno'),
                                 'materno'=>$this->input->post('apmaterno'),
@@ -59,7 +61,6 @@
                                 'telefono'=>$this->input->post('telefono'),
                                 'distrito'=>$this->input->post('distrito')
                                  );
-
                 $resul=$this->personal_model->editar($data);
                 $this->auditoria('modificar',$this->tabla,'', $data['id']);//auditoria
                 $this->redireccionar("personal");

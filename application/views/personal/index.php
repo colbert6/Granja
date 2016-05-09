@@ -8,7 +8,7 @@
                         <th>NOMBRE</th>
                         <th>AP. PATERNO</th>
                         <th>AP. MATERNO</th>
-                        <th>TELEFONO</th>
+                        <th>DNI</th>
                         <th>DIRECCION</th>
                         <th>ACCIONES</th>
                     </tr>
@@ -20,7 +20,7 @@
                             <td><?= $datos->per_nombre; ?></td> 
                             <td><?= $datos->per_ape_paterno; ?></td> 
                             <td><?= $datos->per_ape_materno; ?></td>
-                            <td><?= $datos->per_telefono; ?></td>  
+                            <td><?= $datos->per_dni; ?></td>  
                             <td><?= $datos->per_distrito; ?></td> 
                             <td>
                             <a href=<?php echo base_url()."index.php/personal/editar/".$datos->per_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>
