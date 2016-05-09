@@ -36,7 +36,7 @@
                 $this->redireccionar("causa_no_inseminal");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Registrar cusa no inseminal','action'=>  'causa_no_inseminal/nuevo' );
+                $dato= array ( 'titulo'=> 'Registrar cuusa no inseminal','action'=>  'causa_no_inseminal/nuevo' );
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/causa_no_inseminal/form.php");
@@ -58,7 +58,7 @@
                 $this->redireccionar("causa_no_inseminal");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar tipo de enfermedad','action'=>  'causa_no_inseminal/editar' );
+                $dato= array ( 'titulo'=> 'Editar causa no inseminal','action'=>  'causa_no_inseminal/editar' );
                 $idRaza=$this->uri-> segment(3);
 
                 $data['causa_no_inseminal']=$this->causa_no_inseminal_model->selectId( $idRaza);

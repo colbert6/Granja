@@ -36,7 +36,7 @@
                 $this->redireccionar("causa_aborto");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Registrar tipo de analisis','action'=>  'causa_aborto/nuevo' );
+                $dato= array ( 'titulo'=> 'Registrar causa aborto','action'=>  'causa_aborto/nuevo' );
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/causa_aborto/form.php");

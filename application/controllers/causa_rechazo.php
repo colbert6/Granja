@@ -36,7 +36,7 @@
                 $this->redireccionar("causa_rechazo");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Registrar tipo de servicio','action'=>  'causa_rechazo/nuevo' );
+                $dato= array ( 'titulo'=> 'Registrar causa rechazo','action'=>  'causa_rechazo/nuevo' );
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/causa_rechazo/form.php");
@@ -58,7 +58,7 @@
                 $this->redireccionar("causa_rechazo");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar tipo de enfermedad','action'=>  'causa_rechazo/editar' );
+                $dato= array ( 'titulo'=> 'Editar causa rechazo','action'=>  'causa_rechazo/editar' );
                 $idRaza=$this->uri-> segment(3);
 
                 $data['causa_rechazo']=$this->causa_rechazo_model->selectId( $idRaza);
