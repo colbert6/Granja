@@ -15,7 +15,7 @@ if(isset ($via_aplicacion))  {  $datos=$via_aplicacion->row(); }
                     <div class="form-group">
                         <label for="descripcion">Identificador</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder="Ingrese descripcion" readonly="readonly"
-                           value=<?= $datos->viaap _id; ?>>
+                           value=<?= $datos->viaap_id; ?>>
                     </div>
                 <?php } ?>  
                 <div class="form-group">
