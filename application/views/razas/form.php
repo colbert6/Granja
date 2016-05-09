@@ -1,6 +1,5 @@
 <?php 
 if(isset ($razas))  {  $datos=$razas->row(); }  
-echo "<pre>";print_r($datos); 
 ?>
  
 <div class="col-md-6">

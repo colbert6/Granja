@@ -24,7 +24,7 @@ $mod_padre=$mod_padre->result();
                 <div class="form-group">
                     <label for="descripcion">Descripcion</label>
                     <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese Descripcion"
-                        value=<?php if(isset ($modulo)) echo $datos->mod_descripcion; ?> >
+                        value="<?php if(isset ($modulo)) echo $datos->mod_descripcion; ?>" >
                 </div>
 
                 <div class="form-group">
@@ -45,7 +45,7 @@ $mod_padre=$mod_padre->result();
                 <div class="form-group">
                     <label for="descripcion">Url</label>
                     <input type="text" class="form-control" id="url" name="url" placeholder="Ingrese Descripcion"
-                        value=<?php if(isset ($modulo)) echo $datos->mod_url; ?> >
+                        value="<?php if(isset ($modulo)) echo $datos->mod_url; ?>" >
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>

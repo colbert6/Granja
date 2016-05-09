@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2016 a las 23:38:03
+-- Tiempo de generación: 09-05-2016 a las 05:37:54
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -77,6 +77,81 @@ CREATE TABLE IF NOT EXISTS `animal` (
 INSERT INTO `animal` (`ani_id`, `ani_rp`, `ani_nombre`, `ani_padre`, `ani_madre`, `ani_fechanac`, `ani_fechareg`, `ani_sexo`, `ani_proveedor`, `ani_raza`, `ani_descripcion`, `ani_estado`) VALUES
 (1, '234', 'elar', 2, 3, '2016-04-30 00:00:00', '2016-04-30 00:00:00', 1, 'sergio', 1, 'ro', 1),
 (2, '87678', 'jose', 12, 13, '2016-04-29 00:00:00', '2016-04-29 00:00:00', 14, 'diego', 2, 'sdf', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `auditoria`
+--
+
+CREATE TABLE IF NOT EXISTS `auditoria` (
+`aud_id` int(11) NOT NULL,
+  `aud_tipo` varchar(100) NOT NULL,
+  `aud_tabla` varchar(100) NOT NULL,
+  `aud_fecha` datetime NOT NULL,
+  `aud_usuario` int(11) NOT NULL,
+  `aud_descripcion` varchar(200) NOT NULL,
+  `aud_host` varchar(100) NOT NULL,
+  `aud_registro` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `auditoria`
+--
+
+INSERT INTO `auditoria` (`aud_id`, `aud_tipo`, `aud_tabla`, `aud_fecha`, `aud_usuario`, `aud_descripcion`, `aud_host`, `aud_registro`) VALUES
+(1, 'modificar', 'Razas', '0000-00-00 00:00:00', 1, '', 'Colbert', 2),
+(2, 'modificar', 'Razas', '0000-00-00 00:00:00', 1, '', 'Colbert', 1),
+(3, 'insertar', 'Razas', '2016-05-08 18:16:27', 1, '', 'Colbert', 3),
+(4, 'cerrar sesion', 'login', '2016-05-08 19:42:47', 1, '', 'Colbert', 1),
+(5, 'inciar sesion', 'login', '2016-05-08 19:43:09', 3, '', 'Colbert', 2),
+(6, 'insertar', 'modulo', '2016-05-08 19:46:07', 3, '', 'Colbert', 0),
+(7, 'insertar', 'modulo', '2016-05-08 19:49:03', 3, '', 'Colbert', 0),
+(8, 'insertar', 'modulo', '2016-05-08 19:49:39', 3, '', 'Colbert', 0),
+(9, 'insertar', 'modulo', '2016-05-08 19:50:24', 3, '', 'Colbert', 0),
+(10, 'insertar', 'modulo', '2016-05-08 19:51:32', 3, '', 'Colbert', 0),
+(11, 'insertar', 'modulo', '2016-05-08 19:53:03', 3, '', 'Colbert', 0),
+(12, 'insertar', 'modulo', '2016-05-08 19:56:50', 3, '', 'Colbert', 58),
+(13, 'insertar', 'modulo', '2016-05-08 19:58:05', 3, '', 'Colbert', 59),
+(14, 'modificar', 'permiso', '2016-05-08 19:58:15', 3, '', 'Colbert', 1),
+(15, 'cerrar sesion', 'login', '2016-05-08 19:58:41', 3, '', 'Colbert', 3),
+(16, 'inciar sesion', 'login', '2016-05-08 19:58:49', 1, '', 'Colbert', 1),
+(17, 'insertar', 'usuario', '2016-05-08 20:09:41', 1, '', 'Colbert', 3),
+(18, 'modificar', 'usuario', '2016-05-08 20:11:32', 1, '', 'Colbert', 3),
+(19, 'eliminar', 'usuario', '2016-05-08 20:11:41', 1, '', 'Colbert', 3),
+(20, 'modificar', 'modulo', '2016-05-08 20:12:06', 1, '', 'Colbert', 59),
+(21, 'modificar', 'modulo', '2016-05-08 20:12:23', 1, '', 'Colbert', 59),
+(22, 'insertar', 'tipo_usuario', '2016-05-08 20:12:40', 1, '', 'Colbert', 0),
+(23, 'insertar', 'tipo_usuario', '2016-05-08 20:13:38', 1, '', 'Colbert', 5),
+(24, 'insertar', 'tipo_usuario', '2016-05-08 20:14:49', 1, '', 'Colbert', 6),
+(25, 'insertar', 'tipo_usuario', '2016-05-08 20:14:53', 1, '', 'Colbert', 7),
+(26, 'insertar', 'tipo_usuario', '2016-05-08 20:15:35', 1, '', 'Colbert', 8),
+(27, 'eliminar', 'tipo_usuario', '2016-05-08 20:19:04', 1, '', 'Colbert', 6),
+(28, 'eliminar', 'tipo_usuario', '2016-05-08 20:20:56', 1, '', 'Colbert', 8),
+(29, 'eliminar', 'tipo_usuario', '2016-05-08 20:21:12', 1, '', 'Colbert', 7),
+(30, 'eliminar', 'tipo_usuario', '2016-05-08 20:21:14', 1, '', 'Colbert', 5),
+(31, 'eliminar', 'tipo_usuario', '2016-05-08 20:21:55', 1, '', 'Colbert', 4),
+(32, 'modificar', 'modulo', '2016-05-08 22:04:10', 1, '', 'Colbert', 11),
+(33, 'modificar', 'modulo', '2016-05-08 22:04:24', 1, '', 'Colbert', 11),
+(34, 'modificar', 'tipo_usuario', '2016-05-08 22:05:51', 1, '', 'Colbert', 8),
+(35, 'modificar', 'raza', '2016-05-08 22:09:48', 1, '', 'Colbert', 2),
+(36, 'inciar sesion', 'login', '2016-05-08 22:17:32', 1, '', 'Colbert', 1),
+(37, 'modificar', 'modulo', '2016-05-08 22:30:36', 1, '', 'Colbert', 12),
+(38, 'modificar', 'modulo', '2016-05-08 22:30:54', 1, '', 'Colbert', 16),
+(39, 'modificar', 'modulo', '2016-05-08 22:31:03', 1, '', 'Colbert', 21),
+(40, 'modificar', 'modulo', '2016-05-08 22:31:12', 1, '', 'Colbert', 15),
+(41, 'modificar', 'modulo', '2016-05-08 22:31:29', 1, '', 'Colbert', 17),
+(42, 'modificar', 'modulo', '2016-05-08 22:31:43', 1, '', 'Colbert', 22),
+(43, 'modificar', 'modulo', '2016-05-08 22:32:19', 1, '', 'Colbert', 23),
+(44, 'modificar', 'modulo', '2016-05-08 22:32:27', 1, '', 'Colbert', 18),
+(45, 'modificar', 'modulo', '2016-05-08 22:32:36', 1, '', 'Colbert', 24),
+(46, 'modificar', 'modulo', '2016-05-08 22:32:44', 1, '', 'Colbert', 25),
+(47, 'modificar', 'modulo', '2016-05-08 22:33:07', 1, '', 'Colbert', 32),
+(48, 'modificar', 'modulo', '2016-05-08 22:33:28', 1, '', 'Colbert', 26),
+(49, 'modificar', 'modulo', '2016-05-08 22:33:44', 1, '', 'Colbert', 27),
+(50, 'modificar', 'modulo', '2016-05-08 22:34:00', 1, '', 'Colbert', 28),
+(51, 'modificar', 'modulo', '2016-05-08 22:34:15', 1, '', 'Colbert', 37),
+(52, 'modificar', 'modulo', '2016-05-08 22:34:27', 1, '', 'Colbert', 29);
 
 -- --------------------------------------------------------
 
@@ -334,7 +409,7 @@ CREATE TABLE IF NOT EXISTS `modulo` (
   `mod_padre` int(11) NOT NULL,
   `mod_url` varchar(50) NOT NULL,
   `mod_estado` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `modulo`
@@ -351,33 +426,33 @@ INSERT INTO `modulo` (`mod_id`, `mod_descripcion`, `mod_padre`, `mod_url`, `mod_
 (8, 'Tipo Usuario', 43, 'tipo_usuario', 1),
 (9, 'Permisos', 43, 'permiso', 1),
 (10, 'Medicacion', 41, 'medicacion', 1),
-(11, 'Medicina Genital', 41, 'medicina genital', 1),
-(12, 'Medicina Cuartos Mamarios', 41, 'medicina cuarto mamarios', 1),
+(11, 'Medicina Genital', 41, 'medicina_genital', 1),
+(12, 'Medicina Cuartos Mamarios', 41, 'medicina_cuarto_mamarios', 1),
 (13, 'Personal', 41, 'personal', 1),
 (14, 'Reproductor', 41, 'reproductor', 1),
-(15, 'Tipo Analisis', 41, 'tipo analisis', 1),
-(16, 'Tipo Enfermedad', 41, 'tipo endermedad', 1),
-(17, 'Tipo Parto', 41, 'tipo parto', 1),
-(18, 'Tipo Servicio', 41, 'tipo servicio', 1),
+(15, 'Tipo Analisis', 41, 'tipo_analisis', 1),
+(16, 'Tipo Enfermedad', 41, 'tipo_enfermedad', 1),
+(17, 'Tipo Parto', 41, 'tipo_parto', 1),
+(18, 'Tipo Servicio', 41, 'tipo_servicio', 1),
 (19, 'Causa Aborto', 41, 'causa aborto', 1),
 (20, 'Causa No Inseminal', 41, 'causa no inseminal', 1),
-(21, 'Causa Rechazo', 41, 'causa rechazo', 1),
-(22, 'Diagnostico Utero', 41, 'diagnostico utero', 1),
-(23, 'Enfermedad Ovario', 41, 'enfermedad ovario', 1),
-(24, 'Enfermedad Utero', 41, 'enfermedad utero', 1),
-(25, 'Especificacion Muerte', 41, 'especificacion muerte', 1),
-(26, 'Especificacion Venta', 41, 'especificacion venta', 1),
-(27, 'Estado Cria', 41, 'estado cria', 1),
-(28, 'Resultado De Analisis', 41, 'resultado de analisis', 1),
-(29, 'Via Aplicacion', 41, 'via aplicacion', 1),
+(21, 'Causa Rechazo', 41, 'causa_rechazo', 1),
+(22, 'Diagnostico Utero', 41, 'diagnostico_utero', 1),
+(23, 'Enfermedad Ovario', 41, 'enfermedad_ovario', 1),
+(24, 'Enfermedad Utero', 41, 'enfermedad_utero', 1),
+(25, 'Especificacion Muerte', 41, 'especificacion_muerte', 1),
+(26, 'Especificacion Venta', 41, 'especificacion_venta', 1),
+(27, 'Estado Cria', 41, 'estado_cria', 1),
+(28, 'Resultado De Analisis', 41, 'resultado_de_analisis', 1),
+(29, 'Via Aplicacion', 41, 'via_aplicacion', 1),
 (30, 'Analisis', 42, 'analisis', 1),
 (31, 'Enfermedad', 42, 'enfermedad', 1),
-(32, 'Indicaciones Especiales', 42, 'indicaciones especiales', 1),
+(32, 'Indicaciones Especiales', 42, 'indicaciones_especiales', 1),
 (33, 'Medicacion', 42, 'medicacion', 1),
 (34, 'Muerte', 42, 'muerte', 1),
 (35, 'Parto', 42, 'parto', 1),
 (36, 'Servicio', 42, 'servicio', 1),
-(37, 'Tacto Rectal', 42, 'tacto rectal', 1),
+(37, 'Tacto Rectal', 42, 'tacto_rectal', 1),
 (38, 'Venta', 42, 'venta', 1),
 (39, 'Secado', 42, 'secado', 1),
 (40, 'Rechazo', 42, 'rechazo', 1),
@@ -385,8 +460,7 @@ INSERT INTO `modulo` (`mod_id`, `mod_descripcion`, `mod_padre`, `mod_url`, `mod_
 (42, 'Evento', 0, '#', 1),
 (43, 'Sistema', 0, '#', 1),
 (44, 'Calendario', 0, '#', 1),
-(45, 'Calendario', 44, 'calendario', 1),
-(46, 'Calendario', 44, 'calendario', 1);
+(59, 'Calendario', 44, 'calendario', 1);
 
 -- --------------------------------------------------------
 
@@ -476,6 +550,7 @@ INSERT INTO `permiso` (`per_tipo_usuario`, `per_modulo`, `per_estado`) VALUES
 (1, 38, 1),
 (1, 39, 1),
 (1, 40, 1),
+(1, 59, 1),
 (3, 1, 0),
 (3, 2, 0),
 (3, 3, 0),
@@ -515,7 +590,49 @@ INSERT INTO `permiso` (`per_tipo_usuario`, `per_modulo`, `per_estado`) VALUES
 (3, 37, 0),
 (3, 38, 0),
 (3, 39, 1),
-(3, 40, 1);
+(3, 40, 1),
+(3, 59, 0),
+(8, 1, 0),
+(8, 2, 0),
+(8, 3, 0),
+(8, 4, 0),
+(8, 5, 0),
+(8, 6, 0),
+(8, 7, 0),
+(8, 8, 0),
+(8, 9, 0),
+(8, 10, 0),
+(8, 11, 0),
+(8, 12, 0),
+(8, 13, 0),
+(8, 14, 0),
+(8, 15, 0),
+(8, 16, 0),
+(8, 17, 0),
+(8, 18, 0),
+(8, 19, 0),
+(8, 20, 0),
+(8, 21, 0),
+(8, 22, 0),
+(8, 23, 0),
+(8, 24, 0),
+(8, 25, 0),
+(8, 26, 0),
+(8, 27, 0),
+(8, 28, 0),
+(8, 29, 0),
+(8, 30, 0),
+(8, 31, 0),
+(8, 32, 0),
+(8, 33, 0),
+(8, 34, 0),
+(8, 35, 0),
+(8, 36, 0),
+(8, 37, 0),
+(8, 38, 0),
+(8, 39, 0),
+(8, 40, 0),
+(8, 59, 0);
 
 -- --------------------------------------------------------
 
@@ -553,15 +670,16 @@ CREATE TABLE IF NOT EXISTS `raza` (
   `raz_descripcion` varchar(150) NOT NULL,
   `raz_abreviacion` varchar(50) NOT NULL,
   `raz_estado` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `raza`
 --
 
 INSERT INTO `raza` (`raz_id`, `raz_descripcion`, `raz_abreviacion`, `raz_estado`) VALUES
-(1, 'Cebu', '', 1),
-(2, 'fleiber', '', 1);
+(1, 'Cebu', 'Cebu', 1),
+(2, 'Bronz as', 'Bronz', 1),
+(3, 'Angus', 'Angus', 1);
 
 -- --------------------------------------------------------
 
@@ -762,7 +880,7 @@ CREATE TABLE IF NOT EXISTS `tipo_usuario` (
 `tipusu_id` int(11) NOT NULL,
   `tipusu_descripcion` varchar(50) NOT NULL,
   `tipusu_estado` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tipo_usuario`
@@ -770,7 +888,12 @@ CREATE TABLE IF NOT EXISTS `tipo_usuario` (
 
 INSERT INTO `tipo_usuario` (`tipusu_id`, `tipusu_descripcion`, `tipusu_estado`) VALUES
 (1, 'Administrador', 1),
-(3, 'DBA', 1);
+(3, 'DBA', 1),
+(4, 'Invitado', 0),
+(5, 'Invitado', 0),
+(6, 'Invitado', 0),
+(7, 'Invitado', 0),
+(8, 'Invitado user', 1);
 
 -- --------------------------------------------------------
 
@@ -785,7 +908,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `usu_estado` int(11) NOT NULL,
   `usu_personal` int(11) NOT NULL,
   `usu_tipo_usuario` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -793,7 +916,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`usu_id`, `usu_nombre`, `usu_password`, `usu_estado`, `usu_personal`, `usu_tipo_usuario`) VALUES
 (1, 'admin', '1234', 1, 1, 1),
-(2, 'colbert', '1234', 1, 1, 3);
+(2, 'colbert', '1234', 1, 1, 3),
+(3, 'fisiano', '1234', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -843,6 +967,12 @@ ALTER TABLE `analisis`
 --
 ALTER TABLE `animal`
  ADD PRIMARY KEY (`ani_id`);
+
+--
+-- Indices de la tabla `auditoria`
+--
+ALTER TABLE `auditoria`
+ ADD PRIMARY KEY (`aud_id`), ADD KEY `aud_usuario` (`aud_usuario`);
 
 --
 -- Indices de la tabla `causa_aborto`
@@ -1104,6 +1234,11 @@ MODIFY `ana_id` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `animal`
 MODIFY `ani_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT de la tabla `auditoria`
+--
+ALTER TABLE `auditoria`
+MODIFY `aud_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
+--
 -- AUTO_INCREMENT de la tabla `causa_aborto`
 --
 ALTER TABLE `causa_aborto`
@@ -1197,7 +1332,7 @@ MODIFY `mecu_id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `modulo`
 --
 ALTER TABLE `modulo`
-MODIFY `mod_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=47;
+MODIFY `mod_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=60;
 --
 -- AUTO_INCREMENT de la tabla `muerte`
 --
@@ -1217,7 +1352,7 @@ MODIFY `per_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT de la tabla `raza`
 --
 ALTER TABLE `raza`
-MODIFY `raz_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `raz_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `rechazo`
 --
@@ -1282,12 +1417,12 @@ MODIFY `tipse_id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
-MODIFY `tipusu_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `tipusu_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `usu_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `usu_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `venta`
 --
