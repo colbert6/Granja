@@ -3,24 +3,24 @@
     /**
     * 
     */
-    class Tipo_analisis extends CI_Controller
+    class Estado_cria extends CI_Controller
     {   
         var $menu;//este copiar
-        var $tabla='raza';//auditoria
+        var $tabla='estado_cria';//auditoria
         function __construct(){
             parent::__construct();
-            $this->load->model('tipo_analisis_model');
+            $this->load->model('estado_cria_model');
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));//este copiar
         }
         
         public function index()
         {
-            $data['tipo_analisis'] = $this->tipo_analisis_model->select();
+            $data['estado_cria'] = $this->estado_cria_model->select();
 
             $dato= array ( 'titulo'=> 'Lista de tipo analisis');
             
             $this->load->view("/layout/header.php",$dato);
-            $this->load->view("/tipo_analisis/index.php",$data);
+            $this->load->view("/estado_cria/index.php",$data);
             $this->load->view("/layout/foother_table.php");
         }
         
@@ -31,15 +31,15 @@
                 $data= array ( 'descripcion'=> $this->input->post('descripcion'),
                               'abreviacion'=> $this->input->post('abreviacion')  );
 
-                $this->tipo_analisis_model->crear($data);
+                $this->estado_cria_model->crear($data);
                 $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());//auditoria
-                $this->redireccionar("tipo_analisis");
+                $this->redireccionar("estado_cria");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Registrar tipo de analisis','action'=>  'tipo_analisis/nuevo' );
+                $dato= array ( 'titulo'=> 'Registrar estado cria','action'=>  'estado_cria/nuevo' );
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/tipo_analisis/form.php");
+                $this->load->view("/estado_cria/form.php");
                 $this->load->view("/layout/foother.php");
 
             }
@@ -53,18 +53,18 @@
                                 'descripcion'=> $this->input->post('descripcion'),
                                 'abreviacion'=> $this->input->post('abreviacion')  );
 
-                $this->tipo_analisis_model->editar($data);
+                $this->estado_cria_model->editar($data);
                 $this->auditoria('modificar',$this->tabla,'', $data['id']);//auditoria
-                $this->redireccionar("tipo_analisis");
+                $this->redireccionar("estado_cria");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar tipo de enfermedad','action'=>  'tipo_analisis/editar' );
+                $dato= array ( 'titulo'=> 'Editar estado cria','action'=>  'estado_cria/editar' );
                 $idRaza=$this->uri-> segment(3);
 
-                $data['tipo_analisis']=$this->tipo_analisis_model->selectId( $idRaza);
+                $data['estado_cria']=$this->estado_cria_model->selectId( $idRaza);
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/tipo_analisis/form.php",$data);
+                $this->load->view("/estado_cria/form.php",$data);
                 $this->load->view("/layout/foother.php");
 
             }
@@ -75,9 +75,9 @@
         {
             $idRaza=$this->uri-> segment(3);
             
-            $this->tipo_analisis_model->eliminar($idRaza);
+            $this->estado_cria_model->eliminar($idRaza);
             $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
-            $this->redireccionar("tipo_analisis");
+            $this->redireccionar("estado_cria");
             
             
         }
