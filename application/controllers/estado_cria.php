@@ -17,7 +17,7 @@
         {
             $data['estado_cria'] = $this->estado_cria_model->select();
 
-            $dato= array ( 'titulo'=> 'Lista de tipo analisis');
+            $dato= array ( 'titulo'=> 'Lista estado cria');
             
             $this->load->view("/layout/header.php",$dato);
             $this->load->view("/estado_cria/index.php",$data);

@@ -57,7 +57,7 @@ if(isset ($aborto))  {  $datos=$aborto->row(); }
                                 <label for="fechareg">Fecha Evento</label>
                                 <input type="date" class="form-control" id="fecha" name="fecha" required
                                 value=<?php if(isset ($aborto)) echo $datos->ab_fecha_evento;?>>
-                            </div>
+                </div>
                 
             </div>
               
