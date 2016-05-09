@@ -1,4 +1,4 @@
-""<?php 
+<?php 
 if(isset ($animales))  {  $datos=$animales->row(); }  
 ?>
 <div class="col-md-6">

@@ -19,23 +19,28 @@ if(isset ($personal))  {  $datos=$personal->row(); }
                     </div>
                 <?php } ?>  
                 <div class="form-group">
+                    <label for="descripcion">DNI</label>
+                    <input type="text" class="form-control" id="dni" name="dni" placeholder="Ingrese dni" required maxlength="8" onkeypress="return soloNumeros(event)"
+                        value="<?php if(isset ($personal)) echo $datos->per_dni; ?>" >
+                </div>
+                <div class="form-group">
                     <label for="descripcion">Nombres</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese name"
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre" onkeypress="return soloLetras(event)"
                         value="<?php if(isset ($personal)) echo $datos->per_nombre; ?>" >
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Apellido Paterno</label>
-                    <input type="text" class="form-control" id="appaterno" name="appaterno" placeholder="Ingrese apellido paterno"
+                    <input type="text" class="form-control" id="appaterno" name="appaterno" placeholder="Ingrese apellido paterno" onkeypress="return soloLetras(event)"
                         value="<?php if(isset ($personal)) echo $datos->per_ape_paterno; ?>" >
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Apellido Materno</label>
-                    <input type="text" class="form-control" id="apmaterno" name="apmaterno" placeholder="Ingrese apellido materno"
+                    <input type="text" class="form-control" id="apmaterno" name="apmaterno" placeholder="Ingrese apellido materno" onkeypress="return soloLetras(event)"
                         value="<?php if(isset ($personal)) echo $datos->per_ape_materno; ?>" >
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Telefono</label>
-                    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingrese telefono"
+                    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingrese telefono" onkeypress="return soloNumeros(event)"
                         value="<?php if(isset ($personal)) echo $datos->per_telefono; ?>" >
                 </div>
                 <div class="form-group">
