@@ -1,0 +1,19 @@
+COLBERT
+---------------
+
+
+SERGIO
+-----------------
+
+
+ELAR
+---------------
+
+
+
+WILLY
+---------------------
+-falta el campo dni en tabla personal
+-unique en dni de personal 
+-falta en index de reproductores acciones en la tabla
+-falta los  "" en los formularios
