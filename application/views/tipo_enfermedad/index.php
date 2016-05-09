@@ -7,6 +7,7 @@
                         <th>ID</th>
                         <th>DESCRIPCION</th>
                         <th>ABREVIATURA</th>
+                        <th>ACCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
