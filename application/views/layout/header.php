@@ -301,27 +301,27 @@
                                 <li><a href="<?= base_url(); ?>index.php/animales/"><i class="fa fa-angle-double-right"></i> Registros</a></li>
                                 <li><a href="<?= base_url(); ?>index.php/razas/"><i class="fa fa-angle-double-right"></i> Razas</a></li>
                                 <li><a href="<?= base_url(); ?>index.php/tipo_registro/"><i class="fa fa-angle-double-right"></i> Tipos de Registros</a></li>   
-                                <li><a href="<?= base_url(); ?>index.php/index.php/"><i class="fa fa-angle-double-right"></i> Medicacion</a></li>
-                                <li><a href="<?= base_url(); ?>index.php/index/"><i class="fa fa-angle-double-right"></i> Medicamentos</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Medicina Genital</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Medicina Cuarto Mamarios</a></li>
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Personal</a></li>  
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Reproductor</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Tipo Analisis</a></li>
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Tipo Enfermedad</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Tipo Parto</a></li>  
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Tipo Servicio</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Causa Aborto</a></li>   
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Causa no Inseminal</a></li>
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Causa Rechazo</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Diagnostico Utero</a></li>
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Enfermedad Ovario</a></li>
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Enfermedad Utero</a></li>
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Especificacion Muerte</a></li>   
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Especificacion Venta</a></li> 
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Estado Cria</a></li>
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Resultado  Analisis</a></li>
-                                <li><a href="<?= base_url(); ?>index/"><i class="fa fa-angle-double-right"></i> Via Aplicacion</a></li> 
+                                <li><a href="<?= base_url(); ?>index.php/medicacion/"><i class="fa fa-angle-double-right"></i> Medicacion</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/medicamentos/"><i class="fa fa-angle-double-right"></i> Medicamentos</a></li> 
+                                <li><a href="<?= base_url(); ?>index.php/medicina_genital/"><i class="fa fa-angle-double-right"></i> Medicina Genital</a></li> 
+                                <li><a href="<?= base_url(); ?>index.php/med_cuarto_mamarios/"><i class="fa fa-angle-double-right"></i> Medicina Cuarto Mamarios</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/personal/"><i class="fa fa-angle-double-right"></i> Personal</a></li>  
+                                <li><a href="<?= base_url(); ?>index.php/reproductor/"><i class="fa fa-angle-double-right"></i> Reproductor</a></li> 
+                                <li><a href="<?= base_url(); ?>index.php/tipo_analisis/"><i class="fa fa-angle-double-right"></i> Tipo Analisis</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/tipo_enfermedad/"><i class="fa fa-angle-double-right"></i> Tipo Enfermedad</a></li> 
+                                <li><a href="<?= base_url(); ?>index.php/tipo_parto/"><i class="fa fa-angle-double-right"></i> Tipo Parto</a></li>  
+                                <li><a href="<?= base_url(); ?>index.php/tipo_servicio/"><i class="fa fa-angle-double-right"></i> Tipo Servicio</a></li> 
+                                <li><a href="<?= base_url(); ?>index.php/causa_aborto/"><i class="fa fa-angle-double-right"></i> Causa Aborto</a></li>   
+                                <li><a href="<?= base_url(); ?>index.php/causa_no_inseminal/"><i class="fa fa-angle-double-right"></i> Causa no Inseminal</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/causa_rechazo/"><i class="fa fa-angle-double-right"></i> Causa Rechazo</a></li> 
+                                <li><a href="<?= base_url(); ?>index.php/diagnostico_utero/"><i class="fa fa-angle-double-right"></i> Diagnostico Utero</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/enfermedad_ovario/"><i class="fa fa-angle-double-right"></i> Enfermedad Ovario</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/enfermedad_utero/"><i class="fa fa-angle-double-right"></i> Enfermedad Utero</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/especificacion_muerte/"><i class="fa fa-angle-double-right"></i> Especificacion Muerte</a></li>   
+                                <li><a href="<?= base_url(); ?>index.php/especificacion_venta/"><i class="fa fa-angle-double-right"></i> Especificacion Venta</a></li> 
+                                <li><a href="<?= base_url(); ?>index.php/estado_cria/"><i class="fa fa-angle-double-right"></i> Estado Cria</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/resultado_analisis/"><i class="fa fa-angle-double-right"></i> Resultado  Analisis</a></li>
+                                <li><a href="<?= base_url(); ?>index.php/via_aplicacion/"><i class="fa fa-angle-double-right"></i> Via Aplicacion</a></li> 
                                                                
                             </ul>
                         </li>
