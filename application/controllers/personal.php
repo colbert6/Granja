@@ -32,7 +32,7 @@
                                 'direccion'=>$this->input->post('direccion'),
                                 'telefono'=>$this->input->post('telefono'),
                                 'distrito'=>$this->input->post('distrito'));
-                print_r($data);exit();
+                
                 $this->personal_model->crear($data);
                 $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());//auditoria
                 $this->redireccionar("personal");
@@ -52,8 +52,12 @@
             
             if (@$_POST['guardar'] == 1) {
                 $data= array ( 'id'=> $this->input->post('id'),
-                                'descripcion'=> $this->input->post('descripcion'),
-                                'abreviacion'=> $this->input->post('abreviacion'),
+                                'nombre'=> $this->input->post('nombre'),
+                                'paterno'=>$this->input->post('appaterno'),
+                                'materno'=>$this->input->post('apmaterno'),
+                                'direccion'=>$this->input->post('direccion'),
+                                'telefono'=>$this->input->post('telefono'),
+                                'distrito'=>$this->input->post('distrito')
                                  );
 
                 $resul=$this->personal_model->editar($data);

@@ -271,36 +271,45 @@
     			break;
     		case '3':
                 
-                /*$.post(base+"index.php/tipo_analisis/json_ExtraerTodo",function(causa_no_inseminal){
-                    $.post(base+"index.php/tipo_analisis/json_ExtraerTodo",function(medicina_genital){
-                        $.post(base+"index.php/tipo_analisis/json_ExtraerTodo",function(via_aplicacion){
+                $.post(base+"index.php/causa_no_inseminal/json_ExtraerTodo",function(causa_no_inseminal){
+                    $.post(base+"index.php/medicina_genital/json_ExtraerTodo",function(medicina_genital){
+                       $.post(base+"index.php/via_aplicacion/json_ExtraerTodo",function(via_aplicacion){
+
+                            var cni = JSON.parse(causa_no_inseminal);
+                            var medge = JSON.parse(medicina_genital);
+                            var viaap = JSON.parse(via_aplicacion);
+
+                            formulario    += "<label>Causa no Inseminal:</label>";
+                            formulario    += "<select class='form-control' id='id_cni'>";
+                            for (var i = 0; i < cni.length; i++) {
+                                    formulario    += "<option value='"+cni[i].cni_id+"'>"+cni[i].cni_descripcion+"</option>";
+                            }
+                            formulario    += "</select>";
+                            formulario    += "<label>Medicina Genital:</label>";
+                            formulario    += "<select class='form-control' id='id_medget'>";
+                            for (var i = 0; i < medge.length; i++) {
+                                    formulario    += "<option value='"+medge[i].medge_id+"'>"+medge[i].medge_descripcion+"</option>";
+                            }
+                            formulario    += "</select>";
+                            formulario    += "<label>Via Aplicacion:</label>";
+                            formulario    += "<select class='form-control' id='id_viaap'>";
+                            //Extraer los Tipos de Analisis
+                            //$.post("",{suggest: txt},function(data){});
+                            formulario    += "<option value='1'>1</option>";
+                            formulario    += "</select>";
+                            formulario    += "<label>Fecha:</label>";
+                            formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+
+                            $("#content-form").html(formulario); 
+                            $("#myModal").modal("show");  
+
 
                         });
+                        
                     });
-                });*/
-    			formulario 	  += "<label>Causa no Inseminal:</label>";
-    			formulario    += "<select class='form-control' id='id_cni'>";
-		        //Extraer los Tipos de Analisis
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario 	  += "<label>Medicina Genital:</label>";
-		        formulario    += "<select class='form-control' id='id_medget'>";
-		        //Extraer los Tipos de Analisis
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario 	  += "<label>Via Aplicacion:</label>";
-		        formulario    += "<select class='form-control' id='id_viaap'>";
-		        //Extraer los Tipos de Analisis
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario    += "<label>Fecha:</label>";
-		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
-
-    			$("#content-form").html(formulario); 
-				$("#myModal").modal("show");  
+                    
+                });
+    			
     			break;
     		case '4':
     			formulario 	  += "<label>Tipo de Enfermedad:</label>";

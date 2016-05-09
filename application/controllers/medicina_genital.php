@@ -81,6 +81,12 @@
             
             
         }
+
+        public function json_ExtraerTodo()
+        {
+            $data['medicina_genital'] = $this->medicina_genital_model->select();
+            echo json_encode($data['medicina_genital']->result());            
+        }
     }
  ?>
 

@@ -81,6 +81,12 @@
             
             
         }
+
+        public function json_ExtraerTodo()
+        {
+            $data['causa_no_inseminal'] = $this->causa_no_inseminal_model->select();
+            echo json_encode($data['causa_no_inseminal']->result());            
+        }
     }
  ?>
 
