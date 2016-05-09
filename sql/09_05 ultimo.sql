@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-05-2016 a las 22:29:38
+-- Tiempo de generación: 09-05-2016 a las 22:44:12
 -- Versión del servidor: 5.6.16
 -- Versión de PHP: 5.5.11
 
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `auditoria` (
   `aud_registro` int(11) NOT NULL,
   PRIMARY KEY (`aud_id`),
   KEY `aud_usuario` (`aud_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=124 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=128 ;
 
 --
 -- Volcado de datos para la tabla `auditoria`
@@ -227,7 +227,11 @@ INSERT INTO `auditoria` (`aud_id`, `aud_tipo`, `aud_tabla`, `aud_fecha`, `aud_us
 (120, 'modificar', 'personal', '2016-05-09 14:56:35', 1, '', 'leonardo', 5),
 (121, 'insertar', 'personal', '2016-05-09 15:00:09', 1, '', 'leonardo', 7),
 (122, 'modificar', 'personal', '2016-05-09 15:01:04', 1, '', 'leonardo', 7),
-(123, 'eliminar', 'personal', '2016-05-09 15:03:53', 1, '', 'leonardo', 7);
+(123, 'eliminar', 'personal', '2016-05-09 15:03:53', 1, '', 'leonardo', 7),
+(124, 'insertar', 'modulo', '2016-05-09 15:39:01', 1, '', 'leonardo', 61),
+(125, 'modificar', 'permiso', '2016-05-09 15:39:22', 1, '', 'leonardo', 1),
+(126, 'modificar', 'permiso', '2016-05-09 15:39:25', 1, '', 'leonardo', 1),
+(127, 'insertar', 'indicaciones_especiales', '2016-05-09 15:39:47', 1, '', 'leonardo', 1);
 
 -- --------------------------------------------------------
 
@@ -488,7 +492,14 @@ CREATE TABLE IF NOT EXISTS `indicaciones_especiales` (
   `indesp_abreviatura` varchar(50) DEFAULT NULL,
   `indesp_estado` int(11) DEFAULT NULL,
   PRIMARY KEY (`indesp_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `indicaciones_especiales`
+--
+
+INSERT INTO `indicaciones_especiales` (`indesp_id`, `indesp_descripcion`, `indesp_abreviatura`, `indesp_estado`) VALUES
+(1, 'medicina', 'm y ', 1);
 
 -- --------------------------------------------------------
 
@@ -600,7 +611,7 @@ CREATE TABLE IF NOT EXISTS `modulo` (
   `mod_url` varchar(50) NOT NULL,
   `mod_estado` int(11) NOT NULL,
   PRIMARY KEY (`mod_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=62 ;
 
 --
 -- Volcado de datos para la tabla `modulo`
@@ -652,7 +663,8 @@ INSERT INTO `modulo` (`mod_id`, `mod_descripcion`, `mod_padre`, `mod_url`, `mod_
 (43, 'Sistema', 0, '#', 1),
 (44, 'Calendario', 0, '#', 1),
 (59, 'Calendario', 44, 'calendario', 1),
-(60, 'Medicamentos', 41, 'medicamentos', 1);
+(60, 'Medicamentos', 41, 'medicamentos', 1),
+(61, 'Indicación Especial', 41, 'indicacion_especial', 1);
 
 -- --------------------------------------------------------
 
@@ -749,6 +761,7 @@ INSERT INTO `permiso` (`per_tipo_usuario`, `per_modulo`, `per_estado`) VALUES
 (1, 40, 1),
 (1, 59, 1),
 (1, 60, 1),
+(1, 61, 1),
 (3, 1, 0),
 (3, 2, 0),
 (3, 3, 0),
@@ -791,6 +804,7 @@ INSERT INTO `permiso` (`per_tipo_usuario`, `per_modulo`, `per_estado`) VALUES
 (3, 40, 1),
 (3, 59, 0),
 (3, 60, 0),
+(3, 61, 0),
 (8, 1, 0),
 (8, 2, 0),
 (8, 3, 0),
@@ -832,7 +846,8 @@ INSERT INTO `permiso` (`per_tipo_usuario`, `per_modulo`, `per_estado`) VALUES
 (8, 39, 0),
 (8, 40, 0),
 (8, 59, 0),
-(8, 60, 0);
+(8, 60, 0),
+(8, 61, 0);
 
 -- --------------------------------------------------------
 
