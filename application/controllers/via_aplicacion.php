@@ -78,8 +78,12 @@
             $this->via_aplicacion_model->eliminar($id);
             $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("via_aplicacion");
-            
-            
+        }
+
+        public function json_ExtraerTodo()
+        {
+            $data['via_aplicacion'] = $this->via_aplicacion_model->select();
+            echo json_encode($data['via_aplicacion']->result());            
         }
     }
  ?>
