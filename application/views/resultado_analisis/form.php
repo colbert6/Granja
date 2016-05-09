@@ -21,12 +21,12 @@ if(isset ($resultado_analisis))  {  $datos=$resultado_analisis->row(); }
                 <div class="form-group">
                     <label for="descripcion">Descripción</label>
                     <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion"
-                        value=<?php if(isset ($resultado_analisis)) echo $datos->resan_descripcion; ?> >
+                        value="<?php if(isset ($resultado_analisis)) echo $datos->resan_descripcion; ?>" >
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Abreviatura</label>
                     <input type="text" class="form-control" id="abreviacion" name="abreviacion" placeholder="Ingrese abreviacion"
-                        value=<?php if(isset ($resultado_analisis)) echo $datos->resan_abreviatura; ?> >
+                        value="<?php if(isset ($resultado_analisis)) echo $datos->resan_abreviatura; ?>" >
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>

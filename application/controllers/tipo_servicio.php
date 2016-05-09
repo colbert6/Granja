@@ -58,7 +58,7 @@
                 $this->redireccionar("tipo_servicio");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar tipo de enfermedad','action'=>  'tipo_servicio/editar' );
+                $dato= array ( 'titulo'=> 'Editar tipo de servicio','action'=>  'tipo_servicio/editar' );
                 $idRaza=$this->uri-> segment(3);
 
                 $data['tipo_servicio']=$this->tipo_servicio_model->selectId( $idRaza);
