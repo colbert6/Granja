@@ -64,11 +64,6 @@ $personal=$personal->result();
                 </div>
 
 
-                <div class="form-group">
-                    <label for="abreviacion">Personal</label>
-                    <input type="text" class="form-control" id="personal" name="personal" placeholder="Ingrese Personal"
-                        value="<?php if(isset ($usuario)) echo $datos->usu_personal; ?>" >
-                </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
