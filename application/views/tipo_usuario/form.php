@@ -22,7 +22,7 @@ if(isset ($tipo_usuario))  {  $datos=$tipo_usuario->row(); }
                 <div class="form-group">
                     <label for="descripcion">Descripcion</label>
                     <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese Descripcion"
-                        value=<?php if(isset ($tipo_usuario)) echo $datos->tipusu_descripcion; ?> >
+                        value="<?php if(isset ($tipo_usuario)) echo $datos->tipusu_descripcion; ?>" >
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>

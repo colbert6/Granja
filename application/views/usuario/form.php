@@ -24,12 +24,12 @@ $tipo_usuario=$tipo_usuario->result();
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese Nombre"
-                        value=<?php if(isset ($usuario)) echo $datos->usu_nombre; ?> >
+                        value="<?php if(isset ($usuario)) echo $datos->usu_nombre; ?>" >
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese Password"
-                        value=<?php if(isset ($usuario)) echo $datos->usu_password; ?> >
+                        value="<?php if(isset ($usuario)) echo $datos->usu_password; ?>" >
                 </div>
                 <div class="form-group">
                     <label>Tipo de Usuario</label>
@@ -51,7 +51,7 @@ $tipo_usuario=$tipo_usuario->result();
                 <div class="form-group">
                     <label for="abreviacion">Personal</label>
                     <input type="text" class="form-control" id="personal" name="personal" placeholder="Ingrese Personal"
-                        value=<?php if(isset ($usuario)) echo $datos->usu_personal; ?> >
+                        value="<?php if(isset ($usuario)) echo $datos->usu_personal; ?>" >
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>

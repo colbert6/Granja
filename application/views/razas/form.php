@@ -1,5 +1,5 @@
 <?php 
-if(isset ($razas))  {  $datos=$razas->row(); }    
+if(isset ($razas))  {  $datos=$razas->row(); }  
 ?>
  
 <div class="col-md-6">
@@ -22,12 +22,12 @@ if(isset ($razas))  {  $datos=$razas->row(); }
                 <div class="form-group">
                     <label for="descripcion">Descripcion</label>
                     <input type="text" required class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion"
-                        value=<?php if(isset ($razas)) echo $datos->raz_descripcion; ?> >
+                        value="<?php if(isset ($razas)) echo $datos->raz_descripcion; ?>" >
                 </div>
                 <div class="form-group">
                     <label for="abreviacion">Abreviacion</label>
                     <input type="text" required class="form-control" id="abreviacion" name="abreviacion" placeholder="Ingrese abreviacion"
-                        value=<?php if(isset ($razas)) echo $datos->raz_abreviacion; ?> >
+                        value="<?php if(isset ($razas)) echo $datos->raz_abreviacion; ?>" >
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>
