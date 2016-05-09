@@ -5,6 +5,7 @@
     */
     class Secado extends CI_Controller
     { var $menu;
+      var $tabla='secado';
         function __construct(){
             parent::__construct();
             $this->load->model('secado_model');
@@ -43,6 +44,7 @@
                             );
           //   print_r($data);
              $this->secado_model->crear($data);
+             $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
              $this->redireccionar("secado");
                 
             }else{
@@ -69,6 +71,7 @@
                             );
                 //print_r($data);
                 $this->secado_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);
                 $this->redireccionar("secado");
                 
             }else{
@@ -94,6 +97,7 @@
             $idabo=$this->uri-> segment(3);
             
             $this->secado_model->eliminar($idabo);
+            $this->auditoria('eliminar',$this->tabla,'', $id);
             $this->redireccionar("secado");
             
             

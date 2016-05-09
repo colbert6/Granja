@@ -5,6 +5,7 @@
     */
     class Muerte extends CI_Controller
     { var $menu;
+      var $tabla='muerte';
         function __construct(){
             parent::__construct();
             $this->load->model('muerte_model');
@@ -44,6 +45,7 @@
                         );
           //   print_r($data);
              $this->muerte_model->crear($data);
+             $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
              $this->redireccionar("muerte");
                 
             }else{
@@ -69,6 +71,7 @@
                            'fecha'=> $this->input->post('fecha'));
                 //print_r($data);
                 $this->muerte_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);
                 $this->redireccionar("muerte");
                 
             }else{
@@ -94,6 +97,7 @@
             $idabo=$this->uri-> segment(3);
             
             $this->muerte_model->eliminar($idabo);
+            $this->auditoria('eliminar',$this->tabla,'', $id);
             $this->redireccionar("muerte");
             
             

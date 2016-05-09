@@ -6,7 +6,7 @@
     class Aborto extends CI_Controller
     {
         var $menu;
-
+        var $tabla='aborto';
         function __construct(){
             parent::__construct();
             $this->load->model('aborto_model');
@@ -47,6 +47,7 @@
                         );
           //   print_r($data);
              $this->aborto_model->crear($data);
+             $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
              $this->redireccionar("aborto");
                 
             }else{
@@ -73,6 +74,7 @@
                            );
                 //print_r($data);
                 $this->aborto_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);
                 $this->redireccionar("aborto");
                 
             }else{
@@ -97,6 +99,7 @@
             $idabo=$this->uri-> segment(3);
             
             $this->aborto_model->eliminar($idabo);
+            $this->auditoria('eliminar',$this->tabla,'', $id);
             $this->redireccionar("aborto");
             
             

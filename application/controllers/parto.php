@@ -5,6 +5,7 @@
     */
     class Parto extends CI_Controller
     { var $menu;
+      var $tabla='parto';
         function __construct(){
             parent::__construct();
             $this->load->model('parto_model');
@@ -46,6 +47,7 @@
                         );
           //   print_r($data);
              $this->parto_model->crear($data);
+             $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
              $this->redireccionar("parto");
                 
             }else{
@@ -74,6 +76,7 @@
                            'servicio'=> $this->input->post('servicio'));
                 //print_r($data);
                 $this->parto_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);
                 $this->redireccionar("parto");
                 
             }else{
@@ -99,6 +102,7 @@
             $idabo=$this->uri-> segment(3);
             
             $this->parto_model->eliminar($idabo);
+            $this->auditoria('eliminar',$this->tabla,'', $id);
             $this->redireccionar("parto");
             
             

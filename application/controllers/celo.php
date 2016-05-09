@@ -6,6 +6,7 @@
     class Celo extends CI_Controller
     {
       var $menu;
+      var $tabla='celo';
         function __construct(){
             parent::__construct();
             $this->load->model('celo_model');
@@ -46,6 +47,7 @@
                         );
           //   print_r($data);
              $this->celo_model->crear($data);
+             $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
              $this->redireccionar("celo");
                 
             }else{
@@ -74,6 +76,7 @@
                         );
                 //print_r($data);
                 $this->celo_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);
                 $this->redireccionar("celo");
                 
             }else{
@@ -99,6 +102,7 @@
             $idabo=$this->uri-> segment(3);
             
             $this->celo_model->eliminar($idabo);
+            $this->auditoria('eliminar',$this->tabla,'', $id);
             $this->redireccionar("celo");
             
             

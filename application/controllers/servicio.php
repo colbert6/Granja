@@ -5,6 +5,7 @@
     */
     class Servicio extends CI_Controller
     { var $menu;
+       var $tabla='servicio';
         function __construct(){
             parent::__construct();
             $this->load->model('servicio_model');
@@ -46,6 +47,7 @@
                         );
           //   print_r($data);
              $this->servicio_model->crear($data);
+             $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
              $this->redireccionar("servicio");
                 
             }else{
@@ -73,6 +75,7 @@
                            'tipo_servicio'=> $this->input->post('tipo_servicio'));
                 //print_r($data);
                 $this->servicio_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);
                 $this->redireccionar("servicio");
                 
             }else{
@@ -98,6 +101,7 @@
             $idabo=$this->uri-> segment(3);
             
             $this->servicio_model->eliminar($idabo);
+            $this->auditoria('eliminar',$this->tabla,'', $id);
             $this->redireccionar("servicio");
             
             

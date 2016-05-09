@@ -5,6 +5,7 @@
     */
     class Venta extends CI_Controller
     {   var $menu;
+      var $tabla='venta';
         function __construct(){
             parent::__construct();
             $this->load->model('venta_model');
@@ -44,6 +45,7 @@
                             );
           //   print_r($data);
              $this->venta_model->crear($data);
+             $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
              $this->redireccionar("venta");
                 
             }else{
@@ -69,6 +71,7 @@
                            'especif_venta'=> $this->input->post('especif_venta'));
                 //print_r($data);
                 $this->venta_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);
                 $this->redireccionar("venta");
                 
             }else{
@@ -94,6 +97,7 @@
             $idabo=$this->uri-> segment(3);
             
             $this->venta_model->eliminar($idabo);
+            $this->auditoria('eliminar',$this->tabla,'', $id);
             $this->redireccionar("venta");
             
             

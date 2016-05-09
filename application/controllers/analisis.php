@@ -6,6 +6,7 @@
     class Analisis extends CI_Controller
     {
         var $menu;
+        var $tabla='analisis';
         function __construct(){
             parent::__construct();
             $this->load->model('analisis_model');
@@ -45,6 +46,7 @@
                         );
           //   print_r($data);
              $this->analisis_model->crear($data);
+             $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
              $this->redireccionar("analisis");
                 
             }else{
@@ -72,6 +74,7 @@
                            );
                 //print_r($data);
                 $this->analisis_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);
                 $this->redireccionar("analisis");
                 
             }else{
@@ -97,6 +100,7 @@
             $idabo=$this->uri-> segment(3);
             
             $this->analisis_model->eliminar($idabo);
+            $this->auditoria('eliminar',$this->tabla,'', $id);
             $this->redireccionar("analisis");
             
             

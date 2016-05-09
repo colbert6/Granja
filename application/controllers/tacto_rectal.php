@@ -5,6 +5,7 @@
     */
     class Tacto_rectal extends CI_Controller
     { var $menu;
+      var $tabla='tacto_rectal';
         function __construct(){
             parent::__construct();
             $this->load->model('tacto_rectal_model');
@@ -47,6 +48,7 @@
                         );
           //   print_r($data);
              $this->tacto_rectal_model->crear($data);
+             $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
              $this->redireccionar("tacto_rectal");
                 
             }else{
@@ -76,6 +78,7 @@
                            'med_genital'=> $this->input->post('med_genital'));
                 //print_r($data);
                 $this->tacto_rectal_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);
                 $this->redireccionar("tacto_rectal");
                 
             }else{
@@ -101,6 +104,7 @@
             $idabo=$this->uri-> segment(3);
             
             $this->tacto_rectal_model->eliminar($idabo);
+            $this->auditoria('eliminar',$this->tabla,'', $id);
             $this->redireccionar("tacto_rectal");
             
             
