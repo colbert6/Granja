@@ -13,6 +13,7 @@
             $this->load->model('estado_cria_model');
             $this->load->model('tipo_parto_model');
             $this->load->model('servicio_model');
+            $this->load->model('sexo_cria_model');
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
         }
         
@@ -51,6 +52,7 @@
                 $data['estado_cria'] = $this->estado_cria_model->select();
                 $data['tipo_parto'] = $this->tipo_parto_model->select();
                 $data['servicio'] = $this->servicio_model->select();
+                $data['sexo_cria'] = $this->sexo_cria_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/parto/form.php",$data  );
@@ -85,6 +87,7 @@
                 $data['tipo_parto'] = $this->tipo_parto_model->select();
                 $data['servicio'] = $this->servicio_model->select();
                 $data['parto']=$this->parto_model->selectId( $idabo);
+                $data['sexo_cria'] = $this->sexo_cria_model->select();
                 
 
                 $this->load->view("/layout/header.php",$dato);

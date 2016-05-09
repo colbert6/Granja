@@ -87,9 +87,9 @@ if(isset ($parto))  {  $datos=$parto->row(); }
                         <?php foreach ($servicio->result() as $datos_s) {
 
                             if ($datos_s->ser_id==$datos->par_servicio) {
-                                echo "<option selected value='".$datos_s->ser_id."'>".$datos_s->ser_descripcion."</option>";
+                                echo "<option selected value='".$datos_s->ser_id."'>".$datos_s->ser_animal."</option>";
                             } else {
-                               echo "<option  value='".$datos_s->ser_id."'>".$datos_s->ser_descripcion."</option>";
+                               echo "<option  value='".$datos_s->ser_id."'>".$datos_s->ser_animal."</option>";
                             }
 
                             }

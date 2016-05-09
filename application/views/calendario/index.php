@@ -57,8 +57,8 @@
                             <?php for ($j=1; $j <=12 ; $j++) { ?>
                                 <td class='text-center' >
 
-                                <div class='bnt' id='<?php echo $i."".$j;?>'>
-                                    <button type="button" class="btn-event" onclick="$('#editEvent').modal('show');">
+                                <div id='<?php echo $i."".$j;?>'>
+                                    <button type="button"  onclick="$('#editEvent').modal('show');">
                                          <img src="<?php echo base_url(); ?>img/home.png">
                                       <span class="badge">4</span>
                                     </button>
@@ -94,9 +94,6 @@
     }
     .btn-event{
     	margin: 2px 0 2px 0;
-    }
-    .bnt{
-        display: block;
     }
 </style>
 
@@ -559,7 +556,7 @@
                     $.post(base+"index.php/aborto/json_Nuevo",{animal:animal,cauabor:cuabor,fecha:fecha},function(){
                         alert("Se guardo Correctamente");
                         var id = String("#"+$("#fila").val()+""+$("#mes").val());
-                        var boton = "<br><button type=\"button\" class=\"btn-event\" onclick=\"$('#editEvent').modal('show');\">";
+                        var boton = "<br><button type=\"button\" onclick=\"$('#editEvent').modal('show');\">";
                         boton+="<img src=\""+base+"img/home.png\"/>";
                         boton+="<span class=\"badge\">4</span>";
                         boton+="</button>";
