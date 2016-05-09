@@ -2,6 +2,7 @@
 if(isset ($usuario))  {  $datos=$usuario->row();  }  
 
 $tipo_usuario=$tipo_usuario->result();  
+$personal=$personal->result();  
 ?>
  
 <div class="col-md-6">
@@ -42,6 +43,21 @@ $tipo_usuario=$tipo_usuario->result();
                                     <option selected value="<?= $tipo->tipusu_id;?>"><?=$tipo->tipusu_descripcion; ?></option>
                             <?php }else{  ?>
                                     <option value="<?= $tipo->tipusu_id;?>"><?=$tipo->tipusu_descripcion; ?></option>
+                            <?php } 
+                            } ?>
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label>Personal</label>
+                        <select class="form-control"  id="personal" name="personal">
+                            <option value='' >Selecciona...</option>
+                           
+                           <?php //echo "<script>alert('".count($this->cat_empleado)."');</script>"; 
+                            foreach ($personal as $per ) {
+                                  if($per->per_id==$datos->usu_personal ){?>
+                                    <option selected value="<?= $per->per_id;?>"><?=$per->per_nombre." ".$per->per_ape_paterno." ".$per->per_ape_materno; ?></option>
+                            <?php }else{  ?>
+                                    <option value="<?= $per->per_id;?>"><?=$per->per_nombre." ".$per->per_ape_paterno." ".$per->per_ape_materno; ?></option>
                             <?php } 
                             } ?>
                         </select>

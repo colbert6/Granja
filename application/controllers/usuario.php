@@ -13,7 +13,7 @@
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
             $this->load->model('usuario_model');
             $this->load->model('tipo_usuario_model');
-            //$this->load->model('personal_model');
+            $this->load->model('personal_model');
 
         }
 
@@ -45,7 +45,7 @@
                 $dato= array ( 'titulo'=> 'Registrar Usuario','action'=>  'usuario/nuevo' );
 
                 $data['tipo_usuario']=$this->tipo_usuario_model->select();
-                //$data['personal']=$this->personal_model->select();
+                $data['personal']=$this->personal_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/usuario/form.php",$data);
@@ -75,6 +75,8 @@
 
                 $data['usuario']=$this->usuario_model->selectId( $idusuario);
                 $data['tipo_usuario']=$this->tipo_usuario_model->select();
+                $data['personal']=$this->personal_model->select();
+
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/usuario/form.php",$data);
