@@ -7,7 +7,7 @@
     class Razas extends CI_Controller
     {   
         var $menu;//este copiar
-
+        var $tabla='raza';//auditoria
         function __construct(){
             parent::__construct();
             $this->load->model('razas_model');
@@ -26,19 +26,20 @@
         }
 
         public function nuevo()
-        {
-            
+        {            
             if (@$_POST['guardar'] == 1) {
                 $data= array ( 'descripcion'=> $this->input->post('descripcion'),
                               'abreviacion'=> $this->input->post('abreviacion')  );
 
-                $this->razas_model->crear($data);
+                $this->razas_model->crear($data);                
+                $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());//auditoria
+                
                 $this->redireccionar("razas");
                 
             }else{
                 $dato= array ( 'titulo'=> 'Registrar Raza','action'=>  'razas/nuevo' );
 
-                $this->load->view("/layout/header.php",$this->$menu);
+                $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/razas/form.php");
                 $this->load->view("/layout/foother.php");
 
@@ -55,6 +56,7 @@
                                 'abreviacion'=> $this->input->post('abreviacion')  );
 
                 $this->razas_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);//auditoria
                 $this->redireccionar("razas");
                 
             }else{
@@ -73,13 +75,14 @@
 
         public function eliminar()
         {
-            $idRaza=$this->uri-> segment(3);
-            
-            $this->razas_model->eliminar($idRaza);
+            $ida=$this->uri-> segment(3);
+            $this->razas_model->eliminar($id);
+            $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("razas");
             
             
         }
+
 
     }
  ?>

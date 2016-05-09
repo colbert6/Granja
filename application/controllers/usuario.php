@@ -6,6 +6,8 @@
     class Usuario extends CI_Controller
     {
         var $menu;
+        var $tabla='usuario';//auditoria
+        
         function __construct(){
             parent::__construct();
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
@@ -36,7 +38,7 @@
                               'personal'=> $this->input->post('personal')  );
 
                 $this->usuario_model->crear($data);                  
-
+                $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());//auditoria
                 $this->redireccionar("usuario");
                 
             }else{
@@ -64,6 +66,7 @@
                               'personal'=> $this->input->post('personal') );
 
                 $this->usuario_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);//auditoria
                 $this->redireccionar("usuario");
                 
             }else{
@@ -82,9 +85,9 @@
 
         public function eliminar()
         {
-            $id=$this->uri-> segment(3);
-            
+            $id=$this->uri-> segment(3);            
             $this->usuario_model->eliminar($id);
+            $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("usuario");
             
             

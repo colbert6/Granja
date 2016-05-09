@@ -6,7 +6,8 @@
     class Permiso extends CI_Controller
     {
         var $menu;
-        
+        var $tabla='permiso';//auditoria
+
         function __construct(){
             parent::__construct();
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
@@ -35,6 +36,8 @@
                 //echo "<pre>";print_r($_POST);exit();
 
                 $this->permiso_model->QuitarPermiso($this->input->post('id_tipo'));
+                $this->auditoria('modificar',$this->tabla,'',$this->input->post('id_tipo'));//auditoria
+                
                 foreach ($_POST['mod_permiso'] as $permiso) {
                     
                     $data= array ( 'id_tipo'=> $this->input->post('id_tipo'),

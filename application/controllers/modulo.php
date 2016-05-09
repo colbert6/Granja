@@ -6,7 +6,7 @@
     class Modulo extends CI_Controller
     {
          var $menu;
-
+         var $tabla='modulo';//auditoria
         function __construct(){
             parent::__construct();
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
@@ -35,6 +35,7 @@
                               'url'=> $this->input->post('url') );
 
                 $new_tipo=$this->modulo_model->crear($data);
+                $this->auditoria('insertar',$this->tabla,'',$new_tipo->mod_id);//auditoria
                 
                 $tipo_usuario= $this->tipo_usuario_model->select();
                 foreach ($tipo_usuario->result() as $tipo_usuarios) {
@@ -69,6 +70,7 @@
                               'url'=> $this->input->post('url'));
 
                 $this->modulo_model->editar($data);
+                $this->auditoria('modificar',$this->tabla,'', $data['id']);//auditoria
                 $this->redireccionar("modulo");
                 
             }else{
@@ -87,9 +89,9 @@
 
         public function eliminar()
         {
-            $id=$this->uri-> segment(3);
-            
+            $id=$this->uri-> segment(3);            
             $this->modulo_model->eliminar($id);
+            $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("modulo");
             
             

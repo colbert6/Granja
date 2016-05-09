@@ -65,7 +65,7 @@
 	        									'mod_estado' => 1));
 	        $this->db->select_max('mod_id');	        
 			$query = $this->db->get('modulo');
-			return $query;
+			return $query->row();
 
 	    }
 

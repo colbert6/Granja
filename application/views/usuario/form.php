@@ -59,4 +59,4 @@ $tipo_usuario=$tipo_usuario->result();
             </div>
         </form>
     </div>
-</div> ?>
+</div> 

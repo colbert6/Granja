@@ -52,7 +52,8 @@ class CI_Controller {
 		
 		log_message('debug', "Controller Class Initialized");
 		$this->load->model('modulo_model');
-		
+		$this->load->model('auditoria_model');
+	
 		
 	}
 
@@ -74,6 +75,16 @@ class CI_Controller {
             exit;
         }
     }
+
+    public function auditoria($tipo,$tabla,$descripcion,$registro)
+        {
+                $data= array('tipo' => $tipo,
+                            'tabla' => $tabla,
+                            'descripcion' => $descripcion,
+                            'registro' => $registro);
+                $this->auditoria_model->registrar($data);
+            
+        }
 }
 // END Controller class
 
