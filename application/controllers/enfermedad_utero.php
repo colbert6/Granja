@@ -17,7 +17,7 @@
         {
             $data['enfermedad_utero'] = $this->enfermedad_utero_model->select();
 
-            $dato= array ( 'titulo'=> 'Lista de tipo servicio');
+            $dato= array ( 'titulo'=> 'Lista de enfermedad utero');
             
             $this->load->view("/layout/header.php",$dato);
             $this->load->view("/enfermedad_utero/index.php",$data);
@@ -36,7 +36,7 @@
                 $this->redireccionar("enfermedad_utero");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Registrar tipo de servicio','action'=>  'enfermedad_utero/nuevo' );
+                $dato= array ( 'titulo'=> 'Registrar enfermedad de utero','action'=>  'enfermedad_utero/nuevo' );
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/enfermedad_utero/form.php");
@@ -58,7 +58,7 @@
                 $this->redireccionar("enfermedad_utero");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar tipo de enfermedad','action'=>  'enfermedad_utero/editar' );
+                $dato= array ( 'titulo'=> 'Editar enfermedad utero','action'=>  'enfermedad_utero/editar' );
                 $idRaza=$this->uri-> segment(3);
 
                 $data['enfermedad_utero']=$this->enfermedad_utero_model->selectId( $idRaza);

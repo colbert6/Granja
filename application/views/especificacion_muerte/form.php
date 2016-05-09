@@ -21,12 +21,12 @@ if(isset ($especificacion_muerte))  {  $datos=$especificacion_muerte->row(); }
                 <div class="form-group">
                     <label for="descripcion">Descripción</label>
                     <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion"
-                        value=<?php if(isset ($especificacion_muerte)) echo $datos->espmu_descripcion; ?> >
+                        value="<?php if(isset ($especificacion_muerte)) echo $datos->espmu_descripcion; ?>" >
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Abreviatura</label>
                     <input type="text" class="form-control" id="abreviacion" name="abreviacion" placeholder="Ingrese abreviacion"
-                        value=<?php if(isset ($especificacion_muerte)) echo $datos->espmu_abreviatura; ?> >
+                        value="<?php if(isset ($especificacion_muerte)) echo $datos->espmu_abreviatura; ?>" >
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>
