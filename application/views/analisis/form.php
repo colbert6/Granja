@@ -39,7 +39,7 @@ if(isset ($analisis))  {  $datos=$analisis->row(); }
                     <select class="form-control" name="tipana" required>
                         <option value=""> selecione...</option>;
                         <?php foreach ($tipo_analisis->result() as $datos_ta) {
-                            if ($datos_ta->tipan_id==$datos->ana_animal) {
+                            if ($datos_ta->tipan_id==$datos->ana_tipo_analisis) {
                                 echo "<option selected value='".$datos_ta->tipan_id."'>".$datos_ta->tipan_descripcion."</option>";
                             } else {
                                echo "<option  value='".$datos_ta->tipan_id."'>".$datos_ta->tipan_descripcion."</option>";
@@ -50,13 +50,24 @@ if(isset ($analisis))  {  $datos=$analisis->row(); }
                          ?>
                     </select>
                 </div>
-
                 
                 <div class="form-group">
-                    <label for="nombre">Resultado Analisis</label>
-                    <input type="text" required class="form-control" id="resultado_ana" name="resultado_ana" placeholder="Ingrese resultado"
-                     value=<?php if(isset ($analisis)) echo $datos->ana_resul_analisis;?> >
+                    <label>Resultado Analisis</label>
+                    <select class="form-control" name="resultado_ana" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($resultado_analisis->result() as $datos_ra) {
+                            if ($datos_ra->resan_id==$datos->ana_resul_analisis) {
+                                echo "<option selected value='".$datos_ra->resan_id."'>".$datos_ra->resan_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_ra->resan_id."'>".$datos_ra->resan_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
                 </div>
+
                 <div class="form-group">
                                 <label for="fechareg">Fecha Evento</label>
                                 <input type="date" required class="form-control" id="fecha" name="fecha"
