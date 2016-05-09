@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-05-2016 a las 19:28:07
+-- Tiempo de generación: 09-05-2016 a las 19:46:30
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `auditoria` (
   `aud_descripcion` varchar(200) NOT NULL,
   `aud_host` varchar(100) NOT NULL,
   `aud_registro` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `auditoria`
@@ -210,7 +210,15 @@ INSERT INTO `auditoria` (`aud_id`, `aud_tipo`, `aud_tabla`, `aud_fecha`, `aud_us
 (108, 'insertar', 'especificacion_venta', '2016-05-09 12:09:59', 1, '', 'Colbert', 1),
 (109, 'insertar', 'especificacion_venta', '2016-05-09 12:10:16', 1, '', 'Colbert', 2),
 (110, 'insertar', 'estado_cria', '2016-05-09 12:10:37', 1, '', 'Colbert', 1),
-(111, 'insertar', 'estado_cria', '2016-05-09 12:10:48', 1, '', 'Colbert', 2);
+(111, 'insertar', 'estado_cria', '2016-05-09 12:10:48', 1, '', 'Colbert', 2),
+(112, 'insertar', 'via_aplicacion', '2016-05-09 12:33:49', 1, '', 'Colbert', 1),
+(113, 'insertar', 'via_aplicacion', '2016-05-09 12:33:57', 1, '', 'Colbert', 2),
+(114, 'modificar', 'permiso', '2016-05-09 12:34:52', 1, '', 'Colbert', 1),
+(115, 'insertar', 'medicamentos', '2016-05-09 12:35:07', 1, '', 'Colbert', 1),
+(116, 'insertar', 'medicamentos', '2016-05-09 12:35:15', 1, '', 'Colbert', 2),
+(117, 'modificar', 'modulo', '2016-05-09 12:44:40', 1, '', 'Colbert', 28),
+(118, 'insertar', 'resultado_analisis', '2016-05-09 12:44:58', 1, '', 'Colbert', 1),
+(119, 'insertar', 'resultado_analisis', '2016-05-09 12:45:03', 1, '', 'Colbert', 2);
 
 -- --------------------------------------------------------
 
@@ -500,7 +508,15 @@ CREATE TABLE IF NOT EXISTS `medicamentos` (
   `medi_descripcion` varchar(100) DEFAULT NULL,
   `medi_abreviatura` varchar(50) DEFAULT NULL,
   `medi_estado` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `medicamentos`
+--
+
+INSERT INTO `medicamentos` (`medi_id`, `medi_descripcion`, `medi_abreviatura`, `medi_estado`) VALUES
+(1, 'medicamento 1', 'med1', 1),
+(2, 'medicamento 2', 'med2', 1);
 
 -- --------------------------------------------------------
 
@@ -590,7 +606,7 @@ INSERT INTO `modulo` (`mod_id`, `mod_descripcion`, `mod_padre`, `mod_url`, `mod_
 (25, 'Especificacion Muerte', 41, 'especificacion_muerte', 1),
 (26, 'Especificacion Venta', 41, 'especificacion_venta', 1),
 (27, 'Estado Cria', 41, 'estado_cria', 1),
-(28, 'Resultado De Analisis', 41, 'resultado_de_analisis', 1),
+(28, 'Resultado De Analisis', 41, 'resultado_analisis', 1),
 (29, 'Via Aplicacion', 41, 'via_aplicacion', 1),
 (30, 'Analisis', 42, 'analisis', 1),
 (31, 'Enfermedad', 42, 'enfermedad', 1),
@@ -699,7 +715,7 @@ INSERT INTO `permiso` (`per_tipo_usuario`, `per_modulo`, `per_estado`) VALUES
 (1, 39, 1),
 (1, 40, 1),
 (1, 59, 1),
-(1, 60, 0),
+(1, 60, 1),
 (3, 1, 0),
 (3, 2, 0),
 (3, 3, 0),
@@ -884,7 +900,15 @@ CREATE TABLE IF NOT EXISTS `resultado_analisis` (
   `resan_descripcion` varchar(100) DEFAULT NULL,
   `resan_abreviatura` varchar(50) DEFAULT NULL,
   `resan_estado` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `resultado_analisis`
+--
+
+INSERT INTO `resultado_analisis` (`resan_id`, `resan_descripcion`, `resan_abreviatura`, `resan_estado`) VALUES
+(1, 'resultado analisis1', 'resana1', 1),
+(2, 'resultado analisis2', 'resana2', 1);
 
 -- --------------------------------------------------------
 
@@ -1141,7 +1165,15 @@ CREATE TABLE IF NOT EXISTS `via_aplicacion` (
   `viaap_descripcion` varchar(100) DEFAULT NULL,
   `viaap_abreviatura` varchar(50) DEFAULT NULL,
   `viaap_estado` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `via_aplicacion`
+--
+
+INSERT INTO `via_aplicacion` (`viaap_id`, `viaap_descripcion`, `viaap_abreviatura`, `viaap_estado`) VALUES
+(1, 'via aplicacion 1', 'viaapl1', 1),
+(2, 'via aplicacion 2', 'viaapl2', 1);
 
 --
 -- Índices para tablas volcadas
@@ -1434,7 +1466,7 @@ MODIFY `ani_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT de la tabla `auditoria`
 --
 ALTER TABLE `auditoria`
-MODIFY `aud_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=112;
+MODIFY `aud_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=120;
 --
 -- AUTO_INCREMENT de la tabla `causa_aborto`
 --
@@ -1514,7 +1546,7 @@ MODIFY `med_id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `medicamentos`
 --
 ALTER TABLE `medicamentos`
-MODIFY `medi_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `medi_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `medicina_genital`
 --
@@ -1564,7 +1596,7 @@ MODIFY `repro_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT de la tabla `resultado_analisis`
 --
 ALTER TABLE `resultado_analisis`
-MODIFY `resan_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `resan_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `secado`
 --
@@ -1629,7 +1661,7 @@ MODIFY `venta_id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `via_aplicacion`
 --
 ALTER TABLE `via_aplicacion`
-MODIFY `viaap_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `viaap_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Restricciones para tablas volcadas
 --

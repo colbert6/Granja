@@ -1,4 +1,4 @@
-f<?php 
+<?php 
 if(isset ($resultado_analisis))  {  $datos=$resultado_analisis->row(); }    
 ?>
  
