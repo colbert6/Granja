@@ -14,7 +14,7 @@ if(isset ($animales))  {  $datos=$animales->row(); }
                     <div class="form-group">
                         <label for="descripcion">Identificador</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder="Ingrese descripcion" readonly="readonly"
-                           value=""<?= $datos->ani_id; ?>"">
+                           value="<?= $datos->ani_id; ?>">
                     </div>
 
                 <?php } ?>
@@ -22,7 +22,7 @@ if(isset ($animales))  {  $datos=$animales->row(); }
                     <label for="codigo">Codigo</label>
                     <input type="text" required class="form-control" id="codigo" name="codigo" placeholder="Ingrese codigo"
                     autofocus onkeypress="return soloNumeros(event)"
-                    value=""<?php if(isset ($animales)) echo $datos->ani_rp; ?>"" >
+                    value="<?php if(isset ($animales)) echo $datos->ani_rp; ?>" >
 
                 </div>
                 <div>
@@ -66,12 +66,12 @@ if(isset ($animales))  {  $datos=$animales->row(); }
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
                     <input type="text" required class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre"
-                     autofocus onkeypress="return soloLetras(event)" value=""<?php if(isset ($animales)) echo $datos->ani_nombre;?>"" >
+                     autofocus onkeypress="return soloLetras(event)" value="<?php if(isset ($animales)) echo $datos->ani_nombre;?>" >
                 </div>
                 <div class="form-group">
                     <label for="proveedor">Proveedor</label>
                     <input type="text" required class="form-control" id="proveedor" name="proveedor" placeholder="Ingrese proveedor"
-                    autofocus onkeypress="return soloLetras(event)" value=""<?php if(isset ($animales)) echo $datos->ani_proveedor;?>"">
+                    autofocus onkeypress="return soloLetras(event)" value="<?php if(isset ($animales)) echo $datos->ani_proveedor;?>">
                 </div>
             </div>
             <style type="text/css">
