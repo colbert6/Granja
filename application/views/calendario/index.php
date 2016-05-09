@@ -271,36 +271,38 @@
     			break;
     		case '3':
                 
-                /*$.post(base+"index.php/tipo_analisis/json_ExtraerTodo",function(causa_no_inseminal){
-                    $.post(base+"index.php/tipo_analisis/json_ExtraerTodo",function(medicina_genital){
+                $.post(base+"index.php/causa_no_inseminal/json_ExtraerTodo",function(causa_no_inseminal){
+                    /*$.post(base+"index.php/tipo_analisis/json_ExtraerTodo",function(medicina_genital){
                         $.post(base+"index.php/tipo_analisis/json_ExtraerTodo",function(via_aplicacion){
 
                         });
-                    });
-                });*/
-    			formulario 	  += "<label>Causa no Inseminal:</label>";
-    			formulario    += "<select class='form-control' id='id_cni'>";
-		        //Extraer los Tipos de Analisis
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario 	  += "<label>Medicina Genital:</label>";
-		        formulario    += "<select class='form-control' id='id_medget'>";
-		        //Extraer los Tipos de Analisis
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario 	  += "<label>Via Aplicacion:</label>";
-		        formulario    += "<select class='form-control' id='id_viaap'>";
-		        //Extraer los Tipos de Analisis
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario    += "<label>Fecha:</label>";
-		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                    });*/
+                    var cni = JSON.parse(causa_no_inseminal);
+                    formulario    += "<label>Causa no Inseminal:</label>";
+                    formulario    += "<select class='form-control' id='id_cni'>";
+                    for (var i = 0; i < cni.length; i++) {
+                            formulario    += "<option value='"+cni[i].cni_id+"'>"+cni[i].cni_descripcion+"</option>";
+                    }
+                    formulario    += "</select>";
+                    formulario    += "<label>Medicina Genital:</label>";
+                    formulario    += "<select class='form-control' id='id_medget'>";
+                    //Extraer los Tipos de Analisis
+                    //$.post("",{suggest: txt},function(data){});
+                    formulario    += "<option value='1'>1</option>";
+                    formulario    += "</select>";
+                    formulario    += "<label>Via Aplicacion:</label>";
+                    formulario    += "<select class='form-control' id='id_viaap'>";
+                    //Extraer los Tipos de Analisis
+                    //$.post("",{suggest: txt},function(data){});
+                    formulario    += "<option value='1'>1</option>";
+                    formulario    += "</select>";
+                    formulario    += "<label>Fecha:</label>";
+                    formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
 
-    			$("#content-form").html(formulario); 
-				$("#myModal").modal("show");  
+                    $("#content-form").html(formulario); 
+                    $("#myModal").modal("show");  
+                });
+    			
     			break;
     		case '4':
     			formulario 	  += "<label>Tipo de Enfermedad:</label>";
