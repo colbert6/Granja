@@ -6,7 +6,7 @@
     class Tipo_parto extends CI_Controller
     {
         var $menu;//este copiar
-        var $tabla='raza';//auditoria
+        var $tabla='tipo_parto';//auditoria
         function __construct(){
             parent::__construct();
             $this->load->model('tipo_parto_model');
@@ -69,9 +69,9 @@
         }
         public function eliminar()
         {
-            $idTR=$this->uri-> segment(3);
+            $id=$this->uri-> segment(3);
             
-            $this->tipo_parto_model->eliminar($idTR);
+            $this->tipo_parto_model->eliminar($id);
             $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("tipo_parto"); 
         }

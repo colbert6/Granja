@@ -3,24 +3,24 @@
     /**
     * 
     */
-    class Enfermedad_ovario extends CI_Controller
+    class Enfermedad_utero extends CI_Controller
     {   
         var $menu;//este copiar
-        var $tabla='raza';//auditoria
+        var $tabla='enfermedad_utero';//auditoria
         function __construct(){
             parent::__construct();
-            $this->load->model('enfermedad_ovario_model');
+            $this->load->model('enfermedad_utero_model');
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));//este copiar
         }
         
         public function index()
         {
-            $data['enfermedad_ovario'] = $this->enfermedad_ovario_model->select();
+            $data['enfermedad_utero'] = $this->enfermedad_utero_model->select();
 
             $dato= array ( 'titulo'=> 'Lista de tipo servicio');
             
             $this->load->view("/layout/header.php",$dato);
-            $this->load->view("/enfermedad_ovario/index.php",$data);
+            $this->load->view("/enfermedad_utero/index.php",$data);
             $this->load->view("/layout/foother_table.php");
         }
         
@@ -31,15 +31,15 @@
                 $data= array ( 'descripcion'=> $this->input->post('descripcion'),
                               'abreviacion'=> $this->input->post('abreviacion')  );
 
-                $this->enfermedad_ovario_model->crear($data);
+                $this->enfermedad_utero_model->crear($data);
                 $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());//auditoria
-                $this->redireccionar("enfermedad_ovario");
+                $this->redireccionar("enfermedad_utero");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Registrar tipo de servicio','action'=>  'enfermedad_ovario/nuevo' );
+                $dato= array ( 'titulo'=> 'Registrar tipo de servicio','action'=>  'enfermedad_utero/nuevo' );
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/enfermedad_ovario/form.php");
+                $this->load->view("/enfermedad_utero/form.php");
                 $this->load->view("/layout/foother.php");
 
             }
@@ -53,18 +53,18 @@
                                 'descripcion'=> $this->input->post('descripcion'),
                                 'abreviacion'=> $this->input->post('abreviacion')  );
 
-                $this->enfermedad_ovario_model->editar($data);
+                $this->enfermedad_utero_model->editar($data);
                 $this->auditoria('modificar',$this->tabla,'', $data['id']);//auditoria
-                $this->redireccionar("enfermedad_ovario");
+                $this->redireccionar("enfermedad_utero");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar tipo de enfermedad','action'=>  'enfermedad_ovario/editar' );
+                $dato= array ( 'titulo'=> 'Editar tipo de enfermedad','action'=>  'enfermedad_utero/editar' );
                 $idRaza=$this->uri-> segment(3);
 
-                $data['enfermedad_ovario']=$this->enfermedad_ovario_model->selectId( $idRaza);
+                $data['enfermedad_utero']=$this->enfermedad_utero_model->selectId( $idRaza);
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/enfermedad_ovario/form.php",$data);
+                $this->load->view("/enfermedad_utero/form.php",$data);
                 $this->load->view("/layout/foother.php");
 
             }
@@ -75,9 +75,9 @@
         {
             $id=$this->uri-> segment(3);
             
-            $this->enfermedad_ovario_model->eliminar($id);
+            $this->enfermedad_utero_model->eliminar($id);
             $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
-            $this->redireccionar("enfermedad_ovario");
+            $this->redireccionar("enfermedad_utero");
             
             
         }

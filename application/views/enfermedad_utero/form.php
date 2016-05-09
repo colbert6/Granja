@@ -1,5 +1,5 @@
 <?php 
-if(isset ($diagnostico_utero))  {  $datos=$diagnostico_utero->row(); }    
+if(isset ($enfermedad_utero))  {  $datos=$enfermedad_utero->row(); }    
 ?>
  
 <div class="col-md-6">
@@ -11,22 +11,22 @@ if(isset ($diagnostico_utero))  {  $datos=$diagnostico_utero->row(); }
             <input name="guardar" id="guardar" type="hidden" value="1">
             <div class="box-body">
                 <?php 
-                    if(isset ($diagnostico_utero)) {?>  
+                    if(isset ($enfermedad_utero)) {?>  
                     <div class="form-group">
                         <label for="descripcion">Identificador</label>
                         <input type="text" class="form-control" id="id" name="id" placeholder="Ingrese descripcion" readonly="readonly"
-                           value=<?= $datos->diaut_id; ?>>
+                           value=<?= $datos->enfut_id; ?>>
                     </div>
                 <?php } ?>  
                 <div class="form-group">
                     <label for="descripcion">Descripción</label>
                     <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion"
-                        value=<?php if(isset ($diagnostico_utero)) echo $datos->diaut_descripcion; ?> >
+                        value=<?php if(isset ($enfermedad_utero)) echo $datos->enfut_descripcion; ?> >
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Abreviatura</label>
                     <input type="text" class="form-control" id="abreviacion" name="abreviacion" placeholder="Ingrese abreviacion"
-                        value=<?php if(isset ($diagnostico_utero)) echo $datos->diaut_abreviatura; ?> >
+                        value=<?php if(isset ($enfermedad_utero)) echo $datos->enfut_abreviatura; ?> >
                 </div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>

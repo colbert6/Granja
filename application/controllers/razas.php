@@ -76,7 +76,7 @@
 
         public function eliminar()
         {
-            $ida=$this->uri-> segment(3);
+            $id=$this->uri-> segment(3);
             $this->razas_model->eliminar($id);
             $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("razas");
