@@ -105,11 +105,6 @@
             
         }
 
-        public function json_causa_aborto(){
-            //JSON para Extraer Causa de Aborto
-          
-        }
-
 
     }
  ?>
