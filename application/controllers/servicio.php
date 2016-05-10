@@ -10,6 +10,9 @@
             parent::__construct();
             $this->load->model('servicio_model');
             $this->load->model('animales_model');
+            $this->load->model('personal_model');
+            $this->load->model('tipo_servicio_model');
+            $this->load->model('reproductor_model');
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
 
         }
@@ -24,14 +27,6 @@
             $this->load->view("/servicio/index.php",$data);
             $this->load->view("/layout/foother_table.php");
         }
-   //     public function form()
-   //     {
-   //         $resul['animales'] = $this->animales_model->select();
-   //         $data = array('consulta'=> $resul);
-   //         $this->load->view("/layout/header.php");
-   //         $this->load->view("/aborto/form.php",$resul);
-   //         $this->load->view("/layout/foother_table.php");
-   //     }
 
         public function nuevo()
         {
@@ -53,7 +48,9 @@
             }else{
 
                 $data['animales'] = $this->animales_model->select();
-             //   $data['aborto'] = $this->tipo_registro_model->select();
+                $data['personal'] = $this->personal_model->select();
+                $data['tipo_servicio'] = $this->tipo_servicio_model->select();
+                $data['reproductor'] = $this->reproductor_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/servicio/form.php",$data  );
@@ -82,11 +79,11 @@
                 $dato= array ( 'titulo'=> 'Editar Servicio','action'=>  'servicio/editar' );
                 $idabo=$this->uri-> segment(3);
 
-               // $data['tipo_registro']=$this->tipo_registro_model->select();
-               // $data['animales']=$this->animales_model->select();
+                $data['animales'] = $this->animales_model->select();
+                $data['personal'] = $this->personal_model->select();
+                $data['tipo_servicio'] = $this->tipo_servicio_model->select();
+                $data['reproductor'] = $this->reproductor_model->select();
                 $data['servicio']=$this->servicio_model->selectId( $idabo);
-                //print_r($data['indicaciones_especiale']);
-               // $data['razas']=$this->razas_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/servicio/form.php",$data);
