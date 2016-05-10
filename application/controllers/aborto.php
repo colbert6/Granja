@@ -112,7 +112,9 @@
                            'cauabor'=> $_POST["cauabor"],
                            'fecha'=> $_POST["fecha"]
                         );
-            $this->aborto_model->crear($data);
+            $aborto =$this->aborto_model->crear($data);
+            echo json_encode($aborto->ab_id);
+
         }
 
 

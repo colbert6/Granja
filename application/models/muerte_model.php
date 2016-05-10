@@ -28,6 +28,10 @@
 	        							   'mue_fecha_evento' => $data['fecha'],
 	        							   'mue_espec_muerte' => $data['espec_muerte'],
 	        							   'mue_estado' => 1 ));
+			$this->db->select_max('mue_id');	        
+			$query = $this->db->get('muerte');
+
+	        return $query->row();
 	      
 	    }
 

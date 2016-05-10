@@ -29,6 +29,10 @@
 	        							   'enf_fecha_evento' => $data['fecha'],
 	        							   'enf_via_aplicacion' => $data['via_aplicacion'],
 	                                       'enf_estado' => 1 ));
+	        $this->db->select_max('enf_id');	        
+			$query = $this->db->get('enfermedad');
+
+	        return $query->row();
 	      
 	    }
 

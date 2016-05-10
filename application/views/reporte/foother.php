@@ -30,9 +30,9 @@
                 
                 $("#example1").dataTable({
                     
-                    "bPaginate": true,
+                    "bPaginate": false,
                     "bLengthChange": true,
-                    "bFilter": true,
+                    "bFilter": false,
                     "bSort": true,
                     "bInfo": false,
                     "bAutoWidth": false,
@@ -61,7 +61,7 @@
                         }
                     },
                     'aaSorting': [[ 0, 'asc' ]],//ordenar
-                    'iDisplayLength': 5,
+                    'iDisplayLength': 20,
                     'aLengthMenu': [[5, 10, 20], [5, 10, 20]]
 
                 });

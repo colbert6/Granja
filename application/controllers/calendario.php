@@ -10,12 +10,16 @@
         function __construct(){
             parent::__construct();
             $this->load->model('animales_model');
+            $this->load->model('eventos_model');
+            $this->load->model('simbolo_model');
              $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
          }
 
         public function index()
         {
             $data['animales'] = $this->animales_model->select();
+            $data['eventos'] = $this->eventos_model->select();
+            $data['simbolos'] = $this->simbolo_model->select();
             $dato= array ( 'titulo'=> 'Registrar Evento');
 
             $this->load->view("/layout/header.php",$dato);

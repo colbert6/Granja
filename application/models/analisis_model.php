@@ -28,6 +28,10 @@
 	        							   'ana_fecha_evento' => $data['fecha'],
 	        							   'ana_resul_analisis' => $data['resultado_ana'],
 	                                       'ana_estado' => 1 ));
+	        $this->db->select_max('ana_id');	        
+			$query = $this->db->get('analisis');
+
+	        return $query->row();
 	      
 	    }
 

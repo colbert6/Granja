@@ -113,6 +113,18 @@
             
         }
 
+        public function json_Nuevo(){
+            $data= array ( 'rp'=> $_POST["rp"],
+                           'tipo_enfermedad'=> $_POST["tipo_enfermedad"],
+                           'fecha'=> $_POST["fecha"],
+                           'medicamento'=> $_POST["medicamentos"],
+                           'via_aplicacion'=> $_POST["via_aplicacion"]
+                        );
+            $enfermedad =$this->enfermedad_model->crear($data);
+            echo json_encode($enfermedad->enf_id);
+
+        }
+
 
     }
  ?>

@@ -94,6 +94,16 @@
             
             
         }
+		
+		public function json_Nuevo(){
+            $data= array ( 'rp'=> $_POST["rp"],
+                           'espec_muerte'=> $_POST["espec_muerte"],
+                           'fecha'=> $_POST["fecha"]
+                        );
+            $muerte =$this->muerte_model->crear($data);
+            echo json_encode($muerte->mue_id);
+
+        }
 
 
     }

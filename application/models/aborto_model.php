@@ -27,6 +27,10 @@
 	        							   'ab_causa_aborto' => $data['cauabor'],
 	        							   'ab_fecha_evento' => $data['fecha'],
 	                                       'ab_estado' => 1 ));
+	        $this->db->select_max('ab_id');	        
+			$query = $this->db->get('aborto');
+
+	        return $query->row();
 	      
 	    }
 

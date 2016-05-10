@@ -58,10 +58,27 @@
                                 <td class='text-center' >
 
                                 <div id='<?php echo $i."".$j;?>'>
+                                <?php
+                                    foreach (@$eventos->result() as $evento) {
+                                        if($evento->ani_id == $datos->ani_id){
+                                            $fecha = strtotime($evento->eve_fecha);
+                                            if(date("m", $fecha)==$j && date("Y", $fecha)==date("Y")){
+                                                foreach (@$simbolos->result() as $simbolo) {
+                                                    if($simbolo->sim_id == $evento->sim_id){
+
+                                                    
+                                ?>                                  
                                     <button type="button"  onclick="$('#editEvent').modal('show');">
-                                         <img src="<?php echo base_url(); ?>img/home.png">
-                                      <span class="badge">4</span>
-                                    </button>
+                                         <img src="<?php echo base_url(); ?>img/<?php echo $simbolo->sim_icono; ?>">
+                                      <span class="badge"><?php echo date("d", $fecha)?></span>
+                                    </button><br>
+                                <?php 
+                                                   }
+                                                }          
+                                            }
+                                        } 
+                                    }
+                                ?>
                                 </div>
                                 <div>
                                     <a href="#" onclick="mostrarModal(<?php echo $datos->ani_id; ?>,<?php echo $i; ?>,<?php echo $j;?>,'<?php echo base_url(); ?>');" >[+]</a>
@@ -230,7 +247,7 @@
                     formulario    += "<label>Fecha:</label>";
                     formulario    += "<input type='date'class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                     $("#content-form").html(formulario); 
-                    $("#id_evento").val('1');
+                    $("#evento").val('1');
                     $("#myModal").modal("show");
                 });
 		              
@@ -244,7 +261,7 @@
                         var tipan = JSON.parse(tipo_analisis);
                         var resana = JSON.parse(resultado_analisis);
                         formulario    += "<label>Tipo Analisis:</label>";
-                        formulario    += "<select class='form-control' id='id_tipan'>";
+                        formulario    += "<select class='form-control' id='tipan'>";
                         
                         for (var i = 0; i < tipan.length; i++) {
                             formulario    += "<option value='"+tipan[i].tipan_id+"'>"+tipan[i].tipan_descripcion+"</option>";
@@ -252,14 +269,14 @@
                         
                         formulario    += "</select>";
                         formulario    += "<label>Resultado Analisis:</label>";
-                        formulario    += "<select class='form-control' id='id_resan'>";
+                        formulario    += "<select class='form-control' id='resan'>";
                         for (var i = 0; i < resana.length; i++) {
                             formulario    += "<option value='"+resana[i].resan_id+"'>"+resana[i].resan_descripcion+"</option>";
                         }
                         
                         formulario    += "</select>";
                         formulario    += "<label>Fecha:</label>";
-                        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                        formulario    += "<input type='date'class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                         $("#content-form").html(formulario); 
                         $("#myModal").modal("show");  
 
@@ -279,25 +296,25 @@
                             var viaap = JSON.parse(via_aplicacion);
 
                             formulario    += "<label>Causa no Inseminal:</label>";
-                            formulario    += "<select class='form-control' id='id_cni'>";
+                            formulario    += "<select class='form-control' id='cni'>";
                             for (var i = 0; i < cni.length; i++) {
                                     formulario    += "<option value='"+cni[i].cni_id+"'>"+cni[i].cni_descripcion+"</option>";
                             }
                             formulario    += "</select>";
                             formulario    += "<label>Medicina Genital:</label>";
-                            formulario    += "<select class='form-control' id='id_medget'>";
+                            formulario    += "<select class='form-control' id='medget'>";
                             for (var i = 0; i < medge.length; i++) {
                                     formulario    += "<option value='"+medge[i].medge_id+"'>"+medge[i].medge_descripcion+"</option>";
                             }
                             formulario    += "</select>";
                             formulario    += "<label>Via Aplicacion:</label>";
-                            formulario    += "<select class='form-control' id='id_viaap'>";
+                            formulario    += "<select class='form-control' id='viaap'>";
                             for (var i = 0; i < viaap.length; i++) {
                                     formulario    += "<option value='"+viaap[i].viaap_id+"'>"+viaap[i].viaap_descripcion+"</option>";
                             }
                             formulario    += "</select>";
                             formulario    += "<label>Fecha:</label>";
-                            formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                            formulario    += "<input type='date'class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
 
                             $("#content-form").html(formulario); 
                             $("#myModal").modal("show");  
@@ -337,7 +354,7 @@
                             }
                             formulario    += "</select>";
                             formulario    += "<label>Fecha:</label>";
-                            formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                            formulario    += "<input type='date'class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
 
                             $("#content-form").html(formulario); 
                             $("#myModal").modal("show");
@@ -348,49 +365,67 @@
     			
     			break;
     		case '5':
-    			formulario 	  += "<label>Indicaciones Especiales:</label>";
-		        formulario    += "<select class='form-control' id='id_indesp'>";
-		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario    += "<label>Fecha:</label>";
-		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+    			
+	            $.post(base+"index.php/indicacion_especial/json_ExtraerTodo",function(indicaciones_especiales){
+                    var indesp = JSON.parse(indicaciones_especiales);
+                    formulario    += "<label>Indicaciones Especiales:</label>";
+                    formulario    += "<select class='form-control' id='indesp'>";
+                    for (var i = 0; i < indesp.length; i++) {
+                        formulario    += "<option value='"+indesp[i].indesp_id+"'>"+indesp[i].indesp_descripcion+"</option>";
+                    }
+                    formulario    += "</select>";
+                    formulario    += "<label>Fecha:</label>";
+                    formulario    += "<input type='date'class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                    
+                    $("#content-form").html(formulario); 
+                    $("#myModal").modal("show"); 
+
+                });
 		        
-				$("#content-form").html(formulario); 
-				$("#myModal").modal("show"); 
+		        
     			break;
     		case '6':
-    			formulario 	  += "<label>Medicamentos:</label>";
-    			formulario    += "<select class='form-control' id='id_medi'>";
-		        //Extraer los Tipos de Analisis
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario 	  += "<label>Via Aplicacion:</label>";
-		        formulario    += "<select class='form-control' id='id_viaap'>";
-		        //Extraer los Tipos de Analisis
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario    += "<label>Fecha:</label>";
-		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+				$.post(base+"index.php/medicamentos/json_ExtraerTodo",function(medicamentos){
+					$.post(base+"index.php/via_aplicacion/json_ExtraerTodo",function(via_aplicacion){
+						var medi = JSON.parse(medicamentos);
+						var viaap = JSON.parse(via_aplicacion);
+						formulario 	  += "<label>Medicamentos:</label>";
+						formulario    += "<select class='form-control' id='medi'>";
+						for (var i = 0; i < medi.length; i++) {
+							formulario    += "<option value='"+medi[i].medi_id+"'>"+medi[i].medi_descripcion+"</option>";
+						}
+						formulario    += "</select>";
+						formulario 	  += "<label>Via Aplicacion:</label>";
+						formulario    += "<select class='form-control' id='viaap'>";
+						for (var i = 0; i < viaap.length; i++) {
+                            formulario    += "<option value='"+viaap[i].viaap_id+"'>"+viaap[i].viaap_descripcion+"</option>";
+                        }
+						formulario    += "</select>";
+						formulario    += "<label>Fecha:</label>";
+						formulario    += "<input type='date'class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
 
-    			$("#content-form").html(formulario); 
-				$("#myModal").modal("show"); 
+						$("#content-form").html(formulario); 
+						$("#myModal").modal("show"); 
+					});
+				});
+    			
     			break;
     		case '7':
-    			formulario 	  += "<label>Especificacion Muerte:</label>";
-		        formulario    += "<select class='form-control' id='id_espmuert'>";
-		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario    += "<label>Fecha:</label>";
-		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
-		        
-				$("#content-form").html(formulario); 
-				$("#myModal").modal("show"); 
+				$.post(base+"index.php/especificacion_muerte/json_ExtraerTodo",function(especificacion_muerte){
+					var espmu = JSON.parse(especificacion_muerte);
+					formulario 	  += "<label>Especificacion Muerte:</label>";
+					formulario    += "<select class='form-control' id='espmu'>";
+					for (var i = 0; i < espmu.length; i++) {
+                        formulario    += "<option value='"+espmu[i].espmu_id+"'>"+espmu[i].espmu_descripcion+"</option>";
+                    }
+					formulario    += "</select>";
+					formulario    += "<label>Fecha:</label>";
+					formulario    += "<input type='date'class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+					
+					$("#content-form").html(formulario); 
+					$("#myModal").modal("show"); 
+				});
+    			
     			break;
     		case '8':
     			formulario 	  += "<label>RP:</label>";
@@ -545,35 +580,169 @@
         //var guardar = validar_formulario();
         //console.log(guardar);
         num_evento = $("#evento").val();
-        alert("enter");
         //if(guardar){
         switch(num_evento){
-
                 case '1':
                     var animal = $("#animal").val();
                     var cuabor = $("#causa_aborto").val();
                     var fecha = $("#fecha_evento").val();
-                    $.post(base+"index.php/aborto/json_Nuevo",{animal:animal,cauabor:cuabor,fecha:fecha},function(){
-                        alert("Se guardo Correctamente");
-                        var id = String("#"+$("#fila").val()+""+$("#mes").val());
-                        var boton = "<br><button type=\"button\" onclick=\"$('#editEvent').modal('show');\">";
-                        boton+="<img src=\""+base+"img/home.png\"/>";
-                        boton+="<span class=\"badge\">4</span>";
-                        boton+="</button>";
-                        $(id).append(boton);
+                    $.post(base+"index.php/aborto/json_Nuevo",{animal:animal,cauabor:cuabor,fecha:fecha},function(valor){
+                        var obj = JSON.parse(valor);
+                        var id_tabla = obj[0];
+                        var sim_id = num_evento;
+                        $.post(base+"index.php/eventos/json_Nuevo",{id_tabla:id_tabla,sim_id:sim_id,ani_id:animal,eve_fecha:fecha},function(){
+                            var id = String("#"+$("#fila").val()+""+$("#mes").val());
+                            $.post(base+"index.php/simbolo/json_BuscarID",{id:sim_id},function(simbolo){
+                                var sim = JSON.parse(simbolo);
+                                var res = fecha.split("-");
+                                boton = "<button type=\"button\" onclick=\"$('#editEvent').modal('show');\">";
+                                boton +="<img src=\""+base+"img/"+sim[0].sim_icono+"\"/>";
+                                boton +="<span class=\"badge\">"+res[2]+"</span>";
+                                boton +="</button><br>";
+                                $(id).append(boton);
+                            }); 
+                        });
                     });
                     break;
                 case '2':
+                    var animal = $("#animal").val();
+                    var tipo_analisis = $("#tipan").val();
+                    var resul_analisis = $("#resan").val();
+                    var fecha = $("#fecha_evento").val();
+                    $.post(base+"index.php/analisis/json_Nuevo",{animal:animal,tipana:tipo_analisis,resultado_ana:resul_analisis,fecha:fecha},function(valor){
+                        var obj = JSON.parse(valor);
+                        var id_tabla = obj[0];
+                        var sim_id = num_evento;
+                        $.post(base+"index.php/eventos/json_Nuevo",{id_tabla:id_tabla,sim_id:sim_id,ani_id:animal,eve_fecha:fecha},function(){
+                            var id = String("#"+$("#fila").val()+""+$("#mes").val());
+                            $.post(base+"index.php/simbolo/json_BuscarID",{id:sim_id},function(simbolo){
+                                var sim = JSON.parse(simbolo);
+                                var res = fecha.split("-");
+                                boton = "<button type=\"button\" onclick=\"$('#editEvent').modal('show');\">";
+                                boton +="<img src=\""+base+"img/"+sim[0].sim_icono+"\"/>";
+                                boton +="<span class=\"badge\">"+res[2]+"</span>";
+                                boton +="</button><br>";
+                                $(id).append(boton);
+                            }); 
+                        });
+                    });
+
                     break;
                 case '3':
+                    var animal = $("#animal").val();
+                    var causa_no_inseminal = $("#cni").val();
+                    var medicina_genital = $("#medget").val();
+                    var via_aplicacion = $("#viaap").val();
+                    var fecha = $("#fecha_evento").val();
+                    $.post(base+"index.php/celo/json_Nuevo",{rp:animal,cni:causa_no_inseminal,medget:medicina_genital,viaap:via_aplicacion,fecha:fecha},function(valor){
+                        var obj = JSON.parse(valor);
+                        var id_tabla = obj[0];
+                        var sim_id = num_evento;
+                        $.post(base+"index.php/eventos/json_Nuevo",{id_tabla:id_tabla,sim_id:sim_id,ani_id:animal,eve_fecha:fecha},function(){
+                            var id = String("#"+$("#fila").val()+""+$("#mes").val());
+                            $.post(base+"index.php/simbolo/json_BuscarID",{id:sim_id},function(simbolo){
+                                var sim = JSON.parse(simbolo);
+                                var res = fecha.split("-");
+                                boton = "<button type=\"button\" onclick=\"$('#editEvent').modal('show');\">";
+                                boton +="<img src=\""+base+"img/"+sim[0].sim_icono+"\"/>";
+                                boton +="<span class=\"badge\">"+res[2]+"</span>";
+                                boton +="</button><br>";
+                                $(id).append(boton);
+                            }); 
+                        });
+                    });
+
                     break;
                 case '4':
+                    var animal = $("#animal").val();
+                    var tipo_enfer = $("#id_tipen").val();
+                    var medicamentos = $("#id_medi").val();
+                    var via_aplicacion = $("#id_viaap").val();
+                    var fecha = $("#fecha_evento").val();
+                    $.post(base+"index.php/enfermedad/json_Nuevo",{rp:animal,tipo_enfermedad:tipo_enfer,medicamentos:medicamentos,via_aplicacion:via_aplicacion,fecha:fecha},function(valor){
+                        var obj = JSON.parse(valor);
+                        var id_tabla = obj[0];
+                        var sim_id = num_evento;
+                        $.post(base+"index.php/eventos/json_Nuevo",{id_tabla:id_tabla,sim_id:sim_id,ani_id:animal,eve_fecha:fecha},function(){
+                            var id = String("#"+$("#fila").val()+""+$("#mes").val());
+                            $.post(base+"index.php/simbolo/json_BuscarID",{id:sim_id},function(simbolo){
+                                var sim = JSON.parse(simbolo);
+                                var res = fecha.split("-");
+                                boton = "<button type=\"button\" onclick=\"$('#editEvent').modal('show');\">";
+                                boton +="<img src=\""+base+"img/"+sim[0].sim_icono+"\"/>";
+                                boton +="<span class=\"badge\">"+res[2]+"</span>";
+                                boton +="</button><br>";
+                                $(id).append(boton);
+                            }); 
+                        });
+                    });
                     break;
                 case '5':
+					var animal = $("#animal").val();
+                    var ind_especiale = $("#indesp").val();
+                    var fecha = $("#fecha_evento").val();
+                    $.post(base+"index.php/indicaciones_especiale/json_Nuevo",{rp:animal,indicaciones_esp:ind_especiale,fecha:fecha},function(valor){
+                        var obj = JSON.parse(valor);
+                        var id_tabla = obj[0];
+                        var sim_id = num_evento;
+                        $.post(base+"index.php/eventos/json_Nuevo",{id_tabla:id_tabla,sim_id:sim_id,ani_id:animal,eve_fecha:fecha},function(){
+                            var id = String("#"+$("#fila").val()+""+$("#mes").val());
+                            $.post(base+"index.php/simbolo/json_BuscarID",{id:sim_id},function(simbolo){
+                                var sim = JSON.parse(simbolo);
+                                var res = fecha.split("-");
+                                boton = "<button type=\"button\" onclick=\"$('#editEvent').modal('show');\">";
+                                boton +="<img src=\""+base+"img/"+sim[0].sim_icono+"\"/>";
+                                boton +="<span class=\"badge\">"+res[2]+"</span>";
+                                boton +="</button><br>";
+                                $(id).append(boton);
+                            }); 
+                        });
+                    });
                     break;
                 case '6':
+					var animal = $("#animal").val();
+                    var medicamentos = $("#medi").val();
+					var via_aplicacion = $("#viaap").val();
+                    var fecha = $("#fecha_evento").val();
+                    $.post(base+"index.php/medicacion/json_Nuevo",{rp:animal,medicamentos:medicamentos,via_aplicacion:via_aplicacion,fecha:fecha},function(valor){
+                        var obj = JSON.parse(valor);
+                        var id_tabla = obj[0];
+                        var sim_id = num_evento;
+                        $.post(base+"index.php/eventos/json_Nuevo",{id_tabla:id_tabla,sim_id:sim_id,ani_id:animal,eve_fecha:fecha},function(){
+                            var id = String("#"+$("#fila").val()+""+$("#mes").val());
+                            $.post(base+"index.php/simbolo/json_BuscarID",{id:sim_id},function(simbolo){
+                                var sim = JSON.parse(simbolo);
+                                var res = fecha.split("-");
+                                boton = "<button type=\"button\" onclick=\"$('#editEvent').modal('show');\">";
+                                boton +="<img src=\""+base+"img/"+sim[0].sim_icono+"\"/>";
+                                boton +="<span class=\"badge\">"+res[2]+"</span>";
+                                boton +="</button><br>";
+                                $(id).append(boton);
+                            }); 
+                        });
+                    });
                     break;
                 case '7':
+					var animal = $("#animal").val();
+                    var especificacion_muerte = $("#espmu").val();
+                    var fecha = $("#fecha_evento").val();
+                    $.post(base+"index.php/muerte/json_Nuevo",{rp:animal,espec_muerte:especificacion_muerte,fecha:fecha},function(valor){
+                        var obj = JSON.parse(valor);
+                        var id_tabla = obj[0];
+                        var sim_id = num_evento;
+                        $.post(base+"index.php/eventos/json_Nuevo",{id_tabla:id_tabla,sim_id:sim_id,ani_id:animal,eve_fecha:fecha},function(){
+                            var id = String("#"+$("#fila").val()+""+$("#mes").val());
+                            $.post(base+"index.php/simbolo/json_BuscarID",{id:sim_id},function(simbolo){
+                                var sim = JSON.parse(simbolo);
+                                var res = fecha.split("-");
+                                boton = "<button type=\"button\" onclick=\"$('#editEvent').modal('show');\">";
+                                boton +="<img src=\""+base+"img/"+sim[0].sim_icono+"\"/>";
+                                boton +="<span class=\"badge\">"+res[2]+"</span>";
+                                boton +="</button><br>";
+                                $(id).append(boton);
+                            }); 
+                        });
+                    });
                     break;
                 case '8':
                     break;

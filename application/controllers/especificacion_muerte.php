@@ -81,6 +81,11 @@
             
             
         }
+		public function json_ExtraerTodo()
+        {
+            $data['especificacion_muerte'] = $this->especificacion_muerte_model->select();
+            echo json_encode($data['especificacion_muerte']->result());            
+        }
     }
  ?>
 

@@ -29,6 +29,10 @@
 	        							   'celo_medicina_genital' => $data['medicina_genital'],
 	        							   'celo_via_aplicacion' => $data['via_aplicacion'],
 	                                       'celo_estado' => 1 ));
+	        $this->db->select_max('celo_id');	        
+			$query = $this->db->get('celo');
+
+	        return $query->row();
 	      
 	    }
 

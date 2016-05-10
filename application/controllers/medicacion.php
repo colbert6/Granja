@@ -96,6 +96,17 @@
             
             
         }
+		
+		public function json_Nuevo(){
+            $data= array ( 'rp'=> $_POST["rp"],
+                           'medicamentos'=> $_POST["medicamentos"],
+						   'via_aplicacion'=> $_POST["via_aplicacion"],
+                           'fecha'=> $_POST["fecha"]
+                        );
+            $medicacion =$this->medicacion_model->crear($data);
+            echo json_encode($medicacion->med_id);
+
+        }
 
 
     }

@@ -113,6 +113,17 @@
             
         }
 
+        public function json_Nuevo(){
+            $data= array ( 'rp'=> $_POST["rp"],
+                           'causa_no_enseminal'=> $_POST["cni"],
+                           'fecha'=> $_POST["fecha"],
+                           'medicina_genital'=> $_POST["medget"],
+                           'via_aplicacion'=> $_POST["viaap"]
+                        );
+            $celo =$this->celo_model->crear($data);
+            echo json_encode($celo->celo_id);
+        }
+
 
     }
  ?>

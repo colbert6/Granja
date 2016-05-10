@@ -27,6 +27,7 @@
 			<div class="btn-group">
 			        <a class="btn btn-primary" href="<?= base_url();?>index.php/razas/nuevo" class="k-button">Nuevo</a>
 			</div>
+			
 		</div>
  	</div>	 
 </div>	

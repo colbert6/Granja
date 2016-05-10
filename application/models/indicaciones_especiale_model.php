@@ -28,6 +28,10 @@
 	        							   'indes_fecha_evento' => $data['fecha'],
 	        							   'indes_indicaciones_esp' => $data['indicaciones_esp'],
 	                                       'indes_estado' => 1 ));
+			$this->db->select_max('indes_id');	        
+			$query = $this->db->get('indicaciones_especiale');
+
+	        return $query->row();
 	      
 	    }
 

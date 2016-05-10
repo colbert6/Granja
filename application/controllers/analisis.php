@@ -103,6 +103,17 @@
             
         }
 
+        public function json_Nuevo(){
+            $data= array ( 'tipana'=> $_POST["tipana"],
+                           'animal'=> $_POST["animal"],
+                           'fecha'=> $_POST["fecha"],
+                           'resultado_ana'=> $_POST["resultado_ana"]
+                        );
+            $analisis =$this->analisis_model->crear($data);
+            echo json_encode($analisis->ana_id);
+
+        }
+
 
     }
  ?>

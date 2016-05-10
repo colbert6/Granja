@@ -81,6 +81,12 @@
             
             
         }
+
+         public function json_ExtraerTodo()
+        {
+            $data['indicacion_especial'] = $this->indicacion_especial_model->select();
+            echo json_encode($data['indicacion_especial']->result());            
+        }
     }
  ?>
 

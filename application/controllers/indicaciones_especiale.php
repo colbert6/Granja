@@ -96,6 +96,18 @@
             
             
         }
+		
+		public function json_Nuevo(){
+            $data= array ( 'rp'=> $_POST["rp"],
+                           'indicaciones_esp'=> $_POST["indicaciones_esp"],
+                           'fecha'=> $_POST["fecha"]
+                        );
+            $indicaciones_especiale =$this->indicaciones_especiale_model->crear($data);
+            echo json_encode($indicaciones_especiale->indes_id);
+
+        }
+
+       
 
 
     }
