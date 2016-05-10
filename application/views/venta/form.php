@@ -17,24 +17,44 @@ if(isset ($venta))  {  $datos=$venta->row(); }
                     </div>
 
                 <?php } ?>
-                
                 <div class="form-group">
-                    <label for="nombre">RP</label>
-                    <input type="text" required class="form-control" id="rp" name="rp" placeholder="Ingrese Rp"
-                     value="<?php if(isset ($venta)) echo $datos->venta_rp;?>" >
+                    <label>Animal</label>
+                    <select class="form-control" name="rp" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($animales->result() as $datos_a) {
+                            if ($datos_a->ani_id==$datos->venta_rp) {
+                                echo "<option selected value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
+                            } else {
+                               echo "<option  value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
                 </div>
-              
+                <div class="form-group">
+                    <label>Especificacion de Muerte</label>
+                    <select class="form-control" name="especif_venta" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($especificacion_venta->result() as $datos_ap) {
+                            if ($datos_ap->espve_id==$datos->venta_especif_venta) {
+                                echo "<option selected value='".$datos_ap->espve_id."'>".$datos_ap->espve_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_ap->espve_id."'>".$datos_ap->espve_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
+                </div>         
                 <div class="form-group">
                     <label for="nombre">Fecha de Evento</label>
                     <input type="date" required class="form-control" id="fecha_evento" name="fecha_evento" placeholder="Ingrese Fecha de Evento"
-                     value="<?php if(isset ($venta)) echo $datos->venta_fecha_evento;?>" >
+                     value=<?php if(isset ($venta)) echo $datos->venta_fecha_evento;?> >
                 </div>
-                <div class="form-group">
-                    <label for="nombre">Especificacion de Muerte</label>
-                    <input type="text" required class="form-control" id="especif_venta" name="especif_venta" placeholder="Ingrese Fecha de Evento"
-                     value="<?php if(isset ($venta)) echo $datos->venta_especif_venta;?>" >
-                </div>
-                             
+                                            
             <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
