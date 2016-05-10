@@ -10,6 +10,7 @@
             parent::__construct();
             $this->load->model('secado_model');
             $this->load->model('animales_model');
+            $this->load->model('medicina_cuarto_mamarios_model');
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
         }
         
@@ -50,7 +51,7 @@
             }else{
 
                 $data['animales'] = $this->animales_model->select();
-             //   $data['aborto'] = $this->tipo_registro_model->select();
+                $data['medicina_cuarto_mamarios'] = $this->medicina_cuarto_mamarios_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/secado/form.php",$data  );
@@ -78,11 +79,9 @@
                 $dato= array ( 'titulo'=> 'Editar Secado','action'=>  'secado/editar' );
                 $idabo=$this->uri-> segment(3);
 
-               // $data['tipo_registro']=$this->tipo_registro_model->select();
-               // $data['animales']=$this->animales_model->select();
+                $data['medicina_cuarto_mamarios'] = $this->medicina_cuarto_mamarios_model->select();
+                $data['animales']=$this->animales_model->select();
                 $data['secado']=$this->secado_model->selectId( $idabo);
-                //print_r($data['indicaciones_especiale']);
-               // $data['razas']=$this->razas_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/secado/form.php",$data);

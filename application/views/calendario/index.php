@@ -55,18 +55,19 @@
                             </td>
                             <td><?= $datos->ani_nombre; ?></td>
                             <?php for ($j=1; $j <=12 ; $j++) { ?>
-                                <td class='text-center' id='<?php echo $i.",".$j;?>'>
+                                <td class='text-center' >
 
-                           
-								<button type="button" class="btn-event" onclick="$('#editEvent').modal('show');">
-									 <img src="<?php echo base_url(); ?>img/home.png">
-								  <span class="badge">4</span>
-								</button>
-								<button type="button" class="btn-event">
-									 <img src="<?php echo base_url(); ?>img/envelope.png">
-								  <span class="badge">4</span>
-								</button>
-								<a href="#" onclick="mostrarModal(<?php echo $datos->ani_id; ?>,<?php echo $i; ?>,<?php echo $j;?>,'<?php echo base_url(); ?>');" >[+]</a>
+                                <div id='<?php echo $i."".$j;?>'>
+                                    <button type="button"  onclick="$('#editEvent').modal('show');">
+                                         <img src="<?php echo base_url(); ?>img/home.png">
+                                      <span class="badge">4</span>
+                                    </button>
+                                </div>
+                                <div>
+                                    <a href="#" onclick="mostrarModal(<?php echo $datos->ani_id; ?>,<?php echo $i; ?>,<?php echo $j;?>,'<?php echo base_url(); ?>');" >[+]</a>
+                                </div>
+								
+								
 
                                 </td>
                             <?php } 
@@ -220,14 +221,14 @@
                     
                     
                     formulario    += "<label>Causa Aborto:</label>";
-                    formulario    += "<select class='form-control' id='id_causa_aborto'>";
+                    formulario    += "<select class='form-control' id='causa_aborto'>";
                     for (var i = 0; i < obj.length; i++) {
                         formulario    += "<option value='"+obj[i].ca_id+"'>"+obj[i].ca_descripcion+"</option>";
                     }
                     
                     formulario    += "</select>";
                     formulario    += "<label>Fecha:</label>";
-                    formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                    formulario    += "<input type='date'class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                     $("#content-form").html(formulario); 
                     $("#id_evento").val('1');
                     $("#myModal").modal("show");
@@ -541,42 +542,54 @@
     	
     }
     function crearEvento() {
-        var guardar = validar_formulario();
+        //var guardar = validar_formulario();
         //console.log(guardar);
         num_evento = $("#evento").val();
-        
-        if(guardar){
-            switch(num_evento){
-                case 1:
-                    $.post(base+"index.php/aborto/json_Nuevo", {"animal":$("#animal").val(), "cauabor": $("#id_causa_aborto").val(),"fecha":$("#fecha_evento").val() } );
+        alert("enter");
+        //if(guardar){
+        switch(num_evento){
+
+                case '1':
+                    var animal = $("#animal").val();
+                    var cuabor = $("#causa_aborto").val();
+                    var fecha = $("#fecha_evento").val();
+                    $.post(base+"index.php/aborto/json_Nuevo",{animal:animal,cauabor:cuabor,fecha:fecha},function(){
+                        alert("Se guardo Correctamente");
+                        var id = String("#"+$("#fila").val()+""+$("#mes").val());
+                        var boton = "<br><button type=\"button\" onclick=\"$('#editEvent').modal('show');\">";
+                        boton+="<img src=\""+base+"img/home.png\"/>";
+                        boton+="<span class=\"badge\">4</span>";
+                        boton+="</button>";
+                        $(id).append(boton);
+                    });
                     break;
-                case 2:
+                case '2':
                     break;
-                case 3:
+                case '3':
                     break;
-                case 4:
+                case '4':
                     break;
-                case 5:
+                case '5':
                     break;
-                case 6:
+                case '6':
                     break;
-                case 7:
+                case '7':
                     break;
-                case 8:
+                case '8':
                     break;
-                case 9:
+                case '9':
                     break;
-                case 10:
+                case '10':
                     break;
-                case 11:
+                case '11':
                     break;
-                case 12:
+                case '12':
                     break;
-                case 13:
+                case '13':
                     break;
             }    
             $("#myModal").modal("hide");
-        }
+        //}
         //document.getElementById($("#fila").val()+","+$("#mes").val()).innerHTML = "<img src='"+$("#url").val()+"img/calendar.png'>";
     }
     function validar_formulario(){

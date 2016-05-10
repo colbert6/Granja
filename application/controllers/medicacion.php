@@ -7,6 +7,8 @@
             parent::__construct();
             $this->load->model('medicacion_model');
             $this->load->model('animales_model');
+            $this->load->model('medicamentos_model');
+            $this->load->model('via_aplicacion_model');
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
         }
         
@@ -40,7 +42,8 @@
             }else{
 
                 $data['animales'] = $this->animales_model->select();
-             //   $data['aborto'] = $this->tipo_registro_model->select();
+                $data['medicamentos'] = $this->medicamentos_model->select();
+                $data['via_aplicacion'] = $this->via_aplicacion_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/medicacion/form.php",$data  );
@@ -69,11 +72,11 @@
                 $dato= array ( 'titulo'=> 'Editar Medicacion','action'=>  'medicacion/editar' );
                 $idabo=$this->uri-> segment(3);
 
-               // $data['tipo_registro']=$this->tipo_registro_model->select();
-               // $data['animales']=$this->animales_model->select();
+               
+                $data['animales']=$this->animales_model->select();
                 $data['medicacion']=$this->medicacion_model->selectId( $idabo);
-                //print_r($data['indicaciones_especiale']);
-               // $data['razas']=$this->razas_model->select();
+                $data['medicamentos'] = $this->medicamentos_model->select();
+                $data['via_aplicacion'] = $this->via_aplicacion_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/medicacion/form.php",$data);

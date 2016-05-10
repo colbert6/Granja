@@ -17,35 +17,76 @@ if(isset ($servicio))  {  $datos=$servicio->row(); }
                     </div>
 
                 <?php } ?>
-                
                 <div class="form-group">
-                    <label for="nombre">Animal</label>
-                    <input type="text" required class="form-control" id="animal" name="animal" placeholder="Ingrese Animal"
-                     value="<?php if(isset ($servicio)) echo $datos->ser_animal;?>" >
+                    <label>Animal</label>
+                    <select class="form-control" name="animal" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($animales->result() as $datos_a) {
+                            if ($datos_a->ani_id==$datos->ser_animal) {
+                                echo "<option selected value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
+                            } else {
+                               echo "<option  value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
                 </div>
-              
+                <div class="form-group">
+                    <label>Reproductor</label>
+                    <select class="form-control" name="reproductor" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($reproductor->result() as $datos_r) {
+                            if ($datos_r->repro_id==$datos->ser_reproductor) {
+                                echo "<option selected value='".$datos_r->repro_id."'>".$datos_r->repro_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_r->repro_id."'>".$datos_r->repro_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Personal</label>
+                    <select class="form-control" name="personal" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($personal->result() as $datos_p) {
+                            if ($datos_p->per_id==$datos->ser_personal) {
+                                echo "<option selected value='".$datos_p->per_id."'>".$datos_p->per_nombre."</option>";
+                            } else {
+                               echo "<option  value='".$datos_p->per_id."'>".$datos_p->per_nombre."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Tipo de Servicio</label>
+                    <select class="form-control" name="tipo_servicio" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($tipo_servicio->result() as $datos_ts) {
+                            if ($datos_ts->tipse_id==$datos->ser_tipo_servicio) {
+                                echo "<option selected value='".$datos_ts->tipse_id."'>".$datos_ts->tipse_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_ts->tipse_id."'>".$datos_ts->tipse_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="nombre">Fecha de Evento</label>
                     <input type="date" required class="form-control" id="fecha_evento" name="fecha_evento" placeholder="Ingrese Fecha de Evento"
-                     value="<?php if(isset ($servicio)) echo $datos->ser_fecha_evento;?>" >
+                     value=<?php if(isset ($servicio)) echo $datos->ser_fecha_evento;?> >
                 </div>
-                
-                <div class="form-group">
-                                <label for="fechareg">Reproductor</label>
-                                <input type="text" required class="form-control" id="reproductor" name="reproductor" placeholder="Ingrese el Reproductor"
-                                value="<?php if(isset ($servicio)) echo $datos->ser_reproductor;?>">
-                </div>
-                <div class="form-group">
-                                <label for="fechareg">Personal</label>
-                                <input type="text" required class="form-control" id="personal" name="personal" placeholder="Ingrese Personal"
-                                value="<?php if(isset ($servicio)) echo $datos->ser_personal;?>">
-               
-                <div class="form-group">
-                                <label for="fechareg">Tipo de Servicio</label>
-                                <input type="text" required class="form-control" id="tipo_servicio" name="tipo_servicio" placeholder="Ingrese Servicio"
-                                value="<?php if(isset ($servicio)) echo $datos->ser_tipo_servicio;?>">
-                </div>
-                
+                                
             </div>
               
             <div class="box-footer">

@@ -17,24 +17,44 @@ if(isset ($secado))  {  $datos=$secado->row(); }
                     </div>
 
                 <?php } ?>
-                
                 <div class="form-group">
-                    <label for="nombre">RP</label>
-                    <input type="text" required class="form-control" id="rp" name="rp" placeholder="Ingrese Rp"
-                     value="<?php if(isset ($secado)) echo $datos->sec_rp;?>" >
+                    <label>Animal</label>
+                    <select class="form-control" name="rp" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($animales->result() as $datos_a) {
+                            if ($datos_a->ani_id==$datos->sec_rp) {
+                                echo "<option selected value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
+                            } else {
+                               echo "<option  value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Cuarto Mamario</label>
+                    <select class="form-control" name="cuarto_mamarios" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($medicina_cuarto_mamarios->result() as $datos_mcm) {
+                            if ($datos_mcm->mecu_id==$datos->sec_cuarto_mamarios) {
+                                echo "<option selected value='".$datos_mcm->mecu_id."'>".$datos_mcm->mecu_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_mcm->mecu_id."'>".$datos_mcm->mecu_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
                 </div>
               
                 <div class="form-group">
                     <label for="nombre">Fecha de Evento</label>
                     <input type="date" required class="form-control" id="fecha_evento" name="fecha_evento" placeholder="Ingrese Fecha de Evento"
-                     value="<?php if(isset ($secado)) echo $datos->sec_fecha_evento;?>" >
-                </div>
-                <div class="form-group">
-                    <label for="nombre">Cuarto Mamario</label>
-                    <input type="text" required class="form-control" id="cuarto_mamarios" name="cuarto_mamarios" placeholder="Ingrese los Cuarto Mamario"
-                     value="<?php if(isset ($secado)) echo $datos->sec_cuarto_mamarios;?>" >
-                </div>
-                             
+                     value=<?php if(isset ($secado)) echo $datos->sec_fecha_evento;?> >
+                </div>            
             <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
