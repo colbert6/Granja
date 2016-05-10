@@ -17,47 +17,108 @@ if(isset ($tacto_rectal))  {  $datos=$tacto_rectal->row(); }
                     </div>
 
                 <?php } ?>
-                
                 <div class="form-group">
-                    <label for="nombre">RP</label>
-                    <input type="text" required class="form-control" id="rp" name="rp" placeholder="Ingrese Rp"
-                     value="<?php if(isset ($tacto_rectal)) echo $datos->tarec_rp;?>" >
+                    <label>Animal</label>
+                    <select class="form-control" name="rp" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($animales->result() as $datos_a) {
+                            if ($datos_a->ani_id==$datos->tarec_rp) {
+                                echo "<option selected value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
+                            } else {
+                               echo "<option  value='".$datos_a->ani_id."'>".$datos_a->ani_nombre."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
                 </div>
-              
+                <div class="form-group">
+                    <label>Diagnostico de Utero</label>
+                    <select class="form-control" name="diag_utero" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($diagnostico_utero->result() as $datos_du) {
+                            if ($datos_du->diaut_id==$datos->tarec_diag_utero) {
+                                echo "<option selected value='".$datos_du->diaut_id."'>".$datos_du->diaut_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_du->diaut_id."'>".$datos_du->diaut_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
+                </div>     
+                <div class="form-group">
+                    <label>Enfermedad de Ovario</label>
+                    <select class="form-control" name="enfe_ovario" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($enfermedad_ovario->result() as $datos_eo) {
+                            if ($datos_eo->enfov_id==$datos->tarec_enfe_ovario) {
+                                echo "<option selected value='".$datos_eo->enfov_id."'>".$datos_eo->enfov_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_eo->enfov_id."'>".$datos_eo->enfov_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
+                </div> 
+                <div class="form-group">
+                    <label>Enfermedad de Utero</label>
+                    <select class="form-control" name="enfe_utero" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($enfermedad_utero->result() as $datos_eu) {
+                            if ($datos_eu->enfut_id==$datos->tarec_enfe_utero) {
+                                echo "<option selected value='".$datos_eu->enfut_id."'>".$datos_eu->enfut_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_eu->enfut_id."'>".$datos_eu->enfut_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
+                </div> 
+                <div class="form-group">
+                    <label>Via Aplicacion</label>
+                    <select class="form-control" name="via_aplicacion" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($via_aplicacion->result() as $datos_va) {
+                            if ($datos_va->viaap_id==$datos->tarec_via_aplicacion) {
+                                echo "<option selected value='".$datos_va->viaap_id."'>".$datos_va->viaap_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_va->viaap_id."'>".$datos_va->viaap_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Medicina Genital</label>
+                    <select class="form-control" name="med_genital" required>
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($medicina_genital->result() as $datos_vap) {
+                            if ($datos_vap->medge_id==$datos->tarec_med_genital) {
+                                echo "<option selected value='".$datos_vap->medge_id."'>".$datos_vap->medge_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_vap->medge_id."'>".$datos_vap->medge_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
+                </div>    
                 <div class="form-group">
                     <label for="nombre">Fecha de Evento</label>
                     <input type="date" required class="form-control" id="fecha_evento" name="fecha_evento" placeholder="Ingrese Fecha de Evento"
-                     value="<?php if(isset ($tacto_rectal)) echo $datos->tarec_fecha_evento;?>" >
+                     value=<?php if(isset ($tacto_rectal)) echo $datos->tarec_fecha_evento;?> >
                 </div>
-                
-                <div class="form-group">
-                                <label for="fechareg">Diagnostico de Utero</label>
-                                <input type="text" required class="form-control" id="diag_utero" name="diag_utero" placeholder="Ingrese el Diagnostico de Utero"
-                                value="<?php if(isset ($tacto_rectal)) echo $datos->tarec_diag_utero;?>">
-                </div>
-                <div class="form-group">
-                                <label for="fechareg">Enfermedad de Ovario</label>
-                                <input type="text" required class="form-control" id="enfe_ovario" name="enfe_ovario" placeholder="Ingrese Enfermedad de Ovario"
-                                value="<?php if(isset ($tacto_rectal)) echo $datos->tarec_enfe_ovario;?>">
-                </div>
-                <div class="form-group">
-                                <label for="fechareg">Enfermedad de Utero</label>
-                                <input type="text" required class="form-control" id="enfe_utero" name="enfe_utero" placeholder="Ingrese Enfermedad de Utero"
-                                value="<?php if(isset ($tacto_rectal)) echo $datos->tarec_enfe_utero;?>">
-                </div>
-                <div class="form-group">
-                                <label for="fechareg">Via Aplicacion</label>
-                                <input type="text" required class="form-control" id="via_aplicacion" name="via_aplicacion" placeholder="Ingrese Enfermedad de Utero"
-                                value="<?php if(isset ($tacto_rectal)) echo $datos->tarec_via_aplicacion;?>">
-                </div>
-                <div class="form-group">
-                                <label for="fechareg">Medicina Genital</label>
-                                <input type="text" required class="form-control" id="med_genital" name="med_genital" placeholder="Ingrese Medicina Genital"
-                                value="<?php if(isset ($tacto_rectal)) echo $datos->tarec_med_genital;?>">
-                </div>
-                
-              
-              
+               
             <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </div>

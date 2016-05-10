@@ -10,6 +10,11 @@
             parent::__construct();
             $this->load->model('tacto_rectal_model');
             $this->load->model('animales_model');
+            $this->load->model('enfermedad_ovario_model');
+            $this->load->model('enfermedad_utero_model');
+            $this->load->model('via_aplicacion_model');
+            $this->load->model('medicina_genital_model');
+            $this->load->model('diagnostico_utero_model');
             $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
         }
         
@@ -23,14 +28,6 @@
             $this->load->view("/tacto_rectal/index.php",$data);
             $this->load->view("/layout/foother_table.php");
         }
-   //     public function form()
-   //     {
-   //         $resul['animales'] = $this->animales_model->select();
-   //         $data = array('consulta'=> $resul);
-   //         $this->load->view("/layout/header.php");
-   //         $this->load->view("/aborto/form.php",$resul);
-   //         $this->load->view("/layout/foother_table.php");
-   //     }
 
         public function nuevo()
         {
@@ -54,8 +51,12 @@
             }else{
 
                 $data['animales'] = $this->animales_model->select();
-             //   $data['aborto'] = $this->tipo_registro_model->select();
-
+                $data['enfermedad_ovario'] = $this->enfermedad_ovario_model->select();
+                $data['enfermedad_utero'] = $this->enfermedad_utero_model->select();
+                $data['via_aplicacion'] = $this->via_aplicacion_model->select();
+                $data['medicina_genital'] = $this->medicina_genital_model->select();
+                $data['diagnostico_utero'] = $this->diagnostico_utero_model->select();
+                
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/tacto_rectal/form.php",$data  );
                 $this->load->view("/layout/foother.php");
@@ -85,11 +86,14 @@
                 $dato= array ( 'titulo'=> 'Editar Tacto Rectal','action'=>  'tacto_rectal/editar' );
                 $idabo=$this->uri-> segment(3);
 
-               // $data['tipo_registro']=$this->tipo_registro_model->select();
-               // $data['animales']=$this->animales_model->select();
+                $data['animales'] = $this->animales_model->select();
+                $data['enfermedad_ovario'] = $this->enfermedad_ovario_model->select();
+                $data['enfermedad_utero'] = $this->enfermedad_utero_model->select();
+                $data['via_aplicacion'] = $this->via_aplicacion_model->select();
+                $data['medicina_genital'] = $this->medicina_genital_model->select();
+                $data['diagnostico_utero'] = $this->diagnostico_utero_model->select();
                 $data['tacto_rectal']=$this->tacto_rectal_model->selectId( $idabo);
-                //print_r($data['indicaciones_especiale']);
-               // $data['razas']=$this->razas_model->select();
+               
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/tacto_rectal/form.php",$data);
