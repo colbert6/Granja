@@ -115,7 +115,7 @@
                            'estado_cria'=> $_POST["estado_cria"],
                            'tipo_parto'=> $_POST["tipo_parto"],
                            'sexo_cria'=> $_POST["sexo_cria"],
-                           'servicio'=> $_POST["servicio"],
+                           'servicio'=> $_POST["servicio"]
                         );
             $parto =$this->parto_model->crear($data);
             echo json_encode($parto->par_id);

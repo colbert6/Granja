@@ -428,150 +428,202 @@
     			
     			break;
     		case '8':
-    			formulario 	  += "<label>RP:</label>";
-    			formulario 	  += "<input type='text' class='form-control'/>";
-    			formulario 	  += "<label>Tipo Parto:</label>";
-		        formulario    += "<select class='form-control' id='id_tipa'>";
-		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario 	  += "<label>Sexo Cria:</label>";
-		        formulario    += "<select class='form-control' id='id_sexcri'>";
-		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario 	  += "<label>Estado Cria:</label>";
-		        formulario    += "<select class='form-control' id='id_escri'>";
-		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario 	  += "<label>Servicio:</label>";
-		        formulario    += "<select class='form-control' id='id_servi'>";
-		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario    += "<label>Fecha Nacimiento:</label>";
-		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1'  />";
-		        
-				$("#content-form").html(formulario); 
-				$("#myModal").modal("show"); 
+                $.post(base+"index.php/tipo_parto/json_ExtraerTodo",function(tipo_parto){
+                    $.post(base+"index.php/sexo_cria/json_ExtraerTodo",function(sexo_cria){
+                        $.post(base+"index.php/estado_cria/json_ExtraerTodo",function(estado_cria){
+                            $.post(base+"index.php/servicio/json_ExtraerTodo",function(servicio){
+                                var tipar = JSON.parse(tipo_parto);
+                                var sexcri = JSON.parse(sexo_cria);
+                                var estcri = JSON.parse(estado_cria);
+                                var serv = JSON.parse(servicio);
+                                formulario    += "<label>Tipo Parto:</label>";
+                                formulario    += "<select class='form-control' id='tippar'>";
+                                for (var i = 0; i < tipar.length; i++) {
+                                    formulario    += "<option value='"+tipar[i].tippar_id+"'>"+tipar[i].tippar_descripcion+"</option>";
+                                }
+                                formulario    += "</select>";
+                                formulario    += "<label>Sexo Cria:</label>";
+                                formulario    += "<select class='form-control' id='sexcr'>";
+                                for (var i = 0; i < sexcri.length; i++) {
+                                    formulario    += "<option value='"+sexcri[i].sexcr_id+"'>"+sexcri[i].sexcr_descripcion+"</option>";
+                                }
+                                formulario    += "</select>";
+                                formulario    += "<label>Estado Cria:</label>";
+                                formulario    += "<select class='form-control' id='estcr'>";
+                                for (var i = 0; i < estcri.length; i++) {
+                                    formulario    += "<option value='"+estcri[i].estcr_id+"'>"+estcri[i].estcr_descripcion+"</option>";
+                                }
+                                formulario    += "</select>";
+                                formulario    += "<label>Servicio:</label>";
+                                formulario    += "<select class='form-control' id='ser'>";
+                                for (var i = 0; i < serv.length; i++) {
+                                    formulario    += "<option value='"+serv[i].ser_id+"'>Servicio "+serv[i].ser_id+"</option>";
+                                }
+                                formulario    += "</select>";
+                                formulario    += "<label>Fecha Nacimiento:</label>";
+                                formulario    += "<input type='date' class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                                
+                                $("#content-form").html(formulario); 
+                                $("#myModal").modal("show"); 
+
+                            });
+                        });
+                    }); 
+                });
+
+    			
     			break;
     		case '9':
-    			formulario 	  += "<label>Tipo Servicio:</label>";
-		        formulario    += "<select class='form-control' id='id_tiser'>";
-		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario 	  += "<label>Reproductor:</label>";
-		        formulario    += "<select class='form-control' id='id_rep'>";
-		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario 	  += "<label>Personal:</label>";
-		        formulario    += "<select class='form-control' id='id_pers'>";
-		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario    += "<label>Fecha:</label>";
-		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
-		        
-				$("#content-form").html(formulario); 
-				$("#myModal").modal("show"); 
+    			$.post(base+"index.php/tipo_servicio/json_ExtraerTodo",function(tipo_servicio){
+                    $.post(base+"index.php/reproductor/json_ExtraerTodo",function(reproductor){
+                        $.post(base+"index.php/personal/json_ExtraerTodo",function(personal){
+                                var tise = JSON.parse(tipo_servicio);
+                                var re = JSON.parse(reproductor);
+                                var pe = JSON.parse(personal);
+                
+                formulario      += "<label>Tipo Servicio:</label>";
+                formulario    += "<select class='form-control' id='id_tiser'>";
+                for (var i = 0; i < tise.length; i++) {
+                                    formulario    += "<option value='"+tise[i].tipse_id+"'>"+tise[i].tipse_descripcion+"</option>";
+                }
+                formulario    += "</select>";
+                formulario    += "<label>Reproductor:</label>";
+                formulario    += "<select class='form-control' id='id_rep'>";
+                for (var i = 0; i < re.length; i++) {
+                                    formulario    += "<option value='"+re[i].repro_id+"'>"+re[i].repro_descripcion+"</option>";
+                }
+                formulario    += "</select>";
+                formulario    += "<label>Personal:</label>";
+                formulario    += "<select class='form-control' id='id_pers'>";
+                for (var i = 0; i < pe.length; i++) {
+                                    formulario    += "<option value='"+pe[i].per_id+"'>"+pe[i].per_nombre+' '+pe[i].per_ape_paterno+' '+pe[i].per_ape_materno+"</option>";
+                }
+                formulario    += "</select>";
+                formulario    += "<label>Fecha:</label>";
+                formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                
+                $("#content-form").html(formulario); 
+                $("#myModal").modal("show");                                 
+                            
+                        });
+                    }); 
+                });
+                 
     			break;
     		case '10':
-    			formulario 	  += "<label>RP:</label>";
-    			formulario 	  += "<input type='text' class='form-control'/>";
-    			formulario 	  += "<label>Diagnostico de Utero:</label>";
-		        formulario    += "<select class='form-control' id='id_diaguter'>";
-		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario 	  += "<label>Enfermedad de Ovario:</label>";
-		        formulario    += "<select class='form-control' id='id_enfova'>";
-		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario 	  += "<label>Via Aplicacion:</label>";
-		        formulario    += "<select class='form-control' id='id_viaap'>";
-		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario 	  += "<label>Enfermedad de Utero:</label>";
-		        formulario    += "<select class='form-control' id='id_enfuter'>";
-		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario 	  += "<label>Medicina Genital:</label>";
-		        formulario    += "<select class='form-control' id='id_enfuter'>";
-		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		        formulario    += "<label>Fecha:</label>";
-		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
-		        
-				$("#content-form").html(formulario); 
-				$("#myModal").modal("show"); 
-    			break;
+    			$.post(base+"index.php/enfermedad_ovario/json_ExtraerTodo",function(enfermedad_ovario){
+                    $.post(base+"index.php/via_aplicacion/json_ExtraerTodo",function(via_aplicacion){
+                        $.post(base+"index.php/diagnostico_utero/json_ExtraerTodo",function(diagnostico_utero){
+                            $.post(base+"index.php/enfermedad_utero/json_ExtraerTodo",function(enfermedad_utero){
+                                $.post(base+"index.php/medicina_genital/json_ExtraerTodo",function(medicina_genital){
+                                var eo = JSON.parse(enfermedad_ovario);
+                                var va = JSON.parse(via_aplicacion);
+                                var du = JSON.parse(diagnostico_utero);
+                                var eu = JSON.parse(enfermedad_utero);
+                                var mg = JSON.parse(medicina_genital);
+                                
+                formulario    += "<label>RP:</label>";
+                formulario    += "<input type='text' class='form-control'/>";
+                formulario    += "<label>Diagnostico de Utero:</label>";
+                formulario    += "<select class='form-control' id='id_diaguter'>";
+                for (var i = 0; i < du.length; i++) {
+                    formulario    += "<option value='"+du[i].diaut_id+"'>"+du[i].diaut_descripcion+"</option>";
+                }
+                formulario    += "</select>";
+                formulario    += "<label>Enfermedad de Ovario:</label>";
+                formulario    += "<select class='form-control' id='id_enfova'>";
+                for (var i = 0; i < eo.length; i++) {
+                    formulario    += "<option value='"+eo[i].enfov_id+"'>"+eo[i].enfov_descripcion+"</option>";
+                }
+                formulario    += "</select>";
+                formulario    += "<label>Via Aplicacion:</label>";
+                formulario    += "<select class='form-control' id='id_viaap'>";
+                for (var i = 0; i < va.length; i++) {
+                    formulario    += "<option value='"+va[i].viaap_id+"'>"+va[i].viaap_descripcion+"</option>";
+                }
+                formulario    += "</select>";
+                formulario    += "<label>Enfermedad de Utero:</label>";
+                formulario    += "<select class='form-control' id='id_enfuter'>";
+                for (var i = 0; i < eu.length; i++) {
+                    formulario    += "<option value='"+eu[i].enfut_id+"'>"+eu[i].enfut_descripcion+"</option>";
+                }
+                formulario    += "</select>";
+                formulario    += "<label>Medicina Genital:</label>";
+                formulario    += "<select class='form-control' id='id_enfuter'>";
+                for (var i = 0; i < mg.length; i++) {
+                    formulario    += "<option value='"+mg[i].medge_id+"'>"+mg[i].medge_descripcion+"</option>";
+                }
+                formulario    += "</select>";
+                formulario    += "<label>Fecha:</label>";
+                formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                
+                $("#content-form").html(formulario); 
+                $("#myModal").modal("show"); 
+                               }); 
+                            });
+                        });
+                    }); 
+                });
+                break;
     		case '11':
-    			formulario 	  += "<label>RP:</label>";
-    			formulario 	  += "<input type='text' class='form-control'/>";
-    			formulario 	  += "<label>Especificacion Venta:</label>";
-		        formulario    += "<select class='form-control' id='id_espvent'>";
-		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
+    			$.post(base+"index.php/especificacion_venta/json_ExtraerTodo",function(especificacion_venta){
+                                var ev = JSON.parse(especificacion_venta);
 
-		       
-		        formulario    += "<label>Fecha:</label>";
-		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
-		        
-				$("#content-form").html(formulario); 
-				$("#myModal").modal("show"); 
+                formulario    += "<label>RP:</label>";
+                formulario    += "<input type='text' class='form-control'/>";
+                formulario    += "<label>Especificacion Venta:</label>";
+                formulario    += "<select class='form-control' id='id_espvent'>";
+                for (var i = 0; i < ev.length; i++) {
+                    formulario    += "<option value='"+ev[i].espve_id+"'>"+ev[i].espve_descripcion+"</option>";
+                }
+                formulario    += "<option value='1'>1</option>";
+                formulario    += "</select>";
+
+               
+                formulario    += "<label>Fecha:</label>";
+                formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                
+                $("#content-form").html(formulario); 
+                $("#myModal").modal("show");             
+                });
     			break;
     		case '12':
-    			formulario 	  += "<label>RP:</label>";
-    			formulario 	  += "<input type='text' class='form-control'/>";
-    			formulario 	  += "<label>Cuartos Mamarios:</label>";
-		        formulario    += "<select class='form-control' id='id_espvent'>";
-		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		       
-		        formulario    += "<label>Fecha:</label>";
-		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
-		        
-				$("#content-form").html(formulario); 
-				$("#myModal").modal("show"); 
+    			$.post(base+"index.php/medicina_cuarto_mamario/json_ExtraerTodo",function(medicina_cuarto_mamario){
+                               var mcm = JSON.parse(medicina_cuarto_mamario);
+                formulario    += "<label>RP:</label>";
+                formulario    += "<input type='text' class='form-control'/>";
+                formulario    += "<label>Cuartos Mamarios:</label>";
+                formulario    += "<select class='form-control' id='id_espvent'>";
+                for (var i = 0; i < mcm.length; i++) {
+                    formulario    += "<option value='"+mcm[i].mecu_id+"'>"+mcm[i].mecu_descripcion+"</option>";
+                }
+                formulario    += "</select>";
+               
+                formulario    += "<label>Fecha:</label>";
+                formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                
+                $("#content-form").html(formulario); 
+                $("#myModal").modal("show");
+                 }); 
     			break;
     		case '13':
-    			formulario 	  += "<label>RP:</label>";
-    			formulario 	  += "<input type='text' class='form-control'/>";
-    			formulario 	  += "<label>Causa Rechazo:</label>";
-		        formulario    += "<select class='form-control' id='id_espvent'>";
-		        //Extraer las Causas de Aborto
-		        //$.post("",{suggest: txt},function(data){});
-		        formulario    += "<option value='1'>1</option>";
-		        formulario    += "</select>";
-		       
-		        formulario    += "<label>Fecha:</label>";
-		        formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
-		        
-				$("#content-form").html(formulario); 
-				$("#myModal").modal("show"); 
+    			$.post(base+"index.php/causa_rechazo/json_ExtraerTodo",function(causa_rechazo){
+                              var crr = JSON.parse(causa_rechazo);
+                formulario       += "<label>RP:</label>";
+                formulario    += "<input type='text' class='form-control'/>";
+                formulario    += "<label>Causa Rechazo:</label>";
+                formulario    += "<select class='form-control' id='id_espvent'>";
+                for (var i = 0; i < crr.length; i++) {
+                    formulario    += "<option value='"+crr[i].cr_id+"'>"+crr[i].cr_descripcion+"</option>";
+                }
+                formulario    += "</select>";
+               
+                formulario    += "<label>Fecha:</label>";
+                formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                
+                $("#content-form").html(formulario); 
+                $("#myModal").modal("show");
+                }); 
     			break;
     	}
     	
@@ -745,6 +797,31 @@
                     });
                     break;
                 case '8':
+                    var animal = $("#animal").val();
+                    var fecha = $("#fecha_evento").val();
+                    var estado_cria = $("#estcr").val();
+                    var tipo_parto = $("#tippar").val();
+                    var sexo_cria = $("#sexcr").val();
+                    var servicio = $("#ser").val();
+                    //console.log(animal+","+fecha_naci+","+estado_cria+","+tipo_parto+","+sexo_cria+","+servicio);
+                    $.post(base+"index.php/parto/json_Nuevo",{rp:animal,fecha:fecha,estado_cria:estado_cria,tipo_parto:tipo_parto,sexo_cria:sexo_cria,servicio:servicio},function(valor){
+                        alert("ho");
+                        var obj = JSON.parse(valor);
+                        var id_tabla = obj[0];
+                        var sim_id = num_evento;
+                        $.post(base+"index.php/eventos/json_Nuevo",{id_tabla:id_tabla,sim_id:sim_id,ani_id:animal,eve_fecha:fecha},function(){
+                            var id = String("#"+$("#fila").val()+""+$("#mes").val());
+                            $.post(base+"index.php/simbolo/json_BuscarID",{id:sim_id},function(simbolo){
+                                var sim = JSON.parse(simbolo);
+                                var res = fecha.split("-");
+                                boton = "<button type=\"button\" onclick=\"$('#editEvent').modal('show');\">";
+                                boton +="<img src=\""+base+"img/"+sim[0].sim_icono+"\"/>";
+                                boton +="<span class=\"badge\">"+res[2]+"</span>";
+                                boton +="</button><br>";
+                                $(id).append(boton);
+                            }); 
+                        });
+                    });
                     break;
                 case '9':
                     break;
