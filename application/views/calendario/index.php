@@ -567,8 +567,6 @@
     			$.post(base+"index.php/especificacion_venta/json_ExtraerTodo",function(especificacion_venta){
                                 var ev = JSON.parse(especificacion_venta);
 
-                formulario    += "<label>RP:</label>";
-                formulario    += "<input type='text' class='form-control'/>";
                 formulario    += "<label>Especificacion Venta:</label>";
                 formulario    += "<select class='form-control' id='id_espvent'>";
                 for (var i = 0; i < ev.length; i++) {
@@ -883,6 +881,28 @@
 
                     break;
                 case '11':
+                    var animal = $("#animal").val();
+                    var fecha = $("#fecha_evento").val();
+                    var espe_venta = $("#espve").val();
+
+
+                    $.post(base+"index.php/venta/json_Nuevo",{rp:animal,fecha:fecha,especif_venta:espe_venta},function(valor){
+                        var obj = JSON.parse(valor);
+                        var id_tabla = obj[0];
+                        var sim_id = num_evento;
+                        $.post(base+"index.php/eventos/json_Nuevo",{id_tabla:id_tabla,sim_id:sim_id,ani_id:animal,eve_fecha:fecha},function(){
+                            var id = String("#"+$("#fila").val()+""+$("#mes").val());
+                            $.post(base+"index.php/simbolo/json_BuscarID",{id:sim_id},function(simbolo){
+                                var sim = JSON.parse(simbolo);
+                                var res = fecha.split("-");
+                                boton = "<button type=\"button\" onclick=\"$('#editEvent').modal('show');\">";
+                                boton +="<img src=\""+base+"img/"+sim[0].sim_icono+"\"/>";
+                                boton +="<span class=\"badge\">"+res[2]+"</span>";
+                                boton +="</button><br>";
+                                $(id).append(boton);
+                            }); 
+                        });
+                    });
                     break;
                 case '12':
                     break;
