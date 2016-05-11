@@ -482,25 +482,25 @@
                                 var pe = JSON.parse(personal);
                 
                 formulario      += "<label>Tipo Servicio:</label>";
-                formulario    += "<select class='form-control' id='id_tiser'>";
+                formulario    += "<select class='form-control' id='tipse'>";
                 for (var i = 0; i < tise.length; i++) {
                                     formulario    += "<option value='"+tise[i].tipse_id+"'>"+tise[i].tipse_descripcion+"</option>";
                 }
                 formulario    += "</select>";
                 formulario    += "<label>Reproductor:</label>";
-                formulario    += "<select class='form-control' id='id_rep'>";
+                formulario    += "<select class='form-control' id='repro'>";
                 for (var i = 0; i < re.length; i++) {
                                     formulario    += "<option value='"+re[i].repro_id+"'>"+re[i].repro_descripcion+"</option>";
                 }
                 formulario    += "</select>";
                 formulario    += "<label>Personal:</label>";
-                formulario    += "<select class='form-control' id='id_pers'>";
+                formulario    += "<select class='form-control' id='per'>";
                 for (var i = 0; i < pe.length; i++) {
                                     formulario    += "<option value='"+pe[i].per_id+"'>"+pe[i].per_nombre+' '+pe[i].per_ape_paterno+' '+pe[i].per_ape_materno+"</option>";
                 }
                 formulario    += "</select>";
                 formulario    += "<label>Fecha:</label>";
-                formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                formulario    += "<input type='date'class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                 
                 $("#content-form").html(formulario); 
                 $("#myModal").modal("show");                                 
@@ -521,41 +521,39 @@
                                 var du = JSON.parse(diagnostico_utero);
                                 var eu = JSON.parse(enfermedad_utero);
                                 var mg = JSON.parse(medicina_genital);
-                                
-                formulario    += "<label>RP:</label>";
-                formulario    += "<input type='text' class='form-control'/>";
+
                 formulario    += "<label>Diagnostico de Utero:</label>";
-                formulario    += "<select class='form-control' id='id_diaguter'>";
+                formulario    += "<select class='form-control' id='diaut'>";
                 for (var i = 0; i < du.length; i++) {
                     formulario    += "<option value='"+du[i].diaut_id+"'>"+du[i].diaut_descripcion+"</option>";
                 }
                 formulario    += "</select>";
                 formulario    += "<label>Enfermedad de Ovario:</label>";
-                formulario    += "<select class='form-control' id='id_enfova'>";
+                formulario    += "<select class='form-control' id='enfov'>";
                 for (var i = 0; i < eo.length; i++) {
                     formulario    += "<option value='"+eo[i].enfov_id+"'>"+eo[i].enfov_descripcion+"</option>";
                 }
                 formulario    += "</select>";
                 formulario    += "<label>Via Aplicacion:</label>";
-                formulario    += "<select class='form-control' id='id_viaap'>";
+                formulario    += "<select class='form-control' id='viaap'>";
                 for (var i = 0; i < va.length; i++) {
                     formulario    += "<option value='"+va[i].viaap_id+"'>"+va[i].viaap_descripcion+"</option>";
                 }
                 formulario    += "</select>";
                 formulario    += "<label>Enfermedad de Utero:</label>";
-                formulario    += "<select class='form-control' id='id_enfuter'>";
+                formulario    += "<select class='form-control' id='enfut'>";
                 for (var i = 0; i < eu.length; i++) {
                     formulario    += "<option value='"+eu[i].enfut_id+"'>"+eu[i].enfut_descripcion+"</option>";
                 }
                 formulario    += "</select>";
                 formulario    += "<label>Medicina Genital:</label>";
-                formulario    += "<select class='form-control' id='id_enfuter'>";
+                formulario    += "<select class='form-control' id='medget'>";
                 for (var i = 0; i < mg.length; i++) {
                     formulario    += "<option value='"+mg[i].medge_id+"'>"+mg[i].medge_descripcion+"</option>";
                 }
                 formulario    += "</select>";
                 formulario    += "<label>Fecha:</label>";
-                formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                formulario    += "<input type='date'class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                 
                 $("#content-form").html(formulario); 
                 $("#myModal").modal("show"); 
@@ -824,8 +822,65 @@
                     });
                     break;
                 case '9':
+                    var animal = $("#animal").val();
+                    var fecha = $("#fecha_evento").val();
+                    var repro = $("#repro").val();
+                    var per = $("#per").val();
+                    var tipo_serv = $("#tipse").val();
+
+
+                    $.post(base+"index.php/servicio/json_Nuevo",{animal:animal,fecha:fecha,reproductor:repro,personal:per,tipo_servicio:tipo_serv},function(valor){
+                        var obj = JSON.parse(valor);
+                        var id_tabla = obj[0];
+                        var sim_id = num_evento;
+                        $.post(base+"index.php/eventos/json_Nuevo",{id_tabla:id_tabla,sim_id:sim_id,ani_id:animal,eve_fecha:fecha},function(){
+                            var id = String("#"+$("#fila").val()+""+$("#mes").val());
+                            $.post(base+"index.php/simbolo/json_BuscarID",{id:sim_id},function(simbolo){
+                                var sim = JSON.parse(simbolo);
+                                var res = fecha.split("-");
+                                boton = "<button type=\"button\" onclick=\"$('#editEvent').modal('show');\">";
+                                boton +="<img src=\""+base+"img/"+sim[0].sim_icono+"\"/>";
+                                boton +="<span class=\"badge\">"+res[2]+"</span>";
+                                boton +="</button><br>";
+                                $(id).append(boton);
+                            }); 
+                        });
+                    });
+
                     break;
                 case '10':
+
+                    var animal = $("#animal").val();
+                    var fecha = $("#fecha_evento").val();
+                    var diag_utero = $("#diaut").val();
+                    var enfe_ovario = $("#enfov").val();
+                    var via_aplicacion = $("#viaap").val();
+                    var enfe_utero = $("#enfut").val();
+                    var med_genital = $("#medget").val();
+
+
+
+                    $.post(base+"index.php/tacto_rectal/json_Nuevo",{rp:animal,fecha:fecha,diag_utero:diag_utero,enfe_ovario:enfe_ovario,enfe_utero:enfe_utero,via_aplicacion:via_aplicacion,med_genital:med_genital},function(valor){
+                        var obj = JSON.parse(valor);
+                        var id_tabla = obj[0];
+                        var sim_id = num_evento;
+                        $.post(base+"index.php/eventos/json_Nuevo",{id_tabla:id_tabla,sim_id:sim_id,ani_id:animal,eve_fecha:fecha},function(){
+                            var id = String("#"+$("#fila").val()+""+$("#mes").val());
+                            $.post(base+"index.php/simbolo/json_BuscarID",{id:sim_id},function(simbolo){
+                                var sim = JSON.parse(simbolo);
+                                var res = fecha.split("-");
+                                boton = "<button type=\"button\" onclick=\"$('#editEvent').modal('show');\">";
+                                boton +="<img src=\""+base+"img/"+sim[0].sim_icono+"\"/>";
+                                boton +="<span class=\"badge\">"+res[2]+"</span>";
+                                boton +="</button><br>";
+                                $(id).append(boton);
+                            }); 
+                        });
+                    });
+
+
+
+
                     break;
                 case '11':
                     break;
