@@ -568,36 +568,32 @@
                                 var ev = JSON.parse(especificacion_venta);
 
                 formulario    += "<label>Especificacion Venta:</label>";
-                formulario    += "<select class='form-control' id='id_espvent'>";
+                formulario    += "<select class='form-control' id='espve'>";
                 for (var i = 0; i < ev.length; i++) {
                     formulario    += "<option value='"+ev[i].espve_id+"'>"+ev[i].espve_descripcion+"</option>";
                 }
-                formulario    += "<option value='1'>1</option>";
                 formulario    += "</select>";
 
                
                 formulario    += "<label>Fecha:</label>";
-                formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                formulario    += "<input type='date'class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                 
                 $("#content-form").html(formulario); 
                 $("#myModal").modal("show");             
                 });
     			break;
     		case '12':
-    			$.post(base+"index.php/medicina_cuarto_mamario/json_ExtraerTodo",function(medicina_cuarto_mamario){
+    			$.post(base+"index.php/medicina_cuarto_mamarios/json_ExtraerTodo",function(medicina_cuarto_mamario){
                                var mcm = JSON.parse(medicina_cuarto_mamario);
-                formulario    += "<label>RP:</label>";
-                formulario    += "<input type='text' class='form-control'/>";
                 formulario    += "<label>Cuartos Mamarios:</label>";
-                formulario    += "<select class='form-control' id='id_espvent'>";
+                formulario    += "<select class='form-control' id='cuama'>";
                 for (var i = 0; i < mcm.length; i++) {
                     formulario    += "<option value='"+mcm[i].mecu_id+"'>"+mcm[i].mecu_descripcion+"</option>";
                 }
                 formulario    += "</select>";
-               
                 formulario    += "<label>Fecha:</label>";
-                formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
-                
+                formulario    += "<input type='date'class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+ 
                 $("#content-form").html(formulario); 
                 $("#myModal").modal("show");
                  }); 
@@ -905,6 +901,27 @@
                     });
                     break;
                 case '12':
+                    var animal = $("#animal").val();
+                    var fecha = $("#fecha_evento").val();
+                    var cuartos_mamarios = $("#cuama").val();
+
+                    $.post(base+"index.php/secado/json_Nuevo",{rp:animal,fecha:fecha,cuarto_mamarios:cuartos_mamarios},function(valor){
+                        var obj = JSON.parse(valor);
+                        var id_tabla = obj[0];
+                        var sim_id = num_evento;
+                        $.post(base+"index.php/eventos/json_Nuevo",{id_tabla:id_tabla,sim_id:sim_id,ani_id:animal,eve_fecha:fecha},function(){
+                            var id = String("#"+$("#fila").val()+""+$("#mes").val());
+                            $.post(base+"index.php/simbolo/json_BuscarID",{id:sim_id},function(simbolo){
+                                var sim = JSON.parse(simbolo);
+                                var res = fecha.split("-");
+                                boton = "<button type=\"button\" onclick=\"$('#editEvent').modal('show');\">";
+                                boton +="<img src=\""+base+"img/"+sim[0].sim_icono+"\"/>";
+                                boton +="<span class=\"badge\">"+res[2]+"</span>";
+                                boton +="</button><br>";
+                                $(id).append(boton);
+                            }); 
+                        });
+                    });
                     break;
                 case '13':
                     break;
