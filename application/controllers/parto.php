@@ -121,6 +121,11 @@
             echo json_encode($parto->par_id);
 
         }
+        public function json_BuscarID(){
+            $data['parto']=$this->parto_model->selectId($_POST["id"]);
+            echo json_encode($data['parto']->result());
+
+        }
 
     }
  ?>

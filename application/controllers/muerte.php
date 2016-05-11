@@ -104,6 +104,11 @@
             echo json_encode($muerte->mue_id);
 
         }
+        public function json_BuscarID(){
+            $data['muerte']=$this->muerte_model->selectId($_POST["id"]);
+            echo json_encode($data['muerte']->result());
+
+        }
 
 
     }

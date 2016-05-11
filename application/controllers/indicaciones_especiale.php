@@ -107,7 +107,11 @@
 
         }
 
-       
+        public function json_BuscarID(){
+            $data['indicaciones_especiale']=$this->indicaciones_especiale_model->selectId($_POST["id"]);
+            echo json_encode($data['indicaciones_especiale']->result());
+
+        }
 
 
     }

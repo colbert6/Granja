@@ -112,15 +112,11 @@
             $rechazo =$this->rechazo_model->crear($data);
             echo json_encode($rechazo->recha_id);
         }
-        public function json_editar(){
-            $data= array ( 'id'=> $_POST["id"],
-                            'rp'=> $_POST["rp"],
-                           'fecha_evento'=> $_POST["fecha"],
-                           'causa_rechazo'=> $_POST["causa_rechazo"]
-                        );
-            $this->rechazo_model->editar($data);
-        }
+        public function json_BuscarID(){
+            $data['rechazo']=$this->rechazo_model->selectId($_POST["id"]);
+            echo json_encode($data['rechazo']->result());
 
+        }
 
     }
  ?>

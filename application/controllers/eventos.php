@@ -28,7 +28,9 @@
                            'ani_id'=> $_POST["ani_id"],
                            'eve_fecha'=> $_POST["eve_fecha"]
                         );
-            $this->eventos_model->crear($data);
+            $eventos_d = $this->eventos_model->crear($data);
+            echo json_encode($eventos_d->eve_id);
+
         }
         public function json_BuscarID(){
             $data['evento']=$this->eventos_model->selectId($_POST["id"]);

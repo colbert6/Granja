@@ -27,6 +27,10 @@
 	        							   'ani_id' => $data['ani_id'],
 	        							   'eve_fecha' => $data['eve_fecha'],
 	                                       'eve_estado' => 1 ));
+	        $this->db->select_max('eve_id');	        
+			$query = $this->db->get('eventos');
+
+	        return $query->row();
 	      
 	    }
 

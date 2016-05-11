@@ -124,6 +124,11 @@
             echo json_encode($enfermedad->enf_id);
 
         }
+        public function json_BuscarID(){
+             $data['enfermedad']=$this->enfermedad_model->selectId($_POST["id"]);
+            echo json_encode($data['enfermedad']->result());
+
+        }
 
 
     }

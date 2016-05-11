@@ -113,7 +113,11 @@
             echo json_encode($analisis->ana_id);
 
         }
+        public function json_BuscarID(){
+            $data['analisis']=$this->analisis_model->selectId($_POST["id"]);
+            echo json_encode($data['analisis']->result());
 
+        }
 
     }
  ?>

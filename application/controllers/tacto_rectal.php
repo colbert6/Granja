@@ -126,6 +126,11 @@
             $tacto_recta =$this->tacto_rectal_model->crear($data);
             echo json_encode($tacto_recta->tarec_id);
         }
+        public function json_BuscarID(){
+            $data['tacto_rectal']=$this->tacto_rectal_model->selectId($_POST["id"]);
+            echo json_encode($data['tacto_rectal']->result());
+
+        }
 
     }
  ?>

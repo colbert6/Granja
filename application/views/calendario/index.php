@@ -68,7 +68,7 @@
 
                                                     
                                 ?>                                  
-                                    <button type="button"  onclick="$('#editEvent').modal('show');">
+                                    <button type="button"  onclick="editarEvento('<?php echo $evento->eve_id; ?>','<?= base_url(); ?>');">
                                          <img src="<?php echo base_url(); ?>img/<?php echo $simbolo->sim_icono; ?>">
                                       <span class="badge"><?php echo date("d", $fecha)?></span>
                                     </button><br>
@@ -633,12 +633,15 @@
                         var obj = JSON.parse(valor);
                         var id_tabla = obj[0];
                         var sim_id = num_evento;
-                        $.post(base+"index.php/eventos/json_Nuevo",{id_tabla:id_tabla,sim_id:sim_id,ani_id:animal,eve_fecha:fecha},function(){
+                        $.post(base+"index.php/eventos/json_Nuevo",{id_tabla:id_tabla,sim_id:sim_id,ani_id:animal,eve_fecha:fecha},function(val){
+                            var ot= JSON.parse(val);
+                            var mostrar = ot[0];
+                            console.log(mostrar);
                             var id = String("#"+$("#fila").val()+""+$("#mes").val());
                             $.post(base+"index.php/simbolo/json_BuscarID",{id:sim_id},function(simbolo){
                                 var sim = JSON.parse(simbolo);
                                 var res = fecha.split("-");
-                                boton = "<button type=\"button\" onclick=\"$('#editEvent').modal('show');\">";
+                                boton = "<button type=\"button\" onclick=\"editarEvento('"+mostrar+"','"+base+"');\">";
                                 boton +="<img src=\""+base+"img/"+sim[0].sim_icono+"\"/>";
                                 boton +="<span class=\"badge\">"+res[2]+"</span>";
                                 boton +="</button><br>";
@@ -949,6 +952,65 @@
             $("#myModal").modal("hide");
         //}
         //document.getElementById($("#fila").val()+","+$("#mes").val()).innerHTML = "<img src='"+$("#url").val()+"img/calendar.png'>";
+    }
+    function editarEvento(id,base){
+            $.post(base+"index.php/eventos/json_BuscarID",{id:id},function(valor){
+                var obj = JSON.parse(valor);
+                $.post(base+"index.php/simbolo/json_BuscarID",{id:obj[0].sim_id},function(valor2){
+                    var obj2 = JSON.parse(valor2);
+                    
+                    $.post(base+"index.php/"+obj2[0].evento+"/json_BuscarID",{id:obj[0].id_tabla},function(datos){
+                        var data = JSON.parse(datos);
+                        alert("success");
+                    });
+
+                });
+
+                /*switch(obj[0].sim_id){
+                    case '1':
+                        alert(obj[0].sim_id);
+                        break;
+                    case '2':
+                    alert(obj[0].sim_id);
+                        break;
+                    case '3':
+                    alert(obj[0].sim_id);
+                        break;
+                    case '4':
+                    alert(obj[0].sim_id);
+                        break;
+                    case '5':
+                    alert(obj[0].sim_id);
+                        break;
+                    case '6':
+                    alert(obj[0].sim_id);
+                        break;
+                    case '7':
+                    alert(obj[0].sim_id);
+                        break;
+                    case '8':
+                    alert(obj[0].sim_id);
+                        break;
+                    case '9':
+                    alert(obj[0].sim_id);
+                        break;
+                    }
+                    case '10':
+                    alert(obj[0].sim_id);
+                        break;
+                    case '11':
+                    alert(obj[0].sim_id);
+                        break;
+                    case '12':
+                    alert(obj[0].sim_id);
+                        break;
+                    case '13':
+                    alert(obj[0].sim_id);
+                        break;
+
+                }*/
+            });
+
     }
     function validar_formulario(){
         /*frm=document.forms.form;

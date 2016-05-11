@@ -123,7 +123,11 @@
             $celo =$this->celo_model->crear($data);
             echo json_encode($celo->celo_id);
         }
+        public function json_BuscarID(){
+             $data['celo']=$this->celo_model->selectId($_POST["id"]);
+            echo json_encode($data['celo']->result());
 
+        }
 
     }
  ?>

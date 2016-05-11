@@ -109,6 +109,11 @@
             $secado =$this->secado_model->crear($data);
             echo json_encode($secado->sec_id);
         }
+        public function json_BuscarID(){
+            $data['secado']=$this->secado_model->selectId($_POST["id"]);
+            echo json_encode($data['secado']->result());
+
+        }
 
     }
  ?>

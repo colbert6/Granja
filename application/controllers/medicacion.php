@@ -107,7 +107,11 @@
             echo json_encode($medicacion->med_id);
 
         }
+        public function json_BuscarID(){
+            $data['medicacion']=$this->medicacion_model->selectId($_POST["id"]);
+            echo json_encode($data['medicacion']->result());
 
+        }
 
     }
  ?>

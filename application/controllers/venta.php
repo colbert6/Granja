@@ -102,6 +102,11 @@
             $venta =$this->venta_model->crear($data);
             echo json_encode($venta->venta_id);
         }
+        public function json_BuscarID(){
+            $data['venta']=$this->venta_model->selectId($_POST["id"]);
+            echo json_encode($data['venta']->result());
+
+        }
      
     }
  ?>

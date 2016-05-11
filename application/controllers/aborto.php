@@ -116,6 +116,12 @@
             echo json_encode($aborto->ab_id);
 
         }
+        public function json_BuscarID(){
+
+            $data['aborto']=$this->aborto_model->selectId($_POST["id"]);
+            echo json_encode($data['aborto']->result());
+
+        }
 
 
 

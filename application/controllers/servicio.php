@@ -118,6 +118,11 @@
             $data['servicio'] = $this->servicio_model->select();
             echo json_encode($data['servicio']->result());            
         }
+        public function json_BuscarID(){
+            $data['servicio']=$this->servicio_model->selectId($_POST["id"]);
+            echo json_encode($data['servicio']->result());
+
+        }
 
     }
  ?>
