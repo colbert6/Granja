@@ -600,21 +600,20 @@
     			break;
     		case '13':
     			$.post(base+"index.php/causa_rechazo/json_ExtraerTodo",function(causa_rechazo){
-                              var crr = JSON.parse(causa_rechazo);
-                formulario       += "<label>RP:</label>";
-                formulario    += "<input type='text' class='form-control'/>";
-                formulario    += "<label>Causa Rechazo:</label>";
-                formulario    += "<select class='form-control' id='id_espvent'>";
-                for (var i = 0; i < crr.length; i++) {
-                    formulario    += "<option value='"+crr[i].cr_id+"'>"+crr[i].cr_descripcion+"</option>";
-                }
-                formulario    += "</select>";
-               
-                formulario    += "<label>Fecha:</label>";
-                formulario    += "<input type='date'class='form-control' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
-                
-                $("#content-form").html(formulario); 
-                $("#myModal").modal("show");
+                    var crr = JSON.parse(causa_rechazo);
+
+                    formulario    += "<label>Causa Rechazo:</label>";
+                    formulario    += "<select class='form-control' id='caure'>";
+                    for (var i = 0; i < crr.length; i++) {
+                        formulario    += "<option value='"+crr[i].cr_id+"'>"+crr[i].cr_descripcion+"</option>";
+                    }
+                    formulario    += "</select>";
+                   
+                    formulario    += "<label>Fecha:</label>";
+                    formulario    += "<input type='date'class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                    
+                    $("#content-form").html(formulario); 
+                    $("#myModal").modal("show");
                 }); 
     			break;
     	}
@@ -924,6 +923,27 @@
                     });
                     break;
                 case '13':
+                    var animal = $("#animal").val();
+                    var fecha = $("#fecha_evento").val();
+                    var causa_rechazo = $("#caure").val();
+
+                    $.post(base+"index.php/rechazo/json_Nuevo",{rp:animal,fecha:fecha,causa_rechazo:causa_rechazo},function(valor){
+                        var obj = JSON.parse(valor);
+                        var id_tabla = obj[0];
+                        var sim_id = num_evento;
+                        $.post(base+"index.php/eventos/json_Nuevo",{id_tabla:id_tabla,sim_id:sim_id,ani_id:animal,eve_fecha:fecha},function(){
+                            var id = String("#"+$("#fila").val()+""+$("#mes").val());
+                            $.post(base+"index.php/simbolo/json_BuscarID",{id:sim_id},function(simbolo){
+                                var sim = JSON.parse(simbolo);
+                                var res = fecha.split("-");
+                                boton = "<button type=\"button\" onclick=\"$('#editEvent').modal('show');\">";
+                                boton +="<img src=\""+base+"img/"+sim[0].sim_icono+"\"/>";
+                                boton +="<span class=\"badge\">"+res[2]+"</span>";
+                                boton +="</button><br>";
+                                $(id).append(boton);
+                            }); 
+                        });
+                    });
                     break;
             }    
             $("#myModal").modal("hide");
