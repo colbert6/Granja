@@ -79,6 +79,7 @@
             $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("estado_cria");
         }
+        
     }
  ?>
 
