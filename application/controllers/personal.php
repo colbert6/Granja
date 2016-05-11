@@ -84,5 +84,10 @@
             $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("personal"); 
         }
+        public function json_ExtraerTodo()
+        {
+            $data['personal'] = $this->personal_model->select();
+            echo json_encode($data['personal']->result());            
+        }
     }
  ?>

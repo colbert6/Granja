@@ -215,31 +215,3 @@ function calendario(){
       else
         return true;
 }
-function fecha(dd, mm, aa)	{
-	var fecha = new Date();
-	fecha.setDate(dd);
-	fecha.setMonth(mm - 1);
-	fecha.setFullYear(aa);
-	var hoy = fecha.getDay();
-	var Semana = ["Dominago","Lunes","Martes","Miércoles","Jueves","Viernes","Sabado"];
-	var mes = ",enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre".split(",");
-	cadena = Semana[hoy] + " " + dd + " de " + mes[mm] + " de " + aa;
-	if (hoy == 0)
-		alert("Los Domingos no trabajamos...");
-	else
-		document.forms.salida.comentario.value = cadena;
-}
-function existeFecha(){
-	var fecha=document.getElementById("fechar").value;
-      var fechaf = fecha.split("/");
-      
-      var day = fechaf[0];
-      var month = fechaf[1];
-      var year = fechaf[2];
-      var date = new Date(year,month,'0');
-      alert(date);
-      if((day-0)>(date.getDate()-0)){
-            return false;
-      }
-      return true;
-}

@@ -101,7 +101,14 @@
             
             
         }
-
+        public function json_Nuevo(){
+            $data= array ( 'rp'=> $_POST["rp"],
+                           'fecha_evento'=> $_POST["fecha"],
+                           'cuarto_mamarios'=> $_POST["cuarto_mamarios"]
+                        );
+            $secado =$this->secado_model->crear($data);
+            echo json_encode($secado->sec_id);
+        }
 
     }
  ?>

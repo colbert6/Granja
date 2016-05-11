@@ -79,6 +79,11 @@
             $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("estado_cria");
         }
+        public function json_ExtraerTodo()
+        {
+            $data['estado_cria'] = $this->estado_cria_model->select();
+            echo json_encode($data['estado_cria']->result());            
+        }
     }
  ?>
 

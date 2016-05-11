@@ -31,6 +31,10 @@
 	        							   'par_sexo_cria' => $data['sexo_cria'],
 	        							   'par_servicio' => $data['servicio'],
 	        							   'par_estado' => 1 ));
+	        $this->db->select_max('par_id');	        
+			$query = $this->db->get('parto');
+
+	        return $query->row();
 	      
 	    }
 

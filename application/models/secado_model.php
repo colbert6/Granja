@@ -28,6 +28,9 @@
 	        							   'sec_fecha_evento' => $data['fecha_evento'],
 	        							   'sec_cuarto_mamarios' => $data['cuarto_mamarios'],
 	        							   'sec_estado' => 1 ));
+	        $this->db->select_max('sec_id');	        
+			$query = $this->db->get('secado');
+			return $query->row();
 	      
 	    }
 

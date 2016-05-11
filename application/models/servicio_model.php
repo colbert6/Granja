@@ -30,6 +30,10 @@
 	        							   'ser_personal' => $data['personal'],
 	        							   'ser_tipo_servicio' => $data['tipo_servicio'],
 	        							   'ser_estado' => 1 ));
+	        $this->db->select_max('ser_id');	        
+			$query = $this->db->get('servicio');
+
+	        return $query->row();
 	      
 	    }
 

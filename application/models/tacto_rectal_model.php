@@ -32,6 +32,10 @@
 	        							   'tarec_via_aplicacion' => $data['via_aplicacion'],
 	        							   'tarec_med_genital' => $data['med_genital'],
 	        							   'tarec_estado' => 1 ));
+	        $this->db->select_max('tarec_id');	        
+			$query = $this->db->get('tacto_rectal');
+
+	        return $query->row();
 	      
 	    }
 

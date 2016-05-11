@@ -109,6 +109,16 @@
             
         }
 
-
+        public function json_Nuevo(){
+            $data= array ( 'rp'=> $_POST["rp"],
+                           'fechanac'=> $_POST["fecha"],
+                           'estado_cria'=> $_POST["estado_cria"],
+                           'tipo_parto'=> $_POST["tipo_parto"],
+                           'sexo_cria'=> $_POST["sexo_cria"],
+                           'servicio'=> $_POST["servicio"]
+                        );
+            $parto =$this->parto_model->crear($data);
+            echo json_encode($parto->par_id);
+        }
     }
  ?>

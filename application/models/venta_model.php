@@ -28,7 +28,10 @@
 	        							   'venta_fecha_evento' => $data['fecha_evento'],
 	        							   'venta_especif_venta' => $data['especif_venta'],
 	        							   'venta_estado' => 1 ));
-	      
+	        $this->db->select_max('venta_id');	        
+			$query = $this->db->get('venta');
+
+	        return $query->row();      
 	    }
 
 	    function editar($data){
