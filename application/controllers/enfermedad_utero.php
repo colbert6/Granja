@@ -81,6 +81,11 @@
             
             
         }
+        public function json_ExtraerTodo()
+        {
+            $data['enfermedad_utero'] = $this->enfermedad_utero_model->select();
+            echo json_encode($data['enfermedad_utero']->result());            
+        }
     }
  ?>
 

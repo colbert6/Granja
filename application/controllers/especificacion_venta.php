@@ -81,6 +81,11 @@
             
             
         }
+        public function json_ExtraerTodo()
+        {
+            $data['especificacion_venta'] = $this->especificacion_venta_model->select();
+            echo json_encode($data['especificacion_venta']->result());            
+        }
     }
  ?>
 

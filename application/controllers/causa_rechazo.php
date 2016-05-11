@@ -1,3 +1,4 @@
+
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
     /**
@@ -78,8 +79,12 @@
             $this->causa_rechazo_model->eliminar($id);
             $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("causa_rechazo");
-            
-            
+        }
+
+        public function json_ExtraerTodo()
+        {
+            $data['causa_rechazo'] = $this->causa_rechazo_model->select();
+            echo json_encode($data['causa_rechazo']->result());            
         }
     }
  ?>

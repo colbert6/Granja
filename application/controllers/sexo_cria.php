@@ -83,6 +83,11 @@
             
             
         }
+        public function json_ExtraerTodo()
+        {
+            $data['sexo_cria'] = $this->sexo_cria_model->select();
+            echo json_encode($data['sexo_cria']->result());            
+        }
     }
  ?>
 

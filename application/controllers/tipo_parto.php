@@ -75,5 +75,10 @@
             $this->auditoria('eliminar',$this->tabla,'', $id);//auditoria
             $this->redireccionar("tipo_parto"); 
         }
+        public function json_ExtraerTodo()
+        {
+            $data['tipo_parto'] = $this->tipo_parto_model->select();
+            echo json_encode($data['tipo_parto']->result());            
+        }
     }
  ?>

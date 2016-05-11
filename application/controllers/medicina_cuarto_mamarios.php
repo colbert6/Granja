@@ -81,6 +81,11 @@
             
             
         }
+        public function json_ExtraerTodo()
+        {
+            $data['medicina_cuarto_mamarios'] = $this->medicina_cuarto_mamarios_model->select();
+            echo json_encode($data['medicina_cuarto_mamarios']->result());            
+        }
     }
  ?>
 

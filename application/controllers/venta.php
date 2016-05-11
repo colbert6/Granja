@@ -94,7 +94,14 @@
             
             
         }
-
-
+        public function json_Nuevo(){
+            $data= array ( 'rp'=> $_POST["rp"],
+                           'fecha_evento'=> $_POST["fecha"],
+                           'especif_venta'=> $_POST["especif_venta"]
+                        );
+            $venta =$this->venta_model->crear($data);
+            echo json_encode($venta->venta_id);
+        }
+     
     }
  ?>

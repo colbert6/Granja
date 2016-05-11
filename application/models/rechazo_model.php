@@ -28,6 +28,10 @@
 	        							   'recha_fecha_evento' => $data['fecha_evento'],
 	        							   'recha_causa_rechazo' => $data['causa_rechazo'],
 	        							   'recha_estado' => 1 ));
+	        $this->db->select_max('recha_id');	        
+			$query = $this->db->get('rechazo');
+
+	        return $query->row();
 	      
 	    }
 

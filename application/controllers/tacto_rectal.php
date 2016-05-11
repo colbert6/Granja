@@ -113,7 +113,19 @@
             
             
         }
+       public function json_Nuevo(){
 
+            $data= array ( 'rp'=> $_POST["rp"],
+                           'fecha_evento'=> $_POST["fecha"],
+                           'diag_utero'=> $_POST["diag_utero"],
+                           'enfe_ovario'=> $_POST["enfe_ovario"],
+                           'enfe_utero'=> $_POST["enfe_utero"],
+                           'via_aplicacion'=> $_POST["via_aplicacion"],
+                           'med_genital'=> $_POST["med_genital"]
+                        );
+            $tacto_recta =$this->tacto_rectal_model->crear($data);
+            echo json_encode($tacto_recta->tarec_id);
+        }
 
     }
  ?>

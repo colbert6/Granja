@@ -81,6 +81,11 @@
             
             
         }
+        public function json_ExtraerTodo()
+        {
+            $data['diagnostico_utero'] = $this->diagnostico_utero_model->select();
+            echo json_encode($data['diagnostico_utero']->result());            
+        }
     }
  ?>
 

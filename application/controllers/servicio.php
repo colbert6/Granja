@@ -103,7 +103,21 @@
             
             
         }
-
+        public function json_Nuevo(){
+            $data= array ( 'animal'=> $_POST["animal"],
+                           'fecha_evento'=> $_POST["fecha"],
+                           'reproductor'=> $_POST["reproductor"],
+                           'personal'=> $_POST["personal"],
+                           'tipo_servicio'=> $_POST["tipo_servicio"]
+                        );
+            $servicio = $this->servicio_model->crear($data);
+            echo json_encode($servicio->ser_id);
+        }
+        public function json_ExtraerTodo()
+        {
+            $data['servicio'] = $this->servicio_model->select();
+            echo json_encode($data['servicio']->result());            
+        }
 
     }
  ?>

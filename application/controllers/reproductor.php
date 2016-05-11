@@ -81,6 +81,11 @@
             
             
         }
+        public function json_ExtraerTodo()
+        {
+            $data['reproductor'] = $this->reproductor_model->select();
+            echo json_encode($data['reproductor']->result());            
+        }
     }
  ?>
 

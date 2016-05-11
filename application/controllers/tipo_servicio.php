@@ -81,6 +81,11 @@
             
             
         }
+        public function json_ExtraerTodo()
+        {
+            $data['tipo_servicio'] = $this->tipo_servicio_model->select();
+            echo json_encode($data['tipo_servicio']->result());            
+        }
     }
  ?>
 
