@@ -233,14 +233,15 @@
     			
 		        //Extraer las Causas de Aborto
 		        $.post(base+"index.php/causa_aborto/json_ExtraerTodo/",function(causa_a){
-                    
-                    var obj = JSON.parse(causa_a);
-                    
-                    
+                    var obj = JSON.parse(causa_a);                    
                     formulario    += "<label>Causa Aborto:</label>";
                     formulario    += "<select class='form-control' id='causa_aborto'>";
+                    var seleccion = "";
                     for (var i = 0; i < obj.length; i++) {
-                        formulario    += "<option value='"+obj[i].ca_id+"'>"+obj[i].ca_descripcion+"</option>";
+                        if(data[0].ab_causa_aborto == obj[i].ca_id){
+                            seleccion = "selected";
+                        }
+                        formulario    += "<option "+seleccion+" value='"+obj[i].ca_id+"'>"+obj[i].ca_descripcion+"</option>";
                     }
                     
                     formulario    += "</select>";
@@ -964,7 +965,7 @@
                     
                     $.post(base+"index.php/"+obj2[0].evento+"/json_BuscarID",{id:obj[0].id_tabla},function(datos){
                         var data = JSON.parse(datos);
-                        console.log(data);
+                        //mostrarFormulario(obj2[0].sim_id,data);
                         //alert("success");
                     });
 

@@ -11,3 +11,4 @@ truncate table tacto_rectal;
 truncate table venta;
 truncate table secado;
 truncate table rechazo;
+truncate table eventos;
