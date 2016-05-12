@@ -224,9 +224,9 @@
         fecha_min = anio+"-"+mex+"-01";
         fecha_max = anio+"-"+mex+"-"+dias;
         base = url; 
-        mostrarFormulario('1');           
+        mostrarFormulario('1','');           
     }
-    function mostrarFormulario(evento){
+    function mostrarFormulario(evento,data){
     	var formulario = "";
     	switch(evento){
     		case '1':
