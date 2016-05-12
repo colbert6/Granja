@@ -232,14 +232,18 @@
     		case '1':
     			
 		        //Extraer las Causas de Aborto
+                console.log(base+"index.php/causa_aborto/json_ExtraerTodo/");
 		        $.post(base+"index.php/causa_aborto/json_ExtraerTodo/",function(causa_a){
-                    var obj = JSON.parse(causa_a);                    
+                    var obj = JSON.parse(causa_a);
+                    console.log(obj);
                     formulario    += "<label>Causa Aborto:</label>";
                     formulario    += "<select class='form-control' id='causa_aborto'>";
                     var seleccion = "";
                     for (var i = 0; i < obj.length; i++) {
-                        if(data[0].ab_causa_aborto == obj[i].ca_id){
-                            seleccion = "selected";
+                        if(data!=''){
+                            if(data[0].ab_causa_aborto == obj[i].ca_id){
+                                seleccion = "selected";
+                            }
                         }
                         formulario    += "<option "+seleccion+" value='"+obj[i].ca_id+"'>"+obj[i].ca_descripcion+"</option>";
                     }
@@ -957,15 +961,17 @@
         //}
         //document.getElementById($("#fila").val()+","+$("#mes").val()).innerHTML = "<img src='"+$("#url").val()+"img/calendar.png'>";
     }
-    function editarEvento(id,base){
-            $.post(base+"index.php/eventos/json_BuscarID",{id:id},function(valor){
+    function editarEvento(id,base2){
+            base = base2;
+            $.post(base2+"index.php/eventos/json_BuscarID",{id:id},function(valor){
                 var obj = JSON.parse(valor);
-                $.post(base+"index.php/simbolo/json_BuscarID",{id:obj[0].sim_id},function(valor2){
+                $.post(base2+"index.php/simbolo/json_BuscarID",{id:obj[0].sim_id},function(valor2){
                     var obj2 = JSON.parse(valor2);
                     
-                    $.post(base+"index.php/"+obj2[0].evento+"/json_BuscarID",{id:obj[0].id_tabla},function(datos){
+                    $.post(base2+"index.php/"+obj2[0].evento+"/json_BuscarID",{id:obj[0].id_tabla},function(datos){
                         var data = JSON.parse(datos);
-                        //mostrarFormulario(obj2[0].sim_id,data);
+                        console.log(data);
+                        mostrarFormulario(obj2[0].sim_id,data);
                         //alert("success");
                     });
 
