@@ -633,15 +633,18 @@
                         var obj = JSON.parse(valor);
                         var id_tabla = obj[0];
                         var sim_id = num_evento;
-                        $.post(base+"index.php/eventos/json_Nuevo",{id_tabla:id_tabla,sim_id:sim_id,ani_id:animal,eve_fecha:fecha},function(val){
-                            var ot= JSON.parse(val);
-                            var mostrar = ot[0];
-                            console.log(mostrar);
+                        $.post(base+"index.php/eventos/json_Nuevo",{id_tabla:id_tabla,sim_id:sim_id,ani_id:animal,eve_fecha:fecha},function(ult_event){
+                            console.log(id_tabla+","+sim_id+","+animal+","+fecha);
+                            //Extraer ID de Evento:
+                            var id_evento= JSON.parse(ult_event);
+                            console.log(id_evento);
+                            
+                            //----------------------
                             var id = String("#"+$("#fila").val()+""+$("#mes").val());
                             $.post(base+"index.php/simbolo/json_BuscarID",{id:sim_id},function(simbolo){
                                 var sim = JSON.parse(simbolo);
                                 var res = fecha.split("-");
-                                boton = "<button type=\"button\" onclick=\"editarEvento('"+mostrar+"','"+base+"');\">";
+                                boton = "<button type=\"button\" onclick=\"editarEvento('"+id_evento+"','"+base+"');\">";
                                 boton +="<img src=\""+base+"img/"+sim[0].sim_icono+"\"/>";
                                 boton +="<span class=\"badge\">"+res[2]+"</span>";
                                 boton +="</button><br>";
@@ -961,54 +964,13 @@
                     
                     $.post(base+"index.php/"+obj2[0].evento+"/json_BuscarID",{id:obj[0].id_tabla},function(datos){
                         var data = JSON.parse(datos);
-                        alert("success");
+                        console.log(data);
+                        //alert("success");
                     });
 
                 });
 
-                /*switch(obj[0].sim_id){
-                    case '1':
-                        alert(obj[0].sim_id);
-                        break;
-                    case '2':
-                    alert(obj[0].sim_id);
-                        break;
-                    case '3':
-                    alert(obj[0].sim_id);
-                        break;
-                    case '4':
-                    alert(obj[0].sim_id);
-                        break;
-                    case '5':
-                    alert(obj[0].sim_id);
-                        break;
-                    case '6':
-                    alert(obj[0].sim_id);
-                        break;
-                    case '7':
-                    alert(obj[0].sim_id);
-                        break;
-                    case '8':
-                    alert(obj[0].sim_id);
-                        break;
-                    case '9':
-                    alert(obj[0].sim_id);
-                        break;
-                    }
-                    case '10':
-                    alert(obj[0].sim_id);
-                        break;
-                    case '11':
-                    alert(obj[0].sim_id);
-                        break;
-                    case '12':
-                    alert(obj[0].sim_id);
-                        break;
-                    case '13':
-                    alert(obj[0].sim_id);
-                        break;
-
-                }*/
+                
             });
 
     }
