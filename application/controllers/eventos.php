@@ -32,6 +32,11 @@
             echo json_encode($eventos_d->eve_id);
 
         }
+        public function json_Editar(){
+            $data= array ( 'eve_id'=>$_POST["id"],
+                        'eve_fecha'=> $_POST["eve_fecha"]);
+            $this->eventos_model->editar($data);
+        }
         public function json_BuscarID(){
             $data['evento']=$this->eventos_model->selectId($_POST["id"]);
             echo json_encode($data['evento']->result());

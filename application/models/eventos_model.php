@@ -35,13 +35,7 @@
 	    }
 
 	    function editar($data){
-	    	$datos=array(                  
-	        							   'id_tabla' => $data['id_tabla'],
-	        							   'sim_id' => $data['sim_id'],
-	        							   'ani_id' => $data['ani_id'],
-	        							   'eve_fecha' => $data['eve_fecha'],
-	                                       'eve_estado' => 1
-	        			);
+	    	$datos=array('eve_fecha' => $data['eve_fecha']);
 	    	$this->db->where('eve_id',$data['eve_id']);
 	        $query=$this->db->update('eventos',$datos);
 	        return $query;

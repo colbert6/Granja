@@ -88,7 +88,7 @@
                 $("#evento").change(function(){
                     var op = $("#evento").val();
                     console.log(op);   
-                    mostrarFormulario(op,'');
+                    mostrarFormulario(op,'',1);
                     
                 });
                 

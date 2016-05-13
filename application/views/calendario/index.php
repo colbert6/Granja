@@ -68,7 +68,7 @@
 
                                                     
                                 ?>                                  
-                                    <button type="button"  onclick="editarEvento('<?php echo $evento->eve_id; ?>','<?= base_url(); ?>');">
+                                    <button type="button"  onclick="editarEvento('<?php echo $evento->eve_id; ?>','<?= base_url(); ?>',this);">
                                          <img src="<?php echo base_url(); ?>img/<?php echo $simbolo->sim_icono; ?>">
                                       <span class="badge"><?php echo date("d", $fecha)?></span>
                                     </button><br>
@@ -130,6 +130,8 @@
         <input type="hidden" id='animal'/>
         <input type="hidden" id='mes' />
         <input type="hidden" id='url' />
+        <input type="hidden" id='id_evento' />
+        <input type="hidden" id='id_tabla' />
       <div class="modal-body">
 
             <form method='post' id='form' name='form'>
@@ -160,9 +162,7 @@
                 </div>
             </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" onclick='crearEvento();' class="btn btn-success">Guardar</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      <div class="modal-footer" id='pie'>
          
       </div>
     </div>
@@ -171,76 +171,79 @@
 </div>
 
 
-<div id="editEvent" class="modal fade" role="dialog">
-  <div class="modal-dialog" id="mdialTamanio">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Editar Evento</h4>
-      </div>
-    
-      <div class="modal-body">
-
-
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" onclick='crearEvento();' class="btn btn-success" data-dismiss="modal">Guardar</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-         
-      </div>
-    </div>
-
-  </div>
-</div>
 
 <script type="text/javascript">
 	var fecha_min = "";
 	var fecha_max = "";
     var base = "";
-
+    var meses = ["Enero", "Febrero", "Marzo","Abril","Mayo","Junio","Julio","Agosto","Setiembre","Octubre","Noviembre","Diciembre"];
     function daysInMonth(humanMonth, year) {
       return new Date(year || new Date().getFullYear(), humanMonth, 0).getDate();
     }
+
     function mostrarModal(id_animal,fila,mes,url){
-    	var meses = ["Enero", "Febrero", "Marzo","Abril","Mayo","Junio","Julio","Agosto","Setiembre","Octubre","Noviembre","Diciembre"];
+    	
         $("#animal").val(id_animal);
         $("#fila").val(fila);
         $("#mes").val(mes);
         $("#url").val(url);
+        
+        cabecera_formulario(mes,url,1);
+        mostrarFormulario('1','',1);           
+    }
+    function pie_formulario(est){
+        var funcion = "";
+        var text = "";
+        if(est==1){
+            funcion="crearEvento('"+est+"')";
+            text='Guardar';
+        }else{
+            funcion="crearEvento('"+est+"')";
+            text='Modificar';
+        }
+        var pie = "<button type='button' onclick=\""+funcion+"\" class='btn btn-success' data-dismiss='modal'>"+text+"</button>";
+         pie += "<button type='button' class='btn btn-default' data-dismiss='modal'>Cerrar</button>";
+        $("#pie").html(pie);
 
+    }
+    function cabecera_formulario(mes,url,est){
         var anio = $("#anio").val();
         var dias = daysInMonth(mes,anio);
-        var cabezera = "<h4 class='modal-title'><strong><u>AGREGAR EVENTO</u></strong></h4>";
-        	cabezera += "<span class='text-center'>Mes: <strong>"+meses[mes-1]+"</strong></span>";
-        $("#cabezera").html(cabezera);
-        if(mes<10){
-            mex = "0"+mes;
+        base = url;
+        if(est==1){
+            if(mes<10){
+                mex = "0"+mes;
+            }else{
+                mex = mes;
+            }  
         }else{
-            mex = mes;
+            mex=mes;
         }
+        
         fecha_min = anio+"-"+mex+"-01";
         fecha_max = anio+"-"+mex+"-"+dias;
-        base = url; 
-        mostrarFormulario('1','');           
+        var cabezera = "<h4 class='modal-title'><strong><u>AGREGAR EVENTO</u></strong></h4>";
+            cabezera += "<span class='text-center'>Mes: <strong>"+meses[mes-1]+"</strong></span>";
+        $("#cabezera").html(cabezera);
     }
-    function mostrarFormulario(evento,data){
+    function mostrarFormulario(evento,data,est){
+        if(est!=1){
+            $("#evento").attr("disabled","true");
+        }else{
+            $("#evento").removeAttr("disabled");
+        }
     	var formulario = "";
     	switch(evento){
     		case '1':
     			
-		        //Extraer las Causas de Aborto
-                console.log(base+"index.php/causa_aborto/json_ExtraerTodo/");
 		        $.post(base+"index.php/causa_aborto/json_ExtraerTodo/",function(causa_a){
                     var obj = JSON.parse(causa_a);
-                    console.log(obj);
+                    //console.log(obj);
                     formulario    += "<label>Causa Aborto:</label>";
                     formulario    += "<select class='form-control' id='causa_aborto'>";
                     var seleccion = "";
                     for (var i = 0; i < obj.length; i++) {
-                        if(data!=''){
+                        if(est!=1){
                             if(data[0].ab_causa_aborto == obj[i].ca_id){
                                 seleccion = "selected";
                             }
@@ -248,11 +251,19 @@
                         formulario    += "<option "+seleccion+" value='"+obj[i].ca_id+"'>"+obj[i].ca_descripcion+"</option>";
                     }
                     
+                    
+                    var ant = "";
+                    if(est!=1){
+                        thedate = data[0].ab_fecha_evento.split(" ");
+                        console.log(thedate[0]);
+                        ant = "value='"+thedate[0]+"'";
+                    }
                     formulario    += "</select>";
                     formulario    += "<label>Fecha:</label>";
-                    formulario    += "<input type='date'class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                    formulario    += "<input "+ant+" type='date'class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                     $("#content-form").html(formulario); 
                     $("#evento").val('1');
+                    pie_formulario(est);
                     $("#myModal").modal("show");
                 });
 		              
@@ -624,7 +635,7 @@
     	}
     	
     }
-    function crearEvento() {
+    function crearEvento(est) {
         //var guardar = validar_formulario();
         //console.log(guardar);
         num_evento = $("#evento").val();
@@ -634,6 +645,7 @@
                     var animal = $("#animal").val();
                     var cuabor = $("#causa_aborto").val();
                     var fecha = $("#fecha_evento").val();
+                    if(est=='1'){
                     $.post(base+"index.php/aborto/json_Nuevo",{animal:animal,cauabor:cuabor,fecha:fecha},function(valor){
                         var obj = JSON.parse(valor);
                         var id_tabla = obj[0];
@@ -651,12 +663,26 @@
                                 var res = fecha.split("-");
                                 boton = "<button type=\"button\" onclick=\"editarEvento('"+id_evento+"','"+base+"');\">";
                                 boton +="<img src=\""+base+"img/"+sim[0].sim_icono+"\"/>";
-                                boton +="<span class=\"badge\">"+res[2]+"</span>";
+                                boton +="<span class=\"badge\" id='dia'>"+res[2]+"</span>";
                                 boton +="</button><br>";
                                 $(id).append(boton);
                             }); 
                         });
                     });
+                    }else{
+                        var id_evento = $("#id_evento").val();
+                        alert(id_evento+" "+fecha);
+                        $.post(base+"index.php/eventos/json_Editar",{id:id_evento,eve_fecha:fecha},function(){
+                            /*var id = $("#id_tabla").val();
+                            $.post(base+"index.php/aborto/json_Editar",{id:id,animal:animal,cauabor:cuabor,fecha:fecha},function(){
+                                alert("edit success");                                
+                            });*/
+                            var res = fecha.split("-");
+                            $("#dia").html(String(res[2]));
+                            alert("sda");
+                        });
+
+                    }
                     break;
                 case '2':
                     var animal = $("#animal").val();
@@ -961,24 +987,30 @@
         //}
         //document.getElementById($("#fila").val()+","+$("#mes").val()).innerHTML = "<img src='"+$("#url").val()+"img/calendar.png'>";
     }
-    function editarEvento(id,base2){
-            base = base2;
+    function editarEvento(id,base2,btn){
+            $("#id_evento").val(id);
             $.post(base2+"index.php/eventos/json_BuscarID",{id:id},function(valor){
                 var obj = JSON.parse(valor);
+                $("#id_tabla").val(obj[0].id_tabla);
+                $("#animal").val(obj[0].ani_id);
                 $.post(base2+"index.php/simbolo/json_BuscarID",{id:obj[0].sim_id},function(valor2){
                     var obj2 = JSON.parse(valor2);
                     
                     $.post(base2+"index.php/"+obj2[0].evento+"/json_BuscarID",{id:obj[0].id_tabla},function(datos){
                         var data = JSON.parse(datos);
+                        var fec=obj[0].eve_fecha.split("-");
                         console.log(data);
-                        mostrarFormulario(obj2[0].sim_id,data);
-                        //alert("success");
+                        cabecera_formulario(fec[1],base2,0);
+                        mostrarFormulario(obj2[0].sim_id,data,0);
                     });
 
                 });
 
                 
             });
+
+    }
+    function modificarEvento(){
 
     }
     function validar_formulario(){

@@ -116,6 +116,16 @@
             echo json_encode($aborto->ab_id);
 
         }
+        public function json_Editar(){
+            $data= array ( 'id'=> $_POST["id"],
+                           'animal'=> $_POST["animal"],
+                           'cauabor'=> $_POST["cauabor"],
+                           'fecha'=> $_POST["fecha"]
+                        );
+            $aborto =$this->aborto_model->crear($data);
+            echo json_encode($aborto->ab_id);
+
+        }
         public function json_BuscarID(){
 
             $data['aborto']=$this->aborto_model->selectId($_POST["id"]);
