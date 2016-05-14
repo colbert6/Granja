@@ -17,15 +17,22 @@
 
         public function index()
         {
-            $data['animales'] = $this->animales_model->select();
+            /*$data['animales'] = $this->animales_model->select();
             $data['eventos'] = $this->eventos_model->select();
-            $data['simbolos'] = $this->simbolo_model->select();
+            $data['simbolos'] = $this->simbolo_model->select();*/
             $dato= array ( 'titulo'=> 'Registrar Evento');
 
             $this->load->view("/layout/header.php",$dato);
-            $this->load->view("/calendario/index.php",$data);
+            $this->load->view("/calendario/index.php");
             $this->load->view("/calendario/foother.php");
             
+        }
+
+        public function mostrarTabla($año=''){
+            $data['animales'] = $this->animales_model->select();
+            $data['eventos'] = $this->eventos_model->selectYear($año);
+            $data['simbolos'] = $this->simbolo_model->select();
+            $this->load->view("/calendario/tabla.php",$data);
         }
 
     }

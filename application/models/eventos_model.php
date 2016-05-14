@@ -20,6 +20,15 @@
 	   
 	    }
 
+	    function selectYear($año){
+	    $sql = "SELECT `eve_id`, `id_tabla`, `sim_id`, `ani_id`, `eve_fecha`, `eve_estado` 
+				FROM `eventos` 
+				WHERE YEAR(`eve_fecha`)='".$año."' and `eve_estado`=1";
+	    $query=$this->db->query($sql);
+	    return $query;
+	   
+	    }
+
 	    function crear($data){	    	
 	        $this->db->insert('eventos',array(
 	        							   'id_tabla' => $data['id_tabla'],
