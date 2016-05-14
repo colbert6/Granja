@@ -107,12 +107,22 @@
                            'cuarto_mamarios'=> $_POST["cuarto_mamarios"]
                         );
             $secado =$this->secado_model->crear($data);
+            $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
             echo json_encode($secado->sec_id);
         }
         public function json_BuscarID(){
             $data['secado']=$this->secado_model->selectId($_POST["id"]);
             echo json_encode($data['secado']->result());
 
+        }
+        public function json_Editar(){
+            $data= array ( 'id'=> $_POST["id"],
+                           'rp'=> $_POST["rp"],
+                           'fecha_evento'=> $_POST["fecha"],
+                           'cuarto_mamarios'=> $_POST["cuarto_mamarios"]
+                        );
+            $this->secado_model->editar($data);
+            $this->auditoria('modificar',$this->tabla,'', $data['id']);
         }
 
     }

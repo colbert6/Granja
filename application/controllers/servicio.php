@@ -111,6 +111,7 @@
                            'tipo_servicio'=> $_POST["tipo_servicio"]
                         );
             $servicio = $this->servicio_model->crear($data);
+            $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
             echo json_encode($servicio->ser_id);
         }
         public function json_ExtraerTodo()
@@ -122,6 +123,17 @@
             $data['servicio']=$this->servicio_model->selectId($_POST["id"]);
             echo json_encode($data['servicio']->result());
 
+        }
+        public function json_Editar(){
+            $data= array ( 'id'=> $_POST["id"],
+                           'animal'=> $_POST["animal"],
+                           'fecha_evento'=> $_POST["fecha"],
+                           'reproductor'=> $_POST["reproductor"],
+                           'personal'=> $_POST["personal"],
+                           'tipo_servicio'=> $_POST["tipo_servicio"]
+                        );
+            $this->servicio_model->editar($data);
+            $this->auditoria('modificar',$this->tabla,'', $data['id']);
         }
 
     }

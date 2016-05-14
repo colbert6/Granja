@@ -97,13 +97,14 @@
             
         }
 		
-		public function json_Nuevo(){
+		    public function json_Nuevo(){
             $data= array ( 'rp'=> $_POST["rp"],
                            'medicamentos'=> $_POST["medicamentos"],
-						   'via_aplicacion'=> $_POST["via_aplicacion"],
+						               'via_aplicacion'=> $_POST["via_aplicacion"],
                            'fecha'=> $_POST["fecha"]
                         );
             $medicacion =$this->medicacion_model->crear($data);
+            $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
             echo json_encode($medicacion->med_id);
 
         }
@@ -111,6 +112,16 @@
             $data['medicacion']=$this->medicacion_model->selectId($_POST["id"]);
             echo json_encode($data['medicacion']->result());
 
+        }
+        public function json_Editar(){
+            $data= array ( 'id'=> $_POST["id"],
+                           'rp'=> $_POST["rp"],
+                           'medicamentos'=> $_POST["medicamentos"],
+                           'via_aplicacion'=> $_POST["via_aplicacion"],
+                           'fecha'=> $_POST["fecha"]
+                        );
+            $this->medicacion_model->editar($data);
+            $this->auditoria('modificar',$this->tabla,'', $data['id']);
         }
 
     }

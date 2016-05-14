@@ -124,12 +124,26 @@
                            'med_genital'=> $_POST["med_genital"]
                         );
             $tacto_recta =$this->tacto_rectal_model->crear($data);
+            $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
             echo json_encode($tacto_recta->tarec_id);
         }
         public function json_BuscarID(){
             $data['tacto_rectal']=$this->tacto_rectal_model->selectId($_POST["id"]);
             echo json_encode($data['tacto_rectal']->result());
 
+        }
+        public function json_Editar(){
+            $data= array ( 'id'=> $_POST["id"],
+                           'rp'=> $_POST["rp"],
+                           'fecha_evento'=> $_POST["fecha"],
+                           'diag_utero'=> $_POST["diag_utero"],
+                           'enfe_ovario'=> $_POST["enfe_ovario"],
+                           'enfe_utero'=> $_POST["enfe_utero"],
+                           'via_aplicacion'=> $_POST["via_aplicacion"],
+                           'med_genital'=> $_POST["med_genital"]
+                        );
+            $this->tacto_rectal_model->editar($data);
+            $this->auditoria('modificar',$this->tabla,'', $data['id']);
         }
 
     }

@@ -110,6 +110,7 @@
                            'resultado_ana'=> $_POST["resultado_ana"]
                         );
             $analisis =$this->analisis_model->crear($data);
+            $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
             echo json_encode($analisis->ana_id);
 
         }
@@ -118,6 +119,17 @@
             echo json_encode($data['analisis']->result());
 
         }
+        public function json_Editar(){
+            $data= array ( 'id'=> $_POST["id"],
+                           'tipana'=> $_POST["tipana"],
+                           'animal'=> $_POST["animal"],
+                           'fecha'=> $_POST["fecha"],
+                           'resultado_ana'=> $_POST["resultado_ana"]
+                        );
+            $this->analisis_model->editar($data);
+            $this->auditoria('modificar',$this->tabla,'', $data['id']);
+        }
+
 
     }
  ?>

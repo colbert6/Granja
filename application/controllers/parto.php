@@ -118,6 +118,7 @@
                            'servicio'=> $_POST["servicio"]
                         );
             $parto =$this->parto_model->crear($data);
+            $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
             echo json_encode($parto->par_id);
 
         }
@@ -125,6 +126,18 @@
             $data['parto']=$this->parto_model->selectId($_POST["id"]);
             echo json_encode($data['parto']->result());
 
+        }
+        public function json_Editar(){
+            $data= array ( 'id'=> $_POST["id"],
+                           'rp'=> $_POST["rp"],
+                           'fechanac'=> $_POST["fecha"],
+                           'estado_cria'=> $_POST["estado_cria"],
+                           'tipo_parto'=> $_POST["tipo_parto"],
+                           'sexo_cria'=> $_POST["sexo_cria"],
+                           'servicio'=> $_POST["servicio"]
+                        );
+            $this->parto_model->editar($data);
+            $this->auditoria('modificar',$this->tabla,'', $data['id']);
         }
 
     }

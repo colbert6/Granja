@@ -113,6 +113,7 @@
                            'fecha'=> $_POST["fecha"]
                         );
             $aborto =$this->aborto_model->crear($data);
+            $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
             echo json_encode($aborto->ab_id);
 
         }
@@ -122,8 +123,8 @@
                            'cauabor'=> $_POST["cauabor"],
                            'fecha'=> $_POST["fecha"]
                         );
-            $aborto =$this->aborto_model->crear($data);
-            echo json_encode($aborto->ab_id);
+            $this->aborto_model->editar($data);
+            $this->auditoria('modificar',$this->tabla,'', $data['id']);
 
         }
         public function json_BuscarID(){

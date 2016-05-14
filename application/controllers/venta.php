@@ -100,6 +100,7 @@
                            'especif_venta'=> $_POST["especif_venta"]
                         );
             $venta =$this->venta_model->crear($data);
+            $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
             echo json_encode($venta->venta_id);
         }
         public function json_BuscarID(){
@@ -107,6 +108,16 @@
             echo json_encode($data['venta']->result());
 
         }
+        public function json_Editar(){
+            $data= array ( 'id'=> $_POST["id"],
+                           'rp'=> $_POST["rp"],
+                           'fecha_evento'=> $_POST["fecha"],
+                           'especif_venta'=> $_POST["especif_venta"]
+                        );
+            $this->venta_model->editar($data);
+            $this->auditoria('modificar',$this->tabla,'', $data['id']);
+        }
+
      
     }
  ?>

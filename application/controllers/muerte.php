@@ -101,6 +101,7 @@
                            'fecha'=> $_POST["fecha"]
                         );
             $muerte =$this->muerte_model->crear($data);
+            $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
             echo json_encode($muerte->mue_id);
 
         }
@@ -109,7 +110,15 @@
             echo json_encode($data['muerte']->result());
 
         }
-
+        public function json_Editar(){
+            $data= array ( 'id'=> $_POST["id"],
+                           'rp'=> $_POST["rp"],
+                           'espec_muerte'=> $_POST["espec_muerte"],
+                           'fecha'=> $_POST["fecha"]
+                        );
+            $this->muerte_model->editar($data);
+            $this->auditoria('modificar',$this->tabla,'', $data['id']);
+        }
 
     }
  ?>

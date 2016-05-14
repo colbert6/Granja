@@ -121,6 +121,7 @@
                            'via_aplicacion'=> $_POST["via_aplicacion"]
                         );
             $enfermedad =$this->enfermedad_model->crear($data);
+            $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
             echo json_encode($enfermedad->enf_id);
 
         }
@@ -128,6 +129,17 @@
              $data['enfermedad']=$this->enfermedad_model->selectId($_POST["id"]);
             echo json_encode($data['enfermedad']->result());
 
+        }
+        public function json_Editar(){
+            $data= array ( 'id'=> $_POST["id"],
+                           'rp'=> $_POST["rp"],
+                           'tipo_enfermedad'=> $_POST["tipo_enfermedad"],
+                           'fecha'=> $_POST["fecha"],
+                           'medicamento'=> $_POST["medicamentos"],
+                           'via_aplicacion'=> $_POST["via_aplicacion"]
+                        );
+            $this->enfermedad_model->editar($data);
+            $this->auditoria('modificar',$this->tabla,'', $data['id']);
         }
 
 

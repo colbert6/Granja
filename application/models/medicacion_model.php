@@ -27,7 +27,7 @@
 	    	
 	        $this->db->insert('medicacion',array('med_rp' => $data['rp'],
 	        							   'med_fecha_evento' => $data['fecha'],
-	        							   'med_cod_medicamentos' => $data['medicamentos'],
+	        							   'med_medicamentos' => $data['medicamentos'],
 	        							   'med_via_aplicacion' => $data['via_aplicacion'],
 	                                       'med_estado' => 1 ));
 										   
@@ -41,7 +41,7 @@
 	    function editar($data){
 	    	$datos=array(                  'med_rp' => $data['rp'],
 	        							   'med_fecha_evento' => $data['fecha'],
-	        							   'med_cod_medicamentos' => $data['medicamentos'],
+	        							   'med_medicamentos' => $data['medicamentos'],
 	        							   'med_via_aplicacion' => $data['via_aplicacion'],
 	                                       'med_estado' => 1 );
 	    	//print_r($datos);

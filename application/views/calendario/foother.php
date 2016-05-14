@@ -26,7 +26,6 @@
                 var fecha = new Date();
                 var ano = fecha.getFullYear();
                 $("#anio").val(ano);
-                $("#avanzar").hide();
                 
                 $("#example1").dataTable({
                     
@@ -69,21 +68,13 @@
                     avanz = parseInt($("#anio").val())+1;
                     //alert(avanz);
                     $("#anio").val(avanz);
-                    if($("#anio").val() == ano){
-                        $("#avanzar").hide();
-                    }else{
-                        $("#avanzar").show();
-                    }
+                    
                 });
                 $("#retroceder").click(function(){
                     avanz = parseInt($("#anio").val())-1;
                     //alert(avanz);
                     $("#anio").val(avanz);
-                    if($("#anio").val() == ano){
-                        $("#avanzar").hide();
-                    }else{
-                        $("#avanzar").show();
-                    }
+                    
                 });
                 $("#evento").change(function(){
                     var op = $("#evento").val();

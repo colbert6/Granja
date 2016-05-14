@@ -34,7 +34,7 @@
         }
         public function json_Editar(){
             $data= array ( 'eve_id'=>$_POST["id"],
-                        'eve_fecha'=> $_POST["eve_fecha"]);
+                           'eve_fecha'=> $_POST["eve_fecha"]);
             $this->eventos_model->editar($data);
         }
         public function json_BuscarID(){

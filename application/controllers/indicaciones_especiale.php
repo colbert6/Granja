@@ -103,6 +103,7 @@
                            'fecha'=> $_POST["fecha"]
                         );
             $indicaciones_especiale =$this->indicaciones_especiale_model->crear($data);
+            $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
             echo json_encode($indicaciones_especiale->indes_id);
 
         }
@@ -111,6 +112,15 @@
             $data['indicaciones_especiale']=$this->indicaciones_especiale_model->selectId($_POST["id"]);
             echo json_encode($data['indicaciones_especiale']->result());
 
+        }
+        public function json_Editar(){
+            $data= array ( 'id'=> $_POST["id"],
+                           'rp'=> $_POST["rp"],
+                           'indicaciones_esp'=> $_POST["indicaciones_esp"],
+                           'fecha'=> $_POST["fecha"]
+                        );
+            $this->indicaciones_especiale_model->editar($data);
+            $this->auditoria('modificar',$this->tabla,'', $data['id']);
         }
 
 

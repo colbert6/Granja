@@ -2,7 +2,7 @@ truncate table aborto;
 truncate table analisis;
 truncate table celo;
 truncate table enfermedad;
-truncate table indicaciones_especiales;
+truncate table indicaciones_especiale;
 truncate table medicacion;
 truncate table muerte;
 truncate table parto;
