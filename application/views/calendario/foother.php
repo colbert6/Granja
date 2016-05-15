@@ -141,7 +141,8 @@
         var funcion = "";
         var text = "";
         if(est==1){
-            funcion="crearEvento('"+est+"')";
+            //funcion="crearEvento('"+est+"')";
+            funcion="validar('"+est+"')";
             text='Guardar';
         }else{
             funcion="crearEvento('"+est+"')";
@@ -189,7 +190,7 @@
                     //console.log(obj);
                     formulario    += "<label>Causa Aborto:</label>";
                     formulario    += "<select class='form-control' id='causa_aborto'>";
-                    
+                    //formulario    += "<option  value=' '>seleccione</option>";
                     for (var i = 0; i < obj.length; i++) {
                         var seleccion = "";
                         if(est!=1){
@@ -210,7 +211,6 @@
                     formulario    += "<label>Fecha:</label>";
                     formulario    += "<input "+ant+" type='date'class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                     $("#content-form").html(formulario); 
-                    $("#evento").val('1');
                     pie_formulario(est);
                     $("#myModal").modal("show");
                 });
@@ -834,6 +834,12 @@
                     var animal = $("#animal").val();
                     var cuabor = $("#causa_aborto").val();
                     var fecha = $("#fecha_evento").val();
+                   // alert(cuabor+'-'+animal+'-'+fecha);
+                   var values=fecha.split("-");
+                   var dia = parseInt(values[2]);
+                  // alert(dia);
+                  // if (dia>0 && dia<31) {alert("continua"); }
+                  // else {alert('invalido');mostrarFormulario('1','',1); }//$("#myModal").modal("show");
                     if(est=='1'){
                         $.post(base+"index.php/aborto/json_Nuevo",{animal:animal,cauabor:cuabor,fecha:fecha},function(valor){
                             var obj = JSON.parse(valor);
@@ -859,6 +865,11 @@
                     var tipo_analisis = $("#tipan").val();
                     var resul_analisis = $("#resan").val();
                     var fecha = $("#fecha_evento").val();
+                    var values=fecha.split("-");
+                   var dia = parseInt(values[2]);
+                  // alert(dia);
+                  // if (dia>0 && dia<31) {alert("continua"); }
+                  // else {alert('invalido');mostrarFormulario('','',1); }
                     if(est=='1'){
                         $.post(base+"index.php/analisis/json_Nuevo",{animal:animal,tipana:tipo_analisis,resultado_ana:resul_analisis,fecha:fecha},function(valor){
                             var obj = JSON.parse(valor);
@@ -1198,8 +1209,21 @@
             });
 
     }
-    function modificarEvento(){
-
+    function validar(est){
+     //alert(est); funcion="crearEvento('"+est+"')";
+     var funcion="";
+     var a=$('#fecha_evento').val();
+     //alert(a); 
+        if (a!="") {
+           // alert("sjdha");
+           alert("INSERTAR");
+            crearEvento(est);
+        }else{
+            pie_formulario(1);
+            $("#myModal").modal("show");
+            alert("INGRESE LA FECHA");
+        }
+     
     }
     function validar_formulario(){
         /*frm=document.forms.form;
