@@ -1216,7 +1216,7 @@
    //  alert(a); 
         if (a!="") {
            // alert("sjdha");
-           alert("INSERTO");
+          // alert("INSERTO");
             crearEvento(est);
         }else{
             pie_formulario(1);
