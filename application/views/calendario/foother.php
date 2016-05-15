@@ -1213,15 +1213,15 @@
      //alert(est); funcion="crearEvento('"+est+"')";
      var funcion="";
      var a=$('#fecha_evento').val();
-     //alert(a); 
+   //  alert(a); 
         if (a!="") {
            // alert("sjdha");
-           alert("INSERTAR");
+           alert("INSERTO");
             crearEvento(est);
         }else{
             pie_formulario(1);
             $("#myModal").modal("show");
-            alert("INGRESE LA FECHA");
+            alert("INGRESE FECHA");
         }
      
     }
