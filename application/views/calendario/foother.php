@@ -141,14 +141,15 @@
         var funcion = "";
         var text = "";
         if(est==1){
-            //funcion="crearEvento('"+est+"')";
-            funcion="validar('"+est+"')";
+            funcion="crearEvento('"+est+"')";
+            //funcion="validar('"+est+"')";
             text='Guardar';
         }else{
             funcion="crearEvento('"+est+"')";
+            //funcion="validar('"+est+"')";
             text='Modificar';
         }
-        var pie = "<button type='button' onclick=\""+funcion+"\" class='btn btn-success' data-dismiss='modal'>"+text+"</button>";
+        var pie = "<button type='button' onclick=\""+funcion+"\" class='btn btn-success' >"+text+"</button>";
          pie += "<button type='button' class='btn btn-default' data-dismiss='modal'>Cerrar</button>";
         $("#pie").html(pie);
 
@@ -825,10 +826,12 @@
         
     }
     function crearEvento(est) {
-        //var guardar = validar_formulario();
-        //console.log(guardar);
+        var guardar = validar();
+        console.log(guardar);
         num_evento = $("#evento").val();
-        //if(guardar){
+        if(guardar){
+
+
         switch(num_evento){
                 case '1':
                     var animal = $("#animal").val();
@@ -1179,7 +1182,7 @@
                     break;
             }    
             $("#myModal").modal("hide");
-
+        }
     }
     function editarEvento(id,base2){
             $("#id_evento").val(id);
@@ -1209,19 +1212,15 @@
             });
 
     }
-    function validar(est){
-     //alert(est); funcion="crearEvento('"+est+"')";
-     var funcion="";
-     var a=$('#fecha_evento').val();
-   //  alert(a); 
+    function validar(){
+     
+        var a=$('#fecha_evento').val();
+ 
         if (a!="") {
-           // alert("sjdha");
-          // alert("INSERTO");
-            crearEvento(est);
+            return true;
         }else{
-            pie_formulario(1);
-            $("#myModal").modal("show");
-            alert("INGRESE FECHA");
+            $('#fecha_evento').css("border", "1px solid red");
+            return false;
         }
      
     }
