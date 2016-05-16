@@ -26,7 +26,7 @@
                 var fecha = new Date();
                 var ano = fecha.getFullYear();
                 $("#anio").val(ano);
-                $("#reTabla").load( "/Granja/index.php/reporte/mostrarTabla/"+ano);
+                $("#reTabla").load( "/Granja/index.php/reporte/conteoTabla/"+ano);
                 
                 $("#example1").dataTable({
                     
@@ -68,12 +68,12 @@
                 $("#avanzar").click(function(){
                     avanz = parseInt($("#anio").val())+1;
                    $("#anio").val(avanz);
-                    $("#reTabla").load( "/Granja/index.php/reporte/mostrarTabla/"+avanz); 
+                    $("#reTabla").load( "/Granja/index.php/reporte/conteoTabla/"+avanz); 
                 });
                 $("#retroceder").click(function(){
                     avanz = parseInt($("#anio").val())-1;
                     $("#anio").val(avanz);
-                    $("#reTabla").load( "/Granja/index.php/reporte/mostrarTabla/"+avanz);
+                    $("#reTabla").load( "/Granja/index.php/reporte/conteoTabla/"+avanz);
                 
                 });
                 
