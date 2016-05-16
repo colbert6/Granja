@@ -1215,7 +1215,6 @@
     function validar(){
      
         var a=$('#fecha_evento').val();
- 
         if (a!="") {
             return true;
         }else{
