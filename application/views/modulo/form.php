@@ -4,7 +4,7 @@ if(isset ($modulo))  {  $datos=$modulo->row(); }
 $mod_padre=$mod_padre->result();
 ?>
  
-<div class="col-md-6">
+<div class="col-md-6" style="margin: auto;"> 
     <div class="box box-warning">
         <div class="box-header">
             <h3 class="box-title">Modulo</h3>

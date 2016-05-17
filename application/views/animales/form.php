@@ -73,6 +73,11 @@ if(isset ($animales))  {  $datos=$animales->row(); }
                     <input type="text" required class="form-control" id="proveedor" name="proveedor" placeholder="Ingrese proveedor"
                     autofocus onkeypress="return soloLetras(event)" value="<?php if(isset ($animales)) echo $datos->ani_proveedor;?>">
                 </div>
+                <div class="form-group">
+                    <label for="sexo">Sexo</label>
+                    <input type="text" required class="form-control" id="sexo" name="sexo" placeholder="Ingrese nombre de la madre"
+                    value="<?php if(isset ($animales)) echo $datos->ani_sexo;?>">
+                </div>
             </div>
             <style type="text/css">
                 .mover{position: absolute;top: -2px;left: 530px}
@@ -92,11 +97,7 @@ if(isset ($animales))  {  $datos=$animales->row(); }
                                 <input type="text" required class="form-control" id="madre" name="madre" placeholder="Ingrese nombre de la madre"
                                 autofocus onkeypress="return soloLetras(event)" value="<?php if(isset ($animales)) echo $datos->ani_madre;?>">
                             </div>
-                            <div class="form-group">
-                                <label for="sexo">Sexo</label>
-                                <input type="text" required class="form-control" id="sexo" name="sexo" placeholder="Ingrese nombre de la madre"
-                                value="<?php if(isset ($animales)) echo $datos->ani_sexo;?>">
-                            </div>
+                            
                             <div class="form-group">
                                 <label for="fechanac">Fecha de nacimiento</label>
                                 <input type="date" required class="form-control" id="fechar" name="fechanac"

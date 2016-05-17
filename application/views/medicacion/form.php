@@ -4,7 +4,7 @@ if(isset ($medicacion))  {  $datos=$medicacion->row(); }
 ?>
  
 
-<div class="col-md-6">
+<div class="col-md-6" style="margin: auto;">
     <div class="box box-primary">
         <div class="box-header">
         </div>

@@ -1,8 +1,7 @@
 <?php 
 if(isset ($causa_aborto))  {  $datos=$causa_aborto->row(); }    
 ?>
- 
-<div class="col-md-6">
+<div class="col-md-6" style="margin: auto;">
     <div class="box box-warning">
         <div class="box-header">
             <h3 class="box-title"></h3>

@@ -1,7 +1,7 @@
 <?php 
 if(isset ($parto))  {  $datos=$parto->row(); }  
 ?>
-<div class="col-md-6">
+<div class="col-md-6" style="margin: auto;">
     <div class="box box-primary">
         <div class="box-header">
         </div>
