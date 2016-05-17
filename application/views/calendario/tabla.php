@@ -55,7 +55,7 @@
                                                     
                                 ?>                                  
                                     <button type="button"  onclick="editarEvento('<?php echo $evento->eve_id; ?>','<?= base_url(); ?>');">
-                                         <img src="<?php echo base_url(); ?>img/<?php echo $simbolo->sim_icono; ?>">
+                                         <i class="<?php echo $simbolo->sim_icono; ?>" ></i>
                                       <span class="badge"><?php echo date("d", $fecha)?></span>
                                     </button><br>
                                 <?php 
