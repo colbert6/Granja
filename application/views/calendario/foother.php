@@ -1184,9 +1184,7 @@
             });
 
     }
-<<<<<<< HEAD
- 
-=======
+
     function validar(){
      
         var a=$('#fecha_evento').val();
@@ -1198,7 +1196,6 @@
         }
      
     }
->>>>>>> 2dcd5f2345663d3566e6ed5e2b6163ea82eb3ebe
     function validar_formulario(){
         frm=document.forms.form;
         cant_elementos = frm.elements.length;
