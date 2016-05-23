@@ -113,13 +113,13 @@ if(isset ($animales))  {  $datos=$animales->row(); }
                             <div class="form-group">
                                 <label for="fechanac">Fecha de nacimiento</label>
                                 <input type="date" required class="form-control" id="fechar" name="fechanac"
-                                onclick="validar();" value="<?php if(isset ($animales)) echo $datos->ani_fechanac;?>">
+                                onclick="validar();" value=<?php if(isset ($animales)) echo $datos->ani_fechanac;?>>
                             </div>
                             <div id="result"></div>
                             <div class="form-group">
                                 <label for="fechareg">Fecha de registro</label>
                                 <input type="date" required class="form-control" id="fechar" name="fechareg"
-                               onclick="validar();" value="<?php if(isset ($animales)) echo $datos->ani_fechareg;?>">
+                               onclick="validar();" value=<?php if(isset ($animales)) echo $datos->ani_fechareg;?>>
                             </div>
                             <div id="result"></div>
                             <div class="form-group">
