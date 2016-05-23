@@ -74,9 +74,21 @@ if(isset ($animales))  {  $datos=$animales->row(); }
                     autofocus onkeypress="return soloLetras(event)" value="<?php if(isset ($animales)) echo $datos->ani_proveedor;?>">
                 </div>
                 <div class="form-group">
-                    <label for="sexo">Sexo</label>
-                    <input type="text" required class="form-control" id="sexo" name="sexo" placeholder="Ingrese nombre de la madre"
-                    value="<?php if(isset ($animales)) echo $datos->ani_sexo;?>">
+                    <label>Sexo</label>
+                    <select required class="form-control" name="sexo">
+                        <option value=""> selecione...</option>;
+                        <?php foreach ($sexo_cria->result() as $datos_sc) {
+
+                            if ($datos_sc->sexcr_id==$datos->ani_sexo) {
+                                echo "<option selected value='".$datos_sc->sexcr_id."'>".$datos_sc->sexcr_descripcion."</option>";
+                            } else {
+                               echo "<option  value='".$datos_sc->sexcr_id."'>".$datos_sc->sexcr_descripcion."</option>";
+                            }
+
+                            }
+                         
+                         ?>
+                    </select>
                 </div>
             </div>
             <style type="text/css">
