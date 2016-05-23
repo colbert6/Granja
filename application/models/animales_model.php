@@ -25,7 +25,7 @@
 					FROM animal as a,parto as p  
 					WHERE a.ani_rp=p.par_rp 
 					GROUP BY a.ani_rp
-					HAVING count(p.par_id)>=1"
+					HAVING count(p.par_id)>=1";
 
 	        $query=$this->db->query($sql);
 	        return $query;
