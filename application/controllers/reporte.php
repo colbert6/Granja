@@ -15,30 +15,39 @@
              $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
          }
 
+        public function mostrarTabla($año=''){
+            $data['animales'] = $this->animales_model->select();
+            $data['eventos'] = $this->eventos_model->selectYear($año);
+            $data['simbolos'] = $this->simbolo_model->select();
+            $this->load->view("/reporte/tabla.php",$data);
+        }
+        
+
         public function calendario_original()
         {
-            $data['animales'] = $this->animales_model->select();
-            $data['eventos'] = $this->eventos_model->select();
-            $data['simbolos'] = $this->simbolo_model->select();
             $dato= array ( 'titulo'=> 'Reporte');
 
             $this->load->view("/layout/header.php",$dato);
-            $this->load->view("/reporte/calendario_original.php",$data);
+            $this->load->view("/reporte/calendario_original.php");
             $this->load->view("/reporte/foother.php");
             
         }
 
         public function calendario_conteo()
         {
-            $data['animales'] = $this->animales_model->select();
-            $data['eventos'] = $this->eventos_model->select();
-            $data['simbolos'] = $this->simbolo_model->select();
+            
             $dato= array ( 'titulo'=> 'Reporte');
 
             $this->load->view("/layout/header.php",$dato);
-            $this->load->view("/reporte/calendario_conteo.php",$data);
-            $this->load->view("/reporte/foother.php");
+            $this->load->view("/reporte/calendario_conteo.php");
+            $this->load->view("/reporte/foother1.php");
             
+        }
+        public function conteoTabla($año=''){
+            $data['animales'] = $this->animales_model->select();
+            $data['eventos'] = $this->eventos_model->selectYear($año);
+            $data['simbolos'] = $this->simbolo_model->select();
+            $this->load->view("/reporte/conteo_tabla.php",$data);
         }
 
     }

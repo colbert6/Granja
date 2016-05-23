@@ -26,7 +26,7 @@
                 var fecha = new Date();
                 var ano = fecha.getFullYear();
                 $("#anio").val(ano);
-                $("#avanzar").hide();
+                $("#reTabla").load( "/Granja/index.php/reporte/mostrarTabla/"+ano);
                 
                 $("#example1").dataTable({
                     
@@ -67,29 +67,14 @@
                 });
                 $("#avanzar").click(function(){
                     avanz = parseInt($("#anio").val())+1;
-                    //alert(avanz);
-                    $("#anio").val(avanz);
-                    if($("#anio").val() == ano){
-                        $("#avanzar").hide();
-                    }else{
-                        $("#avanzar").show();
-                    }
+                   $("#anio").val(avanz);
+                    $("#reTabla").load( "/Granja/index.php/reporte/mostrarTabla/"+avanz); 
                 });
                 $("#retroceder").click(function(){
                     avanz = parseInt($("#anio").val())-1;
-                    //alert(avanz);
                     $("#anio").val(avanz);
-                    if($("#anio").val() == ano){
-                        $("#avanzar").hide();
-                    }else{
-                        $("#avanzar").show();
-                    }
-                });
-                $("#evento").change(function(){
-                    var op = $("#evento").val();
-                    console.log(op);   
-                    mostrarFormulario(op);
-                    
+                    $("#reTabla").load( "/Granja/index.php/reporte/mostrarTabla/"+avanz);
+                
                 });
                 
             });

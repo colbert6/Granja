@@ -6,6 +6,7 @@
     class Simbolo extends CI_Controller
     { 
         var $menu;
+        var $tabla='simbolo';
         function __construct(){
             parent::__construct();
             $this->load->model('simbolo_model');
@@ -24,7 +25,7 @@
         }
 
 
-        public function nuevo()
+      /*  public function nuevo()
         {
             $dato= array ( 'titulo'=> 'Registrar Simbolos','action'=>  'simbolo/nuevo' );
 
@@ -36,18 +37,18 @@
                         );
              $this->aborto_model->crear($data);
              $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
-             $this->redireccionar("aborto");
+             $this->redireccionar("simbolo");
                 
             }else{
 
                 $data['simbolo'] = $this->simbolo_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/aborto/form.php",$data);
+                $this->load->view("/simbolo/form.php",$data);
                 $this->load->view("/layout/foother.php");
 
             }
-        }
+        }*/
 
         public function editar()
         {
@@ -55,25 +56,26 @@
             if (@$_POST['guardar'] == 1) {
                 $data= array ( 
                            'id'=> $this->input->post('id'),
-                           'animal'=> $this->input->post('animal'),
-                           'cauabor'=> $this->input->post('cauabor'),
-                           'fecha'=> $this->input->post('fecha')
+                           'evento'=> $this->input->post('evento'),
+                           'descripcion'=> $this->input->post('descripcion'),
+                            'icono'=> $this->input->post('icono')
                            );
-                //print_r($data);
-                $this->aborto_model->editar($data);
+                
+                $this->simbolo_model->editar($data);
                 $this->auditoria('modificar',$this->tabla,'', $data['id']);
-                $this->redireccionar("aborto");
+                $this->redireccionar("simbolo");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Editar Aborto','action'=>  'aborto/editar' );
+                $dato= array ( 'titulo'=> 'Editar Simbolo','action'=>  'simbolo/editar' );
                 $id=$this->uri-> segment(3);
 
                // $data['tipo_registro']=$this->tipo_registro_model->select();
                 $data['simbolo'] = $this->simbolo_model->selectId( $id);
+                //
                // $data['razas']=$this->razas_model->select();
 
                 $this->load->view("/layout/header.php",$dato);
-                $this->load->view("/aborto/form.php",$data);
+                $this->load->view("/simbolo/form.php",$data);
                 $this->load->view("/layout/foother.php");
 
             }
@@ -86,7 +88,7 @@
             
             $this->aborto_model->eliminar($idabo);
             $this->auditoria('eliminar',$this->tabla,'', $id);
-            $this->redireccionar("aborto");
+            $this->redireccionar("si");
             
             
         }
@@ -94,6 +96,10 @@
         public function json_BuscarID(){
             $data['simbolo']=$this->simbolo_model->selectId($_POST["id"]);
             echo json_encode($data['simbolo']->result());
+        }
+        public function json_ExtraerTodo(){
+            $data['simbolos'] = $this->simbolo_model->select();
+            echo json_encode($data['simbolos']->result());
         }
 
    }

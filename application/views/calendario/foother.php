@@ -114,12 +114,14 @@
         var text = "";
         if(est==1){
             funcion="crearEvento('"+est+"')";
+            //funcion="validar('"+est+"')";
             text='Guardar';
         }else{
             funcion="crearEvento('"+est+"')";
+            //funcion="validar('"+est+"')";
             text='Modificar';
         }
-        var pie = "<button type='button' onclick=\""+funcion+"\" class='btn btn-success' data-dismiss='modal'>"+text+"</button>";
+        var pie = "<button type='button' onclick=\""+funcion+"\" class='btn btn-success' >"+text+"</button>";
          pie += "<button type='button' class='btn btn-default' data-dismiss='modal'>Cerrar</button>";
         $("#pie").html(pie);
 
@@ -161,7 +163,7 @@
                     //console.log(obj);
                     formulario    += "<label>Causa Aborto:</label>";
                     formulario    += "<select class='form-control' id='causa_aborto'>";
-                    
+                    //formulario    += "<option  value=' '>seleccione</option>";
                     for (var i = 0; i < obj.length; i++) {
                         var seleccion = "";
                         if(est!=1){
@@ -182,7 +184,6 @@
                     formulario    += "<label>Fecha:</label>";
                     formulario    += "<input "+ant+" type='date'class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                     $("#content-form").html(formulario); 
-                    $("#evento").val('1');
                     pie_formulario(est);
                     $("#myModal").modal("show");
                 });
@@ -797,15 +798,23 @@
         
     }
     function crearEvento(est) {
-        //var guardar = validar_formulario();
-        //console.log(guardar);
+        var guardar = validar();
+        console.log(guardar);
         num_evento = $("#evento").val();
-        //if(guardar){
+        if(guardar){
+
+
         switch(num_evento){
                 case '1':
                     var animal = $("#animal").val();
                     var cuabor = $("#causa_aborto").val();
                     var fecha = $("#fecha_evento").val();
+                   // alert(cuabor+'-'+animal+'-'+fecha);
+                   var values=fecha.split("-");
+                   var dia = parseInt(values[2]);
+                  // alert(dia);
+                  // if (dia>0 && dia<31) {alert("continua"); }
+                  // else {alert('invalido');mostrarFormulario('1','',1); }//$("#myModal").modal("show");
                     if(est=='1'){
                         $.post(base+"index.php/aborto/json_Nuevo",{animal:animal,cauabor:cuabor,fecha:fecha},function(valor){
                             var obj = JSON.parse(valor);
@@ -831,6 +840,11 @@
                     var tipo_analisis = $("#tipan").val();
                     var resul_analisis = $("#resan").val();
                     var fecha = $("#fecha_evento").val();
+                    var values=fecha.split("-");
+                   var dia = parseInt(values[2]);
+                  // alert(dia);
+                  // if (dia>0 && dia<31) {alert("continua"); }
+                  // else {alert('invalido');mostrarFormulario('','',1); }
                     if(est=='1'){
                         $.post(base+"index.php/analisis/json_Nuevo",{animal:animal,tipana:tipo_analisis,resultado_ana:resul_analisis,fecha:fecha},function(valor){
                             var obj = JSON.parse(valor);
@@ -1140,7 +1154,7 @@
                     break;
             }    
             $("#myModal").modal("hide");
-
+        }
     }
     function editarEvento(id,base2){
             $("#id_evento").val(id);
@@ -1170,7 +1184,21 @@
             });
 
     }
+<<<<<<< HEAD
  
+=======
+    function validar(){
+     
+        var a=$('#fecha_evento').val();
+        if (a!="") {
+            return true;
+        }else{
+            $('#fecha_evento').css("border", "1px solid red");
+            return false;
+        }
+     
+    }
+>>>>>>> 2dcd5f2345663d3566e6ed5e2b6163ea82eb3ebe
     function validar_formulario(){
         frm=document.forms.form;
         cant_elementos = frm.elements.length;

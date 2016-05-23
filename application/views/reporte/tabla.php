@@ -66,9 +66,7 @@
                                     }
                                 ?>
                                 </div>
-                                <div>
-                                    <a href="#" onclick="mostrarModal(<?php echo $datos->ani_id; ?>,<?php echo $i; ?>,<?php echo $j;?>,'<?php echo base_url(); ?>');" >[+]</a>
-                                </div>
+                                
 								
 								
 

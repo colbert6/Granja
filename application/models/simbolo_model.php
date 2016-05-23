@@ -21,20 +21,20 @@
 	    }
 
 
-	    function crear($data){
+	  /*  function crear($data){
 	    	
 	        $this->db->insert('simbolo',array('evento' => $data['evento'],
 	        								'sim_descripcion' => $data['sim_descripcion'],
 	        							   'sim_icono' => $data['sim_icono'],
 	                                       'sim_estado' => 1 ));
 	      
-	    }
+	    }*/
 
 	    function editar($data){
-	    	$datos=array(                  'sim_descripcion' => $data['sim_descripcion'],
-	        							   'sim_icono' => $data['sim_icono']
-	        			);
-	    	$this->db->where('sim_id',$data['sim_id']);
+	    	$datos=array(                  'sim_descripcion' => $data['descripcion'],
+	        							 	'sim_icono' => $data['icono'],
+	        			                   'sim_estado' => 1 );
+	    	$this->db->where('sim_id',$data['id']);
 	        $query=$this->db->update('simbolo',$datos);
 	        return $query;
 	    }

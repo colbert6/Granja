@@ -1,4 +1,5 @@
-</section><!-- /.content -->
+
+                </section><!-- /.content -->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
 
@@ -7,9 +8,13 @@
         <script src="<?= base_url(); ?>js/jquery-1.12.3.min.js" type="text/javascript"></script>
         <!-- Bootstrap -->
         <script src="<?= base_url(); ?>js/bootstrap.min.js" type="text/javascript"></script>
-        
         <!-- AdminLTE App -->
         <script src="<?= base_url(); ?>js/AdminLTE/app.js" type="text/javascript"></script>
+
+
+        <link href="<?= base_url(); ?>css/jQueryUI/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css" />
+        <script src="<?= base_url(); ?>js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
+
 
         <link href="<?= base_url(); ?>css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
         <script src="<?= base_url(); ?>js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
@@ -17,12 +22,17 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
-
-                $("#tab").dataTable({
-                 
-                    "bPaginate": true,
+                
+                var fecha = new Date();
+                var ano = fecha.getFullYear();
+                $("#anio").val(ano);
+                $("#reTabla").load( "/Granja/index.php/reporte/conteoTabla/"+ano);
+                
+                $("#example1").dataTable({
+                    
+                    "bPaginate": false,
                     "bLengthChange": true,
-                    "bFilter": true,
+                    "bFilter": false,
                     "bSort": true,
                     "bInfo": false,
                     "bAutoWidth": false,
@@ -51,11 +61,22 @@
                         }
                     },
                     'aaSorting': [[ 0, 'asc' ]],//ordenar
-                    'iDisplayLength': 5,
+                    'iDisplayLength': 20,
                     'aLengthMenu': [[5, 10, 20], [5, 10, 20]]
 
                 });
-
+                $("#avanzar").click(function(){
+                    avanz = parseInt($("#anio").val())+1;
+                   $("#anio").val(avanz);
+                    $("#reTabla").load( "/Granja/index.php/reporte/conteoTabla/"+avanz); 
+                });
+                $("#retroceder").click(function(){
+                    avanz = parseInt($("#anio").val())-1;
+                    $("#anio").val(avanz);
+                    $("#reTabla").load( "/Granja/index.php/reporte/conteoTabla/"+avanz);
+                
+                });
+                
             });
         </script>
 
