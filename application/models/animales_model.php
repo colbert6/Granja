@@ -20,12 +20,12 @@
 	   
 	    }
 
-	    function selectAnimalesParto($id){
-	    	$sql="SELECT a.ani_rp
+	    function selectAnimalesParto(){
+	    	$sql="SELECT a.ani_id,a.ani_rp,a.ani_nombre
 					FROM animal as a,parto as p  
-					WHERE a.ani_rp=p.par_rp 
-					GROUP BY a.ani_rp
-					HAVING count(p.par_id)>=1"
+					WHERE a.ani_id=p.par_rp 
+					GROUP BY a.ani_id,a.ani_rp,a.ani_nombre
+					HAVING count(p.par_id)>=1";
 
 	        $query=$this->db->query($sql);
 	        return $query;

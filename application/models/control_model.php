@@ -18,6 +18,12 @@
 	        return $query;
 	    }
 
+		function selectFecha($fecha){
+	        $this->db->where('con_id',$id);
+	        $query=$this->db->get('control');
+	        return $query;
+	    }
+
 	    function crear($data){
 	    	
 	        $this->db->insert('control',array('con_rp' => $data['animal'],
@@ -48,7 +54,7 @@
 	    	/*$datos=array('con_estado' => 0   );
 	    	$this->db->where('con_id',$id);
 	        $query=$this->db->update('control',$datos);
-	        return $query;¨/
+	        return $query;¨*/
 	    }
 
 
