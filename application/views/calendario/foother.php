@@ -94,34 +94,6 @@
     var base = "";
     var meses = ["Enero", "Febrero", "Marzo","Abril","Mayo","Junio","Julio","Agosto","Setiembre","Octubre","Noviembre","Diciembre"];
 
-    function Tabla(animales,eventos,simbolos){
-        var tabla = "<div class='box-body table-responsive'>";
-        tabla    += "<table id='example1' class='table table-bordered table-striped'>";
-        tabla    += "<thead>";
-        tabla    += "   <tr>";
-        tabla    += "       <th class='text-center' rowspan='2'>ID</th>";
-        tabla    += "       <th class='text-center' rowspan='2'>RP</th>";
-        tabla    += "       <th class='text-center' rowspan='2'>Nombre</th>";
-        tabla    += "       <th class='text-center' colspan='12'>MESES</th>";
-        tabla    += "   </tr>";
-        tabla    += "   <tr>";
-        tabla    += "       <th class='text-center'>Ene</th>";
-        tabla    += "       <th class='text-center'>Feb</th>";
-        tabla    += "       <th class='text-center'>Mar</th>";
-        tabla    += "       <th class='text-center'>Abr</th>";
-        tabla    += "       <th class='text-center'>Jun</th>";
-        tabla    += "       <th class='text-center'>Jul</th>";
-        tabla    += "       <th class='text-center'>Ago</th>";
-        tabla    += "       <th class='text-center'>Sep</th>";
-        tabla    += "       <th class='text-center'>Oct</th>";
-        tabla    += "       <th class='text-center'>Nov</th>";
-        tabla    += "       <th class='text-center'>Dic</th>";
-        tabla    += "   </tr>";
-        tabla    += "</thead>";
-        tabla    += "<tbody>";
-
-        tabla    += "</tbody>";
-    }
 
     function daysInMonth(humanMonth, year) {
       return new Date(year || new Date().getFullYear(), humanMonth, 0).getDate();
@@ -1212,6 +1184,7 @@
             });
 
     }
+
     function validar(){
      
         var a=$('#fecha_evento').val();
@@ -1224,24 +1197,14 @@
      
     }
     function validar_formulario(){
-        /*frm=document.forms.form;
+        frm=document.forms.form;
         cant_elementos = frm.elements.length;
         for (var i = 0; i < cant_elementos; i++) {
-            var elemento = frm.elements[i];
-            if(elemento.type=="text"){
-                valor = elemento.value;
-                if( valor == null || valor.length == 0 || /^\s+$/.test(valor) ) {
-                    elemento.style.border = ""
-                }
-            }else if(elemento.type=="select-one"){
-                indice = elemento.selectedIndex;
-                if( indice == null || indice == 0 ) {
-                    alert(indice);
-                }
-            }else if(elemento.type=="date"){
+            var elemento = frm.elements[i]; 
+            if(elemento.type=="date"){
                 //alert(elemento.value);
             } 
-        }*/
+        }
         return true;
     }
 </script>
