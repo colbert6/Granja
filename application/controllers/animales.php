@@ -61,6 +61,7 @@
             }else{
 
                 $data['razas'] = $this->razas_model->select();
+                $data['animales'] = $this->animales_model->select();
                 $data['sexo_cria'] = $this->sexo_cria_model->select();
                 $data['tipo_registro'] = $this->tipo_registro_model->select();
 
