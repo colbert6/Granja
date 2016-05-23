@@ -19,7 +19,13 @@
 	    }
 
 		function selectFecha($fecha){
-	        $this->db->where('con_id',$id);
+	        $this->db->where('con_fecha',$fecha);
+	        $query=$this->db->get('control');
+	        return $query;
+	    }
+
+	    function selectFechas($fecha){
+	        $this->db->where('con_fecha',$fecha);
 	        $query=$this->db->get('control');
 	        return $query;
 	    }
