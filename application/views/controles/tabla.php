@@ -1,4 +1,6 @@
 <?php $controles=$control->result_array();
+       $sum_control_1=array_sum(array_column($controles,'con_control_1'));
+       $sum_control_2=array_sum(array_column($controles,'con_control_2'));
 ?>
 
 
@@ -62,8 +64,8 @@
                 <tfoot>
                     <tr class="danger">
                         <th colspan="3" style="text-align:right">Total:</th>
-                        <th><input type="text" id='cont1_t'  value="" /></th>
-                        <th><input type="text" id='cont2_t'  value="" /></th>
+                        <th><input type="text" id='cont1_t'  value="<?= $sum_control_1; ?>" /></th>
+                        <th><input type="text" id='cont2_t'  value="<?= $sum_control_2; ?>" /></th>
                     </tr>
                 </tfoot>
             </table>
@@ -109,7 +111,8 @@
                     },
                     'aaSorting': [[ 0, 'asc' ]],//ordenar
                     'iDisplayLength': 5,
-                    'aLengthMenu': [[5, 10, 20], [5, 10, 20]]
+                    'aLengthMenu': [[5, 10, 20], [5, 10, 20]],
+                     'stateSave': true
             })      
       }); 
     function sumar(val,base){

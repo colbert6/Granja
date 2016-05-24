@@ -54,12 +54,7 @@
             $this->load->view("/controles/tabla.php",$data);
         }
 
-        public function mostrarTablaReporte($fecha_inicio='',$fecha_fin=''){
-            $data['animales'] = $this->animales_model->selectAnimalesParto();
-            $data['control'] = $this->control_model->selectFechas($fecha_inicio,$fecha_fin);
-            //echo "<pre>";print_r($data['animales']->result());print_r($data['control']->result());
-            $this->load->view("/controles/tabla.php",$data);
-        }
+        
 
 
 

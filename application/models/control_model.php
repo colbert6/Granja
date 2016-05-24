@@ -24,9 +24,9 @@
 	        return $query;
 	    }
 
-	    function selectFechas($fecha){
-	        $this->db->where('con_fecha',$fecha);
-	        $query=$this->db->get('control');
+	    function selectFechas($fecha_i,$fecha_f){
+	        $sql="SELECT * FROM control WHERE ('".$fecha_i."' <= con_fecha AND con_fecha <= '".$fecha_f."')";
+	        $query=$this->db->query($sql);
 	        return $query;
 	    }
 

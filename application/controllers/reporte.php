@@ -12,6 +12,7 @@
             $this->load->model('animales_model');
             $this->load->model('eventos_model');
             $this->load->model('simbolo_model');
+            $this->load->model('control_model');
              $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
          }
 
@@ -46,7 +47,7 @@
         public function controles()
         {
             
-            $dato= array ( 'titulo'=> 'Reporte Controles');
+            $dato= array ( 'titulo'=> 'Reporte Controles (Semanal)');
 
             $this->load->view("/layout/header.php",$dato);
             $this->load->view("/reporte/controles.php");
@@ -60,6 +61,12 @@
             $this->load->view("/reporte/conteo_tabla.php",$data);
         }
 
+        public function mostrarTablaReporte($fecha_inicio='',$fecha_fin=''){
+            $data['animales'] = $this->animales_model->selectAnimalesParto();
+            $data['control'] = $this->control_model->selectFechas($fecha_inicio,$fecha_fin);
+            $data['fechas'] = array('inicio' => $fecha_inicio,'fin' => $fecha_fin);
+            $this->load->view("/reporte/tabla_controles.php",$data);
+        }
     }
 
 ?>
