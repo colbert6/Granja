@@ -188,7 +188,7 @@ function validate_fecha(fecha)
     return false;*/
 }
 
-function validar()
+/*function validar()
 { 
     var fecha=document.getElementById("fechar").value;
     var x=new Date();
@@ -198,7 +198,7 @@ function validar()
     }else{
       var j =  document.getElementById("result").innerHTML="La fecha "+fecha+" es incorrecta";
       console.log(j);
-  }
+  }*/
 }
 //...............
 function calendario(){
