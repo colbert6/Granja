@@ -1,3 +1,7 @@
+<?php $controles=$control->result_array();
+?>
+
+
 <input type="hidden" id="t_animales" name="total_animales" value="<?php echo count($animales->result()); ?>">
 <br><br>
 <div class="box-body table-responsive">
@@ -15,18 +19,48 @@
                 <tbody>
                     <?php
                         $i=1;
+                        $cont_1=0;
+                        $cont_2=0;
                         foreach (@$animales->result() as $datos) {   ?>
                         <tr>
-                            <td><?= $i;?><input type="hidden" name="id[]" id='id<?php echo $i; ?>' value="<?php echo $datos->ani_id; ?>"></td>
+                            <td><?= $datos->ani_id;?></td>
                             <td><?= $datos->ani_rp; ?></td> 
                             <td><?= $datos->ani_nombre; ?></td>
-                            <td><input type="text" id='cont1<?php echo $i; ?>' name='cont1[]' onblur='sumar(this);' value="" /></td>
-                            <td><input type="text"  id='cont2<?php echo $i;$i++;  ?>' name='cont2[]' onblur='sumar(this);' value="" /></td>
+                            <td><?php 
+                                $clave=array_search($datos->ani_rp, array_column($controles,'con_rp'));
+                                if(is_numeric($clave)) {
+                                    //echo $controles[$clave]['con_control_1'];
+                                    $val = $controles[$clave]['con_control_1'];
+                                    $id_c = $controles[$clave]['con_id'];
+                                         
+                                }else{
+                                    $val = '';
+                                    $id_c= 0;
+                                }
+                                //$cont_1+=$val;
+                                echo "<input id_c='".$id_c."' f='$i' ani='$datos->ani_id' onkeypress='return dosDecimales(event, this)' type='text'  id='cont1".$i."' name='cont1[]' onblur=\"sumar(this,'".base_url()."');\" value='".$val."' />";
+
+                            ?></td>
+                            <td><?php
+                                $clave=array_search($datos->ani_rp, array_column($controles,'con_rp'));
+                                if(is_numeric($clave)) {
+                                    //echo $controles[$clave]['con_control_1'];
+                                    $val = $controles[$clave]['con_control_2'];
+                                    $id_c = $controles[$clave]['con_id'];
+                                }else{
+                                    $val = '';
+                                    $id_c= 0;
+                                }
+                                //$cont_2+=$val;
+                                echo "<input f='$i' id_c='".$id_c."' ani='$datos->ani_id' onkeypress='return dosDecimales(event, this)' type='text'  id='cont2".$i."' name='cont2[]' onblur=\"sumar(this,'".base_url()."');\" value='".$val."' />";
+                            ?>
+
+                            </td>
                         </tr>
-                    <?php } ?>
+                    <?php $i++; } ?>
                 </tbody>
                 <tfoot>
-                    <tr>
+                    <tr class="danger">
                         <th colspan="3" style="text-align:right">Total:</th>
                         <th><input type="text" id='cont1_t'  value="" /></th>
                         <th><input type="text" id='cont2_t'  value="" /></th>
@@ -76,6 +110,48 @@
                     'aaSorting': [[ 0, 'asc' ]],//ordenar
                     'iDisplayLength': 5,
                     'aLengthMenu': [[5, 10, 20], [5, 10, 20]]
-            });
-        }); 
+            })      
+      }); 
+    function sumar(val,base){
+        var oID_C = $(val).attr("id_c");
+        var oID = $(val).attr("id");
+        var animal = $(val).attr("ani");
+        var fila = $(val).attr("f");
+        //console.log(String("#"+oID));
+        var fecha = $("#fecha_contol").val();
+        var control1= $(String("#cont1"+fila)).val();
+        var control2= $(String("#cont2"+fila)).val();
+        if($(String("#"+oID)).val()!=""){
+            if(oID_C=='0'){
+                $.post(base+"index.php/controles/json_Nuevo",{animal:animal,fecha:fecha,control_1:control1,control_2:control2},function(){
+                    $("#mostrarDatos").load(base+"index.php/controles/mostrarTabla/"+fecha);
+                });
+            }else{
+                $.post(base+"index.php/controles/json_Editar",{id:oID_C,animal:animal,fecha:fecha,control_1:control1,control_2:control2},function(){
+                    $("#mostrarDatos").load(base+"index.php/controles/mostrarTabla/"+fecha);
+                });
+            } 
+        }
+        
+        
+
+
+        /*var etq = oID.substr(0, 5);
+        var t_animales = parseInt($("#t_animales").val());
+        var t=0;
+        for(var i=1;i<=t_animales;i++){
+            var idv=String("#"+etq+i);
+            val = $(idv).val();
+            if(val!=""){
+                console.log($(idv).val());
+                if(isNaN($(idv).val())){
+                    $(idv).focus()
+                }else{
+                    t+=parseFloat($(idv).val());
+                }  
+            }
+        }
+        res = parseFloat(Math.round(t * 100) / 100).toFixed(2);
+        $(String("#"+etq+"_t")).val(res);*/
+    }
 </script>

@@ -25,18 +25,29 @@
         }
         
         public function json_Nuevo(){
-            $data= array ( 'rp'=> $_POST["rp"],
-                           'causa_no_enseminal'=> $_POST["cni"],
+            $data= array ( 'animal'=> $_POST["animal"],
                            'fecha'=> $_POST["fecha"],
-                           'medicina_genital'=> $_POST["medget"],
-                           'via_aplicacion'=> $_POST["viaap"]
+                           'control_1'=> $_POST["control_1"],
+                           'control_2'=> $_POST["control_2"]
                         );
-            $celo =$this->celo_model->crear($data);
+            $control =$this->control_model->crear($data);
             $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
-            echo json_encode($celo->celo_id);
+            echo json_encode($control->con_id);
         }
 
-        public function mostrarTabla($fecha=''){
+        public function json_Editar(){
+            $data= array ( 'id' => $_POST["id"],
+                           'animal'=> $_POST["animal"],
+                           'fecha'=> $_POST["fecha"],
+                           'control_1'=> $_POST["control_1"],
+                           'control_2'=> $_POST["control_2"]
+                        );
+            $this->control_model->editar($data);
+            $this->auditoria('editar',$this->tabla,'',$this->db->insert_id());
+            
+        }
+
+        public function mostrarTabla($fecha='2016-05-23'){
             $data['animales'] = $this->animales_model->selectAnimalesParto();
             $data['control'] = $this->control_model->selectFecha($fecha);
             //echo "<pre>";print_r($data['animales']->result());print_r($data['control']->result());

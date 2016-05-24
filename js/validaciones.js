@@ -49,7 +49,7 @@ function dosDecimales(e, field){
   // 0-9
   if (key > 47 && key < 58) {
     if (field.value == "") return true
-    regexp = /.[0-9]{3}$/
+    regexp = /.[0-9]{5}$/
     return !(regexp.test(field.value))
   }
   // .
