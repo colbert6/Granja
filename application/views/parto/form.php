@@ -102,6 +102,7 @@ if(isset ($parto))  {  $datos=$parto->row(); }
             </div>
               
             <div class="box-footer">
+              <!--  <a class="btn btn-primary" href="<?= base_url();?>index.php/animales/nuevo" class="k-button">Guardar</a>-->                 
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
             

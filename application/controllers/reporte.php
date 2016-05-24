@@ -43,6 +43,16 @@
             $this->load->view("/reporte/foother1.php");
             
         }
+        public function controles()
+        {
+            
+            $dato= array ( 'titulo'=> 'Reporte Controles');
+
+            $this->load->view("/layout/header.php",$dato);
+            $this->load->view("/reporte/controles.php");
+            $this->load->view("/reporte/foother1.php");
+            
+        }
         public function conteoTabla($año=''){
             $data['animales'] = $this->animales_model->select();
             $data['eventos'] = $this->eventos_model->selectYear($año);
