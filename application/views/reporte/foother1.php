@@ -22,11 +22,12 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
-                
+                var base = window.location.pathname.split("/");
+                var base_url = "/"+base[1]+"/";
                 var fecha = new Date();
                 var ano = fecha.getFullYear();
                 $("#anio").val(ano);
-                $("#reTabla").load( "/Granja/index.php/reporte/conteoTabla/"+ano);
+                $("#reTabla").load(base_url+"index.php/reporte/conteoTabla/"+ano);
                 
                 $("#example1").dataTable({
                     
@@ -68,12 +69,12 @@
                 $("#avanzar").click(function(){
                     avanz = parseInt($("#anio").val())+1;
                    $("#anio").val(avanz);
-                    $("#reTabla").load( "/Granja/index.php/reporte/conteoTabla/"+avanz); 
+                    $("#reTabla").load(base_url+"index.php/reporte/conteoTabla/"+avanz); 
                 });
                 $("#retroceder").click(function(){
                     avanz = parseInt($("#anio").val())-1;
                     $("#anio").val(avanz);
-                    $("#reTabla").load( "/Granja/index.php/reporte/conteoTabla/"+avanz);
+                    $("#reTabla").load(base_url+"index.php/reporte/conteoTabla/"+avanz);
                 
                 });
                 

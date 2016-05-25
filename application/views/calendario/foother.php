@@ -22,13 +22,13 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
-				var base_url = window.location.pathname.split("/");
-				console.log(base_url);
+				var base = window.location.pathname.split("/");
+                var base_url = "/"+base[1]+"/";
                 var fecha = new Date();
                 var ano = fecha.getFullYear();
                 $("#anio").val(ano);
-                $("#reTabla").load( base_url+"index.php/calendario/mostrarTabla/"+ano);
-                
+                $("#reTabla").load(base_url+"index.php/calendario/mostrarTabla/"+ano);
+    
                 $("#example1").dataTable({
                     
                     "bPaginate": true,
