@@ -18,13 +18,13 @@ function multidimensional_search($parents, $searched) {
   return false; 
 } 
 
-$suma =array(1=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ),
-                2=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ),
-                3=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ),
-                4=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ),
-                5=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ),
-                6=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ),
-                7=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ));
+$suma =array(1=>array('cont_1' => 0,'cont_2' => 0),
+                2=>array('cont_1' => 0,'cont_2' => 0 ),
+                3=>array('cont_1' => 0,'cont_2' => 0 ),
+                4=>array('cont_1' => 0,'cont_2' => 0 ),
+                5=>array('cont_1' => 0,'cont_2' => 0 ),
+                6=>array('cont_1' => 0,'cont_2' => 0 ),
+                7=>array('cont_1' => 0,'cont_2' => 0 ));
 ?>
 
 
@@ -63,6 +63,8 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ),
                 <tbody>
                     <?php
                         $i=1;
+                        $suma_total = 0;
+                        $suma_promedio = 0;
                         foreach (@$animales->result() as $datos) {   ?>
                         <tr>
                             <td><?= $datos->ani_id;?></td>
@@ -70,7 +72,7 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ),
                             <td><?= $datos->ani_nombre; ?></td>
                             <?php
                             $fecha = date_create($fechas["inicio"]);
-                            
+                            $suma_fila = 0;
                             for ($t=1; $t<=$int_dias+1 ; $t++) {
                         
                                 $aux = date_format($fecha, 'Y-m-d');
@@ -80,7 +82,7 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ),
                                     echo "<td>".$controles[$indice]["con_control_2"]."</td>";
                                     $suma[$t]['cont_1']+=$controles[$indice]["con_control_1"];
                                     $suma[$t]['cont_2']+=$controles[$indice]["con_control_2"];
-
+                                    $suma_fila+=$controles[$indice]["con_control_1"]+$controles[$indice]["con_control_2"];
                                 }else{
                                    echo "<td>-</td>";
                                     echo "<td>-</td>";
@@ -92,8 +94,8 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ),
 
 
                             ?>
-							<td></td>
-							<td></td>
+							<td><?php echo round($suma_fila,2); $suma_total+=$suma_fila;?></td>
+							<td><?php $pro = round($suma_fila/14,2);echo $pro; $suma_promedio+=$pro;?></td>
                         </tr>
                     <?php $i++; } ?>
                 </tbody>
@@ -104,13 +106,13 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ),
                         <th colspan="3" style="text-align:right">Total:</th>
                         <?php
                             for ($t=1; $t<=$int_dias+1 ; $t++) {
-                                echo "<td>".$suma[$t]['cont_1']."/".($suma[$t]['cont_1']/count($animales->result_array()))."</td>";
-                                echo "<td>".$suma[$t]['cont_2']."/".($suma[$t]['cont_2']/count($animales->result_array()))."</td>";
+                                echo "<td>".$suma[$t]['cont_1']."</td>";
+                                echo "<td>".$suma[$t]['cont_2']."</td>";
                             }
 							
                         ?>
-                        <td></td>
-						<td></td>
+                        <td><?php echo $suma_total; ?></td>
+						<td><?php echo $suma_promedio; ?></td>
                     </tr>
                 </tfoot>
                 

@@ -26,7 +26,7 @@
 
         public function calendario_original()
         {
-            $dato= array ( 'titulo'=> 'Reporte');
+            $dato= array ( 'titulo'=> 'Reporte Calendario');
 
             $this->load->view("/layout/header.php",$dato);
             $this->load->view("/reporte/calendario_original.php");

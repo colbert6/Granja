@@ -1,7 +1,7 @@
 <!--DE AQUI EMPIEZA-->
 
             <div class="box-body table-responsive">
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="tabla_f" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             
@@ -39,7 +39,7 @@
                             </td>
                             <td><?= $datos->ani_nombre; ?></td>
                             <?php for ($j=1; $j <=12 ; $j++) { ?>
-                                <td class='text-center' >
+                                <td class='text-center'>
 
                                 <div id='<?php echo $i."".$j;?>'>
                                 <?php
@@ -66,9 +66,6 @@
                                     }
                                 ?>
                                 </div>
-                                
-								
-								
 
                                 </td>
                             <?php } 
@@ -85,3 +82,44 @@
                     
                 </table>
             </div><!-- /.box-body -->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#tabla_f").dataTable({        
+            "bPaginate": false,
+            "bLengthChange": true,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": false,
+            "bAutoWidth": false,
+            "oLanguage" :{
+                'sProcessing':     'Cargando...',
+                'sLengthMenu':     'Mostrar _MENU_ registros',
+                'sZeroRecords':    'No se encontraron resultados',
+                'sEmptyTable':     'Ningún dato disponible en esta tabla',
+                'sInfo':           'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
+                'sInfoEmpty':      'Mostrando registros del 0 al 0 de un total de 0 registros',
+                'sInfoFiltered':   '(filtrado de un total de _MAX_ registros)',
+                'sInfoPostFix':    '',
+                'sSearch':         'Buscar:',
+                'sUrl':            '',
+                'sInfoThousands':  '',
+                'sLoadingRecords': 'Cargando...',
+                'oPaginate': {
+                    'sFirst':    'Primero',
+                    'sLast':     'Último',
+                    'sNext':     'Siguiente',
+                    'sPrevious': 'Anterior'
+                },
+                'oAria': {
+                    'sSortAscending':  ': Activar para ordenar la columna de manera ascendente',
+                    'sSortDescending': ': Activar para ordenar la columna de manera descendente'
+                }
+            },
+            'aaSorting': [[ 0, 'asc' ]],//ordenar
+            'iDisplayLength': 20,
+            'aLengthMenu': [[5, 10, 20], [5, 10, 20]]
+
+        });
+    });
+</script>
