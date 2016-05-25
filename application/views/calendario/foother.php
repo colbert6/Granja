@@ -22,10 +22,12 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
+				var base_url = window.location.pathname.split("/");
+				console.log(base_url);
                 var fecha = new Date();
                 var ano = fecha.getFullYear();
                 $("#anio").val(ano);
-                $("#reTabla").load( "/Granja/index.php/calendario/mostrarTabla/"+ano);
+                $("#reTabla").load( base_url+"index.php/calendario/mostrarTabla/"+ano);
                 
                 $("#example1").dataTable({
                     
@@ -68,14 +70,14 @@
                     avanz = parseInt($("#anio").val())+1;
                     //alert(avanz);
                     $("#anio").val(avanz);
-                    $("#reTabla").load( "/Granja/index.php/calendario/mostrarTabla/"+avanz);
+                    $("#reTabla").load(base_url+"index.php/calendario/mostrarTabla/"+avanz);
                     
                 });
                 $("#retroceder").click(function(){
                     avanz = parseInt($("#anio").val())-1;
                     //alert(avanz);
                     $("#anio").val(avanz);
-                    $("#reTabla").load( "/Granja/index.php/calendario/mostrarTabla/"+avanz);
+                    $("#reTabla").load(base_url+"index.php/calendario/mostrarTabla/"+avanz);
                     
                 });
                 $("#evento").change(function(){

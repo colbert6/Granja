@@ -17,6 +17,14 @@ function multidimensional_search($parents, $searched) {
 
   return false; 
 } 
+
+$suma =array(1=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ),
+                2=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ),
+                3=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ),
+                4=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ),
+                5=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ),
+                6=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ),
+                7=>array('cont_1' => 0,'cont_2' => 0,'prom_1'=>0,'prom_2'=>0 ));
 ?>
 
 
@@ -39,6 +47,8 @@ function multidimensional_search($parents, $searched) {
                             
                     
                         ?>
+						<th rowspan="2">TOTAL</th>
+						<th rowspan="2">PROMEDIO</th>
                     </tr>
                     <tr>
                         <?php 
@@ -61,13 +71,16 @@ function multidimensional_search($parents, $searched) {
                             <?php
                             $fecha = date_create($fechas["inicio"]);
                             
-                            for ($t=0; $t<=$int_dias ; $t++) {
+                            for ($t=1; $t<=$int_dias+1 ; $t++) {
                         
                                 $aux = date_format($fecha, 'Y-m-d');
                                 $indice = multidimensional_search($controles, array('con_fecha'=>$aux, 'con_rp'=>$datos->ani_id));
                                 if(is_numeric($indice)){
                                      echo "<td>".$controles[$indice]["con_control_1"]."</td>";
                                     echo "<td>".$controles[$indice]["con_control_2"]."</td>";
+                                    $suma[$t]['cont_1']+=$controles[$indice]["con_control_1"];
+                                    $suma[$t]['cont_2']+=$controles[$indice]["con_control_2"];
+
                                 }else{
                                    echo "<td>-</td>";
                                     echo "<td>-</td>";
@@ -76,10 +89,30 @@ function multidimensional_search($parents, $searched) {
                                 
                                 date_add($fecha, date_interval_create_from_date_string('1 days'));
                             }   
+
+
                             ?>
+							<td></td>
+							<td></td>
                         </tr>
                     <?php $i++; } ?>
                 </tbody>
+                <tfoot>
+                    <tr >
+                    </tr>
+                    <tr class="danger">
+                        <th colspan="3" style="text-align:right">Total:</th>
+                        <?php
+                            for ($t=1; $t<=$int_dias+1 ; $t++) {
+                                echo "<td>".$suma[$t]['cont_1']."/".($suma[$t]['cont_1']/count($animales->result_array()))."</td>";
+                                echo "<td>".$suma[$t]['cont_2']."/".($suma[$t]['cont_2']/count($animales->result_array()))."</td>";
+                            }
+							
+                        ?>
+                        <td></td>
+						<td></td>
+                    </tr>
+                </tfoot>
                 
             </table>
             <div class="col-xs-12">

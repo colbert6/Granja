@@ -15,15 +15,15 @@
                         <th>NOMBRE</th>
                         <th>CONTROL 1</th>
                         <th>CONTROL 2</th>
+						<th>TOTAL</th>
                     </tr>
                 </thead>
                 
                 <tbody>
                     <?php
                         $i=1;
-                        $cont_1=0;
-                        $cont_2=0;
-                        foreach (@$animales->result() as $datos) {   ?>
+                        $total = 0;
+                        foreach (@$animales->result() as $datos) {   $sum=0;?>
                         <tr>
                             <td><?= $datos->ani_id;?></td>
                             <td><?= $datos->ani_rp; ?></td> 
@@ -39,7 +39,7 @@
                                     $val = '';
                                     $id_c= 0;
                                 }
-                                //$cont_1+=$val;
+                                 $sum+=$val;
                                 echo "<input id_c='".$id_c."' f='$i' ani='$datos->ani_id' onkeypress='return dosDecimales(event, this)' type='text'  id='cont1".$i."' name='cont1[]' onblur=\"sumar(this,'".base_url()."');\" value='".$val."' />";
 
                             ?></td>
@@ -53,25 +53,25 @@
                                     $val = '';
                                     $id_c= 0;
                                 }
-                                //$cont_2+=$val;
+                                $sum+=$val;
                                 echo "<input f='$i' id_c='".$id_c."' ani='$datos->ani_id' onkeypress='return dosDecimales(event, this)' type='text'  id='cont2".$i."' name='cont2[]' onblur=\"sumar(this,'".base_url()."');\" value='".$val."' />";
                             ?>
 
                             </td>
+							<td><?php echo $sum;$total+=$sum; ?></td>
                         </tr>
                     <?php $i++; } ?>
                 </tbody>
                 <tfoot>
                     <tr class="danger">
                         <th colspan="3" style="text-align:right">Total:</th>
-                        <th><input type="text" id='cont1_t'  value="<?= $sum_control_1; ?>" /></th>
-                        <th><input type="text" id='cont2_t'  value="<?= $sum_control_2; ?>" /></th>
+                        <th><?= $sum_control_1; ?></th>
+                        <th><?= $sum_control_2; ?></th>
+						<th><?= $total; ?></th>
                     </tr>
                 </tfoot>
             </table>
-            <div class="btn-group">
-                    <a class="btn btn-primary" onclick='guardar()' class="k-button">Guardar</a>
-            </div>
+
             
         </div>
 <script type="text/javascript">
