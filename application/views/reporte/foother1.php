@@ -19,6 +19,10 @@
         <link href="<?= base_url(); ?>css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
         <script src="<?= base_url(); ?>js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+        <script src="<?= base_url(); ?>js/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+       <!-- <script src="<?= base_url(); ?>js/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
+        <script src="<?= base_url(); ?>js/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>-->
+        <script src="<?= base_url(); ?>js/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
 
         <script type="text/javascript">
             $(document).ready(function() {
