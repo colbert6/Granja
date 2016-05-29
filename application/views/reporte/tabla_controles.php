@@ -40,8 +40,8 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0),
                         <?php 
                             $fecha = date_create($fechas["inicio"]);
                             for ($i=0; $i <=$int_dias ; $i++) { 
-                        
-                                echo "<th colspan='2'>".date_format($fecha, 'd/m/Y')."</th>";
+                                $fec=date_format($fecha, 'd/m/Y');
+                                echo "<th colspan='2' fecha='$fec' id='$i'>".date_format($fecha, 'd/m/Y')."</th>";
                                 date_add($fecha, date_interval_create_from_date_string('1 days'));
                             }
                             
@@ -67,9 +67,9 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0),
                         $suma_promedio = 0;
                         foreach (@$animales->result() as $datos) {   ?>
                         <tr>
-                            <td onclick="grafico()"><?= $datos->ani_id;?></td>
-                            <td onclick="grafico()"><?= $datos->ani_rp; ?></td> 
-                            <td onclick="grafico()"><?= $datos->ani_nombre; ?></td>
+                            <td onclick="grafico('<?php echo $i; ?>','<?php echo $datos->ani_nombre ; ?>')"><?= $datos->ani_id;?></td>
+                            <td onclick="grafico('<?php echo $i; ?>','<?php echo $datos->ani_nombre ; ?>')"><?= $datos->ani_rp; ?></td> 
+                            <td onclick="grafico('<?php echo $i; ?>','<?php echo $datos->ani_nombre ; ?>')"><?= $datos->ani_nombre; ?></td>
                             <?php
                             $fecha = date_create($fechas["inicio"]);
                             $suma_fila = 0;
@@ -77,14 +77,16 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0),
                         
                                 $aux = date_format($fecha, 'Y-m-d');
                                 $indice = multidimensional_search($controles, array('con_fecha'=>$aux, 'con_rp'=>$datos->ani_id));
+                                $sum = 0;
                                 if(is_numeric($indice)){
-                                     echo "<td>".$controles[$indice]["con_control_1"]."</td>";
+                                    $sum =$controles[$indice]["con_control_1"]+$controles[$indice]["con_control_2"];
+                                    echo "<td suma='$sum' id='$i$t'>".$controles[$indice]["con_control_1"]."</td>";
                                     echo "<td>".$controles[$indice]["con_control_2"]."</td>";
                                     $suma[$t]['cont_1']+=$controles[$indice]["con_control_1"];
                                     $suma[$t]['cont_2']+=$controles[$indice]["con_control_2"];
                                     $suma_fila+=$controles[$indice]["con_control_1"]+$controles[$indice]["con_control_2"];
                                 }else{
-                                   echo "<td>-</td>";
+                                   echo "<td suma='$sum' id='$i$t'>-</td>";
                                     echo "<td>-</td>";
                                 }
                                 
@@ -106,8 +108,7 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0),
                         <th colspan="3" style="text-align:right">Total:</th>
                         <?php
                             for ($t=1; $t<=$int_dias+1 ; $t++) {
-                                $sum=$suma[$t]['cont_1']+$suma[$t]['cont_2'];
-                                echo "<td class='$t' id='$sum'>".$suma[$t]['cont_1']."</td>";
+                                echo "<td>".$suma[$t]['cont_1']."</td>";
                                 echo "<td>".$suma[$t]['cont_2']."</td>";
                             }
 							
@@ -150,118 +151,9 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0),
             
     </div>
 <script type="text/javascript">
-    function grafico(){
+    
 
-        var uno = parseFloat($(".1").attr("id"));
-        var dos = parseFloat($(".2").attr("id"));
-        var tres = parseFloat($(".3").attr("id"));
-        var cuatro = parseFloat($(".4").attr("id"));
-        var cinco = parseFloat($(".5").attr("id"));
-        var seis = parseFloat($(".6").attr("id"));
-        var siete = parseFloat($(".7").attr("id"));
-        var a = $("#fecha_inicio").val();
-        var b = a.split("-");
-        var dia = parseInt(b[2]);
-        var mes=b[1];
-        var ano =b[0];
-       alert(uno);
-        $('#container').highcharts({
-        chart: {
-            type: 'column'
-        },
-        title: {
-            text: ''
-        },
-        xAxis: {
-            type: 'category'
-        },
-        yAxis: {
-            title: {
-                text: 'Total percent market share'
-            }
-
-        },
-        legend: {
-            enabled: false
-        },
-        plotOptions: {
-            series: {
-                borderWidth: 0,
-                dataLabels: {
-                    enabled: true,
-                    format: '{point.y:.1f}%'
-                }
-            }
-        },
-
-        tooltip: {
-            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
-        },
-        series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: [{
-                name: dia+"-"+mes+"-"+ano+" ",
-                y: uno,
-                drilldown: null
-            },
-            {
-                name: dia+1+"-"+mes+"-"+ano+" ",
-                y: dos,
-                drilldown: null
-            },{
-                name: dia+2+"-"+mes+"-"+ano+" ",
-                y: tres,
-                drilldown: null
-            },{
-                name: dia+3+"-"+mes+"-"+ano+" ",
-                y: cuatro,
-                drilldown: null
-            },{
-                name: dia+4+"-"+mes+"-"+ano+" ",
-                y: cinco,
-                drilldown: null
-            },{
-                name: dia+5+"-"+mes+"-"+ano+" ",
-                y: seis,
-                drilldown: null
-            },{
-                name: dia+6+"-"+mes+"-"+ano+" ",
-                y: siete,
-                drilldown: null
-            }]
-        }]
-    });
-            $("#myModal").modal("show");
-    }
     $(document).ready(function() {
-
-             
-  /*      var bar_data = {
-            data: [["January", 100], ["February", 8], ["March", 4], ["April", 13], ["May", 17], ["June", 9]],
-            color: "#3c8dbc"
-        };
-        $.plot("#bar-chart", [bar_data], {
-                    grid: {
-                        borderWidth: 1,
-                        borderColor: "#f3f3f3",
-                        tickColor: "#f3f3f3"
-                    },
-                    series: {
-                        bars: {
-                            show: true,
-                            barWidth: 0.5,
-                            align: "center"
-                        }
-                    },
-                    xaxis: {
-                        mode: "categories",
-                        tickLength: 0
-                    }
-        });*/
-
-
 
         $("#tab").dataTable({
                  
@@ -300,6 +192,83 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0),
                     'aLengthMenu': [[5, 10, 20], [5, 10, 20]]
             })
 
-    }); 
+    });
+
+    function grafico(fila,nombre){
+        var fechas = new Array();
+        var sumas = new Array();
+        for (var i = 0; i < 7; i++) {
+            fechas.push($(String("#"+i)).attr("fecha"));
+            sumas.push(parseFloat($(String("#"+fila+(i+1))).attr("suma"))); 
+        };
+
+        $('#container').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: nombre
+            },
+            xAxis: {
+                type: 'category'
+            },
+            yAxis: {
+                title: {
+                    text: 'Total percent market share'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                series: {
+                    borderWidth: 0,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.y:.1f}'
+                    }
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: [{
+                    name: fechas[0]+" ",
+                    y: sumas[0],
+                    drilldown: null
+                },
+                {
+                    name: fechas[1]+" ",
+                    y: sumas[1],
+                    drilldown: null
+                },{
+                    name: fechas[2]+" ",
+                    y: sumas[2],
+                    drilldown: null
+                },{
+                    name: fechas[3]+" ",
+                    y: sumas[3],
+                    drilldown: null
+                },{
+                    name: fechas[4]+" ",
+                    y: sumas[4],
+                    drilldown: null
+                },{
+                    name: fechas[5]+" ",
+                    y: sumas[5],
+                    drilldown: null
+                },{
+                    name: fechas[6]+" ",
+                    y: sumas[6],
+                    drilldown: null
+                }]
+            }]
+        });
+        $("#myModal").modal("show");    
+    } 
     
 </script>
