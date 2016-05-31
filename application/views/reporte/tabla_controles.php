@@ -28,9 +28,10 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0),
 ?>
 
 <script type="text/javascript" src="<?php echo base_url()?>js/highcharts.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>js/jquery.PrintArea.js"></script>
 <input type="hidden" id="t_animales" name="total_animales" value="<?php echo count($animales->result()); ?>">
 <br><br>
-<div class="box-body table-responsive">
+<div class="box-body table-responsive" id='cuerpaso'>
             <table  id="tab" class="table table-bordered table-striped">
                 <thead>
                     <tr>
@@ -67,9 +68,9 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0),
                         $suma_promedio = 0;
                         foreach (@$animales->result() as $datos) {   ?>
                         <tr>
-                            <td onclick="grafico('<?php echo $i; ?>','<?php echo $datos->ani_nombre ; ?>')"><?= $datos->ani_id;?></td>
-                            <td onclick="grafico('<?php echo $i; ?>','<?php echo $datos->ani_nombre ; ?>')"><?= $datos->ani_rp; ?></td> 
-                            <td onclick="grafico('<?php echo $i; ?>','<?php echo $datos->ani_nombre ; ?>')"><?= $datos->ani_nombre; ?></td>
+                            <td onclick="grafico('<?php echo $i; ?>','<?php echo $datos->ani_nombre ; ?>','<?php echo $datos->ani_rp ; ?>')"><?= $datos->ani_id;?></td>
+                            <td onclick="grafico('<?php echo $i; ?>','<?php echo $datos->ani_nombre ; ?>','<?php echo $datos->ani_rp ; ?>')"><?= $datos->ani_rp; ?></td> 
+                            <td onclick="grafico('<?php echo $i; ?>','<?php echo $datos->ani_nombre ; ?>','<?php echo $datos->ani_rp ; ?>')"><?= $datos->ani_nombre; ?></td>
                             <?php
                             $fecha = date_create($fechas["inicio"]);
                             $suma_fila = 0;
@@ -120,12 +121,14 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0),
                 
             </table>
             <div class="col-xs-12">
-            <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Imprimir</button>
+            <button class="btn btn-default" onclick="imprimirtabla()"><i class="fa fa-print"></i> Imprimir</button>
         </div>
 
         <!--modal-->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-                    <div class="modal-dialog">
+        
+    </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog" id="mdialTamanio">
                     
                       <!-- Modal content-->
                       <div class="modal-content">
@@ -135,21 +138,26 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0),
                         </div>
                         <div class="modal-body">
                           
-                            <div id="container" style="min-width: 510px; height: 480px; margin: 0 auto"></div>
+                            <div id="container" style="min-width: 750px; height: 410px; margin: 0 auto"></div>
 
                         </div>
-                        <br><br>
+                
                         <div class="modal-footer">
-
-                          <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+                          <button type="button"  onclick="imprimirGrafico()" class="btn btn-default"><i class="fa fa-print"></i>Imprimir</button>
+                          <button type="button"  class="btn btn-success" data-dismiss="modal">Cerrar</button>
                         </div>
                       </div>
                       
                     </div>
 
-        </div>
             
-    </div>
+        </div>
+<style>
+    #mdialTamanio{
+      width: 60% !important;
+    }
+
+</style>
 <script type="text/javascript">
     
 
@@ -193,8 +201,16 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0),
             })
 
     });
-
-    function grafico(fila,nombre){
+    function imprimirtabla(){
+        $("div#cuerpaso").printArea();
+    }
+    function imprimirGrafico(){
+        /*$( "#cuerpaso" ).removeClass().addClass( "box-body table-responsive no-print" );
+        $( "#myModal" ).removeClass().addClass( "modal fade print" );
+        window.print();*/  
+        $("div#container").printArea(); 
+    }
+    function grafico(fila,nombre,r){
         var fechas = new Array();
         var sumas = new Array();
         for (var i = 0; i < 7; i++) {
@@ -207,14 +223,17 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0),
                 type: 'column'
             },
             title: {
-                text: nombre
+                text: 'Reporte Grafico del '+nombre+' con RP '+r
             },
             xAxis: {
-                type: 'category'
+                type: 'category',
+                title: {
+                    text: 'Fechas'
+                }
             },
             yAxis: {
                 title: {
-                    text: 'Total percent market share'
+                    text: 'Totales'
                 }
             },
             legend: {
@@ -268,6 +287,8 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0),
                 }]
             }]
         });
+  //   $('#myModal').css('width', '750px');
+  //   $('#myModal').css('margin', '100px auto 100px auto');
         $("#myModal").modal("show");    
     } 
     
