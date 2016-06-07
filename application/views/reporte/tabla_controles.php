@@ -217,13 +217,13 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0),
             fechas.push($(String("#"+i)).attr("fecha"));
             sumas.push(parseFloat($(String("#"+fila+(i+1))).attr("suma"))); 
         };
-
+/*
         $('#container').highcharts({
             chart: {
                 type: 'column'
             },
             title: {
-                text: 'Reporte Grafico del '+nombre+' con RP '+r
+                text: 'Reporte Grafico <br>Ganado:'+nombre+'<br>RP: '+r
             },
             xAxis: {
                 type: 'category',
@@ -286,7 +286,42 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0),
                     drilldown: null
                 }]
             }]
-        });
+        });*/
+$(function () {
+    $('#container').highcharts({
+        title: {
+            text: 'Reporte Grafico <br>Ganado:'+nombre+'<br>RP: '+r,
+            x: -20 //center
+        },
+        xAxis: {
+            categories: [fechas[0],fechas[1],fechas[2],fechas[3],fechas[4],fechas[5],fechas[6]],
+            title: {
+                    text: 'Fechas'
+                }
+        },
+        yAxis: {
+            title: {
+                text: 'Totales'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'Reporte Grafico <br>Ganado:'+nombre+'<br>RP: '+r,
+            data: [sumas[0],sumas[1],sumas[2],sumas[3],sumas[4],sumas[5],sumas[6]]
+        }]
+    });
+});
   //   $('#myModal').css('width', '750px');
   //   $('#myModal').css('margin', '100px auto 100px auto');
         $("#myModal").modal("show");    
