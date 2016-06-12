@@ -59,6 +59,16 @@
 	        return $query;
 	    }
 
+	    function num_partos(){
+	    	$query = $this->db->query(
+		    	"SELECT p.par_rp ,count(p.par_id) as num_par
+				FROM parto p
+				WHERE p.par_estado = '1'
+				GROUP BY p.par_rp"
+			);
+	    	return $query;
+	    }
+
 
 	  	}
 ?>

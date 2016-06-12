@@ -21,6 +21,11 @@
         public function index()
         {
             $data['tacto_rectal'] = $this->tacto_rectal_model->select();
+            $data['enfermedad_ovario'] = $this->enfermedad_ovario_model->select();
+            $data['enfermedad_utero'] = $this->enfermedad_utero_model->select();
+            $data['via_aplicacion'] = $this->via_aplicacion_model->select();
+            $data['medicina_genital'] = $this->medicina_genital_model->select();
+            $data['diagnostico_utero'] = $this->diagnostico_utero_model->select();
 
             $dato= array ( 'titulo'=> 'Lista de Tacto Rectal');
 

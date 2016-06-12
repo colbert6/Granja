@@ -19,6 +19,7 @@
         public function index()
         {
             $data['animales'] = $this->animales_model->select();
+            $data['razas'] = $this->razas_model->select();
 
             $dato= array ( 'titulo'=> 'Lista de Animales');
 
@@ -41,6 +42,7 @@
 
             
             if (@$_POST['guardar'] == 1) {
+             // print("soy nuevo");
                $data= array ( 'codigo'=> $this->input->post('codigo'),
                            'nombre'=> $this->input->post('nombre'),
                            'raza'=> $this->input->post('raza'),
@@ -59,11 +61,13 @@
              $this->redireccionar("animales");
                 
             }else{
-
+                  
                 $data['razas'] = $this->razas_model->select();
-                $data['animales'] = $this->animales_model->select();
+                $data['anima'] = $this->animales_model->select();
                 $data['sexo_cria'] = $this->sexo_cria_model->select();
                 $data['tipo_registro'] = $this->tipo_registro_model->select();
+                $data['animales'] = $this->animales_model->select();
+                $data['estado'] = true;
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/animales/form.php",$data);
@@ -101,6 +105,7 @@
 
                 $data['tipo_registro']=$this->tipo_registro_model->select();
                 $data['animales']=$this->animales_model->selectId( $idani);
+                $data['anima'] = $this->animales_model->select();
                 $data['razas']=$this->razas_model->select();
                 $data['sexo_cria'] = $this->sexo_cria_model->select();
 

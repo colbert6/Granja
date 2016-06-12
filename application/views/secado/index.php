@@ -17,7 +17,7 @@
                             <td><?= $datos->sec_id; ?></td>
                             <td><?= $datos->sec_rp; ?></td> 
                             <td><?= $datos->sec_fecha_evento;?></td>
-                            <td><?= $datos->sec_cuarto_mamarios;?></td>
+                            <td><?php foreach (@$medicina_cuarto_mamarios->result() as $datoss) {   if($datos->sec_cuarto_mamarios==$datoss->mecu_id) echo $datoss->mecu_descripcion;} ?></td>
                             <td>
                                 <a href=<?php echo base_url()."index.php/secado/editar/".$datos->sec_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>
                                 <a href=<?php echo base_url()."index.php/secado/eliminar/".$datos->sec_id; ?> class="btn  btn-minier"><i class="fa fa-trash-o"></i></a>

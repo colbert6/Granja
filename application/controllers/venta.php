@@ -18,6 +18,7 @@
         public function index()
         {
             $data['venta'] = $this->venta_model->select();
+            $data['especificacion_venta'] = $this->especificacion_venta_model->select();
 
             $dato= array ( 'titulo'=> 'Lista de Venta');
 

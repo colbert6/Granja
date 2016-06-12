@@ -20,6 +20,9 @@
         public function index()
         {
             $data['enfermedad'] = $this->enfermedad_model->select();
+            $data['tipo_enfermedad'] = $this->tipo_enfermedad_model->select();
+            $data['via_aplicacion'] = $this->via_aplicacion_model->select();
+            $data['medicamentos'] = $this->medicamentos_model->select();
 
             $dato= array ( 'titulo'=> 'Lista de Enfermedad');
 

@@ -32,7 +32,7 @@
             return $query;
         }
         function eliminar($id){
-            $datos=array('cr_estado' => 0   );
+            $datos=array('cr_esta' => 0 );
             $this->db->where('cr_id',$id);
             $query=$this->db->update('causa_rechazo',$datos);
             return $query;

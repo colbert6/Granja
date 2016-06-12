@@ -198,8 +198,8 @@ function validate_fecha(fecha)
     }else{
       var j =  document.getElementById("result").innerHTML="La fecha "+fecha+" es incorrecta";
       console.log(j);
-  }*/
-}
+  }
+}*/
 //...............
 function calendario(){
 

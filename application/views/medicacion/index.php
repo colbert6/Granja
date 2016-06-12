@@ -17,9 +17,8 @@
                         <tr>
                             <td><?= $datos->med_id; ?></td>
                             <td><?= $datos->med_rp; ?></td> 
-
-                            <td><?= $datos->med_medicamentos;?></td>
-                            <td><?= $datos->med_via_aplicacion;?></td>
+                            <td><?php foreach (@$medicamentos->result() as $datoss) {   if($datos->med_medicamentos==$datoss->medi_id) echo $datoss->medi_descripcion;} ?></td>
+                            <td><?php foreach (@$via_aplicacion->result() as $datos1) {   if($datos->med_via_aplicacion==$datos1->viaap_id) echo $datos1->viaap_descripcion;} ?></td>
                             <td><?= $datos->med_fecha_evento; ?></td>
                             <td>
                                 <a href=<?php echo base_url()."index.php/medicacion/editar/".$datos->med_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>

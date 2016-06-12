@@ -18,6 +18,7 @@
         public function index()
         {
             $data['indicaciones_especiale'] = $this->indicaciones_especiale_model->select();
+            $data['indicacion_especial'] = $this->indicacion_especial_model->select();
 
             $dato= array ( 'titulo'=> 'Lista de Indicaciones_especiale');
 
@@ -43,7 +44,6 @@
              $this->redireccionar("indicaciones_especiale");
                 
             }else{
-
                 $data['animales'] = $this->animales_model->select();
                 $data['indicacion_especial'] = $this->indicacion_especial_model->select();
 

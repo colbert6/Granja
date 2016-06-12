@@ -17,7 +17,7 @@
                             <td><?= $datos->recha_id; ?></td>
                             <td><?= $datos->recha_rp; ?></td> 
                             <td><?= $datos->recha_fecha_evento;?></td>
-                            <td><?= $datos->recha_causa_rechazo;?></td>
+                            <td><?php foreach (@$causa_rechazo->result() as $datoss) {   if($datos->recha_causa_rechazo==$datoss->cr_id) echo $datoss->cr_descripcion;} ?></td>
                             <td>
                                 <a href=<?php echo base_url()."index.php/rechazo/editar/".$datos->recha_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>
                                 <a href=<?php echo base_url()."index.php/rechazo/eliminar/".$datos->recha_id; ?> class="btn  btn-minier"><i class="fa fa-trash-o"></i></a>

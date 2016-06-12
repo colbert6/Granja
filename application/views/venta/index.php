@@ -17,7 +17,7 @@
                             <td><?= $datos->venta_id; ?></td>
                             <td><?= $datos->venta_rp; ?></td> 
                             <td><?= $datos->venta_fecha_evento;?></td>
-                            <td><?= $datos->venta_especif_venta;?></td>
+                            <td><?php foreach (@$especificacion_venta->result() as $datoss) {   if($datos->venta_especif_venta==$datoss->espve_id) echo $datoss->espve_descripcion;} ?></td>
                             <td>
                                 <a href=<?php echo base_url()."index.php/venta/editar/".$datos->venta_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>
                                 <a href=<?php echo base_url()."index.php/venta/eliminar/".$datos->venta_id; ?> class="btn  btn-minier"><i class="fa fa-trash-o"></i></a>

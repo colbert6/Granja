@@ -20,6 +20,8 @@
         public function index()
         {
             $data['aborto'] = $this->aborto_model->select();
+            $data['animales'] = $this->animales_model->select();
+            $data['causa_aborto'] = $this->causa_aborto_model->select();
 
             $dato= array ( 'titulo'=> 'Lista de Abortos');
 

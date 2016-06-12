@@ -20,6 +20,9 @@
         public function index()
         {
             $data['celo'] = $this->celo_model->select();
+            $data['medicina_genital'] = $this->medicina_genital_model->select();
+            $data['via_aplicacion'] = $this->via_aplicacion_model->select();
+            $data['causa_no_inseminal'] = $this->causa_no_inseminal_model->select();
 
             $dato= array ( 'titulo'=> 'Lista de Animales en Celo');
 

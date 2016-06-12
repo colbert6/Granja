@@ -36,7 +36,7 @@
                 $this->redireccionar("causa_no_inseminal");
                 
             }else{
-                $dato= array ( 'titulo'=> 'Registrar cuusa no inseminal','action'=>  'causa_no_inseminal/nuevo' );
+                $dato= array ( 'titulo'=> 'Registrar cusa no inseminal','action'=>  'causa_no_inseminal/nuevo' );
 
                 $this->load->view("/layout/header.php",$dato);
                 $this->load->view("/causa_no_inseminal/form.php");

@@ -15,6 +15,8 @@
         public function index()
         {
             $data['medicacion'] = $this->medicacion_model->select();
+            $data['medicamentos'] = $this->medicamentos_model->select();
+            $data['via_aplicacion'] = $this->via_aplicacion_model->select();
 
             $dato= array ( 'titulo'=> 'Lista de Medicacion');
 

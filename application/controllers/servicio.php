@@ -20,6 +20,10 @@
         public function index()
         {
             $data['servicio'] = $this->servicio_model->select();
+            $data['animales'] = $this->animales_model->select();
+            $data['personal'] = $this->personal_model->select();
+            $data['tipo_servicio'] = $this->tipo_servicio_model->select();
+            $data['reproductor'] = $this->reproductor_model->select();
 
             $dato= array ( 'titulo'=> 'Lista de Servicio');
 

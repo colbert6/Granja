@@ -17,6 +17,7 @@
         public function index()
         {
             $data['rechazo'] = $this->rechazo_model->select();
+            $data['causa_rechazo'] = $this->causa_rechazo_model->select();
 
             $dato= array ( 'titulo'=> 'Lista de Rechazo');
 

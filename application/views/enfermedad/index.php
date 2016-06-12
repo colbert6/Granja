@@ -18,9 +18,9 @@
                         <tr>
                             <td><?= $datos->enf_id; ?></td>
                             <td><?= $datos->enf_rp; ?></td> 
-                            <td><?= $datos->enf_tipo_enfermedad;?></td>
-                            <td><?= $datos->enf_medicamento;?></td>
-                            <td><?= $datos->enf_via_aplicacion;?></td>
+                            <td><?php foreach (@$tipo_enfermedad->result() as $datos1) {   if($datos->enf_tipo_enfermedad==$datos1->tipen_id) echo $datos1->tipen_descripcion;} ?></td>
+                            <td><?php foreach (@$medicamentos->result() as $datos2) {   if($datos->enf_medicamento==$datos2->medi_id) echo $datos2->medi_descripcion;}?></td>
+                            <td><?php foreach (@$via_aplicacion->result() as $datos3) {   if($datos->enf_via_aplicacion==$datos3->viaap_id) echo $datos3->viaap_descripcion;} ?></td>
                             <td><?= $datos->enf_fecha_evento; ?></td>
                             <td>
                                 <a href=<?php echo base_url()."index.php/enfermedad/editar/".$datos->enf_id; ?> class="btn  btn-minier"><i class="fa fa-pencil"></i></a>

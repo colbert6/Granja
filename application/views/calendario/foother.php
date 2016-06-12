@@ -45,12 +45,11 @@
                     
                 });
                 $("#evento").change(function(){
-                    var op = $("#evento").val();
-                    console.log(op);   
-                    mostrarFormulario(op,'',1);
-                    
+                 var op = $("#evento").val();
+                 console.log(op);   
+                 mostrarFormulario(op,'',1);
                 });
-                
+
             });
         </script>
 
@@ -119,7 +118,9 @@
             $("#evento").attr("disabled","true");
         }else{
             $("#evento").removeAttr("disabled");
+
         }
+        $("#evento").val(evento);
         var formulario = "";
         switch(evento){
             case '1':

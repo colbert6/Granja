@@ -20,6 +20,11 @@
         public function index()
         {
             $data['parto'] = $this->parto_model->select();
+            $data['animales'] = $this->animales_model->select();
+            $data['estado_cria'] = $this->estado_cria_model->select();
+            $data['tipo_parto'] = $this->tipo_parto_model->select();
+            $data['servicio'] = $this->servicio_model->select();
+            $data['sexo_cria'] = $this->sexo_cria_model->select();
 
             $dato= array ( 'titulo'=> 'Lista de Parto');
 

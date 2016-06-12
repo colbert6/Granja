@@ -17,6 +17,7 @@
         public function index()
         {
             $data['secado'] = $this->secado_model->select();
+            $data['medicina_cuarto_mamarios'] = $this->medicina_cuarto_mamarios_model->select();
 
             $dato= array ( 'titulo'=> 'Lista de Secado');
 

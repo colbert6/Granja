@@ -19,6 +19,9 @@
         public function index()
         {
             $data['analisis'] = $this->analisis_model->select();
+            $data['animales'] = $this->animales_model->select();
+            $data['tipo_analisis'] = $this->tipo_analisis_model->select();
+            $data['resultado_analisis'] = $this->resultado_analisis_model->select();
 
             $dato= array ( 'titulo'=> 'Lista de Analisis');
 

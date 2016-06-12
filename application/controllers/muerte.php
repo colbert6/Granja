@@ -18,6 +18,7 @@
         public function index()
         {
             $data['muerte'] = $this->muerte_model->select();
+            $data['especificacion_muerte'] = $this->especificacion_muerte_model->select();
 
             $dato= array ( 'titulo'=> 'Lista de Muerte');
 

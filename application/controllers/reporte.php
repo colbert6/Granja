@@ -13,6 +13,11 @@
             $this->load->model('eventos_model');
             $this->load->model('simbolo_model');
             $this->load->model('control_model');
+            $this->load->model('servicio_model');
+            $this->load->model('parto_model');
+            $this->load->model('tipo_servicio_model');
+            $this->load->model('reproductor_model');
+            $this->load->model('tacto_rectal_model');
              $this->menu = $this->modulo_model->selectMenu($this->session->userdata('tipo_usu'));
          }
 
@@ -66,6 +71,21 @@
             $data['control'] = $this->control_model->selectFechas($fecha_inicio,$fecha_fin);
             $data['fechas'] = array('inicio' => $fecha_inicio,'fin' => $fecha_fin);
             $this->load->view("/reporte/tabla_controles.php",$data);
+        }
+        public function produccion(){
+            $data['produccion1'] = $this->animales_model->produccion1();
+            $data['servicio'] = $this->servicio_model->select();
+            $data['tipo_servicio'] = $this->tipo_servicio_model->select();
+            $data['reproductor'] = $this->reproductor_model->select();
+            $data['tacto_rectal'] = $this->tacto_rectal_model->select();
+            $data['control'] = $this->control_model->select();
+            
+
+            $dato= array ( 'titulo'=> 'Reporte Produccion');
+
+            $this->load->view("/layout/header.php",$dato);
+            $this->load->view("/reporte/produccion.php",$data);
+            $this->load->view("/reporte/foother2.php");
         }
     }
 
