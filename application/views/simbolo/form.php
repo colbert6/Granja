@@ -35,7 +35,7 @@ if(isset ($simbolo))  {  $datos=$simbolo->row(); }
                         <span class="input-group-addon"><i class="<?php if(isset ($simbolo)) echo $datos->sim_icono; ?>"  id='v_icono'></i></span>
                         <input type="text" class="form-control" name='icono' id='icono' value="<?= $datos->sim_icono;?>">
                         <span class="input-group-btn">
-                                <button type='button' onclick='mostrarIconos()' name='seach' id='search-btn' class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
+                                <button type='button' onclick="mostrarIconos('<?= base_url(); ?>')" name='seach' id='search-btn' class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
                         </span>
                     </div>
 
@@ -79,11 +79,11 @@ if(isset ($simbolo))  {  $datos=$simbolo->row(); }
 "fa-camera","fa-certificate","fa-chain-broken","fa-chain","fa-cloud","fa-code-fork","fa-coffee","fa-cogs","fa-cog","fa-columns","fa-comment-o",
 "fa-comments-o","fa-comments","fa-comment","fa-compass","fa-compress","fa-copy","fa-credit-card","fa-crop",
 "fa-crosshairs","fa-css3","fa-cutlery","fa-cut","fa-dashboard","fa-dedent","fa-desktop"]
-    function mostrarIconos(){
+    function mostrarIconos(base_url){
       //  alert("modal");
      
         aux = 0;
-        $.post( "/Granja/index.php/simbolo/json_ExtraerTodo", function(data) {
+        $.post(base_url+"index.php/simbolo/json_ExtraerTodo", function(data) {
             var oe = JSON.parse(data);
             console.log(oe);
                var list = "";

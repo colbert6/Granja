@@ -1,24 +1,19 @@
 </section><!-- /.content -->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
-
-
         <!-- jQuery 2.0.2 -->
         <script src="<?= base_url(); ?>js/jquery-1.12.3.min.js" type="text/javascript"></script>
         <!-- Bootstrap -->
         <script src="<?= base_url(); ?>js/bootstrap.min.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
         <script src="<?= base_url(); ?>js/AdminLTE/app.js" type="text/javascript"></script>
-
         <link href="<?= base_url(); ?>css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
         <script src="<?= base_url(); ?>js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-
         <script type="text/javascript">
             $(document).ready(function() {
-
                 $("#example2").dataTable({
-                 
+                    "scrollX": true,
                     "bPaginate": true,
                     "bLengthChange": true,
                     "bFilter": true,
@@ -52,11 +47,8 @@
                     'aaSorting': [[ 0, 'asc' ]],//ordenar
                     'iDisplayLength': 20,
                     'aLengthMenu': [[5, 10, 20], [5, 10, 20]]
-
                 });
-
             });
         </script>
-
     </body>
 </html>

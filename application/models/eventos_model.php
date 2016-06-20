@@ -28,6 +28,15 @@
 	    return $query;
 	   
 	    }
+	    function selectevento(){
+	    $sql = "SELECT e.ani_id as id,e.eve_fecha as fecha,si.evento as evento
+				FROM eventos e inner join simbolo si on (e.sim_id=si.sim_id)
+				ORDER BY e.ani_id,e.eve_fecha asc;";
+
+	    $query=$this->db->query($sql);
+	    return $query;
+	   
+	    }
 
 	    function crear($data){	    	
 	        $this->db->insert('eventos',array(

@@ -57,6 +57,16 @@
 	        return $query;
 	    }
 
+	    function num_servicio(){
+	    	$query = $this->db->query(
+		    	"SELECT s.ser_animal ,count(s.ser_id) as num_serv
+				FROM servicio s
+				WHERE s.ser_estado = '1'
+				GROUP BY s.ser_animal"
+			);
+	    	return $query;
+	    }
+
 
 	  	}
 ?>
