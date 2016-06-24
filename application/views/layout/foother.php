@@ -11,7 +11,15 @@
         <!-- AdminLTE App -->
         <script src="<?= base_url(); ?>js/AdminLTE/app.js" type="text/javascript"></script>
        <!-- <script src="<?= base_url(); ?>js/jquery.validate.min.js" type="text/javascript"></script>-->
-        <!--<script src="<?= base_url(); ?>js/additional-methods.js" type="text/javascript"></script>-->
+        <script src="<?= base_url(); ?>js/bootstrap-datepicker.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>js/validaciones.js" type="text/javascript"></script>
+        <!--<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
+        <script type="text/javascript">
+$(function() { 
+    $( "#fecha" ).datepicker();
+    $( "#fechar" ).datepicker();
+   //  $("#fecha_contol").datepicker();
+  });
+</script>
     </body>
 </html>

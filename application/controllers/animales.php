@@ -27,14 +27,6 @@
             $this->load->view("/animales/index.php",$data);
             $this->load->view("/animales/foother.php");
         }
-       /* public function form()
-        {
-            $resul['razas'] = $this->razas_model->select();
-            $data = array('consulta'=> $resul);
-            $this->load->view("/layout/header.php");
-            $this->load->view("/animales/form.php",$resul);
-            $this->load->view("/animales/foother.php");
-        }*/
 
         public function nuevo()
         {
@@ -52,7 +44,7 @@
                            'fechareg'=> $this->input->post('fechareg'),
                            'sexo'=> $this->input->post('sexo'),
                            'proveedor'=> $this->input->post('proveedor'),
-                      //     'tiporeg'=> $this->input->post('tiporeg'),
+                           'tiporeg'=> $this->input->post('tiporeg'),
                            'descripcion'=> $this->input->post('descripcion')
                         );
 

@@ -11,13 +11,15 @@
         <script src="<?= base_url(); ?>js/validaciones.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
         <script src="<?= base_url(); ?>js/AdminLTE/app.js" type="text/javascript"></script>
+        <script src="<?= base_url(); ?>js/bootstrap-datepicker.js" type="text/javascript"></script>
 
         <link href="<?= base_url(); ?>css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <!--<link href="<?= base_url(); ?>css/datepicker.css" rel="stylesheet" type="text/css" />-->
+        <!--<link href="<?= base_url(); ?>css/bootstrap.min.css" rel="stylesheet" type="text/css" />-->
+        
         <script src="<?= base_url(); ?>js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-
-        <script type="text/javascript">
-            
+        <script type="text/javascript"> 
 
             /*$('#tab').DataTable( {
                 "footerCallback": function ( row, data, start, end, display ) {

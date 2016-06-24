@@ -51,7 +51,7 @@ if(isset ($venta))  {  $datos=$venta->row(); }
                 </div>         
                 <div class="form-group">
                     <label for="nombre">Fecha de Evento</label>
-                    <input type="date" required class="form-control" id="fecha_evento" name="fecha_evento" placeholder="Ingrese Fecha de Evento"
+                    <input type="date" required class="form-control" id="fecha" name="fecha_evento" placeholder="Ingrese Fecha de Evento"
                      value=<?php if(isset ($venta)) echo $datos->venta_fecha_evento;?> >
                 </div>
                                             

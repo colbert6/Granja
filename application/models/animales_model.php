@@ -43,7 +43,7 @@
 	                                       'ani_fechareg' => $data['fechareg'],
 	                                       'ani_sexo' => $data['sexo'],
 	                                       'ani_proveedor' => $data['proveedor'],
-	                                   //    'ani_tiporeg' => $data['tiporeg'], 
+	                                       'ani_tiporeg' => $data['tiporeg'], 
 	                                       'ani_descripcion' => $data['descripcion'],
 	                                       'ani_raza' => $data['raza'] ,
 	                                       'ani_estado' => 1 ));
@@ -59,7 +59,7 @@
 	                                       'ani_fechareg' => $data['fechareg'],
 	                                       'ani_sexo' => $data['sexo'],
 	                                       'ani_proveedor' => $data['proveedor'],
-	                               //        'ani_tiporeg' => $data['tiporeg'], 
+	                                       'ani_tiporeg' => $data['tiporeg'], 
 	                                       'ani_descripcion' => $data['descripcion'],
 	                                       'ani_raza' => $data['raza'] ,
 	                                       'ani_estado' => 1

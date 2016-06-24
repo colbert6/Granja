@@ -26,7 +26,7 @@ if(isset ($parto))  {  $datos=$parto->row(); }
               
                 <div class="form-group">
                     <label for="nombre">Fecha de Nacimieto</label>
-                    <input type="date" required class="form-control" id="fechanac" name="fechanac" placeholder="Ingrese Fecha de nacimiento"
+                    <input type="date" required class="form-control" id="fecha" name="fechanac" placeholder="Ingrese Fecha de nacimiento"
                      value=<?php if(isset ($parto)) echo $datos->par_fechanac;?> >
                 </div>
                 <div class="form-group">
