@@ -15,11 +15,11 @@
         <script src="<?= base_url(); ?>js/validaciones.js" type="text/javascript"></script>
         <!--<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
         <script type="text/javascript">
-$(function() { 
-    $( "#fecha" ).datepicker();
-    $( "#fechar" ).datepicker();
+//$(function() { 
+ //   $( "#fecha" ).datepicker();
+ //   $( "#fechar" ).datepicker();
    //  $("#fecha_contol").datepicker();
-  });
+//  });
 </script>
     </body>
 </html>

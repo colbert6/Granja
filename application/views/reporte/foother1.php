@@ -10,6 +10,7 @@
         <script src="<?= base_url(); ?>js/bootstrap.min.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
         <script src="<?= base_url(); ?>js/AdminLTE/app.js" type="text/javascript"></script>
+        <script src="<?= base_url(); ?>js/bootstrap-datepicker.js" type="text/javascript"></script>
 
 
         <link href="<?= base_url(); ?>css/jQueryUI/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css" />
@@ -25,7 +26,10 @@
         <script src="<?= base_url(); ?>js/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
 
         <script type="text/javascript">
-            $(document).ready(function() {
+        //$(function() { 
+        //   $("#fecha_inicio").datepicker();
+        //});
+         /*   $(document).ready(function() {
                 var base = window.location.pathname.split("/");
                 var base_url = "/"+base[1]+"/";
                 var fecha = new Date();
@@ -82,7 +86,7 @@
                 
                 });
                 
-            });
+            });*/
         </script>
 
     </body>

@@ -8,7 +8,7 @@ th { white-space: nowrap; }
         <div class='col-lg-2'><label>Fecha Inicio:</label></div>
         <div class='col-lg-3'>    
             <div class="input-group">
-                <input type="date" onblur='asignarFecha();' class="form-control" id="fecha_inicio" name="fecha_inicio" >
+                <input type="date" onchange='asignarFecha();' class="form-control" id="fecha_inicio" name="fecha_inicio" >
             </div>
         </div>
         <div class='col-lg-2'><label>Fecha Fin:</label></div>
