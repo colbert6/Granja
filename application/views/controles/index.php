@@ -8,7 +8,7 @@ th { white-space: nowrap; }
         <div class='col-lg-2'><label>Fecha Evento:</label></div>
         <div class='col-lg-3'>    
             <div class="input-group">
-                <input type="date" class="form-control" id="fecha_contol" name="fecha_contol" >
+                <input class="form-control" id="fecha_contol" name="fecha_contol" >
                 <span class="input-group-btn">
                         <button type='button' onclick="tabla('<?php echo base_url(); ?>')" name='seach' id='search-btn' class="btn btn-info btn-flat"><i class="fa fa-search"></i></button>
                 </span>

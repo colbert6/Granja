@@ -27,33 +27,40 @@
                 $("#retroceder").hide();
                 var cont = parseInt($("#cont").val());
                 $("#cont_hoja").val("HOJA # "+cont);
-                $("#hoja").load(base_url+"index.php/caja/ver_hoja/");
+                $("#hoja").load(base_url+"index.php/caja/ver_hoja/"+cont);
+
 
                 $("#avanzar").click(function(){
-                    avanz = parseInt($("#cont").val())+1;
-                    $("#cont").val(avanz);
-                    //alert(avanz);
-                    $("#cont_hoja").val("HOJA # "+avanz);
-                   // $("#reTabla").load(base_url+"index.php/calendario/mostrarTabla/"+avanz);
-                   if($("#cont").val()>1){
-                        $("#retroceder").show();
+                    if(valida_paso()){
+                        avanz = parseInt($("#cont").val())+1;
+                        ant = parseFloat($("#st_10").val());
+                        $("#cont").val(avanz);
+                        $("#cont_hoja").val("HOJA # "+avanz);
+                        $("#hoja").load(base_url+"index.php/caja/ver_hoja/"+avanz+"/"+ant);
+                       if($("#cont").val()>1){
+                            $("#retroceder").show();
+                        }
+                    }else{
+                        alert("Hay Campos Vacios en la Hoja");
                     }
+                    
                     
                 });
 
                 $("#retroceder").click(function(){
                     retro = parseInt($("#cont").val())-1;
                     $("#cont").val(retro);
-                    //alert(avanz);
                     $("#cont_hoja").val("HOJA # "+retro);
+                    $("#hoja").load(base_url+"index.php/caja/ver_hoja/"+retro); 
                     if($("#cont").val()==1){
                         $("#retroceder").hide();
                     }
-                    //$("#reTabla").load(base_url+"index.php/calendario/mostrarTabla/"+avanz);
+                    
                     
                 });
 
             });
+
         </script>
 
     </body>

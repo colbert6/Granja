@@ -8,8 +8,6 @@
             </div>
             <div class="panel-body" id='reTabla'> 
 
-            
-
             <!--HASTA AQUI NOMAS-->
         </div>
           </div> 
@@ -24,7 +22,6 @@
     .btn-event{
     	margin: 2px 0 2px 0;
     }
-
 </style>
 
 <div id="myModal" class="modal fade" role="dialog">

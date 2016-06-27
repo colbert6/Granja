@@ -21,8 +21,9 @@
             $this->load->view("/caja/foother.php");
         }
 
-        public function ver_hoja(){
-          $data['caja'] = $this->caja_model->select();
+        public function ver_hoja($hoja=1,$saldo_ant=0){
+          $data['caja'] = $this->caja_model->selectHoja($hoja);
+          $data['saldo_anterior'] = $saldo_ant;
           $this->load->view("/caja/hoja.php",$data);
         }
   
@@ -36,7 +37,8 @@
                            'ingreso' => $_POST['ingreso'],
                            'e_compra' => $_POST['e_compra'],
                            'e_medicina' => $_POST['e_medicina'],
-                           'e_transporte' => $_POST['e_transporte']
+                           'e_transporte' => $_POST['e_transporte'],
+                           'hoja' => $_POST['hoja']
                         );
             $caja =$this->caja_model->crear($data);
             $this->auditoria('insertar',$this->tabla,'',$this->db->insert_id());
@@ -52,7 +54,8 @@
                            'ingreso' => $_POST['ingreso'],
                            'e_compra' => $_POST['e_compra'],
                            'e_medicina' => $_POST['e_medicina'],
-                           'e_transporte' => $_POST['e_transporte']
+                           'e_transporte' => $_POST['e_transporte'],
+                           'hoja' => $_POST['hoja']
                         );
             $this->caja_model->editar($data);
             $this->auditoria('editar',$this->tabla,'',$this->db->insert_id());

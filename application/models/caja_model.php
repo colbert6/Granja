@@ -18,7 +18,11 @@
 	        return $query;
 	   
 	    }
-
+	    function selectHoja($hoja){
+	        $this->db->where('hoja',$hoja);
+	        $query=$this->db->get('caja');
+	        return $query;
+	    }
 	    function crear($data){
 	    	
 	        $this->db->insert('caja',array('fecha' => $data['fecha'],
@@ -29,7 +33,8 @@
 	                                       'ingreso' => $data['ingreso'],
 	                                       'e_compra' => $data['e_compra'],
 	                                       'e_medicina' => $data['e_medicina'],
-	                                       'e_transporte' => $data['e_transporte']));
+	                                       'e_transporte' => $data['e_transporte'],
+	                                       'hoja' => $data['hoja']));
 	        $this->db->select_max('caj_id');	        
 			$query = $this->db->get('caja');
 	        return $query->row();
@@ -45,7 +50,8 @@
 	                     'ingreso' => $data['ingreso'],
 	                     'e_compra' => $data['e_compra'],
 	                     'e_medicina' => $data['e_medicina'],
-	                     'e_transporte' => $data['e_transporte']);
+	                     'e_transporte' => $data['e_transporte'],
+	                     'hoja' => $data['hoja']);
 
 	    	$this->db->where('caj_id',$data['id']);
 	        $query=$this->db->update('caja',$datos);

@@ -11,16 +11,34 @@
         <!--<script src="<?= base_url(); ?>js/validaciones.js" type="text/javascript"></script>-->
         <!-- AdminLTE App -->
         <script src="<?= base_url(); ?>js/AdminLTE/app.js" type="text/javascript"></script>
-        <script src="<?= base_url(); ?>js/bootstrap-datepicker.js" type="text/javascript"></script>
+        <script src="<?= base_url(); ?>js/plugins/daterangepicker/moment.js" type="text/javascript"></script>
+        <script src="<?= base_url(); ?>js/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
 
         <link href="<?= base_url(); ?>css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
         
         <script src="<?= base_url(); ?>js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
         <script type="text/javascript"> 
-         //$(function() { 
-         //  $("#fecha_contol").datepicker();
-         //});
+        /* $('#fecha_contol').datepicker({
+                format: "yyyy-mm-dd"
+            })
+                .on('changeDate', function(e) {
+                    
+                    var fecha_ini = $("#fecha_contol").val();
+                  //  alert(fecha_ini);
+        });*/
+        $('#fecha_contol').daterangepicker({
+            //autoUpdateInput: false,
+            singleDatePicker: true,
+            showDropdowns: true,    
+            locale: {
+              format: 'YYYY-MM-DD'
+            },   
+               })
+            .on('changeDate', function(e) {
+                var fecha_ini = $("#fecha_contol").val();
+                alert(fecha_ini);   
+       });
             /*$('#tab').DataTable( {
                 "footerCallback": function ( row, data, start, end, display ) {
                     var api = this.api(), data;

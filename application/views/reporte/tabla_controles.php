@@ -107,8 +107,8 @@ $suma =array(1=>array('cont_1' => 0,'cont_2' => 0),
                     </tr>
                     <tr class="danger">
                         <th colspan="3" style="text-align:right">Total:</th>
-                        <?php
-                            for ($t=1; $t<=$int_dias+1 ; $t++) {
+                        <?php //$t<=$int_dias borre el +1
+                            for ($t=1; $t<=$int_dias ; $t++) {
                                 echo "<td>".$suma[$t]['cont_1']."</td>";
                                 echo "<td>".$suma[$t]['cont_2']."</td>";
                             }

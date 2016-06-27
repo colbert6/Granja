@@ -1,6 +1,9 @@
 
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
+
+
+
         </div><!-- ./wrapper -->
 
 
@@ -10,7 +13,9 @@
         <script src="<?= base_url(); ?>js/bootstrap.min.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
         <script src="<?= base_url(); ?>js/AdminLTE/app.js" type="text/javascript"></script>
-
+        <script src="<?= base_url(); ?>js/plugins/daterangepicker/moment.js" type="text/javascript"></script>
+        <script src="<?= base_url(); ?>js/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+        
 
         <link href="<?= base_url(); ?>css/jQueryUI/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css" />
         <script src="<?= base_url(); ?>js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
@@ -21,8 +26,9 @@
         <script src="<?= base_url(); ?>js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
 
         <script type="text/javascript">
+
             $(document).ready(function() {
-				var base = window.location.pathname.split("/");
+                var base = window.location.pathname.split("/");
                 var base_url = "/"+base[1]+"/";
                 var fecha = new Date();
                 var ano = fecha.getFullYear();
@@ -70,11 +76,13 @@
         $("#fila").val(fila);
         $("#mes").val(mes);
         $("#url").val(url);
-        
+         
         cabecera_formulario(mes,url,1);
         mostrarFormulario('1','',1);           
     }
+
     function pie_formulario(est){
+
         var funcion = "";
         var text = "";
         if(est==1){
@@ -89,8 +97,51 @@
         var pie = "<button type='button' onclick=\""+funcion+"\" class='btn btn-success' >"+text+"</button>";
          pie += "<button type='button' class='btn btn-default' data-dismiss='modal'>Cerrar</button>";
         $("#pie").html(pie);
-
-    }
+        //--------------------------------------------------------------------
+      
+     //  var nueva_fecha = new Date();
+      // var month =  parseInt(nueva_fecha.getMonth())+1;
+      // var day = parseInt(nueva_fecha.getDate())-1;
+     //  var year = parseInt(nueva_fecha.getFullYear());
+      // alert(month);
+      var anio = $("#anio").val();
+          me= $("#mes").val();
+        var dias = daysInMonth(me,anio);
+        if(est==1){
+            if(me<10){
+                mex = "0"+me;
+            }else{
+                mex = me;
+            }  
+        }else{
+            mex=me;
+        }
+        //alert(dias);
+        fecha_min = anio+"-"+mex+"-01";
+        fecha_max = anio+"-"+mex+"-"+dias;
+        //alert(fecha_min+" "+fecha_max);
+        $('#fecha_evento').daterangepicker({
+          //  autoUpdateInput: false,
+            singleDatePicker: true,
+            showDropdowns: true,    
+            locale: {
+              format: 'YYYY-MM-DD',
+            },
+            minDate: fecha_min,
+            maxDate: fecha_max,
+            startDate: fecha_min,
+            endDate: fecha_max
+            //firstDay: 1,
+            //defaultDate: "+2m"    
+               })
+            .on('changeDate', function(e) {
+                var fecha_ini = $("#fecha_evento").val();
+                alert(fecha_ini);   
+       });
+       // $('#fecha_evento').datepicker('update', year+"-"+month+"-");
+        //--------------------------------------------------------------------
+    }  
+    
     function cabecera_formulario(mes,url,est){
 
         var anio = $("#anio").val();
@@ -105,15 +156,17 @@
         }else{
             mex=mes;
         }
-        
+      //  alert(dias+"jajaj");
         fecha_min = anio+"-"+mex+"-01";
         fecha_max = anio+"-"+mex+"-"+dias;
         //alert(fecha_min+" "+fecha_max);
+
         var cabezera = "<h4 class='modal-title'><strong><u>AGREGAR EVENTO</u></strong></h4>";
             cabezera += "<span class='text-center'>Mes: <strong>"+meses[mes-1]+"</strong></span>";
         $("#cabezera").html(cabezera);
     }
     function mostrarFormulario(evento,data,est){
+        
         if(est!=1){
             $("#evento").attr("disabled","true");
         }else{
@@ -149,7 +202,7 @@
                     }
                     formulario    += "</select>";
                     formulario    += "<label>Fecha:</label>";
-                    formulario    += "<input "+ant+" type='date'class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                    formulario    += "<input "+ant+"  class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                     $("#content-form").html(formulario); 
                     pie_formulario(est);
                     $("#myModal").modal("show");
@@ -202,7 +255,7 @@
                         }
 
                         formulario    += "<label>Fecha:</label>";
-                        formulario    += "<input "+ant+" type='date'class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                        formulario    += "<input "+ant+" class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                         $("#content-form").html(formulario); 
                         pie_formulario(est);
                         $("#myModal").modal("show");  
@@ -269,7 +322,7 @@
                             }
 
                             formulario    += "<label>Fecha:</label>";
-                            formulario    += "<input "+ant+" type='date'class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                            formulario    += "<input "+ant+" class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
 
                             $("#content-form").html(formulario); 
                             pie_formulario(est);
@@ -334,7 +387,7 @@
                                 ant = "value='"+thedate[0]+"'";
                             }
                             formulario    += "<label>Fecha:</label>";
-                            formulario    += "<input "+ant+" type='date'class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                            formulario    += "<input "+ant+" class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                             $("#content-form").html(formulario); 
                             pie_formulario(est);
                             $("#myModal").modal("show");
@@ -410,7 +463,7 @@
                                 ant = "value='"+thedate[0]+"'";
                             }
                         formulario    += "<label>Fecha:</label>";
-                        formulario    += "<input "+ant+" type='date'class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                        formulario    += "<input "+ant+" class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
 
                         $("#content-form").html(formulario); 
                            pie_formulario(est);
@@ -441,7 +494,7 @@
                                 ant = "value='"+thedate[0]+"'";
                             }
                     formulario    += "<label>Fecha:</label>";
-                    formulario    += "<input "+ant+" type='date'class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                    formulario    += "<input "+ant+" class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                     
                     $("#content-form").html(formulario); 
                            pie_formulario(est);
@@ -512,7 +565,7 @@
                                     ant = "value='"+thedate[0]+"'";
                                 }
                                 formulario    += "<label>Fecha Nacimiento:</label>";
-                                formulario    += "<input "+ant+" type='date' class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                                formulario    += "<input "+ant+" class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                                 
                                 $("#content-form").html(formulario); 
                                    pie_formulario(est);
@@ -575,7 +628,7 @@
                      ant = "value='"+thedate[0]+"'";
                  }
                 formulario    += "<label>Fecha:</label>";
-                formulario    += "<input "+ant+"type='date'class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                formulario    += "<input "+ant+" class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                 
                  $("#content-form").html(formulario); 
                     pie_formulario(est);
@@ -664,7 +717,7 @@
                      ant = "value='"+thedate[0]+"'";
                  }
                 formulario    += "<label>Fecha:</label>";
-                formulario    += "<input "+ant+" type='date'class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                formulario    += "<input "+ant+" class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                 
                 $("#content-form").html(formulario); 
                     pie_formulario(est);
@@ -697,7 +750,7 @@
                      ant = "value='"+thedate[0]+"'";
                  }
                 formulario    += "<label>Fecha:</label>";
-                formulario    += "<input "+ant+" type='date'class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                formulario    += "<input "+ant+" class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                 
                 $("#content-form").html(formulario); 
                     pie_formulario(est);
@@ -725,7 +778,7 @@
                      ant = "value='"+thedate[0]+"'";
                  }
                 formulario    += "<label>Fecha:</label>";
-                formulario    += "<input "+ant+" type='date'class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                formulario    += "<input "+ant+" class='form-control' id='fecha_evento' name='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
  
                 $("#content-form").html(formulario); 
                     pie_formulario(est);
@@ -754,7 +807,7 @@
                         ant = "value='"+thedate[0]+"'";
                     }
                     formulario    += "<label>Fecha:</label>";
-                    formulario    += "<input "+ant+" type='date'class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
+                    formulario    += "<input "+ant+" class='form-control' name='fecha_evento' id='fecha_evento' step='1' min='"+fecha_min+"' max='"+fecha_max+"' />";
                     
                     $("#content-form").html(formulario); 
                       pie_formulario(est);
@@ -1174,6 +1227,11 @@
         }
         return true;
     }
+  /*  $(function() {
+           $('#fecha_evento').datepicker({
+            language: 'pt-BR'
+          });
+        });*/
 </script>
 
     </body>

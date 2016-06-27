@@ -10,7 +10,8 @@
         <script src="<?= base_url(); ?>js/bootstrap.min.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
         <script src="<?= base_url(); ?>js/AdminLTE/app.js" type="text/javascript"></script>
-        <script src="<?= base_url(); ?>js/bootstrap-datepicker.js" type="text/javascript"></script>
+        <link href="<?= base_url(); ?>css/datepicker-viejo.css" rel="stylesheet" type="text/css" />
+        <script src="<?= base_url(); ?>js/bootstrap-datepicker-viejo.js" type="text/javascript"></script>
 
 
         <link href="<?= base_url(); ?>css/jQueryUI/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css" />
@@ -21,14 +22,29 @@
         <script src="<?= base_url(); ?>js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>js/plugins/flot/jquery.flot.min.js" type="text/javascript"></script>
+        
        <!-- <script src="<?= base_url(); ?>js/plugins/flot/jquery.flot.resize.min.js" type="text/javascript"></script>
         <script src="<?= base_url(); ?>js/plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>-->
         <script src="<?= base_url(); ?>js/plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
 
         <script type="text/javascript">
-        //$(function() { 
-        //   $("#fecha_inicio").datepicker();
-        //});
+        $(function() { 
+           //$("#fecha_inicio").datepicker();
+
+            
+
+            $('#fecha_inicio').datepicker({
+                format: "yyyy-mm-dd"
+            })
+                .on('changeDate', function(e) {
+                    
+                    var fecha_ini = $("#fecha_inicio").val();
+                 //   alert(fecha_ini);
+                    var fecha_fin = updateDate(fecha_ini,7);
+                    $("#fecha_fin").val(fecha_fin);
+                });
+        });
+        
          /*   $(document).ready(function() {
                 var base = window.location.pathname.split("/");
                 var base_url = "/"+base[1]+"/";
