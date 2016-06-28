@@ -29,7 +29,7 @@ $(function() {
           .on('changeDate', function(e) {
                     
             var fecha_ini = $("#fecha").val();
-              alert(fecha_ini);
+            //  alert(fecha_ini);
             });
     $('#fechar').datepicker({
                 format: "yyyy-mm-dd"
@@ -37,7 +37,7 @@ $(function() {
           .on('changeDate', function(e) {
                     
             var fecha_ini = $("#fechar").val();
-              alert(fecha_ini);
+             // alert(fecha_ini);
             });
   });
 </script>
