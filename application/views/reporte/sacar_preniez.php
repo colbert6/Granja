@@ -38,8 +38,10 @@
               foreach (@$tacto_rectal->result() as $tactrec) {
                 $val = date_create($tactrec->tarec_fecha_evento);
                 $date_trec = date_format($val, 'Y-m-d');
+               // echo $date_trec;
                 if($tactrec->tarec_rp == $animal->ani_id && $date_trec>$uServicio){
                   if($tactrec->tarec_diag_utero == 1){
+                  //  echo "pre";
                     $preniada=true;
                   }
                 }   
@@ -49,7 +51,7 @@
                 $servicio = date_create($uServicio);
                 $num_mes = date_diff($ahora,$servicio);
                 $antes_p = $num_mes->format('%m');
-
+                 //echo $antes_p;
                 if($antes_p>=7 ){ ?>
                     <tr>
                    <td class="text-center"><?= $k++; ?></td> 

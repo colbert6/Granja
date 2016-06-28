@@ -98,30 +98,58 @@
          pie += "<button type='button' class='btn btn-default' data-dismiss='modal'>Cerrar</button>";
         $("#pie").html(pie);
         //--------------------------------------------------------------------
-      
-     //  var nueva_fecha = new Date();
-      // var month =  parseInt(nueva_fecha.getMonth())+1;
-      // var day = parseInt(nueva_fecha.getDate())-1;
-     //  var year = parseInt(nueva_fecha.getFullYear());
-      // alert(month);
       var anio = $("#anio").val();
           me= $("#mes").val();
-        var dias = daysInMonth(me,anio);
-        if(est==1){
-            if(me<10){
-                mex = "0"+me;
+          eve= $("#fecha_evento").val();
+        if (eve=="") {
+            var dias = daysInMonth(me,anio);
+            if(est==1){
+                if(me<10){
+                    mex = "0"+me;
+                }else{
+                    mex = me;
+                }  
             }else{
-                mex = me;
-            }  
+                mex=me;
+            }
+          //  alert("evento "+eve);
+            fecha_min = anio+"-"+mex+"-01";
+            fecha_max = anio+"-"+mex+"-"+dias;
+            //alert(fecha_min+" "+fecha_max);
+            $('#fecha_evento').daterangepicker({
+              //  autoUpdateInput: false,
+                singleDatePicker: true,
+                showDropdowns: true,    
+                locale: {
+                  format: 'YYYY-MM-DD',
+                },
+                minDate: fecha_min,
+                maxDate: fecha_max,
+                startDate: fecha_min,
+                endDate: fecha_max
+                //firstDay: 1,
+                //defaultDate: "+2m"    
+                   })
+                .on('changeDate', function(e) {
+                    var fecha_ini = $("#fecha_evento").val();
+                //    alert(fecha_ini);   
+           });
         }else{
-            mex=me;
-        }
-        //alert(dias);
+        var dias = daysInMonth(me,anio);
+            if(est==1){
+                if(me<10){
+                    mex = "0"+me;
+                }else{
+                    mex = me;
+                }  
+            }else{
+                mex=me;
+            }
         fecha_min = anio+"-"+mex+"-01";
         fecha_max = anio+"-"+mex+"-"+dias;
+        fecha_m =eve;
         //alert(fecha_min+" "+fecha_max);
         $('#fecha_evento').daterangepicker({
-          //  autoUpdateInput: false,
             singleDatePicker: true,
             showDropdowns: true,    
             locale: {
@@ -129,7 +157,7 @@
             },
             minDate: fecha_min,
             maxDate: fecha_max,
-            startDate: fecha_min,
+            startDate: eve,
             endDate: fecha_max
             //firstDay: 1,
             //defaultDate: "+2m"    
@@ -138,6 +166,9 @@
                 var fecha_ini = $("#fecha_evento").val();
                 alert(fecha_ini);   
        });
+        }
+        
+      
        // $('#fecha_evento').datepicker('update', year+"-"+month+"-");
         //--------------------------------------------------------------------
     }  

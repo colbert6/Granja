@@ -10,6 +10,12 @@
         <script src="<?= base_url(); ?>js/bootstrap.min.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
         <script src="<?= base_url(); ?>js/AdminLTE/app.js" type="text/javascript"></script>
+        <!--<script src="<?= base_url(); ?>js/plugins/daterangepicker/moment.js" type="text/javascript"></script>
+        <script src="<?= base_url(); ?>js/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>-->
+        
+
+         <link href="<?= base_url(); ?>css/datepicker-viejo.css" rel="stylesheet" type="text/css" />
+        <script src="<?= base_url(); ?>js/bootstrap-datepicker-viejo.js" type="text/javascript"></script>
 
 
         <link href="<?= base_url(); ?>css/jQueryUI/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css" />
@@ -21,6 +27,7 @@
         <script src="<?= base_url(); ?>js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
 
         <script type="text/javascript">
+        
             $(document).ready(function() {
 				var base = window.location.pathname.split("/");
                 var base_url = "/"+base[1]+"/";

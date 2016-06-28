@@ -1,4 +1,4 @@
-//</section><!-- /.content -->
+</section><!-- /.content -->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
 

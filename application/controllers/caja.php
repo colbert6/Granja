@@ -29,7 +29,7 @@
   
         public function json_Nuevo(){
             $data= array ( 
-                          'fecha' => $_POST['fecha'],
+                          'fecha' => $_POST["fecha"],
                            'cantidad' => $_POST['cantidad'],
                            'tipo' => $_POST['tipo'],
                            'estado' => $_POST['estado'],

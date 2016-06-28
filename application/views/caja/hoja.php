@@ -4,7 +4,6 @@
     //print_r($saldo_anterior);
 
 ?>
-
 <style type="text/css">
     table {
         display: block;
@@ -28,7 +27,7 @@
         border:none;
     }
     .fecha{
-        background: none;
+        background: block;
         border:none;   
     }
     .ident{
@@ -66,7 +65,7 @@
         <?php for ($i=1; $i <= 10; $i++) { ?>
         <tr>
             <td class="text-center"><input id='it_<?= $i; ?>' idtabla="<?php if(ISSET($data_caja[$i-1]->caj_id)){ECHO $data_caja[$i-1]->caj_id;}else{echo '0';}; ?>" readonly value='<?= $i; ?>' class="ident"/></td>
-            <td><input id='f_<?= $i; ?>' type="date" value='<?php if(ISSET($data_caja[$i-1]->fecha)){ECHO $data_caja[$i-1]->fecha;}else{echo '';}; ?>' class='fecha' onblur="guardar('<?= $i; ?>','<?= base_url(); ?>',this);" /></td>
+            <td><input id='f_<?= $i; ?>' type="date" value='<?php if(ISSET($data_caja[$i-1]->fecha)){ECHO $data_caja[$i-1]->fecha;}else{echo '';}; ?>' class='fechar' onblur="guardar('<?= $i; ?>','<?= base_url(); ?>',this);" /></td>
             <td><input id='c_<?= $i; ?>' type="number" onblur="guardar('<?= $i; ?>','<?= base_url(); ?>',this);" value='<?php if(ISSET($data_caja[$i-1]->cantidad)){ECHO $data_caja[$i-1]->cantidad;}else{echo '';}; ?>' style="width: 50px;"></td>
             <td>
                 <select id='t_<?= $i; ?>' onblur="guardar('<?= $i; ?>','<?= base_url(); ?>',this);">
@@ -117,14 +116,14 @@
                 </select>
             </td>
             <td><input id='d_<?= $i; ?>' value='<?php if(ISSET($data_caja[$i-1]->descripcion)){ECHO $data_caja[$i-1]->descripcion;}else{echo '';}; ?>' type='text' class='descripcion' onblur="guardar('<?= $i; ?>','<?= base_url(); ?>',this);"/></td>
-            <td><input id='i_<?= $i; ?>'  value='<?php if(ISSET($data_caja[$i-1]->ingreso)){ECHO number_format($data_caja[$i-1]->ingreso, 2, '.', ' ');$saldo+=$data_caja[$i-1]->ingreso;}else{echo '';}; ?>' type='text' class='numeric' onblur="guardar('<?= $i; ?>','<?= base_url(); ?>',this);"/></td>
-            <td><input id='s_<?= $i; ?>' value='<?php if(ISSET($data_caja[$i-1]->ingreso)){$saldo+=$total_ant; echo number_format($saldo, 2, '.', ' ');}else{echo "";} ?> ' type='text' readonly class='totales'/></td>
-            <td><input id='ec_<?= $i; ?>' value='<?php if(ISSET($data_caja[$i-1]->e_compra)){ECHO number_format($data_caja[$i-1]->e_compra, 2, '.', ' '); $total_e +=$data_caja[$i-1]->e_compra;}else{echo '';}; ?>' type='text' class='numeric' onblur="guardar('<?= $i; ?>','<?= base_url(); ?>',this);" /></td>
-            <td><input id='em_<?= $i; ?>' value='<?php if(ISSET($data_caja[$i-1]->e_medicina)){ECHO number_format($data_caja[$i-1]->e_medicina, 2, '.', ' ');$total_e +=$data_caja[$i-1]->e_medicina;}else{echo '';}; ?>' type='text' class='numeric' onblur="guardar('<?= $i; ?>','<?= base_url(); ?>',this);"/></td>
-            <td><input id='et_<?= $i; ?>' value='<?php if(ISSET($data_caja[$i-1]->e_transporte)){ECHO number_format($data_caja[$i-1]->e_transporte, 2, '.', ' ');$total_e +=$data_caja[$i-1]->e_transporte;}else{echo '';}; ?>' type='text' class='numeric' onblur="guardar('<?= $i; ?>','<?= base_url(); ?>',this);"/></td>
+            <td><input id='i_<?= $i; ?>'  value='<?php if(ISSET($data_caja[$i-1]->ingreso)){ECHO $data_caja[$i-1]->ingreso;$saldo+=$data_caja[$i-1]->ingreso;}else{echo '';}; ?>' type='text' class='numeric' onblur="guardar('<?= $i; ?>','<?= base_url(); ?>',this);"/></td>
+            <td><input id='s_<?= $i; ?>' value='<?php if(ISSET($data_caja[$i-1]->ingreso)){$saldo+=$total_ant; echo $saldo;}else{echo "";} ?> ' type='text' readonly class='totales'/></td>
+            <td><input id='ec_<?= $i; ?>' value='<?php if(ISSET($data_caja[$i-1]->e_compra)){ECHO $data_caja[$i-1]->e_compra; $total_e +=$data_caja[$i-1]->e_compra;}else{echo '';}; ?>' type='text' class='numeric' onblur="guardar('<?= $i; ?>','<?= base_url(); ?>',this);" /></td>
+            <td><input id='em_<?= $i; ?>' value='<?php if(ISSET($data_caja[$i-1]->e_medicina)){ECHO $data_caja[$i-1]->e_medicina;$total_e +=$data_caja[$i-1]->e_medicina;}else{echo '';}; ?>' type='text' class='numeric' onblur="guardar('<?= $i; ?>','<?= base_url(); ?>',this);"/></td>
+            <td><input id='et_<?= $i; ?>' value='<?php if(ISSET($data_caja[$i-1]->e_transporte)){ECHO $data_caja[$i-1]->e_transporte;$total_e +=$data_caja[$i-1]->e_transporte;}else{echo '';}; ?>' type='text' class='numeric' onblur="guardar('<?= $i; ?>','<?= base_url(); ?>',this);"/></td>
             
-            <td><input id='te_<?= $i; ?>' value='<?php if(ISSET($data_caja[$i-1]->ingreso)){ echo number_format($total_e, 2, '.', ' ');}else{echo "";} ?>' type='text' readonly class='totales'/></td>
-            <td><input id='st_<?= $i; ?>' value='<?php if(ISSET($data_caja[$i-1]->ingreso)){ echo number_format($saldo-$total_e, 2, '.', ' '); }else{echo "";} ?>' type='text' readonly class='totales'/></td>
+            <td><input id='te_<?= $i; ?>' value='<?php if(ISSET($data_caja[$i-1]->ingreso)){ echo $total_e;}else{echo "";} ?>' type='text' readonly class='totales'/></td>
+            <td><input id='st_<?= $i; ?>' value='<?php if(ISSET($data_caja[$i-1]->ingreso)){ echo $saldo-$total_e; }else{echo "";} ?>' type='text' readonly class='totales'/></td>
             <?php $total_ant = $saldo-$total_e;?>
         </tr>
         <?php } ?>
@@ -133,6 +132,16 @@
 </table>
 
 <script type="text/javascript">
+/*$(function() { 
+        $('.fechar').datepicker({
+            })
+                .on('changeDate', function(e) {
+                    var fecha_ini = $(".fechar").val();
+                    $(".fechar").val(fecha_ini);
+                });
+var fecha_ini = $("#f_1").val();
+                    alert(fecha_ini);
+        });*/
     function guardar(f,base,c) {
         
             var ident = ["#f_", "#c_", "#t_", "#e_", "#d_", "#i_", "#ec_", "#em_", "#et_"];

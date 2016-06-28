@@ -45,7 +45,7 @@
                 });
         });
         
-         /*   $(document).ready(function() {
+            $(document).ready(function() {
                 var base = window.location.pathname.split("/");
                 var base_url = "/"+base[1]+"/";
                 var fecha = new Date();
@@ -102,7 +102,7 @@
                 
                 });
                 
-            });*/
+            });
         </script>
 
     </body>
